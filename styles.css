@@ -192,28 +192,32 @@ a {
 
 .hero-logo-wrapper {
   position: relative;
-  width: min(720px, 82vw);
-  margin: 0 auto 18px;
+  width: min(640px, 82vw);
+  aspect-ratio: 2048 / 1452;
+  margin: 0 auto 4px;
+  overflow: visible;
 }
 
+
 .hero-logo {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+  max-width: 100%;
   object-fit: contain;
+  object-position: center;
+  transform: none;
   filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.35));
   transition: opacity 0.35s ease;
 }
 
 
 .logo-white {
-  position: relative;
   opacity: 1;
 }
 
 .logo-teal {
-  position: absolute;
-  inset: 0;
   opacity: 0;
 }
 
