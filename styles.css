@@ -179,8 +179,8 @@ a {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  padding-top: 10px;
-  padding-bottom: 24px;
+  padding-top: 0;
+  padding-bottom: 18px;
   text-align: center;
 }
 
