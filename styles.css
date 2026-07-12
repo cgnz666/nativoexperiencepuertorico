@@ -575,25 +575,23 @@ footer {
   .primary-nav {
     top: 72px;
   }
-
   .hero {
-    height: 390px;
+    height: 525px;
   }
 
   .hero-content {
-    padding-top: 8px;
-    padding-bottom: 10px;
+    padding-top: 12px;
+    padding-bottom: 18px;
   }
 
   .hero-logo-wrapper {
-    width: min(420px, 90vw);
-    height: 220px;
-    margin: 0 auto 2px;
-    overflow: hidden;
+    width: min(410px, 92vw);
+    height: 305px;
+    margin-bottom: 6px;
   }
 
   .hero-logo {
-    top: -82px;
+    top: -65px;
   }
 
   .logo-teal {
@@ -601,8 +599,8 @@ footer {
   }
 
   .hero-copy {
-    max-width: 92%;
-    margin: 0 auto 10px;
+    max-width: 90%;
+    margin-bottom: 14px;
     font-size: 1rem;
   }
 
