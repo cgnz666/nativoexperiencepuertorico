@@ -177,9 +177,11 @@ a {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 900px;
+  max-width: 1000px;
+  margin: 0 auto;
   padding-top: 10px;
-  padding-bottom: 12px;
+  padding-bottom: 24px;
+  text-align: center;
 }
 
 .hero-centered {
@@ -189,36 +191,30 @@ a {
 
 
 .hero-logo-wrapper {
-    position: relative;
-    width: min(560px, 88vw);
-    height: 320px;
-    margin: 0 auto 10px;
-    overflow: hidden;
+  position: relative;
+  width: min(720px, 82vw);
+  margin: 0 auto 18px;
 }
 
 .hero-logo {
-    position: absolute;
-    left: 50%;
-    top: -135px;
-    width: 560px;
-    max-width: 88vw;
-    height: auto;
-    transform: translateX(-50%);
-    object-fit: contain;
-    filter: drop-shadow(0 12px 28px rgba(0,0,0,.35));
-    transition: opacity .35s ease;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.35));
+  transition: opacity 0.35s ease;
+}
+
+
+.logo-white {
+  position: relative;
+  opacity: 1;
 }
 
 .logo-teal {
-    position: absolute;
-    left: 50%;
-    top: -135px;
-    width: 560px;
-    max-width: 88vw;
-    height: auto;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity .35s ease;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
 }
 
 .hero-logo-wrapper:hover .logo-white {
@@ -587,14 +583,13 @@ footer {
   }
 
   .hero-content {
-    padding-top: 12px;
-    padding-bottom: 18px;
+    padding-top: 8px;
   }
+}
 
-  .hero-logo-wrapper {
-    width: min(410px, 92vw);
-    height: 305px;
-    margin-bottom: 6px;
+ .hero-logo-wrapper {
+    width: min(620px, 92vw);
+    margin-bottom: 12px;
   }
 
   .hero-logo {
