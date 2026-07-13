@@ -673,6 +673,17 @@ color:var(--primary);
 LOGO STORY
 ========================================== */
 
+.story-logo{
+
+width:360px;
+
+margin:0 auto 50px;
+
+opacity:.92;
+
+}
+
+
 .story-section{
 
 position:relative;
