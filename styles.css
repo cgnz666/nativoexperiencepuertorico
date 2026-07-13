@@ -90,7 +90,7 @@ border-bottom:1px solid rgba(0,0,0,.05);
 
 .nav-wrap{
 
-height:84px;
+height:72px;
 
 display:flex;
 
@@ -168,7 +168,7 @@ position:relative;
 
 height:82vh;
 
-min-height:720px;
+min-height:66vh;
 
 display:flex;
 
@@ -212,7 +212,7 @@ linear-gradient(rgba(2,18,24,.42),rgba(2,18,24,.62));
   width: min(960px, 92%);
   margin: 0 auto;
   text-align: center;
-  transform: translateY(-42px);
+  transform: translateY(10px);
 }
 
 
