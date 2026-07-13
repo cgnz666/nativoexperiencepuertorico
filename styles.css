@@ -389,74 +389,83 @@ margin:auto;
 FEATURED TOURS
 ========================================== */
 
+/* Featured experiences */
+
 .featured-section {
   background: var(--sand);
 }
 
 .featured-section .section-title {
   max-width: 720px;
-  margin-bottom: 48px;
+  margin: 0 auto 52px;
+  text-align: center;
 }
 
 .featured-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  gap: 28px;
 }
 
 .tour-card {
   min-width: 0;
-  display: grid;
-  grid-template-rows: 260px 1fr;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border: 1px solid rgba(3, 40, 51, 0.08);
-  border-radius: 22px;
-  background: white;
-  box-shadow: 0 14px 35px rgba(3, 40, 51, 0.1);
+  border-radius: 26px;
+  background: #ffffff;
+  box-shadow: 0 16px 42px rgba(3, 40, 51, 0.11);
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
 }
 
 .tour-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 22px 48px rgba(3, 40, 51, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 58px rgba(3, 40, 51, 0.16);
 }
 
-.tour-card img {
+.tour-card > img {
   width: 100%;
-  height: 260px;
+  height: 300px;
   object-fit: cover;
 }
 
 .tour-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 26px;
+  padding: 30px;
 }
 
 .tour-tag {
-  margin-bottom: 12px;
-  padding: 6px 12px;
+  width: 112px;
+  margin-bottom: 15px;
+  padding: 7px 10px;
+  display: inline-flex;
+  justify-content: center;
   border-radius: 999px;
   color: var(--primary-dark);
-  background: rgba(9, 167, 195, 0.1);
-  font-size: 0.75rem;
+  background: rgba(9, 167, 195, 0.11);
+  font-size: 0.74rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-align: center;
   text-transform: uppercase;
 }
 
 .tour-content h3 {
-  margin-bottom: 12px;
+  margin-bottom: 13px;
   color: var(--ocean);
-  font-size: 1.65rem;
+  font-size: 1.8rem;
   line-height: 1.15;
 }
 
 .tour-content p {
-  margin-bottom: 22px;
+  margin-bottom: 25px;
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.65;
@@ -464,28 +473,48 @@ FEATURED TOURS
 
 .card-button {
   width: auto;
+  min-width: 170px;
   margin-top: auto;
-  padding: 12px 20px;
+  padding: 13px 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 0;
   border-radius: 999px;
-  color: white;
+  color: #ffffff;
   background: var(--primary);
   font: inherit;
   font-weight: 800;
+  line-height: 1.2;
   cursor: pointer;
   transition:
-    background-color 0.2s ease,
-    transform 0.2s ease;
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .card-button:hover {
   transform: translateY(-2px);
+  color: #ffffff;
   background: var(--primary-dark);
 }
 
+@media (max-width: 800px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
 
+  .tour-card > img {
+    height: 250px;
+  }
 
+  .tour-content {
+    padding: 24px;
+  }
 
+  .card-button {
+    width: 100%;
+  }
+}
 
 
 /* ==========================================
