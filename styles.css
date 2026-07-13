@@ -891,53 +891,6 @@ margin-top:50px;
 }
 
 
-/* ==========================================
-INSTAGRAM
-========================================== */
-
-.instagram-section{
-
-background:var(--sand);
-
-}
-
-.instagram-grid{
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:18px;
-
-}
-
-.insta-photo{
-
-overflow:hidden;
-
-border-radius:24px;
-
-box-shadow:var(--shadow);
-
-}
-
-.insta-photo img{
-
-width:100%;
-
-height:320px;
-
-object-fit:cover;
-
-transition:transform .5s ease;
-
-}
-
-.insta-photo:hover img{
-
-transform:scale(1.08);
-
-}
 
 
 
