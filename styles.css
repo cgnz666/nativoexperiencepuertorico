@@ -167,10 +167,6 @@ background:var(--primary-dark);
 
 
 
-/* =======================
-HERO
-======================= */
-
 /* ==========================================
 HERO
 ========================================== */
@@ -224,7 +220,7 @@ HERO
 
 .hero-logo-wrapper {
   position: relative;
-  width: min(690px, 88vw);
+  width: min(710px, 88vw);
   aspect-ratio: 2048 / 1452;
   flex: 0 0 auto;
   margin: 0 auto;
