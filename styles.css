@@ -1,4 +1,4 @@
-:root {
+ :root {
   --turquoise: #0aa0b5;
   --turquoise-dark: #056a78;
   --ocean: #032f3b;
@@ -135,13 +135,12 @@ a {
 
 /* Hero */
 
+/* Hero */
+
 .hero {
   position: relative;
   width: 100%;
-  height: 430px;
-  min-height: 0;
-  display: flex;
-  align-items: flex-start;
+  height: 610px;
   overflow: hidden;
   color: var(--white);
   background: var(--ocean-deep);
@@ -162,56 +161,45 @@ a {
   inset: 0;
   background:
     linear-gradient(
-      90deg,
-      rgba(1, 27, 34, 0.72),
-      rgba(1, 27, 34, 0.18)
-    ),
-    linear-gradient(
-      0deg,
-      rgba(1, 27, 34, 0.32),
-      transparent 55%
+      180deg,
+      rgba(1, 27, 34, 0.18) 0%,
+      rgba(1, 27, 34, 0.28) 55%,
+      rgba(1, 27, 34, 0.48) 100%
     );
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
-  width: 100%;
-  max-width: 1000px;
+  width: min(1000px, 92%);
+  height: 100%;
   margin: 0 auto;
-  padding-top: 0;
-  padding-bottom: 18px;
+  padding: 18px 0 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   text-align: center;
 }
-
-.hero-centered {
-  margin-inline: auto;
-  text-align: center;
-}
-
 
 .hero-logo-wrapper {
   position: relative;
-  width: min(640px, 82vw);
+  width: min(650px, 84vw);
   aspect-ratio: 2048 / 1452;
-  margin: 0 auto 4px;
-  overflow: visible;
+  flex: 0 0 auto;
 }
-
 
 .hero-logo {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  max-width: 100%;
   object-fit: contain;
   object-position: center;
   transform: none;
   filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.35));
   transition: opacity 0.35s ease;
 }
-
 
 .logo-white {
   opacity: 1;
@@ -231,8 +219,10 @@ a {
 
 .hero-copy {
   max-width: 720px;
-  margin: 0 auto 14px;
+  margin: -28px auto 16px;
+  color: var(--white);
   font-size: 1.15rem;
+  line-height: 1.45;
 }
 
 .hero-actions {
@@ -240,33 +230,7 @@ a {
   flex-wrap: wrap;
   justify-content: center;
   gap: 14px;
-}
-
-.centered-copy {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.centered-actions {
-  justify-content: center;
-}
-
-.button-primary {
-  color: var(--ocean);
-  background: var(--white);
-}
-
-.button-secondary {
-  color: var(--white);
-  border: 2px solid rgba(255, 255, 255, 0.78);
-}
-
-.button-dark {
-  color: var(--white);
-  background: var(--ocean);
-}
-
-/* Intro strip */
+}/* Intro strip */
 
 .intro-strip {
   padding: 44px 0;
