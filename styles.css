@@ -88,6 +88,15 @@ border-bottom:1px solid rgba(0,0,0,.05);
 
 }
 
+
+.nav-island-logo {
+  width: 52px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+
 .nav-wrap{
 
 height:72px;
@@ -1196,6 +1205,12 @@ display:none;
 display:none;
 
 }
+
+  .nav-island-logo {
+    width: 42px;
+  }
+}
+  
 
 .hero{
 
