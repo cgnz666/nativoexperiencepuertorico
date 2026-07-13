@@ -171,22 +171,14 @@ background:var(--primary-dark);
 HERO
 ======================= */
 
-.hero{
-
-position:relative;
-
-height:82vh;
-
-min-height:66vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-overflow:hidden;
-
+.hero {
+  position: relative;
+  height: 690px;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .hero-video{
@@ -1212,24 +1204,22 @@ display:none;
 }
   
 
-.hero{
+.hero {
+    height: 570px;
+  }
 
-height:560px;
+  .hero-logo-wrapper {
+    width: min(520px, 94vw);
+  }
 
-}
+  .hero-content {
+    transform: translateY(-4px);
+  }
 
-.hero-logo-wrapper{
-
-width:92vw;
-
-}
-
-.hero-subtitle{
-
-font-size:1rem;
-
-padding-inline:10px;
-
+  .hero-subtitle {
+    max-width: 92%;
+    font-size: 0.98rem;
+  }
 }
 
 @media (max-width: 560px) {
