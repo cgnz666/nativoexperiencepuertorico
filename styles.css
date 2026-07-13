@@ -546,33 +546,28 @@ footer {
   .primary-nav {
     top: 72px;
   }
-  .hero {
-    height: 525px;
-  }
-
-  .hero-content {
-    padding-top: 8px;
-  }
+.hero {
+  height: 530px;
 }
 
- .hero-logo-wrapper {
-    width: min(620px, 92vw);
-    margin-bottom: 12px;
-  }
+.hero-content {
+  width: 94%;
+  padding: 12px 0 20px;
+}
 
-  .hero-logo {
-    top: -65px;
-  }
+.hero-logo-wrapper {
+  width: min(520px, 94vw);
+}
 
-  .logo-teal {
-    top: -82px;
-  }
+.hero-copy {
+  max-width: 92%;
+  margin: -18px auto 13px;
+  font-size: 1rem;
+}
 
-  .hero-copy {
-    max-width: 90%;
-    margin-bottom: 14px;
-    font-size: 1rem;
-  }
+.hero-actions {
+  gap: 10px;
+}
 
   .button {
     padding: 11px 18px;
