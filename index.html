@@ -1,297 +1,1054 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nativo Experience Puerto Rico | Local Tours & Private Experiences</title>
-  <meta name="description" content="Discover authentic Puerto Rico through cultural tours, private road trips, rainforest adventures and local experiences led by knowledgeable Puerto Rican guides." />
-  <link rel="preconnect" href="https://widgets.bokun.io" />
-  <link rel="stylesheet" href="styles.css" />
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nativo Experience Puerto Rico | Authentic Tours Across Puerto Rico</title>
+
+<meta
+name="description"
+content="Discover Puerto Rico through authentic cultural and adventure experiences designed by locals.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="#home">
-        <img class="brand-logo" src="assets/logo.png" alt="Nativo Experience Puerto Rico" onerror="this.style.display='none';document.querySelector('.brand-text').style.display='inline';" />
-        <span class="brand-text">Nativo Experience Puerto Rico</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
-      <nav id="primary-nav" class="primary-nav">
-        <a href="#home">Home</a>
-        <a href="#tours">Tours</a>
-        <a href="#about">About</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-cta" href="#tours">Book Now</a>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-  <section class="hero" id="home">
-  <video
-    class="hero-video"
-    autoplay
-    muted
-    loop
-    playsinline
-    poster="assets/hero-poster.jpg"
-  >
-    <source src="assets/hero-video.mp4" type="video/mp4" />
-  </video>
+<header class="site-header">
 
-  <div class="hero-overlay"></div>
+<div class="container nav-wrap">
 
-  <div class="hero-content">
-    <div class="hero-logo-wrapper">
-      <img
-        src="assets/logo-white.png"
-        class="hero-logo logo-white"
-        alt="Nativo Experience Puerto Rico"
-      />
+<a class="brand" href="#home">
 
-      <img
-        src="assets/logo-teal.png"
-        class="hero-logo logo-teal"
-        alt=""
-        aria-hidden="true"
-      />
-    </div>
+<img
+src="assets/logo-white.png"
+alt="Nativo Experience Puerto Rico">
 
-    <p class="hero-copy">
-      Authentic cultural and adventure experiences across Puerto Rico.
-    </p>
+</a>
 
-    <div class="hero-actions">
-      <a class="button button-primary" href="#tours">
-        Explore Our Tours
-      </a>
+<nav>
 
-      <a class="button button-secondary" href="#contact">
-        Plan a Private Tour
-      </a>
-    </div>
-  </div>
+<ul class="nav-links">
+
+<li><a href="#featured">Experiences</a></li>
+
+<li><a href="#tours">Tours</a></li>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#private">Private</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+<a class="nav-button" href="#tours">
+
+Book Now
+
+</a>
+
+</div>
+
+</header>
+
+<section class="hero" id="home">
+
+<video
+class="hero-video"
+autoplay
+muted
+loop
+playsinline>
+
+<source
+src="assets/hero-video.mp4"
+type="video/mp4">
+
+</video>
+
+<div class="hero-overlay"></div>
+
+<div class="container hero-content">
+
+<div class="hero-logo-wrapper">
+
+<img
+class="hero-logo logo-white"
+src="assets/logo-white.png"
+alt="Nativo">
+
+<img
+class="hero-logo logo-teal"
+src="assets/logo-teal.png"
+alt="">
+
+</div>
+
+<p class="hero-subtitle">
+
+Authentic cultural experiences designed by locals who call Puerto Rico home.
+
+</p>
+
+<div class="hero-buttons">
+
+<a
+class="button button-primary"
+href="#featured">
+
+Explore Experiences
+
+</a>
+
+<a
+class="button button-secondary"
+href="#private">
+
+Design Your Journey
+
+</a>
+
+</div>
+
+</div>
+
 </section>
 
-    <section class="intro-strip">
-      <div class="container intro-grid">
-        <div><span class="intro-number">01</span><h2>Local knowledge</h2><p>Guided by people who know Puerto Rico beyond the tourist map.</p></div>
-        <div><span class="intro-number">02</span><h2>Authentic routes</h2><p>Culture, nature, food and communities across the island.</p></div>
-        <div><span class="intro-number">03</span><h2>Easy booking</h2><p>Live availability and secure reservations powered by Bókun.</p></div>
-      </div>
-    </section>
+<section
+class="featured-section"
+id="featured">
 
- <section class="tours-section" id="tours">
-  <div class="container">
+<div class="container">
 
-    <div class="section-heading">
-      <p class="eyebrow">Choose your adventure</p>
+<div class="section-title">
 
-      <h2>Featured Experiences</h2>
+<span>
 
-      <p>
-        Start with some of our most distinctive ways to experience
-        Puerto Rico, or continue below to browse every available tour.
-      </p>
-    </div>
+Featured Experiences
 
-    <div class="featured-tour-grid">
+</span>
 
-      <!-- Coffee Farm -->
-      <article class="featured-tour-card">
-        <img
-          class="featured-tour-image"
-          src="https://imgcdn.bokun.tools/1fb1e151-2bff-4c6a-924f-299e15b04b27.jpg?w=900&h=700&mode=crop"
-          alt="Coffee Farm Hacienda Muñoz and Caguas Tour"
-        />
+<h2>
 
-        <div class="featured-tour-content">
-          <p class="tour-label">Coffee · Culture</p>
+Start your Puerto Rico story.
 
-          <h3>Coffee Farm & Caguas Tour</h3>
+</h2>
 
-          <p>
-            Travel into Puerto Rico’s lush interior for an authentic
-            coffee experience and a cultural stop in Caguas.
-          </p>
+<p>
 
-          <button
-            class="bokunButton featured-book-button"
-            type="button"
+Every experience has been carefully designed to connect travelers
+with the authentic culture, landscapes and people of Puerto Rico.
+
+</p>
+
+</div>
+
+<div class="featured-grid">
+
+
+  <!-- Coffee Tour -->
+
+<article class="tour-card">
+
+    <img
+        src="assets/coffee-tour.jpg"
+        alt="Coffee Farm Tour">
+
+    <div class="tour-content">
+
+        <span class="tour-tag">
+            Coffee • Culture
+        </span>
+
+        <h3>
+            Coffee Farm Experience
+        </h3>
+
+        <p>
+
+            Visit Hacienda Muñoz, discover Puerto Rico's coffee heritage,
+            and enjoy the mountain scenery surrounding Caguas.
+
+        </p>
+
+        <button
+            class="bokunButton card-button"
             data-src="https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1213460?partialView=1">
-            Book Now
-          </button>
-        </div>
-      </article>
 
-      <!-- El Yunque -->
-      <article class="featured-tour-card">
-        <img
-          class="featured-tour-image"
-          src="https://imgcdn.bokun.tools/997855ae-84b6-4f88-aa7a-f9937f2171c7.jpeg?w=900&h=700&mode=crop"
-          alt="El Yunque waterfalls and natural pools experience"
-        />
+            Book Experience
 
-        <div class="featured-tour-content">
-          <p class="tour-label">Rainforest · Adventure</p>
+        </button>
 
-          <h3>El Yunque Waterfalls & Natural Pools</h3>
+    </div>
 
-          <p>
-            Explore rainforest roads, hidden waterfalls and refreshing
-            natural pools away from the island’s busiest tourist stops.
-          </p>
+</article>
 
-          <button
-            class="bokunButton featured-book-button"
-            type="button"
-            data-src="https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1198170?partialView=1">
-            Book Now
-          </button>
-        </div>
-      </article>
 
-      <!-- Ponce -->
-      <article class="featured-tour-card">
-        <img
-          class="featured-tour-image"
-          src="https://imgcdn.bokun.tools/e0bf1149-d63d-4281-ba6b-4625851513c4.jpg?w=900&h=700&mode=crop"
-          alt="Full-day cultural road trip to Ponce"
-        />
 
-        <div class="featured-tour-content">
-          <p class="tour-label">Culture · Food · History</p>
+<!-- Ponce -->
 
-          <h3>Full-Day Cultural Road Trip to Ponce</h3>
+<article class="tour-card">
 
-          <p>
-            Cross the mountains, taste authentic Puerto Rican food and
-            discover the architecture and stories of the Pearl of the South.
-          </p>
+    <img
+        src="assets/ponce.jpg"
+        alt="Ponce Cultural Road Trip">
 
-          <button
-            class="bokunButton featured-book-button"
-            type="button"
+    <div class="tour-content">
+
+        <span class="tour-tag">
+
+            History • Food
+
+        </span>
+
+        <h3>
+
+            Ponce Cultural Road Trip
+
+        </h3>
+
+        <p>
+
+            Journey across Puerto Rico's mountains toward the island's
+            historic southern capital while tasting authentic local food.
+
+        </p>
+
+        <button
+            class="bokunButton card-button"
             data-src="https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1174842?partialView=1">
-            Book Now
-          </button>
-        </div>
-      </article>
 
-      <!-- Wellness -->
-      <article class="featured-tour-card">
-        <img
-          class="featured-tour-image"
-          src="https://imgcdn.bokun.tools/2bf82a4a-8f53-4839-a71c-c84c0b397313.jpg?w=900&h=700&mode=crop"
-          alt="Puerto Rico wellness tour with yoga and hot springs"
-        />
+            Book Experience
 
-        <div class="featured-tour-content">
-          <p class="tour-label">Wellness · Nature</p>
+        </button>
 
-          <h3>Yoga, Cold Plunge & Hot Springs</h3>
+    </div>
 
-          <p>
-            Slow down with mindful movement, river immersion and
-            restorative thermal waters surrounded by Puerto Rican nature.
-          </p>
+</article>
 
-          <button
-            class="bokunButton featured-book-button"
-            type="button"
+
+
+<!-- Rainforest -->
+
+<article class="tour-card">
+
+    <img
+        src="assets/rainforest.jpg"
+        alt="Rainforest Experience">
+
+    <div class="tour-content">
+
+        <span class="tour-tag">
+
+            Nature • Adventure
+
+        </span>
+
+        <h3>
+
+            Rainforest & Waterfalls
+
+        </h3>
+
+        <p>
+
+            Escape into lush rainforest trails, rivers and waterfalls with
+            a local guide who grew up exploring Puerto Rico.
+
+        </p>
+
+        <button
+            class="bokunButton card-button"
+            data-src="https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1198170?partialView=1">
+
+            Book Experience
+
+        </button>
+
+    </div>
+
+</article>
+
+
+
+<!-- Wellness -->
+
+<article class="tour-card">
+
+    <img
+        src="assets/wellness.jpg"
+        alt="Wellness Experience">
+
+    <div class="tour-content">
+
+        <span class="tour-tag">
+
+            Wellness • Nature
+
+        </span>
+
+        <h3>
+
+            River Wellness Retreat
+
+        </h3>
+
+        <p>
+
+            Slow down with yoga, mindful movement, cold river immersion
+            and natural hot springs deep in Puerto Rico.
+
+        </p>
+
+        <button
+            class="bokunButton card-button"
             data-src="https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1243165?partialView=1">
-            Book Now
-          </button>
-        </div>
-      </article>
+
+            Book Experience
+
+        </button>
 
     </div>
 
-    <div class="all-tours-heading">
-      <p class="eyebrow">Browse everything</p>
-      <h2>All Tours and Experiences</h2>
-    </div>
+</article>
 
-    <div class="widget-shell">
-      <div
-        class="bokunWidget"
-        data-src="https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/product-list/110434">
-      </div>
+</div>
 
-      <noscript>
-        Please enable JavaScript in your browser to view and book tours.
-      </noscript>
-    </div>
+</div>
 
-  </div>
 </section>
 
-    <section class="about-section" id="about">
-      <div class="container about-grid">
-        <div class="about-copy">
-          <p class="eyebrow">Born and raised in Puerto Rico</p>
-          <h2>More than a tour. A real connection to the island.</h2>
-          <p>Nativo Experience Puerto Rico creates immersive cultural and adventure experiences designed to connect travelers with the true identity of the island.</p>
-          <p>From historic towns and mountain communities to hidden rivers, coastal viewpoints and local food, every experience is guided with authenticity, local knowledge and genuine hospitality.</p>
-          <a class="button button-dark" href="#tours">Find Your Experience</a>
-        </div>
-        <div class="about-visual">
-          <img src="assets/about.jpg" alt="Puerto Rico local experience" onerror="this.style.display='none';" />
-          <div class="about-caption">
-            <strong>Puerto Rico, beyond the typical tourist route.</strong>
-            <span>Culture, nature, food and stories shared locally.</span>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="reviews-section" id="reviews">
-      <div class="container">
-        <div class="section-heading centered">
-          <p class="eyebrow">Guest experiences</p>
-          <h2>What travelers remember</h2>
-          <p>Add your live Tripadvisor review widget here later, or replace these cards with selected guest reviews.</p>
-        </div>
-        <div class="review-grid">
-          <article class="review-card"><p>“A personal, authentic way to understand Puerto Rico beyond the usual stops.”</p><span>Guest review</span></article>
-          <article class="review-card"><p>“The guide’s local knowledge made the entire day feel special and effortless.”</p><span>Guest review</span></article>
-          <article class="review-card"><p>“Great stories, beautiful places and a much deeper connection to the island.”</p><span>Guest review</span></article>
-        </div>
-      </div>
-    </section>
 
-    <section class="contact-section" id="contact">
-      <div class="container contact-grid">
-        <div>
-          <p class="eyebrow">Plan your experience</p>
-          <h2>Let’s explore Puerto Rico</h2>
-          <p>Looking for a private tour, customized route or group experience? Use the booking section above or contact Nativo directly.</p>
-        </div>
-        <div class="contact-card">
-          <p><strong>Service area:</strong> Puerto Rico</p>
-          <p><strong>Primary departure area:</strong> San Juan</p>
-          <p><strong>Languages:</strong> English and Spanish</p>
-          <a class="button button-primary" href="#tours">View Live Availability</a>
-        </div>
-      </div>
-    </section>
-  </main>
+<section id="tours" class="product-list-section">
 
-  <footer>
-    <div class="container footer-row">
-      <p>© 2026 Nativo Experience Puerto Rico</p>
-      <p>Authentic Puerto Rico experiences, guided locally.</p>
-    </div>
-  </footer>
+<div class="container">
 
-  <script
-  src="https://widgets.bokun.io/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=7fab5ffc-1687-4220-aff5-7a5a1f460898"
-  async>
+<div class="section-title">
+
+<span>
+
+Explore Everything
+
+</span>
+
+<h2>
+
+Every Experience We Offer
+
+</h2>
+
+<p>
+
+Looking for something different? Browse our complete collection of
+experiences across Puerto Rico.
+
+</p>
+
+</div>
+
+<div class="widget-shell">
+
+<div
+class="bokunWidget"
+data-src="https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/product-list/110434">
+
+</div>
+
+<noscript>
+
+Please enable JavaScript to load our booking system.
+
+</noscript>
+
+</div>
+
+</div>
+
+</section>
+
+
+  <section id="about" class="about-section">
+
+<div class="container about-grid">
+
+<div class="about-media">
+
+<video
+class="about-video"
+autoplay
+muted
+loop
+playsinline>
+
+<source
+src="assets/about.mp4"
+type="video/mp4">
+
+</video>
+
+</div>
+
+<div class="about-copy">
+
+<span class="eyebrow">
+
+THIS IS HOME
+
+</span>
+
+<h2>
+
+Puerto Rico isn't simply where we work.
+
+It's where we belong.
+
+</h2>
+
+<p>
+
+The rivers, beaches and mountain roads we share with our guests
+are the same places where we spend our own weekends.
+Every itinerary begins with one simple idea:
+show visitors the Puerto Rico we would proudly share with our closest friends.
+
+</p>
+
+<p>
+
+Whether we're hiking to a hidden waterfall,
+watching sea turtles glide along the coastline,
+or stopping at a family-owned bakery that locals have loved for generations,
+every experience is built around genuine connection rather than simply checking landmarks off a list.
+
+</p>
+
+<a
+href="#private"
+class="button button-primary">
+
+Create Your Own Journey
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section id="story" class="story-section">
+
+<div class="container story-grid">
+
+<div class="story-copy">
+
+<span class="eyebrow">
+
+OUR SYMBOL
+
+</span>
+
+<h2>
+
+More than a logo.
+
+A philosophy.
+
+</h2>
+
+<p>
+
+The turtle symbolizes Puerto Rico—strong, welcoming, and timeless.
+Its mosaic shell represents the many regions, cultures, traditions,
+and hidden gems that together form the island's identity.
+Every tour reveals another piece of that mosaic,
+allowing travelers to experience Puerto Rico not as tourists,
+but through the eyes of those who call it home.
+
+</p>
+
+</div>
+
+<div class="story-art">
+
+<img
+src="assets/logo-teal.png"
+alt="Meaning of the Nativo logo">
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section id="private" class="private-section">
+
+<div class="container">
+
+<div class="section-title centered">
+
+<span>
+
+PRIVATE EXPERIENCES
+
+</span>
+
+<h2>
+
+Design Your Own Puerto Rico.
+
+</h2>
+
+<p>
+
+Every traveler is different.
+We'll build a fully customized itinerary around your interests,
+pace and travel style.
+
+</p>
+
+</div>
+
+<div class="private-grid">
+
+<div class="private-card">
+
+<h3>
+
+Luxury Escapes
+
+</h3>
+
+<p>
+
+Premium transportation,
+exclusive locations
+and unforgettable moments.
+
+</p>
+
+</div>
+
+<div class="private-card">
+
+<h3>
+
+Food & Culture
+
+</h3>
+
+<p>
+
+Authentic restaurants,
+coffee farms,
+historic towns
+and hidden local favorites.
+
+</p>
+
+</div>
+
+<div class="private-card">
+
+<h3>
+
+Adventure
+
+</h3>
+
+<p>
+
+Surf,
+rainforest,
+waterfalls,
+snorkeling
+and hiking.
+
+</p>
+
+</div>
+
+<div class="private-card">
+
+<h3>
+
+Special Occasions
+
+</h3>
+
+<p>
+
+Marriage proposals,
+family reunions,
+birthdays
+and corporate experiences.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="private-button">
+
+<a
+href="#contact"
+class="button button-dark">
+
+Start Planning
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+  <section id="reviews" class="reviews-section">
+
+<div class="container">
+
+<div class="section-title centered">
+
+<span>
+
+TRUSTED BY TRAVELERS
+
+</span>
+
+<h2>
+
+Thousands of memories.
+One island.
+
+</h2>
+
+<p>
+
+Our greatest accomplishment isn't the number of tours we've led—
+it's the stories guests take home after experiencing Puerto Rico
+through local eyes.
+
+</p>
+
+</div>
+
+<div class="review-grid">
+
+<article class="review-card">
+
+<div class="stars">
+
+★★★★★
+
+</div>
+
+<p>
+
+"We've traveled all over the Caribbean and this was by far the
+most authentic experience we've ever booked."
+
+</p>
+
+<h4>
+
+Sarah & James
+
+</h4>
+
+<span>
+
+United States
+
+</span>
+
+</article>
+
+
+
+<article class="review-card">
+
+<div class="stars">
+
+★★★★★
+
+</div>
+
+<p>
+
+"Instead of feeling like tourists we genuinely felt like friends
+being shown around someone's home."
+
+</p>
+
+<h4>
+
+Marco
+
+</h4>
+
+<span>
+
+Italy
+
+</span>
+
+</article>
+
+
+
+<article class="review-card">
+
+<div class="stars">
+
+★★★★★
+
+</div>
+
+<p>
+
+"Our guide knew every story, every stop and every hidden place.
+Absolutely unforgettable."
+
+</p>
+
+<h4>
+
+Emily
+
+</h4>
+
+<span>
+
+Canada
+
+</span>
+
+</article>
+
+</div>
+
+<div class="reviews-button">
+
+<a
+class="button button-primary"
+href="https://www.tripadvisor.com/">
+
+Read More Reviews
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<section id="instagram" class="instagram-section">
+
+<div class="container">
+
+<div class="section-title centered">
+
+<span>
+
+FOLLOW THE JOURNEY
+
+</span>
+
+<h2>
+
+Puerto Rico Through Our Lens
+
+</h2>
+
+<p>
+
+Every destination shown here was photographed during real Nativo
+experiences.
+
+</p>
+
+</div>
+
+<div class="instagram-grid">
+
+<div class="insta-photo">
+
+<img
+src="assets/ig1.jpg"
+alt="Puerto Rico">
+
+</div>
+
+<div class="insta-photo">
+
+<img
+src="assets/ig2.jpg"
+alt="Puerto Rico">
+
+</div>
+
+<div class="insta-photo">
+
+<img
+src="assets/ig3.jpg"
+alt="Puerto Rico">
+
+</div>
+
+<div class="insta-photo">
+
+<img
+src="assets/ig4.jpg"
+alt="Puerto Rico">
+
+</div>
+
+<div class="insta-photo">
+
+<img
+src="assets/ig5.jpg"
+alt="Puerto Rico">
+
+</div>
+
+<div class="insta-photo">
+
+<img
+src="assets/ig6.jpg"
+alt="Puerto Rico">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<section id="contact" class="contact-section">
+
+<div class="container contact-grid">
+
+<div>
+
+<span class="eyebrow">
+
+LET'S PLAN
+
+</span>
+
+<h2>
+
+Ready to experience Puerto Rico differently?
+
+</h2>
+
+<p>
+
+Whether you're looking for a cultural journey,
+a private road trip,
+or a completely customized itinerary,
+we'll help create an unforgettable experience.
+
+</p>
+
+<div class="contact-buttons">
+
+<a
+class="button button-primary"
+href="https://wa.me/">
+
+Chat on WhatsApp
+
+</a>
+
+<a
+class="button button-secondary"
+href="mailto:info@nativoexperiencepuertorico.com">
+
+Email Us
+
+</a>
+
+</div>
+
+</div>
+
+<div class="contact-card">
+
+<h3>
+
+Quick Information
+
+</h3>
+
+<ul>
+
+<li>
+
+📍 San Juan, Puerto Rico
+
+</li>
+
+<li>
+
+📧 info@nativoexperiencepuertorico.com
+
+</li>
+
+<li>
+
+📱 +1 (787) XXX-XXXX
+
+</li>
+
+<li>
+
+⭐ Tripadvisor
+
+</li>
+
+<li>
+
+📸 Instagram
+
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<footer>
+
+<div class="container footer-grid">
+
+<div>
+
+<img
+class="footer-logo"
+src="assets/logo-white.png"
+alt="Nativo">
+
+<p>
+
+Authentic cultural experiences
+across Puerto Rico.
+
+</p>
+
+</div>
+
+<div>
+
+<h4>
+
+Explore
+
+</h4>
+
+<a href="#featured">
+
+Experiences
+
+</a>
+
+<a href="#tours">
+
+Tours
+
+</a>
+
+<a href="#private">
+
+Private Tours
+
+</a>
+
+<a href="#about">
+
+About
+
+</a>
+
+</div>
+
+<div>
+
+<h4>
+
+Connect
+
+</h4>
+
+<a href="#">
+
+Instagram
+
+</a>
+
+<a href="#">
+
+Tripadvisor
+
+</a>
+
+<a href="#">
+
+WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+</footer>
+
+<script
+src="https://widgets.bokun.io/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=7fab5ffc-1687-4220-aff5-7a5a1f460898"
+async>
+
 </script>
 
 <script src="script.js"></script>
 
-  
 </body>
+
 </html>
