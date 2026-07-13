@@ -220,7 +220,7 @@ HERO
 
 .hero-logo-wrapper {
   position: relative;
-  width: min(610px, 88vw);
+  width: min(710px, 92vw);
   aspect-ratio: 2048 / 1452;
   flex: 0 0 auto;
   margin: 0 auto;
