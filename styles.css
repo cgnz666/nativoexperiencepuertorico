@@ -1056,9 +1056,7 @@ box-shadow:
 RESPONSIVE
 ========================================== */
 
-/* Large tablets and smaller laptops */
 @media (max-width: 1100px) {
-
   .featured-grid,
   .private-grid,
   .about-grid,
@@ -1081,10 +1079,7 @@ RESPONSIVE
   }
 }
 
-
-/* Tablets */
 @media (max-width: 800px) {
-
   .nav-wrap {
     height: 76px;
   }
@@ -1098,34 +1093,33 @@ RESPONSIVE
   }
 
   .hero {
-    height: 610px;
-    margin-top: 76px;
+    height: 585px;
   }
 
   .hero-inner {
     width: 96%;
-    padding-top: 18px;
-    padding-bottom: 22px;
+    padding: 14px 0 22px;
   }
 
   .hero-logo-wrapper {
-    width: min(600px, 94vw);
+    width: min(620px, 92vw);
   }
 
   .hero-subtitle {
     max-width: 92%;
-    margin-top: -18px;
-    font-size: 1rem;
+    margin-top: -44px;
+    font-size: 0.98rem;
   }
 
   .hero-cta-row {
+    margin-top: 16px;
     gap: 10px;
   }
 
   .hero-cta {
-    min-width: 150px;
-    padding: 9px 16px;
-    font-size: 0.86rem;
+    min-width: 148px;
+    padding: 9px 15px;
+    font-size: 0.82rem;
   }
 
   .featured-grid {
@@ -1158,10 +1152,7 @@ RESPONSIVE
   }
 }
 
-
-/* Phones */
 @media (max-width: 560px) {
-
   .site-header {
     position: fixed;
   }
@@ -1180,14 +1171,13 @@ RESPONSIVE
   }
 
   .hero {
-    height: 560px;
+    height: 510px;
     margin-top: 68px;
   }
 
   .hero-inner {
-    width: 96%;
-    padding-top: 12px;
-    padding-bottom: 18px;
+    width: 97%;
+    padding: 8px 0 18px;
   }
 
   .hero-logo-wrapper {
@@ -1196,21 +1186,21 @@ RESPONSIVE
 
   .hero-subtitle {
     max-width: 94%;
-    margin-top: -12px;
-    font-size: 0.94rem;
-    line-height: 1.45;
+    margin-top: -34px;
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
 
   .hero-cta-row {
-    flex-wrap: nowrap;
+    margin-top: 14px;
     gap: 8px;
-    margin-top: 16px;
+    flex-wrap: nowrap;
   }
 
   .hero-cta {
-    min-width: 138px;
-    padding: 9px 13px;
-    font-size: 0.8rem;
+    min-width: 134px;
+    padding: 8px 12px;
+    font-size: 0.77rem;
   }
 
   section {
@@ -1260,10 +1250,7 @@ RESPONSIVE
     height: 380px;
   }
 
-  .about-copy h2 {
-    font-size: 2.2rem;
-  }
-
+  .about-copy h2,
   .story-copy h2 {
     font-size: 2.2rem;
   }
