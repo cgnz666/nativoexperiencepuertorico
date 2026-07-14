@@ -210,7 +210,7 @@ HERO
   width: min(1000px, 94%);
   height: 100%;
   margin: 0 auto;
-  padding-top: 24px;
+  padding-top: 0px;
   padding-bottom: 28px;
   display: flex;
   flex-direction: column;
