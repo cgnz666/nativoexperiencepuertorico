@@ -217,12 +217,12 @@ HERO
   align-items: center;
   text-align: center;
 
-  transform: translateY(-80px);
+  transform: translateY(-90px);
 }
 
 .hero-logo-wrapper {
   position: relative;
-  width: min(760px, 92vw);
+  width: min(960px, 92vw);
   height:330px;
 margin:-25px auto 0;
 overflow:visible;
