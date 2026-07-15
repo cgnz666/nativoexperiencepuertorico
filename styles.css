@@ -220,13 +220,19 @@ HERO
   transform: none;
 }
 
+
 .hero-logo-wrapper {
   position: relative;
-  width: min(860px, 92vw);
-  height:330px;
-margin:-25px auto 0;
-overflow:visible;
 
+  /* THIS controls desktop logo size */
+  width: min(820px, 92vw);
+
+  /* Shorter than the full PNG canvas */
+  height: 430px;
+
+  flex: 0 0 auto;
+  margin: 0 auto;
+  overflow: visible;
 }
 
 .hero-logo {
