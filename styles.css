@@ -225,7 +225,7 @@ HERO
   position: relative;
 
   /* THIS controls desktop logo size */
-  width: min(690px, 92vw);
+  width: min(660px, 92vw);
 
   /* Shorter than the full PNG canvas */
   height: 430px;
