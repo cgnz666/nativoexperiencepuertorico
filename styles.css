@@ -223,7 +223,7 @@ HERO
   width: min(710px, 92vw);
   aspect-ratio: 2048 / 1452;
   flex: 0 0 auto;
-  margin: -20 auto;
+  margin: -30 auto;
   overflow: visible;
 }
 
