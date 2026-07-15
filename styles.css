@@ -220,11 +220,11 @@ HERO
 
 .hero-logo-wrapper {
   position: relative;
-  width: min(710px, 92vw);
-  aspect-ratio: 2048 / 1452;
-  flex: 0 0 auto;
-  margin: -30 auto;
-  overflow: visible;
+  width: min(760px, 92vw);
+  height:330px;
+margin:-25px auto 0;
+overflow:visible;
+
 }
 
 .hero-logo {
@@ -236,9 +236,7 @@ HERO
   max-width: 100%;
   object-fit: contain;
   object-position: center;
-  transform: translate(-20px);
-  transition: opacity 0.35s ease;
-  filter: drop-shadow(0 18px 35px rgba(0, 0, 0, 0.32));
+  transform: none;
 }
 
 .hero-logo-white {
