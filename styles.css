@@ -222,7 +222,7 @@ HERO
 
 .hero-logo-wrapper {
   position: relative;
-  width: min(960px, 92vw);
+  width: min(860px, 92vw);
   height:330px;
 margin:-25px auto 0;
 overflow:visible;
