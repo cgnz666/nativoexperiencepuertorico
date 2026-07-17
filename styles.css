@@ -89,37 +89,33 @@ HEADER
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:28px;
+  gap:32px;
 }
 
 .brand{
   display:flex;
   align-items:center;
   justify-content:flex-start;
-  width:170px;
-  flex:0 0 170px;
-  overflow:visible;
+  flex:0 0 220px;
+  width:220px;
 }
 
 .nav-island-logo{
   display:block;
-  width:150px;
-  height:54px;
+  width:190px;
+  height:auto;
   object-fit:contain;
-  object-position:left center;
-  transform:scale(1.25);
-  transform-origin:left center;
 }
 
 .nav-links{
   display:flex;
   align-items:center;
   justify-content:center;
+  flex:1;
   gap:34px;
   margin:0;
   padding:0;
   list-style:none;
-  flex:1;
 }
 
 .nav-links li{
@@ -128,16 +124,11 @@ HEADER
 
 .nav-links a{
   display:block;
-  color:var(--ocean);
   font-weight:700;
+  color:var(--ocean);
   text-decoration:none;
   white-space:nowrap;
   transition:color .25s ease;
-}
-
-.nav-links a:link,
-.nav-links a:visited{
-  color:var(--ocean);
 }
 
 .nav-links a:hover{
@@ -149,63 +140,52 @@ HEADER
   align-items:center;
   justify-content:center;
   flex:0 0 auto;
-  min-width:132px;
-  padding:14px 26px;
+  min-width:138px;
+  height:52px;
+  padding:0 28px;
   background:var(--primary);
   color:#fff;
   border-radius:999px;
   font-weight:800;
   line-height:1;
-  text-align:center;
-  text-decoration:none;
   white-space:nowrap;
+  text-decoration:none;
   transition:
     transform .25s ease,
     background .25s ease,
     box-shadow .25s ease;
-  box-shadow:0 8px 22px rgba(20,145,143,.18);
-}
-
-.nav-button:link,
-.nav-button:visited{
-  color:#fff;
-  background:var(--primary);
+  box-shadow:0 8px 24px rgba(20,145,143,.20);
 }
 
 .nav-button:hover{
   transform:translateY(-2px);
   background:var(--primary-dark);
   color:#fff;
-  box-shadow:0 12px 28px rgba(20,145,143,.28);
-}
-
-.nav-button:active{
-  transform:translateY(0);
-  color:#fff;
+  box-shadow:0 14px 34px rgba(20,145,143,.28);
 }
 
 
-/* Half-screen and smaller laptop windows */
+/* =======================
+LAPTOPS / HALF SCREEN
+======================= */
 
 @media (max-width:1100px){
 
   .nav-wrap{
-    gap:16px;
+    gap:18px;
   }
 
   .brand{
-    width:112px;
-    flex-basis:112px;
+    flex:0 0 165px;
+    width:165px;
   }
 
   .nav-island-logo{
-    width:112px;
-    height:48px;
-    transform:scale(1.4);
+    width:145px;
   }
 
   .nav-links{
-    gap:18px;
+    gap:20px;
   }
 
   .nav-links a{
@@ -213,30 +193,32 @@ HEADER
   }
 
   .nav-button{
-    min-width:116px;
-    padding:13px 20px;
+    min-width:122px;
+    height:48px;
+    padding:0 22px;
+    font-size:.95rem;
   }
 
 }
 
 
-/* Narrow half-screen windows */
+/* =======================
+SMALL LAPTOPS
+======================= */
 
-@media (max-width:850px){
+@media (max-width:900px){
 
   .nav-wrap{
-    gap:12px;
+    gap:14px;
   }
 
   .brand{
-    width:94px;
-    flex-basis:94px;
+    flex:0 0 130px;
+    width:130px;
   }
 
   .nav-island-logo{
-    width:94px;
-    height:44px;
-    transform:scale(1.5);
+    width:115px;
   }
 
   .nav-links{
@@ -248,8 +230,9 @@ HEADER
   }
 
   .nav-button{
-    min-width:106px;
-    padding:12px 17px;
+    min-width:110px;
+    height:46px;
+    padding:0 18px;
     font-size:.9rem;
   }
 
