@@ -82,11 +82,21 @@ HEADER
 }
 
 
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 150px;
+  flex-shrink: 0;
+}
+
+
 .nav-island-logo {
-  width: 52px;
-  height: auto;
-  object-fit: contain;
   display: block;
+  width: 135px;
+  height: auto;
+  max-height: 52px;
+  object-fit: contain;
 }
 
 
@@ -102,11 +112,7 @@ justify-content:space-between;
 
 }
 
-.brand img{
 
-height:56px;
-
-}
 
 .nav-links{
 
