@@ -612,19 +612,19 @@ align-items:center;
 
 }
 
-.about-video{
 
-width:100%;
 
-height:650px;
-
-object-fit:cover;
-
-border-radius:28px;
-
-box-shadow:var(--shadow);
-
+.about-video {
+  display: block;
+  width: 100%;
+  height: 650px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 28px;
+  background: var(--ocean);
+  box-shadow: var(--shadow);
 }
+
 
 .about-copy h2{
 
