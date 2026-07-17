@@ -829,9 +829,15 @@ color:white;
 REVIEWS
 ========================================== */
 
+/* ==========================================
+REVIEWS
+========================================== */
+
 .reviews-section{
 
-background:white;
+background:#f5fbfb;
+
+padding:80px 0;
 
 }
 
@@ -843,7 +849,7 @@ grid-template-columns:repeat(3,1fr);
 
 gap:28px;
 
-margin-top:50px;
+margin-top:30px;
 
 }
 
@@ -961,7 +967,7 @@ display:flex;
 
 justify-content:center;
 
-margin-top:48px;
+margin-top:42px;
 
 }
 
@@ -971,6 +977,8 @@ display:inline-flex;
 
 align-items:center;
 
+justify-content:center;
+
 gap:10px;
 
 padding:16px 34px;
@@ -979,11 +987,17 @@ background:var(--primary);
 
 color:#fff;
 
+border:2px solid var(--primary);
+
 border-radius:999px;
 
-font-weight:700;
+font-weight:800;
 
-transition:.3s;
+text-decoration:none;
+
+transition:transform .3s ease,
+background .3s ease,
+box-shadow .3s ease;
 
 box-shadow:0 10px 30px rgba(20,145,143,.22);
 
@@ -995,7 +1009,43 @@ transform:translateY(-3px);
 
 background:var(--primary-dark);
 
+border-color:var(--primary-dark);
+
+color:#fff;
+
 box-shadow:0 18px 40px rgba(20,145,143,.32);
+
+}
+
+@media (max-width:900px){
+
+.reviews-section{
+
+padding:65px 0;
+
+}
+
+.review-grid{
+
+grid-template-columns:1fr;
+
+gap:22px;
+
+margin-top:28px;
+
+}
+
+.review-card{
+
+padding:30px;
+
+}
+
+.reviews-button{
+
+margin-top:34px;
+
+}
 
 }
 
