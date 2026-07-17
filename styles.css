@@ -64,106 +64,196 @@ margin:auto;
 
 
 
+
+
+
 /* =======================
 HEADER
 ======================= */
 
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 0;
-  box-shadow: none;
+.site-header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-bottom:0;
+  box-shadow:none;
 }
-
-
-.brand {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 150px;
-  flex-shrink: 0;
-}
-
-
-.nav-island-logo {
-  display: block;
-  width: 135px;
-  height: auto;
-  max-height: 52px;
-  object-fit: contain;
-}
-
 
 .nav-wrap{
-
-height:72px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
 }
 
+.brand{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  width:170px;
+  flex:0 0 170px;
+  overflow:visible;
+}
 
+.nav-island-logo{
+  display:block;
+  width:150px;
+  height:54px;
+  object-fit:contain;
+  object-position:left center;
+  transform:scale(1.25);
+  transform-origin:left center;
+}
 
 .nav-links{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:34px;
+  margin:0;
+  padding:0;
+  list-style:none;
+  flex:1;
+}
 
-display:flex;
-
-gap:34px;
-
-list-style:none;
-
-align-items:center;
-
+.nav-links li{
+  flex-shrink:0;
 }
 
 .nav-links a{
+  display:block;
+  color:var(--ocean);
+  font-weight:700;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:color .25s ease;
+}
 
-font-weight:700;
-
-transition:.25s;
-
+.nav-links a:link,
+.nav-links a:visited{
+  color:var(--ocean);
 }
 
 .nav-links a:hover{
-
-color:var(--primary);
-
+  color:var(--primary);
 }
 
 .nav-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  min-width:132px;
+  padding:14px 26px;
+  background:var(--primary);
+  color:#fff;
+  border-radius:999px;
+  font-weight:800;
+  line-height:1;
+  text-align:center;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
+  box-shadow:0 8px 22px rgba(20,145,143,.18);
+}
 
-background:var(--primary);
-
-color:white;
-
-padding:14px 28px;
-
-border-radius:999px;
-
-font-weight:800;
-
-transition:.25s;
-
+.nav-button:link,
+.nav-button:visited{
+  color:#fff;
+  background:var(--primary);
 }
 
 .nav-button:hover{
+  transform:translateY(-2px);
+  background:var(--primary-dark);
+  color:#fff;
+  box-shadow:0 12px 28px rgba(20,145,143,.28);
+}
 
-transform:translateY(-2px);
+.nav-button:active{
+  transform:translateY(0);
+  color:#fff;
+}
 
-background:var(--primary-dark);
+
+/* Half-screen and smaller laptop windows */
+
+@media (max-width:1100px){
+
+  .nav-wrap{
+    gap:16px;
+  }
+
+  .brand{
+    width:112px;
+    flex-basis:112px;
+  }
+
+  .nav-island-logo{
+    width:112px;
+    height:48px;
+    transform:scale(1.4);
+  }
+
+  .nav-links{
+    gap:18px;
+  }
+
+  .nav-links a{
+    font-size:.92rem;
+  }
+
+  .nav-button{
+    min-width:116px;
+    padding:13px 20px;
+  }
 
 }
 
+
+/* Narrow half-screen windows */
+
+@media (max-width:850px){
+
+  .nav-wrap{
+    gap:12px;
+  }
+
+  .brand{
+    width:94px;
+    flex-basis:94px;
+  }
+
+  .nav-island-logo{
+    width:94px;
+    height:44px;
+    transform:scale(1.5);
+  }
+
+  .nav-links{
+    gap:14px;
+  }
+
+  .nav-links a{
+    font-size:.84rem;
+  }
+
+  .nav-button{
+    min-width:106px;
+    padding:12px 17px;
+    font-size:.9rem;
+  }
+
+}
 
 
 /* ==========================================
