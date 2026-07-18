@@ -263,7 +263,7 @@ HERO — MAIN LAYOUT
 .hero{
   position:relative;
   width:100%;
-  height:650px;
+  height:720px;
   margin-top:72px;
   overflow:hidden;
   color:#ffffff;
@@ -311,10 +311,11 @@ HERO — CONTENT CONTAINER
 .hero-inner{
   position:relative;
   z-index:2;
+
   width:min(1100px,94%);
   height:100%;
   margin:0 auto;
-  padding:18px 0 58px;
+  padding:16px 0 72px;
   box-sizing:border-box;
 
   display:flex;
@@ -332,9 +333,11 @@ HERO — LOGO CONTAINER
 
 .hero-logo-wrapper{
   position:relative;
+
   width:min(650px,90vw);
-  height:355px;
-  flex:0 0 355px;
+  height:415px;
+  flex:0 0 415px;
+
   margin:0 auto;
   overflow:visible;
 }
@@ -346,7 +349,7 @@ HERO — LOGO IMAGES
 
 .hero-logo{
   position:absolute;
-  top:-48px;
+  top:-62px;
   left:50%;
 
   display:block;
@@ -385,10 +388,11 @@ HERO — SUBTITLE
 .hero-subtitle{
   width:min(820px,90%);
   max-width:820px;
-  margin:14px auto 0;
+
+  margin:6px auto 0;
 
   color:#ffffff;
-  font-size:1.24rem;
+  font-size:1.26rem;
   font-weight:500;
   line-height:1.55;
   letter-spacing:.15px;
@@ -403,9 +407,10 @@ HERO — BUTTON ROW
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:22px;
 
-  margin-top:34px;
+  gap:24px;
+
+  margin-top:30px;
   margin-bottom:0;
 }
 
@@ -466,6 +471,7 @@ HERO — BUTTONS
   color:#ffffff;
   background:rgba(255,255,255,.05);
   border:2px solid rgba(255,255,255,.92);
+
   backdrop-filter:blur(5px);
   -webkit-backdrop-filter:blur(5px);
 }
@@ -488,34 +494,34 @@ HERO — LAPTOPS / HALF-SCREEN WINDOWS
 @media (max-width:1100px){
 
   .hero{
-    height:650px;
+    height:690px;
   }
 
   .hero-inner{
     width:96%;
-    padding:14px 0 54px;
+    padding:12px 0 66px;
   }
 
   .hero-logo-wrapper{
     width:min(620px,90vw);
-    height:345px;
-    flex-basis:345px;
+    height:385px;
+    flex-basis:385px;
   }
 
   .hero-logo{
-    top:-42px;
+    top:-52px;
     width:110%;
   }
 
   .hero-subtitle{
     width:min(760px,90%);
-    margin-top:12px;
+    margin-top:6px;
     font-size:1.18rem;
     line-height:1.5;
   }
 
   .hero-cta-row{
-    margin-top:30px;
+    margin-top:28px;
     gap:26px;
   }
 
@@ -535,34 +541,34 @@ HERO — SMALL LAPTOPS / TABLETS
 @media (max-width:800px){
 
   .hero{
-    height:620px;
+    height:660px;
   }
 
   .hero-inner{
     width:96%;
-    padding:12px 0 48px;
+    padding:10px 0 58px;
   }
 
   .hero-logo-wrapper{
     width:min(570px,92vw);
-    height:325px;
-    flex-basis:325px;
+    height:355px;
+    flex-basis:355px;
   }
 
   .hero-logo{
-    top:-30px;
+    top:-38px;
     width:108%;
   }
 
   .hero-subtitle{
     width:90%;
-    margin-top:10px;
+    margin-top:6px;
     font-size:1.1rem;
     line-height:1.5;
   }
 
   .hero-cta-row{
-    margin-top:28px;
+    margin-top:26px;
     gap:18px;
   }
 
@@ -583,43 +589,43 @@ HERO — MOBILE
 @media (max-width:560px){
 
   .hero{
-    height:590px;
+    height:620px;
     margin-top:68px;
   }
 
   .hero-inner{
     width:97%;
-    padding:8px 0 38px;
+    padding:8px 0 44px;
   }
 
   .hero-logo-wrapper{
     width:96vw;
-    height:285px;
-    flex-basis:285px;
+    height:315px;
+    flex-basis:315px;
   }
 
   .hero-logo{
-    top:-12px;
+    top:-18px;
     width:108%;
   }
 
   .hero-subtitle{
     width:92%;
-    margin-top:8px;
+    margin-top:4px;
     font-size:1rem;
     line-height:1.45;
   }
 
   .hero-cta-row{
     width:100%;
-    margin-top:24px;
+    margin-top:22px;
     gap:12px;
     flex-wrap:nowrap;
   }
 
   .hero-cta{
-    min-width:0;
     width:44%;
+    min-width:0;
     height:46px;
     padding:0 10px;
     font-size:.78rem;
@@ -635,12 +641,12 @@ HERO — VERY SMALL MOBILE
 @media (max-width:390px){
 
   .hero{
-    height:610px;
+    height:650px;
   }
 
   .hero-logo-wrapper{
-    height:275px;
-    flex-basis:275px;
+    height:300px;
+    flex-basis:300px;
   }
 
   .hero-subtitle{
