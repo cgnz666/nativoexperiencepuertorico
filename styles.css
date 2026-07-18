@@ -741,7 +741,7 @@ FEATURED — MAIN SECTION
   position:relative;
   padding:110px 0;
   overflow:hidden;
-  background:#f7f4ee;
+  background:var(--mist);
 }
 
 
