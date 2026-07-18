@@ -66,10 +66,9 @@ margin:auto;
 
 
 
-
-/* =======================
-HEADER
-======================= */
+/* ==========================================
+HEADER / NAVIGATION BAR
+========================================== */
 
 .site-header{
   position:fixed;
@@ -89,22 +88,27 @@ HEADER
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:32px;
+  gap:30px;
 }
 
 .brand{
   display:flex;
   align-items:center;
   justify-content:flex-start;
-  flex:0 0 220px;
-  width:220px;
+  flex:0 0 170px;
+  width:170px;
+  height:72px;
+  overflow:visible;
 }
 
 .nav-island-logo{
   display:block;
-  width:190px;
+  width:54px;
   height:auto;
+  max-width:none;
   object-fit:contain;
+  transform:scale(2.4);
+  transform-origin:left center;
 }
 
 .nav-links{
@@ -124,11 +128,16 @@ HEADER
 
 .nav-links a{
   display:block;
-  font-weight:700;
   color:var(--ocean);
+  font-weight:700;
   text-decoration:none;
   white-space:nowrap;
   transition:color .25s ease;
+}
+
+.nav-links a:link,
+.nav-links a:visited{
+  color:var(--ocean);
 }
 
 .nav-links a:hover{
@@ -148,13 +157,19 @@ HEADER
   border-radius:999px;
   font-weight:800;
   line-height:1;
-  white-space:nowrap;
+  text-align:center;
   text-decoration:none;
+  white-space:nowrap;
   transition:
     transform .25s ease,
     background .25s ease,
     box-shadow .25s ease;
   box-shadow:0 8px 24px rgba(20,145,143,.20);
+}
+
+.nav-button:link,
+.nav-button:visited{
+  color:#fff;
 }
 
 .nav-button:hover{
@@ -165,9 +180,9 @@ HEADER
 }
 
 
-/* =======================
-LAPTOPS / HALF SCREEN
-======================= */
+/* ==========================================
+NAVIGATION BAR — LAPTOPS / HALF-SCREEN WINDOWS
+========================================== */
 
 @media (max-width:1100px){
 
@@ -176,12 +191,13 @@ LAPTOPS / HALF SCREEN
   }
 
   .brand{
-    flex:0 0 165px;
-    width:165px;
+    flex:0 0 150px;
+    width:150px;
   }
 
   .nav-island-logo{
-    width:145px;
+    width:54px;
+    transform:scale(2.4);
   }
 
   .nav-links{
@@ -202,9 +218,9 @@ LAPTOPS / HALF SCREEN
 }
 
 
-/* =======================
-SMALL LAPTOPS
-======================= */
+/* ==========================================
+NAVIGATION BAR — SMALL LAPTOPS
+========================================== */
 
 @media (max-width:900px){
 
@@ -213,23 +229,14 @@ SMALL LAPTOPS
   }
 
   .brand{
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-  flex:0 0 220px;
-  width:220px;
-  height:72px;
-  overflow:visible;
-}
+    flex:0 0 138px;
+    width:138px;
+  }
 
-.nav-island-logo{
-  display:block;
-  width:190px;
-  height:auto;
-  object-fit:contain;
-  transform:scale(2.4);
-  transform-origin:left center;
-}
+  .nav-island-logo{
+    width:54px;
+    transform:scale(2.4);
+  }
 
   .nav-links{
     gap:14px;
@@ -253,163 +260,183 @@ SMALL LAPTOPS
 HERO
 ========================================== */
 
-.hero {
-  position: relative;
-  width: 100%;
-  height: 700px;
-  margin-top: 72px;
-  overflow: hidden;
-  color: #ffffff;
-  background: var(--ocean);
+.hero{
+  position:relative;
+  width:100%;
+  height:700px;
+  margin-top:72px;
+  overflow:hidden;
+  color:#ffffff;
+  background:var(--ocean);
 }
 
-.hero-video {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  object-fit: cover;
-  object-position: center;
+.hero-video{
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:cover;
+  object-position:center;
 }
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
+.hero-overlay{
+  position:absolute;
+  inset:0;
   background:
     linear-gradient(
       180deg,
-      rgba(1, 20, 27, 0.12) 0%,
-      rgba(1, 20, 27, 0.22) 55%,
-      rgba(1, 20, 27, 0.42) 100%
+      rgba(1,20,27,.12) 0%,
+      rgba(1,20,27,.22) 55%,
+      rgba(1,20,27,.42) 100%
     );
 }
 
-.hero-inner {
-  position: relative;
-  z-index: 2;
-  width: min(1000px, 94%);
-  height: 100%;
-  margin: 0 auto;
-  padding: 20px 0 36px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-
-  /* Do not translate the entire group */
-  transform: none;
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1000px,94%);
+  height:100%;
+  margin:0 auto;
+  padding:20px 0 36px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  transform:none;
 }
 
-
-.hero-logo-wrapper {
-  position: relative;
-
-  /* THIS controls desktop logo size */
-  width: min(660px, 92vw);
-
-  /* Shorter than the full PNG canvas */
-  height: 430px;
-
-  flex: 0 0 auto;
-  margin: 0 auto;
-  overflow: visible;
+.hero-logo-wrapper{
+  position:relative;
+  width:min(660px,92vw);
+  height:430px;
+  flex:0 0 auto;
+  margin:0 auto;
+  overflow:visible;
 }
 
-.hero-logo {
-  position: absolute;
-  top: -92px;
-  left: 50%;
-
-  display: block;
-
-  /* THIS controls the visible logo size */
-  width: 115%;
-  height: auto;
-  max-width: none;
-
-  object-fit: contain;
-
-  /* Keeps the enlarged logo centered */
-  transform: translateX(-50%);
-
-  transition: opacity 0.35s ease;
-  filter: drop-shadow(0 18px 35px rgba(0, 0, 0, 0.32));
+.hero-logo{
+  position:absolute;
+  top:-92px;
+  left:50%;
+  display:block;
+  width:115%;
+  height:auto;
+  max-width:none;
+  object-fit:contain;
+  transform:translateX(-50%);
+  transition:opacity .35s ease;
+  filter:drop-shadow(0 18px 35px rgba(0,0,0,.32));
 }
 
-
-
-.hero-logo-white {
-  opacity: 1;
+.hero-logo-white{
+  opacity:1;
 }
 
-.hero-logo-teal {
-  opacity: 0;
+.hero-logo-teal{
+  opacity:0;
 }
 
-.hero-logo-wrapper:hover .hero-logo-white {
-  opacity: 0;
+.hero-logo-wrapper:hover .hero-logo-white{
+  opacity:0;
 }
 
-.hero-logo-wrapper:hover .hero-logo-teal {
-  opacity: 1;
+.hero-logo-wrapper:hover .hero-logo-teal{
+  opacity:1;
 }
 
-.hero-subtitle {
-  max-width: 720px;
-  margin: -26px auto 0;
-  color: #ffffff;
-  font-size: 1.08rem;
-  line-height: 1.5;
+.hero-subtitle{
+  max-width:720px;
+  margin:-26px auto 0;
+  color:#ffffff;
+  font-size:1.08rem;
+  line-height:1.5;
 }
 
-.hero-cta-row {
-  margin-top: 22px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
+.hero-cta-row{
+  margin-top:22px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
 }
 
-.hero-cta {
-  min-width: 176px;
-  padding: 10px 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  font-size: 0.9rem;
-  font-weight: 800;
-  line-height: 1.2;
-  text-decoration: none;
+.hero-cta{
+  min-width:176px;
+  padding:10px 20px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  font-size:.9rem;
+  font-weight:800;
+  line-height:1.2;
+  text-align:center;
+  text-decoration:none;
+  white-space:nowrap;
   transition:
-    transform 0.2s ease,
-    background-color 0.2s ease,
-    color 0.2s ease;
+    transform .2s ease,
+    background-color .2s ease,
+    color .2s ease;
 }
 
-.hero-cta:hover {
-  transform: translateY(-2px);
+.hero-cta:hover{
+  transform:translateY(-2px);
 }
 
-.hero-cta-primary {
-  color: var(--ocean);
-  background: #ffffff;
+.hero-cta-primary{
+  color:var(--ocean);
+  background:#ffffff;
 }
 
-.hero-cta-secondary {
-  color: #ffffff;
-  background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.9);
+.hero-cta-secondary{
+  color:#ffffff;
+  background:transparent;
+  border:2px solid rgba(255,255,255,.9);
 }
 
-.nav-island-logo {
-  display: block;
-  width: 54px;
-  height: auto;
-  object-fit: contain;
+
+/* ==========================================
+HERO — LAPTOPS / HALF-SCREEN WINDOWS
+========================================== */
+
+@media (max-width:1100px){
+
+  .hero-cta-row{
+    gap:26px;
+  }
+
+  .hero-cta{
+    min-width:180px;
+    padding:12px 24px;
+  }
+
 }
+
+
+/* ==========================================
+HERO — NARROW WINDOWS / PHONES
+========================================== */
+
+@media (max-width:650px){
+
+  .hero-cta-row{
+    width:100%;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .hero-cta{
+    width:min(300px,90%);
+    min-width:0;
+  }
+
+}
+
+
+
+
 
 /* ==========================================
 SECTION HEADINGS
