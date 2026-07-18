@@ -734,134 +734,442 @@ margin:auto;
 
 
 /* ==========================================
-FEATURED TOURS
+FEATURED — MAIN SECTION
 ========================================== */
 
-/* Featured experiences */
-
-.featured-section {
-  background: var(--sand);
+.featured-section{
+  position:relative;
+  padding:110px 0;
+  overflow:hidden;
+  background:#f7f4ee;
 }
 
-.featured-section .section-title {
-  max-width: 720px;
-  margin: 0 auto 52px;
-  text-align: center;
+
+/* ==========================================
+FEATURED — SECTION TITLE
+========================================== */
+
+.featured-section .section-title{
+  max-width:820px;
+  margin:0 auto 60px;
+  text-align:center;
 }
 
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
+.featured-section .section-title span{
+  display:block;
+  margin-bottom:12px;
+  color:var(--primary);
+  font-size:.86rem;
+  font-weight:800;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
 }
 
-.tour-card {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border: 1px solid rgba(3, 40, 51, 0.08);
-  border-radius: 26px;
-  background: #ffffff;
-  box-shadow: 0 16px 42px rgba(3, 40, 51, 0.11);
+.featured-section .section-title h2{
+  margin:0;
+  color:var(--ocean);
+  font-size:clamp(2.5rem,5vw,4.4rem);
+  line-height:1.04;
+}
+
+.featured-section .section-title p{
+  max-width:620px;
+  margin:20px auto 0;
+  color:#52636a;
+  font-size:1.12rem;
+  line-height:1.7;
+}
+
+
+/* ==========================================
+FEATURED — CARD GRID
+========================================== */
+
+.featured-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:30px;
+}
+
+
+/* ==========================================
+FEATURED — TOUR CARD
+========================================== */
+
+.featured-tour-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  overflow:hidden;
+
+  background:#ffffff;
+  border:1px solid rgba(7,49,62,.08);
+  border-radius:28px;
+
+  box-shadow:
+    0 16px 44px rgba(6,42,54,.10);
+
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+    transform .35s ease,
+    box-shadow .35s ease;
 }
 
-.tour-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 58px rgba(3, 40, 51, 0.16);
+.featured-tour-card:hover{
+  transform:translateY(-8px);
+
+  box-shadow:
+    0 26px 60px rgba(6,42,54,.17);
 }
 
-.tour-card > img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
+
+/* ==========================================
+FEATURED — CHANGING IMAGE GALLERY
+========================================== */
+
+.tour-card-gallery{
+  position:relative;
+  width:100%;
+  height:390px;
+  overflow:hidden;
+  background:var(--ocean);
 }
 
-.tour-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 30px;
-}
 
-.tour-tag {
-  width: 112px;
-  margin-bottom: 15px;
-  padding: 7px 10px;
-  display: inline-flex;
-  justify-content: center;
-  border-radius: 999px;
-  color: var(--primary-dark);
-  background: rgba(9, 167, 195, 0.11);
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  line-height: 1;
-  text-align: center;
-  text-transform: uppercase;
-}
+/* ==========================================
+FEATURED — CHANGING IMAGES
+========================================== */
 
-.tour-content h3 {
-  margin-bottom: 13px;
-  color: var(--ocean);
-  font-size: 1.8rem;
-  line-height: 1.15;
-}
+.tour-card-slide{
+  position:absolute;
+  inset:0;
 
-.tour-content p {
-  margin-bottom: 25px;
-  color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.65;
-}
+  display:block;
+  width:100%;
+  height:100%;
 
-.card-button {
-  width: auto;
-  min-width: 170px;
-  margin-top: auto;
-  padding: 13px 22px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  border-radius: 999px;
-  color: #ffffff;
-  background: var(--primary);
-  font: inherit;
-  font-weight: 800;
-  line-height: 1.2;
-  cursor: pointer;
+  object-fit:cover;
+  object-position:center;
+
+  opacity:0;
+
+  transform:scale(1.04);
   transition:
-    transform 0.2s ease,
-    background-color 0.2s ease;
+    opacity 1.15s ease,
+    transform 7s ease;
+
+  pointer-events:none;
 }
 
-.card-button:hover {
-  transform: translateY(-2px);
-  color: #ffffff;
-  background: var(--primary-dark);
+.tour-card-slide.is-active{
+  opacity:1;
+  transform:scale(1.13);
 }
 
-@media (max-width: 800px) {
-  .featured-grid {
-    grid-template-columns: 1fr;
+
+/* Alternate movement for visual variety */
+
+.tour-card-slide:nth-of-type(even){
+  transform-origin:left center;
+}
+
+.tour-card-slide:nth-of-type(odd){
+  transform-origin:right center;
+}
+
+
+/* ==========================================
+FEATURED — IMAGE OVERLAY
+========================================== */
+
+.tour-card-image-overlay{
+  position:absolute;
+  inset:0;
+  z-index:2;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(1,20,27,.04) 25%,
+      rgba(1,20,27,.18) 65%,
+      rgba(1,20,27,.48) 100%
+    );
+
+  pointer-events:none;
+}
+
+
+/* ==========================================
+FEATURED — PHOTO LABEL
+========================================== */
+
+.tour-card-photo-label{
+  position:absolute;
+  top:22px;
+  left:22px;
+  z-index:3;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:9px 15px;
+
+  color:#ffffff;
+  background:rgba(1,38,48,.52);
+  border:1px solid rgba(255,255,255,.32);
+  border-radius:999px;
+
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+
+  font-size:.76rem;
+  font-weight:800;
+  letter-spacing:1.2px;
+  line-height:1;
+  text-transform:uppercase;
+}
+
+
+/* ==========================================
+FEATURED — SLIDESHOW DOTS
+========================================== */
+
+.tour-card-dots{
+  position:absolute;
+  right:22px;
+  bottom:20px;
+  z-index:4;
+
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.tour-card-dot{
+  width:7px;
+  height:7px;
+
+  padding:0;
+  border:0;
+  border-radius:50%;
+
+  background:rgba(255,255,255,.48);
+
+  transition:
+    width .3s ease,
+    background-color .3s ease;
+}
+
+.tour-card-dot.is-active{
+  width:24px;
+  border-radius:999px;
+  background:#ffffff;
+}
+
+
+/* ==========================================
+FEATURED — CARD CONTENT
+========================================== */
+
+.featured-tour-card .tour-content{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+
+  padding:30px 32px 32px;
+}
+
+
+/* ==========================================
+FEATURED — CONTENT TAG
+========================================== */
+
+.featured-tour-card .tour-tag{
+  display:block;
+  margin-bottom:12px;
+
+  color:var(--primary);
+  font-size:.76rem;
+  font-weight:800;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+
+/* ==========================================
+FEATURED — TOUR TITLE
+========================================== */
+
+.featured-tour-card .tour-content h3{
+  margin:0;
+
+  color:var(--ocean);
+  font-size:clamp(1.55rem,2.2vw,2rem);
+  line-height:1.18;
+}
+
+
+/* ==========================================
+FEATURED — TOUR DESCRIPTION
+========================================== */
+
+.featured-tour-card .tour-content p{
+  margin:16px 0 26px;
+
+  color:#52636a;
+  font-size:1rem;
+  line-height:1.68;
+}
+
+
+/* ==========================================
+FEATURED — CARD BUTTON
+========================================== */
+
+.featured-tour-card .card-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  width:fit-content;
+  min-width:176px;
+  min-height:48px;
+  margin-top:auto;
+  padding:12px 22px;
+  box-sizing:border-box;
+
+  color:#ffffff;
+  background:var(--primary);
+  border:0;
+  border-radius:999px;
+
+  cursor:pointer;
+
+  font:inherit;
+  font-size:.9rem;
+  font-weight:800;
+  line-height:1;
+  text-align:center;
+  text-decoration:none;
+  white-space:nowrap;
+
+  box-shadow:
+    0 10px 24px rgba(20,145,143,.20);
+
+  transition:
+    transform .25s ease,
+    background-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.featured-tour-card .card-button:link,
+.featured-tour-card .card-button:visited{
+  color:#ffffff;
+}
+
+.featured-tour-card .card-button:hover{
+  color:#ffffff;
+  background:var(--primary-dark);
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 15px 30px rgba(20,145,143,.28);
+}
+
+
+/* ==========================================
+FEATURED — HOVER IMAGE EFFECT
+========================================== */
+
+.featured-tour-card:hover .tour-card-slide.is-active{
+  transform:scale(1.17);
+}
+
+
+/* ==========================================
+FEATURED — TABLETS
+========================================== */
+
+@media (max-width:900px){
+
+  .featured-grid{
+    grid-template-columns:1fr;
+    gap:26px;
   }
 
-  .tour-card > img {
-    height: 250px;
+  .tour-card-gallery{
+    height:380px;
   }
 
-  .tour-content {
-    padding: 24px;
+}
+
+
+/* ==========================================
+FEATURED — MOBILE
+========================================== */
+
+@media (max-width:560px){
+
+  .featured-section{
+    padding:80px 0;
   }
 
-  .card-button {
-    width: 100%;
+  .featured-section .section-title{
+    margin-bottom:42px;
   }
+
+  .featured-section .section-title h2{
+    font-size:2.35rem;
+  }
+
+  .featured-section .section-title p{
+    font-size:1rem;
+  }
+
+  .featured-grid{
+    gap:22px;
+  }
+
+  .featured-tour-card{
+    border-radius:22px;
+  }
+
+  .tour-card-gallery{
+    height:285px;
+  }
+
+  .featured-tour-card .tour-content{
+    padding:25px;
+  }
+
+  .featured-tour-card .tour-content h3{
+    font-size:1.55rem;
+  }
+
+  .featured-tour-card .card-button{
+    width:100%;
+  }
+
+}
+
+
+/* ==========================================
+FEATURED — REDUCED MOTION ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion:reduce){
+
+  .tour-card-slide,
+  .featured-tour-card,
+  .featured-tour-card .card-button{
+    transition:none;
+  }
+
+  .tour-card-slide.is-active{
+    transform:scale(1.04);
+  }
+
 }
 
 
