@@ -256,280 +256,406 @@ NAVIGATION BAR — SMALL LAPTOPS
 }
 
 
-/* ==========================================================
-   HERO
-   Premium Layout – Desktop First
-========================================================== */
+/* ==========================================
+HERO — MAIN LAYOUT
+========================================== */
 
 .hero{
-    position:relative;
-    width:100%;
-    height:650px;
-    margin-top:72px;
-    overflow:hidden;
-    background:var(--ocean);
-    color:#fff;
+  position:relative;
+  width:100%;
+  height:650px;
+  margin-top:72px;
+  overflow:hidden;
+  color:#ffffff;
+  background:var(--ocean);
 }
 
 
-/* ==========================================================
-   VIDEO
-========================================================== */
+/* ==========================================
+HERO — BACKGROUND VIDEO
+========================================== */
 
 .hero-video{
-    position:absolute;
-    inset:0;
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-    object-position:center;
-
-    display:block;
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:cover;
+  object-position:center;
 }
 
 
-/* ==========================================================
-   OVERLAY
-========================================================== */
+/* ==========================================
+HERO — VIDEO OVERLAY
+========================================== */
 
 .hero-overlay{
-    position:absolute;
-    inset:0;
-
-    background:
+  position:absolute;
+  inset:0;
+  background:
     linear-gradient(
-        to bottom,
-        rgba(0,0,0,.08) 0%,
-        rgba(0,0,0,.18) 45%,
-        rgba(0,0,0,.34) 100%
+      180deg,
+      rgba(1,20,27,.08) 0%,
+      rgba(1,20,27,.17) 48%,
+      rgba(1,20,27,.38) 100%
     );
 }
 
 
-/* ==========================================================
-   CONTENT
-========================================================== */
+/* ==========================================
+HERO — CONTENT CONTAINER
+========================================== */
 
 .hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1100px,94%);
+  height:100%;
+  margin:0 auto;
+  padding:18px 0 58px;
+  box-sizing:border-box;
 
-    position:relative;
-    z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
 
-    height:100%;
-
-    width:min(1150px,92%);
-
-    margin:0 auto;
-
-    display:flex;
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
+  text-align:center;
 }
 
 
-/* ==========================================================
-   LOGO CONTAINER
-========================================================== */
+/* ==========================================
+HERO — LOGO CONTAINER
+========================================== */
 
 .hero-logo-wrapper{
-
-    position:relative;
-
-    width:640px;
-
-    height:300px;
-
-    flex-shrink:0;
-
-    margin-bottom:8px;
-
+  position:relative;
+  width:min(650px,90vw);
+  height:355px;
+  flex:0 0 355px;
+  margin:0 auto;
+  overflow:visible;
 }
 
 
-/* ==========================================================
-   LOGOS
-========================================================== */
+/* ==========================================
+HERO — LOGO IMAGES
+========================================== */
 
 .hero-logo{
+  position:absolute;
+  top:-48px;
+  left:50%;
 
-    position:absolute;
+  display:block;
+  width:110%;
+  height:auto;
+  max-width:none;
 
-    left:50%;
-    top:-32px;
+  object-fit:contain;
+  transform:translateX(-50%);
 
-    width:108%;
-
-    height:auto;
-
-    max-width:none;
-
-    transform:translateX(-50%);
-
-    object-fit:contain;
-
-    transition:opacity .35s ease;
-
-    filter:drop-shadow(0 18px 36px rgba(0,0,0,.30));
-
+  transition:opacity .35s ease;
+  filter:drop-shadow(0 18px 36px rgba(0,0,0,.30));
 }
 
 .hero-logo-white{
-
-    opacity:1;
-
+  opacity:1;
 }
 
 .hero-logo-teal{
-
-    opacity:0;
-
+  opacity:0;
 }
 
 .hero-logo-wrapper:hover .hero-logo-white{
-
-    opacity:0;
-
+  opacity:0;
 }
 
 .hero-logo-wrapper:hover .hero-logo-teal{
-
-    opacity:1;
-
+  opacity:1;
 }
 
 
-/* ==========================================================
-   SUBTITLE
-========================================================== */
+/* ==========================================
+HERO — SUBTITLE
+========================================== */
 
 .hero-subtitle{
+  width:min(820px,90%);
+  max-width:820px;
+  margin:14px auto 0;
 
-    max-width:760px;
-
-    margin:20px auto 0;
-
-    color:#fff;
-
-    font-size:1.12rem;
-
-    line-height:1.65;
-
-    font-weight:500;
-
-    letter-spacing:.2px;
-
+  color:#ffffff;
+  font-size:1.24rem;
+  font-weight:500;
+  line-height:1.55;
+  letter-spacing:.15px;
 }
 
 
-/* ==========================================================
-   BUTTON ROW
-========================================================== */
+/* ==========================================
+HERO — BUTTON ROW
+========================================== */
 
 .hero-cta-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:22px;
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:20px;
-
-    margin-top:42px;
-
+  margin-top:34px;
+  margin-bottom:0;
 }
 
 
-/* ==========================================================
-   BUTTONS
-========================================================== */
+/* ==========================================
+HERO — BUTTONS
+========================================== */
 
 .hero-cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
 
-    display:inline-flex;
+  min-width:190px;
+  height:52px;
+  padding:0 28px;
+  box-sizing:border-box;
 
-    justify-content:center;
+  border-radius:999px;
 
-    align-items:center;
+  font-size:.94rem;
+  font-weight:800;
+  line-height:1;
+  letter-spacing:.15px;
+  text-align:center;
+  text-decoration:none;
+  white-space:nowrap;
 
-    min-width:190px;
-
-    height:54px;
-
-    padding:0 28px;
-
-    border-radius:999px;
-
-    font-size:.95rem;
-
-    font-weight:700;
-
-    letter-spacing:.2px;
-
-    text-decoration:none;
-
-    white-space:nowrap;
-
-    transition:
-    transform .25s ease,
-    background .25s ease,
-    border-color .25s ease,
-    color .25s ease,
-    box-shadow .25s ease;
-
+  transition:
+    transform .22s ease,
+    background-color .22s ease,
+    color .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease;
 }
-
 
 .hero-cta:hover{
-
-    transform:translateY(-3px);
-
+  transform:translateY(-3px);
 }
-
 
 .hero-cta-primary{
-
-    background:#fff;
-
-    color:var(--ocean);
-
-    box-shadow:
-    0 12px 28px rgba(0,0,0,.18);
-
+  color:var(--ocean);
+  background:#ffffff;
+  box-shadow:0 12px 28px rgba(0,0,0,.18);
 }
 
+.hero-cta-primary:link,
+.hero-cta-primary:visited{
+  color:var(--ocean);
+}
 
 .hero-cta-primary:hover{
-
-    background:#f5f5f5;
-
+  color:var(--ocean);
+  background:#f5f5f5;
 }
-
 
 .hero-cta-secondary{
+  color:#ffffff;
+  background:rgba(255,255,255,.05);
+  border:2px solid rgba(255,255,255,.92);
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+}
 
-    color:#fff;
+.hero-cta-secondary:link,
+.hero-cta-secondary:visited{
+  color:#ffffff;
+}
 
-    border:2px solid rgba(255,255,255,.92);
+.hero-cta-secondary:hover{
+  color:#ffffff;
+  background:rgba(255,255,255,.14);
+}
 
-    background:rgba(255,255,255,.05);
 
-    backdrop-filter:blur(5px);
+/* ==========================================
+HERO — LAPTOPS / HALF-SCREEN WINDOWS
+========================================== */
+
+@media (max-width:1100px){
+
+  .hero{
+    height:650px;
+  }
+
+  .hero-inner{
+    width:96%;
+    padding:14px 0 54px;
+  }
+
+  .hero-logo-wrapper{
+    width:min(620px,90vw);
+    height:345px;
+    flex-basis:345px;
+  }
+
+  .hero-logo{
+    top:-42px;
+    width:110%;
+  }
+
+  .hero-subtitle{
+    width:min(760px,90%);
+    margin-top:12px;
+    font-size:1.18rem;
+    line-height:1.5;
+  }
+
+  .hero-cta-row{
+    margin-top:30px;
+    gap:26px;
+  }
+
+  .hero-cta{
+    min-width:184px;
+    height:50px;
+    padding:0 24px;
+  }
 
 }
 
 
-.hero-cta-secondary:hover{
+/* ==========================================
+HERO — SMALL LAPTOPS / TABLETS
+========================================== */
 
-    background:rgba(255,255,255,.12);
+@media (max-width:800px){
+
+  .hero{
+    height:620px;
+  }
+
+  .hero-inner{
+    width:96%;
+    padding:12px 0 48px;
+  }
+
+  .hero-logo-wrapper{
+    width:min(570px,92vw);
+    height:325px;
+    flex-basis:325px;
+  }
+
+  .hero-logo{
+    top:-30px;
+    width:108%;
+  }
+
+  .hero-subtitle{
+    width:90%;
+    margin-top:10px;
+    font-size:1.1rem;
+    line-height:1.5;
+  }
+
+  .hero-cta-row{
+    margin-top:28px;
+    gap:18px;
+  }
+
+  .hero-cta{
+    min-width:168px;
+    height:48px;
+    padding:0 20px;
+    font-size:.88rem;
+  }
+
+}
+
+
+/* ==========================================
+HERO — MOBILE
+========================================== */
+
+@media (max-width:560px){
+
+  .hero{
+    height:590px;
+    margin-top:68px;
+  }
+
+  .hero-inner{
+    width:97%;
+    padding:8px 0 38px;
+  }
+
+  .hero-logo-wrapper{
+    width:96vw;
+    height:285px;
+    flex-basis:285px;
+  }
+
+  .hero-logo{
+    top:-12px;
+    width:108%;
+  }
+
+  .hero-subtitle{
+    width:92%;
+    margin-top:8px;
+    font-size:1rem;
+    line-height:1.45;
+  }
+
+  .hero-cta-row{
+    width:100%;
+    margin-top:24px;
+    gap:12px;
+    flex-wrap:nowrap;
+  }
+
+  .hero-cta{
+    min-width:0;
+    width:44%;
+    height:46px;
+    padding:0 10px;
+    font-size:.78rem;
+  }
+
+}
+
+
+/* ==========================================
+HERO — VERY SMALL MOBILE
+========================================== */
+
+@media (max-width:390px){
+
+  .hero{
+    height:610px;
+  }
+
+  .hero-logo-wrapper{
+    height:275px;
+    flex-basis:275px;
+  }
+
+  .hero-subtitle{
+    font-size:.96rem;
+  }
+
+  .hero-cta-row{
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .hero-cta{
+    width:min(280px,88%);
+    font-size:.84rem;
+  }
 
 }
 
@@ -1455,242 +1581,112 @@ box-shadow:
 
 
 
+
 /* ==========================================
-RESPONSIVE
+RESPONSIVE — GENERAL WEBSITE MOBILE
 ========================================== */
 
-@media (max-width: 1100px) {
-  .featured-grid,
-  .private-grid,
-  .about-grid,
-  .contact-grid,
-  .footer-grid {
-    grid-template-columns: 1fr;
+@media (max-width:560px){
+
+  .site-header{
+    position:fixed;
   }
 
-  .footer-grid {
-    text-align: center;
-  }
-
-  .footer-logo {
-    margin-inline: auto;
-  }
-
-  .story-section::before {
-    width: 700px;
-    height: 700px;
-  }
-}
-
-@media (max-width: 800px) {
-  .nav-wrap {
-    height: 76px;
-  }
-
-  .nav-links {
-    gap: 20px;
-  }
-
-  .nav-button {
-    padding: 12px 22px;
-  }
-
-  .hero {
-    height: 585px;
-  }
-
-  .hero-inner {
-    width: 96%;
-    padding: 14px 0 22px;
-  }
-
-  .hero-logo-wrapper {
-    width: min(620px, 92vw);
-  }
-
-  .hero-subtitle {
-    max-width: 92%;
-    margin-top: -44px;
-    font-size: 0.98rem;
-  }
-
-  .hero-cta-row {
-    margin-top: 16px;
-    gap: 10px;
-  }
-
-  .hero-cta {
-    min-width: 148px;
-    padding: 9px 15px;
-    font-size: 0.82rem;
-  }
-
-  .featured-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .tour-card > img {
-    height: 260px;
-  }
-
-  .section-title h2 {
-    font-size: 2.6rem;
-  }
-
-  .review-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-video {
-    height: 500px;
-  }
-
-  .story-section::before {
-    width: 520px;
-    height: 520px;
-  }
-
-  .instagram-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 560px) {
-  .site-header {
-    position: fixed;
-  }
-
-  .nav-wrap {
-    height: 68px;
+  .nav-wrap{
+    height:68px;
   }
 
   .nav-links,
-  .nav-button {
-    display: none;
+  .nav-button{
+    display:none;
   }
 
-  .nav-island-logo {
-    width: 44px;
+  section{
+    padding:80px 0;
   }
 
-  .hero {
-    height: 510px;
-    margin-top: 68px;
+  .section-title{
+    margin-bottom:44px;
   }
 
-  .hero-inner {
-    width: 97%;
-    padding: 8px 0 18px;
+  .section-title h2{
+    font-size:2.2rem;
   }
 
-  .hero-logo-wrapper {
-    width: 96vw;
+  .section-title p{
+    font-size:1rem;
   }
 
-  .hero-subtitle {
-    max-width: 94%;
-    margin-top: -34px;
-    font-size: 0.9rem;
-    line-height: 1.4;
+  .featured-grid{
+    grid-template-columns:1fr;
+    gap:20px;
   }
 
-  .hero-cta-row {
-    margin-top: 14px;
-    gap: 8px;
-    flex-wrap: nowrap;
+  .tour-card > img{
+    height:235px;
   }
 
-  .hero-cta {
-    min-width: 134px;
-    padding: 8px 12px;
-    font-size: 0.77rem;
+  .tour-content{
+    padding:23px;
   }
 
-  section {
-    padding: 80px 0;
+  .tour-content h3{
+    font-size:1.55rem;
   }
 
-  .section-title {
-    margin-bottom: 44px;
+  .card-button{
+    width:100%;
   }
 
-  .section-title h2 {
-    font-size: 2.2rem;
+  .widget-shell{
+    min-height:1200px;
+    padding:14px;
+    border-radius:18px;
   }
 
-  .section-title p {
-    font-size: 1rem;
-  }
-
-  .featured-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .tour-card > img {
-    height: 235px;
-  }
-
-  .tour-content {
-    padding: 23px;
-  }
-
-  .tour-content h3 {
-    font-size: 1.55rem;
-  }
-
-  .card-button {
-    width: 100%;
-  }
-
-  .widget-shell {
-    min-height: 1200px;
-    padding: 14px;
-    border-radius: 18px;
-  }
-
-  .about-video {
-    height: 380px;
+  .about-video{
+    height:380px;
   }
 
   .about-copy h2,
-  .story-copy h2 {
-    font-size: 2.2rem;
+  .story-copy h2{
+    font-size:2.2rem;
   }
 
-  .story-copy p {
-    font-size: 1.05rem;
-    line-height: 1.75;
+  .story-copy p{
+    font-size:1.05rem;
+    line-height:1.75;
   }
 
-  .story-section::before {
-    width: 420px;
-    height: 420px;
+  .story-section::before{
+    width:420px;
+    height:420px;
   }
 
   .private-card,
   .review-card,
-  .contact-card {
-    padding: 26px;
+  .contact-card{
+    padding:26px;
   }
 
-  .instagram-grid {
-    grid-template-columns: 1fr;
+  .instagram-grid{
+    grid-template-columns:1fr;
   }
 
-  .insta-photo img {
-    height: 260px;
+  .insta-photo img{
+    height:260px;
   }
 
-  .contact-buttons {
-    flex-direction: column;
+  .contact-buttons{
+    flex-direction:column;
   }
 
-  .contact-buttons .button {
-    width: 100%;
+  .contact-buttons .button{
+    width:100%;
   }
 
-  .footer-grid {
-    gap: 34px;
+  .footer-grid{
+    gap:34px;
   }
+
 }
