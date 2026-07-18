@@ -299,11 +299,12 @@ HERO
   width:min(1000px,94%);
   height:100%;
   margin:0 auto;
-  padding:20px 0 36px;
+  padding:20px 0 64px;
   display:flex;
   flex-direction:column;
   align-items:center;
   text-align:center;
+  box-sizing:border-box;
   transform:none;
 }
 
@@ -356,6 +357,7 @@ HERO
 
 .hero-cta-row{
   margin-top:22px;
+  margin-bottom:18px;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -403,8 +405,13 @@ HERO — LAPTOPS / HALF-SCREEN WINDOWS
 
 @media (max-width:1100px){
 
+  .hero-inner{
+    padding-bottom:78px;
+  }
+
   .hero-cta-row{
     gap:26px;
+    margin-bottom:24px;
   }
 
   .hero-cta{
@@ -421,10 +428,20 @@ HERO — NARROW WINDOWS / PHONES
 
 @media (max-width:650px){
 
+  .hero{
+    height:auto;
+    min-height:700px;
+  }
+
+  .hero-inner{
+    padding-bottom:64px;
+  }
+
   .hero-cta-row{
     width:100%;
     flex-direction:column;
     gap:14px;
+    margin-bottom:0;
   }
 
   .hero-cta{
