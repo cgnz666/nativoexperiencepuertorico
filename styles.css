@@ -741,7 +741,7 @@ FEATURED — MAIN SECTION
   position:relative;
   padding:110px 0;
   overflow:hidden;
-  background:var(--mist);
+  background:var(#f5fbfb);
 }
 
 
@@ -1474,9 +1474,6 @@ color:white;
 
 
 
-/* ==========================================
-REVIEWS
-========================================== */
 
 /* ==========================================
 REVIEWS
