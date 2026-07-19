@@ -1179,26 +1179,72 @@ BOKUN
 
 .product-list-section{
 
-background:white;
+    padding:120px 0;
+
+    background:#f5fbfb;
 
 }
 
 .widget-shell{
 
-background:white;
+    position:relative;
 
-border-radius:32px;
+    background:#063944;
 
-padding:34px;
+    border-radius:34px;
 
-box-shadow:var(--shadow);
+    padding:42px;
 
-min-height:1100px;
+    min-height:1100px;
 
-overflow:hidden;
+    overflow:hidden;
+
+    box-shadow:
+        0 22px 55px rgba(4,40,52,.18);
 
 }
 
+/* subtle depth */
+
+.widget-shell::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    border-radius:34px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.05),
+            rgba(255,255,255,0)
+        );
+
+    pointer-events:none;
+
+}
+
+/* Mobile */
+
+@media (max-width:768px){
+
+    .product-list-section{
+
+        padding:90px 0;
+
+    }
+
+    .widget-shell{
+
+        border-radius:24px;
+
+        padding:18px;
+
+    }
+
+}
 
 
 
