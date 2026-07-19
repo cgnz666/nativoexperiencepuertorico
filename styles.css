@@ -1203,130 +1203,21 @@ overflow:hidden;
 
 
 /* ==========================================
-ISLAND TIME — COMPLETE SECTION
+ISLAND STORY — COMPLETE SHARED BACKGROUND
 ========================================== */
 
-.island-time{
-  position:relative;
-  isolation:isolate;
-  display:flex;
-  align-items:center;
-  min-height:620px;
-  padding:120px 0;
-  overflow:hidden;
-
-  background-image:url("assets/island-time-bg.png");
-  background-size:cover;
-  background-position:center 42%;
-  background-repeat:no-repeat;
-}
-
-.island-time::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(2,18,18,.82) 0%,
-      rgba(2,18,18,.66) 45%,
-      rgba(2,18,18,.38) 100%
-    );
-}
-
-.island-time .container{
-  position:relative;
-  z-index:1;
-
-  width:min(calc(100% - 48px),1200px);
-  margin:0 auto;
-}
-
-.island-time h2{
-  max-width:650px;
-  margin:0;
-
-  color:#ffffff;
-  font-size:clamp(2.8rem,5vw,5rem);
-  line-height:1.02;
-  text-shadow:0 3px 20px rgba(0,0,0,.28);
-}
-
-.island-time p{
-  max-width:760px;
-  margin:24px 0 0;
-
-  color:rgba(255,255,255,.92);
-  font-size:1.12rem;
-  line-height:1.75;
-  text-shadow:0 2px 12px rgba(0,0,0,.28);
-}
-
-@media (max-width:900px){
-
-  .island-time{
-    min-height:560px;
-    padding:100px 0;
-    background-position:center;
-  }
-
-  .island-time::before{
-    background:rgba(2,18,18,.64);
-  }
-
-}
-
-@media (max-width:560px){
-
-  .island-time{
-    min-height:520px;
-    padding:82px 0;
-    background-position:58% center;
-  }
-
-  .island-time::before{
-    background:rgba(2,18,18,.68);
-  }
-
-  .island-time .container{
-    width:min(calc(100% - 36px),1200px);
-  }
-
-  .island-time h2{
-    font-size:2.6rem;
-  }
-
-  .island-time p{
-    margin-top:20px;
-    font-size:1rem;
-    line-height:1.65;
-  }
-
-}
-
-
-
-
-
-/* ==========================================
-ABOUT — COMPLETE SECTION
-========================================== */
-
-.about-section{
+.island-story{
   position:relative;
   isolation:isolate;
   overflow:hidden;
-  padding:120px 0;
 
-  background-image:url("assets/about-bg.png");
+  background-image:url("assets/island-story-bg.png");
   background-size:cover;
   background-position:center top;
   background-repeat:no-repeat;
 }
 
-.about-section::before{
+.island-story::before{
   content:"";
   position:absolute;
   inset:0;
@@ -1334,24 +1225,76 @@ ABOUT — COMPLETE SECTION
 
   background:
     linear-gradient(
-      90deg,
-      rgba(3,22,24,.88) 0%,
-      rgba(3,22,24,.72) 46%,
-      rgba(3,22,24,.56) 100%
+      180deg,
+      rgba(2,18,18,.54) 0%,
+      rgba(2,18,18,.67) 48%,
+      rgba(2,18,18,.78) 100%
     );
 }
 
-.about-section .about-grid{
+.island-story .container{
   position:relative;
   z-index:1;
 
+  width:min(calc(100% - 48px),1200px);
+  margin:0 auto;
+}
+
+
+/* ==========================================
+ISLAND TIME
+========================================== */
+
+.island-time{
+  display:flex;
+  align-items:center;
+  min-height:620px;
+  padding:110px 0 120px;
+
+  background:transparent;
+}
+
+.island-time h2{
+  max-width:720px;
+  margin:0;
+
+  color:#ffffff;
+  font-size:clamp(3rem,5vw,5rem);
+  line-height:1.02;
+
+  text-shadow:
+    0 4px 24px rgba(0,0,0,.36);
+}
+
+.island-time p{
+  max-width:780px;
+  margin:26px 0 0;
+
+  color:rgba(255,255,255,.92);
+  font-size:1.13rem;
+  line-height:1.75;
+
+  text-shadow:
+    0 2px 14px rgba(0,0,0,.32);
+}
+
+
+/* ==========================================
+ABOUT
+========================================== */
+
+.about-section{
+  position:relative;
+  padding:120px 0 135px;
+
+  background:transparent;
+}
+
+.about-grid{
   display:grid;
   grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   align-items:center;
   gap:72px;
-
-  width:min(calc(100% - 48px),1200px);
-  margin:0 auto;
 }
 
 .about-media{
@@ -1359,16 +1302,17 @@ ABOUT — COMPLETE SECTION
   overflow:hidden;
 
   min-height:520px;
-  border-radius:30px;
 
   background:#06333c;
+  border-radius:30px;
 
   box-shadow:
-    0 28px 60px rgba(0,0,0,.28);
+    0 28px 65px rgba(0,0,0,.34);
 }
 
 .about-video{
   display:block;
+
   width:100%;
   height:100%;
   min-height:520px;
@@ -1385,9 +1329,10 @@ ABOUT — COMPLETE SECTION
 
 .about-copy .eyebrow{
   display:block;
+
   margin-bottom:18px;
 
-  color:#55d4d0;
+  color:#59dbd7;
   font-size:.82rem;
   font-weight:800;
   letter-spacing:2px;
@@ -1399,9 +1344,11 @@ ABOUT — COMPLETE SECTION
   margin:0;
 
   color:#ffffff;
-  font-size:clamp(2.5rem,4.6vw,4.7rem);
+  font-size:clamp(2.6rem,4.6vw,4.7rem);
   line-height:1.05;
-  text-shadow:0 3px 22px rgba(0,0,0,.3);
+
+  text-shadow:
+    0 4px 24px rgba(0,0,0,.36);
 }
 
 .about-copy p{
@@ -1410,7 +1357,9 @@ ABOUT — COMPLETE SECTION
   color:rgba(255,255,255,.9);
   font-size:1.06rem;
   line-height:1.78;
-  text-shadow:0 2px 14px rgba(0,0,0,.24);
+
+  text-shadow:
+    0 2px 14px rgba(0,0,0,.3);
 }
 
 .about-copy .button{
@@ -1435,7 +1384,7 @@ ABOUT — COMPLETE SECTION
   text-decoration:none;
 
   box-shadow:
-    0 12px 28px rgba(0,0,0,.24);
+    0 12px 28px rgba(0,0,0,.25);
 
   transition:
     transform .25s ease,
@@ -1451,37 +1400,48 @@ ABOUT — COMPLETE SECTION
 .about-copy .button:hover{
   color:#ffffff;
   background:#0b849a;
+
   transform:translateY(-2px);
 
   box-shadow:
-    0 16px 34px rgba(0,0,0,.3);
+    0 17px 36px rgba(0,0,0,.34);
 }
 
 
 /* ==========================================
-ABOUT — TABLET
+ISLAND STORY — TABLET
 ========================================== */
 
 @media (max-width:900px){
 
+  .island-story{
+    background-position:center top;
+  }
+
+  .island-story::before{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(2,18,18,.62) 0%,
+        rgba(2,18,18,.72) 100%
+      );
+  }
+
+  .island-time{
+    min-height:560px;
+    padding:95px 0;
+  }
+
   .about-section{
     padding:100px 0;
-    background-position:center;
   }
 
-  .about-section::before{
-    background:rgba(3,22,24,.72);
-  }
-
-  .about-section .about-grid{
+  .about-grid{
     grid-template-columns:1fr;
     gap:48px;
   }
 
-  .about-media{
-    min-height:460px;
-  }
-
+  .about-media,
   .about-video{
     min-height:460px;
   }
@@ -1494,30 +1454,44 @@ ABOUT — TABLET
 
 
 /* ==========================================
-ABOUT — MOBILE
+ISLAND STORY — MOBILE
 ========================================== */
 
 @media (max-width:560px){
 
+  .island-story{
+    background-size:auto 100%;
+    background-position:center top;
+  }
+
+  .island-story .container{
+    width:min(calc(100% - 36px),1200px);
+  }
+
+  .island-time{
+    min-height:520px;
+    padding:80px 0;
+  }
+
+  .island-time h2{
+    font-size:2.7rem;
+  }
+
+  .island-time p{
+    margin-top:21px;
+    font-size:1rem;
+    line-height:1.67;
+  }
+
   .about-section{
     padding:82px 0;
-    background-position:58% center;
   }
 
-  .about-section::before{
-    background:rgba(3,22,24,.76);
-  }
-
-  .about-section .about-grid{
-    width:min(calc(100% - 36px),1200px);
+  .about-grid{
     gap:36px;
   }
 
-  .about-media{
-    min-height:340px;
-    border-radius:22px;
-  }
-
+  .about-media,
   .about-video{
     min-height:340px;
     border-radius:22px;
