@@ -1203,25 +1203,169 @@ overflow:hidden;
 
 
 /* ==========================================
-ISLAND TIME — MAIN SECTION
+ISLAND TIME — COMPLETE SECTION
 ========================================== */
 
 .island-time-section{
     position:relative;
+    isolation:isolate;
+    display:flex;
+    align-items:center;
+    min-height:620px;
+    padding:120px 0;
     overflow:hidden;
-    padding:130px 0;
 
-    background-image:
-        linear-gradient(
-            rgba(4,24,24,.58),
-            rgba(4,24,24,.58)
-        ),
-        url("assets/island-time-bg.jpg");
-
+    background-image:url("assets/island-time-bg.png");
     background-size:cover;
-    background-position:center;
+    background-position:center 42%;
     background-repeat:no-repeat;
-    background-attachment:scroll;
+}
+
+.island-time-section::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(2,18,18,.82) 0%,
+            rgba(2,18,18,.66) 45%,
+            rgba(2,18,18,.38) 100%
+        );
+}
+
+.island-time-section .container{
+    position:relative;
+    z-index:1;
+    width:100%;
+}
+
+.island-time-content{
+    max-width:650px;
+}
+
+.island-time-section .section-eyebrow,
+.island-time-section .island-time-eyebrow{
+    display:block;
+    margin-bottom:16px;
+
+    color:#8fd8d5;
+    font-size:.82rem;
+    font-weight:800;
+    letter-spacing:1.8px;
+    line-height:1.2;
+    text-transform:uppercase;
+}
+
+.island-time-section h2{
+    max-width:650px;
+    margin:0;
+
+    color:#ffffff;
+    font-size:clamp(2.8rem,5vw,5rem);
+    line-height:1.02;
+    text-shadow:0 3px 20px rgba(0,0,0,.28);
+}
+
+.island-time-section p{
+    max-width:590px;
+    margin:24px 0 0;
+
+    color:rgba(255,255,255,.9);
+    font-size:1.12rem;
+    line-height:1.75;
+    text-shadow:0 2px 12px rgba(0,0,0,.28);
+}
+
+.island-time-section .island-time-button,
+.island-time-section .card-button,
+.island-time-section .button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-height:50px;
+    margin-top:32px;
+    padding:13px 25px;
+
+    color:#ffffff;
+    background:#14918f;
+    border:0;
+    border-radius:999px;
+
+    font:inherit;
+    font-size:.92rem;
+    font-weight:800;
+    line-height:1;
+    text-align:center;
+    text-decoration:none;
+
+    box-shadow:0 12px 28px rgba(0,0,0,.22);
+
+    transition:
+        transform .25s ease,
+        background-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.island-time-section .island-time-button:hover,
+.island-time-section .card-button:hover,
+.island-time-section .button:hover{
+    color:#ffffff;
+    background:#0f7776;
+    transform:translateY(-2px);
+    box-shadow:0 16px 34px rgba(0,0,0,.3);
+}
+
+@media (max-width:900px){
+
+    .island-time-section{
+        min-height:560px;
+        padding:100px 0;
+        background-position:center;
+    }
+
+    .island-time-section::before{
+        background:rgba(2,18,18,.64);
+    }
+
+    .island-time-content{
+        max-width:620px;
+    }
+
+}
+
+@media (max-width:560px){
+
+    .island-time-section{
+        min-height:520px;
+        padding:82px 0;
+        background-position:58% center;
+    }
+
+    .island-time-section::before{
+        background:rgba(2,18,18,.68);
+    }
+
+    .island-time-section h2{
+        font-size:2.6rem;
+    }
+
+    .island-time-section p{
+        margin-top:20px;
+        font-size:1rem;
+        line-height:1.65;
+    }
+
+    .island-time-section .island-time-button,
+    .island-time-section .card-button,
+    .island-time-section .button{
+        width:100%;
+        margin-top:28px;
+    }
+
 }
 
 
