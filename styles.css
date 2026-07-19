@@ -1835,93 +1835,77 @@ LOGO STORY
 ========================================== */
 
 .story-logo{
+  width:360px;
 
-width:360px;
+  margin:70px auto 50px;
 
-margin:0 auto 50px;
-
-opacity:.92;
-
+  opacity:.92;
 }
-
-
 
 
 .story-section{
+  position:relative;
 
-    position:relative;
+  overflow:hidden;
 
-    overflow:hidden;
+  padding:120px 0;
 
-    padding:120px 0;
-
-    background:#eaf7f8;
-
+  background:#eaf7f8;
 }
 
-}
 
 .story-section::before{
+  content:"";
 
-content:"";
+  position:absolute;
 
-position:absolute;
+  left:50%;
+  top:50%;
 
-left:50%;
+  transform:translate(-50%,-50%);
 
-top:50%;
+  width:900px;
+  height:900px;
 
-transform:translate(-50%,-50%);
+  background:url("assets/logo-outline.png") center center no-repeat;
+  background-size:contain;
 
-width:900px;
+  opacity:.05;
 
-height:900px;
-
-background:url("assets/logo-outline.png") center center no-repeat;
-
-background-size:contain;
-
-opacity:.05;
-
-pointer-events:none;
-
+  pointer-events:none;
 }
+
 
 .story-grid{
+  position:relative;
 
-position:relative;
+  z-index:2;
 
-z-index:2;
+  max-width:900px;
 
-max-width:900px;
+  margin:auto;
 
-margin:auto;
-
-text-align:center;
-
+  text-align:center;
 }
+
 
 .story-copy h2{
+  margin:18px 0 24px;
 
-font-size:3.3rem;
+  color:var(--ocean);
 
-margin:18px 0 24px;
-
-color:var(--ocean);
-
+  font-size:3.3rem;
 }
+
 
 .story-copy p{
+  margin:0;
 
-font-size:1.2rem;
+  color:var(--muted);
 
-line-height:1.9;
-
-color:var(--muted);
-
+  font-size:1.2rem;
+  line-height:1.9;
 }
-
-
 
 
 
