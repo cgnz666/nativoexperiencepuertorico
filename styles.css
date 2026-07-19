@@ -1248,6 +1248,7 @@ ISLAND TIME
 .island-time{
   display:flex;
   align-items:center;
+
   min-height:620px;
   padding:110px 0 120px;
 
@@ -1301,7 +1302,8 @@ ABOUT
   position:relative;
   overflow:hidden;
 
-  min-height:520px;
+  width:100%;
+  height:520px;
 
   background:#06333c;
   border-radius:30px;
@@ -1315,7 +1317,6 @@ ABOUT
 
   width:100%;
   height:100%;
-  min-height:520px;
 
   object-fit:cover;
   object-position:center;
@@ -1441,9 +1442,8 @@ ISLAND STORY — TABLET
     gap:48px;
   }
 
-  .about-media,
-  .about-video{
-    min-height:460px;
+  .about-media{
+    height:460px;
   }
 
   .about-copy{
@@ -1491,9 +1491,12 @@ ISLAND STORY — MOBILE
     gap:36px;
   }
 
-  .about-media,
+  .about-media{
+    height:340px;
+    border-radius:22px;
+  }
+
   .about-video{
-    min-height:340px;
     border-radius:22px;
   }
 
