@@ -1351,14 +1351,14 @@ SECTION TITLE
 
 
 /* ==========================================
-DARK WIDGET FRAME
+DARK BÓKUN WIDGET FRAME
 ========================================== */
 
 .widget-shell{
   position:relative;
 
   min-height:1100px;
-  padding:44px;
+  padding:28px;
 
   background:
     linear-gradient(
@@ -1368,9 +1368,7 @@ DARK WIDGET FRAME
       #042f38 100%
     );
 
-  border:
-    1px solid rgba(255,255,255,.13);
-
+  border:1px solid rgba(255,255,255,.13);
   border-radius:36px;
 
   overflow:hidden;
@@ -1381,7 +1379,7 @@ DARK WIDGET FRAME
 }
 
 
-/* Soft top highlight */
+/* Soft shell highlight */
 
 .widget-shell::before{
   content:"";
@@ -1392,7 +1390,7 @@ DARK WIDGET FRAME
   background:
     radial-gradient(
       circle at 12% 0%,
-      rgba(89,219,215,.2),
+      rgba(89,219,215,.20),
       transparent 28%
     ),
     radial-gradient(
@@ -1410,7 +1408,7 @@ DARK WIDGET FRAME
 }
 
 
-/* Fine inner border */
+/* Fine border inside the dark shell */
 
 .widget-shell::after{
   content:"";
@@ -1418,9 +1416,7 @@ DARK WIDGET FRAME
   position:absolute;
   inset:12px;
 
-  border:
-    1px solid rgba(255,255,255,.07);
-
+  border:1px solid rgba(255,255,255,.07);
   border-radius:27px;
 
   pointer-events:none;
@@ -1437,10 +1433,15 @@ BÓKUN EMBED
 
   width:100%;
   min-height:1000px;
+
+  background:#ffffff;
+  border-radius:20px;
+
+  overflow:hidden;
 }
 
 
-/* Helps the generated iframe fit the shell */
+/* Do not round or clip the iframe itself */
 
 .widget-shell iframe{
   display:block;
@@ -1448,102 +1449,50 @@ BÓKUN EMBED
   width:100% !important;
   max-width:100% !important;
 
-  border:0 !important;
-  border-radius:22px;
+  margin:0;
+  padding:0;
 
   background:#ffffff;
+
+  border:0 !important;
+  border-radius:0 !important;
 }
 
 
 /* ==========================================
-NOSCRIPT MESSAGE
-========================================== */
-
-.widget-shell noscript{
-  position:relative;
-  z-index:1;
-
-  display:block;
-
-  padding:40px;
-
-  color:#ffffff;
-  font-size:1rem;
-  line-height:1.65;
-  text-align:center;
-}
-
-
-/* ==========================================
-TABLET
+BÓKUN — TABLET
 ========================================== */
 
 @media (max-width:900px){
 
-  .product-list-section{
-    padding:98px 0 110px;
-  }
-
-  .product-list-section .section-title{
-    margin-bottom:44px;
-  }
-
   .widget-shell{
     min-height:1000px;
-    padding:28px;
+    padding:20px;
 
     border-radius:29px;
   }
 
   .widget-shell::after{
     inset:9px;
-
     border-radius:21px;
   }
 
-  .widget-shell iframe{
-    border-radius:18px;
+  .widget-shell .bokunWidget{
+    border-radius:16px;
   }
 
 }
 
 
 /* ==========================================
-MOBILE
+BÓKUN — MOBILE
 ========================================== */
 
 @media (max-width:560px){
 
-  .product-list-section{
-    padding:78px 0 88px;
-  }
-
-  .product-list-section .section-title{
-    margin-bottom:34px;
-  }
-
-  .product-list-section .section-title span{
-    margin-bottom:14px;
-    padding:7px 12px;
-
-    font-size:.72rem;
-    letter-spacing:1.6px;
-  }
-
-  .product-list-section .section-title h2{
-    font-size:2.55rem;
-  }
-
-  .product-list-section .section-title p{
-    margin-top:18px;
-
-    font-size:1rem;
-    line-height:1.65;
-  }
-
   .widget-shell{
     min-height:900px;
-    padding:13px;
+    padding:10px;
 
     border-radius:23px;
 
@@ -1555,7 +1504,7 @@ MOBILE
     display:none;
   }
 
-  .widget-shell iframe{
+  .widget-shell .bokunWidget{
     border-radius:14px;
   }
 
