@@ -1847,11 +1847,24 @@ opacity:.92;
 
 .story-section{
 
-position:relative;
+    position:relative;
 
-overflow:hidden;
+    overflow:hidden;
 
-background:white;
+    padding:120px 0;
+
+    background:
+        radial-gradient(
+            circle at 12% 15%,
+            rgba(91,220,215,.16),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 88% 82%,
+            rgba(15,168,196,.12),
+            transparent 34%
+        ),
+        #eaf7f8;
 
 }
 
