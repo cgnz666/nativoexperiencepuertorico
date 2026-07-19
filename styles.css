@@ -1174,75 +1174,316 @@ FEATURED — REDUCED MOTION ACCESSIBILITY
 
 
 /* ==========================================
-BOKUN
+BÓKUN PRODUCT LIST
 ========================================== */
 
 .product-list-section{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
 
-    padding:120px 0;
+  padding:120px 0 135px;
 
-    background:#f5fbfb;
-
+  background:
+    radial-gradient(
+      circle at 12% 10%,
+      rgba(91,220,215,.16),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 88% 90%,
+      rgba(15,168,196,.12),
+      transparent 34%
+    ),
+    #eaf7f8;
 }
+
+
+/* Decorative background glow */
+
+.product-list-section::before{
+  content:"";
+
+  position:absolute;
+  top:150px;
+  left:50%;
+  z-index:-1;
+
+  width:min(1000px,85vw);
+  height:700px;
+
+  border-radius:50%;
+
+  background:
+    rgba(30,180,190,.12);
+
+  filter:blur(90px);
+
+  transform:translateX(-50%);
+
+  pointer-events:none;
+}
+
+
+/* ==========================================
+SECTION TITLE
+========================================== */
+
+.product-list-section .section-title{
+  max-width:780px;
+  margin:0 auto 54px;
+
+  text-align:center;
+}
+
+.product-list-section .section-title span{
+  display:inline-block;
+
+  margin-bottom:16px;
+  padding:8px 15px;
+
+  color:#087b8c;
+  background:rgba(255,255,255,.65);
+  border:1px solid rgba(8,123,140,.14);
+  border-radius:999px;
+
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:2px;
+  line-height:1;
+  text-transform:uppercase;
+
+  box-shadow:
+    0 8px 24px rgba(5,79,90,.08);
+}
+
+.product-list-section .section-title h2{
+  margin:0;
+
+  color:#073d49;
+  font-size:clamp(2.7rem,5vw,4.9rem);
+  line-height:1.04;
+  letter-spacing:-.03em;
+}
+
+.product-list-section .section-title p{
+  max-width:680px;
+  margin:22px auto 0;
+
+  color:#496a70;
+  font-size:1.08rem;
+  line-height:1.72;
+}
+
+
+/* ==========================================
+DARK WIDGET FRAME
+========================================== */
 
 .widget-shell{
+  position:relative;
 
-    position:relative;
+  min-height:1100px;
+  padding:44px;
 
-    background:#063944;
+  background:
+    linear-gradient(
+      145deg,
+      #074653 0%,
+      #063944 46%,
+      #042f38 100%
+    );
 
-    border-radius:34px;
+  border:
+    1px solid rgba(255,255,255,.13);
 
-    padding:42px;
+  border-radius:36px;
 
-    min-height:1100px;
+  overflow:hidden;
 
-    overflow:hidden;
-
-    box-shadow:
-        0 22px 55px rgba(4,40,52,.18);
-
+  box-shadow:
+    0 35px 80px rgba(5,55,65,.24),
+    0 10px 30px rgba(5,55,65,.14);
 }
 
-/* subtle depth */
+
+/* Soft top highlight */
 
 .widget-shell::before{
+  content:"";
 
-    content:"";
+  position:absolute;
+  inset:0;
 
-    position:absolute;
-    inset:0;
+  background:
+    radial-gradient(
+      circle at 12% 0%,
+      rgba(89,219,215,.2),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(15,168,196,.13),
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,0) 34%
+    );
 
-    border-radius:34px;
+  pointer-events:none;
+}
 
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,.05),
-            rgba(255,255,255,0)
-        );
 
-    pointer-events:none;
+/* Fine inner border */
+
+.widget-shell::after{
+  content:"";
+
+  position:absolute;
+  inset:12px;
+
+  border:
+    1px solid rgba(255,255,255,.07);
+
+  border-radius:27px;
+
+  pointer-events:none;
+}
+
+
+/* ==========================================
+BÓKUN EMBED
+========================================== */
+
+.widget-shell .bokunWidget{
+  position:relative;
+  z-index:1;
+
+  width:100%;
+  min-height:1000px;
+}
+
+
+/* Helps the generated iframe fit the shell */
+
+.widget-shell iframe{
+  display:block;
+
+  width:100% !important;
+  max-width:100% !important;
+
+  border:0 !important;
+  border-radius:22px;
+
+  background:#ffffff;
+}
+
+
+/* ==========================================
+NOSCRIPT MESSAGE
+========================================== */
+
+.widget-shell noscript{
+  position:relative;
+  z-index:1;
+
+  display:block;
+
+  padding:40px;
+
+  color:#ffffff;
+  font-size:1rem;
+  line-height:1.65;
+  text-align:center;
+}
+
+
+/* ==========================================
+TABLET
+========================================== */
+
+@media (max-width:900px){
+
+  .product-list-section{
+    padding:98px 0 110px;
+  }
+
+  .product-list-section .section-title{
+    margin-bottom:44px;
+  }
+
+  .widget-shell{
+    min-height:1000px;
+    padding:28px;
+
+    border-radius:29px;
+  }
+
+  .widget-shell::after{
+    inset:9px;
+
+    border-radius:21px;
+  }
+
+  .widget-shell iframe{
+    border-radius:18px;
+  }
 
 }
 
-/* Mobile */
 
-@media (max-width:768px){
+/* ==========================================
+MOBILE
+========================================== */
 
-    .product-list-section{
+@media (max-width:560px){
 
-        padding:90px 0;
+  .product-list-section{
+    padding:78px 0 88px;
+  }
 
-    }
+  .product-list-section .section-title{
+    margin-bottom:34px;
+  }
 
-    .widget-shell{
+  .product-list-section .section-title span{
+    margin-bottom:14px;
+    padding:7px 12px;
 
-        border-radius:24px;
+    font-size:.72rem;
+    letter-spacing:1.6px;
+  }
 
-        padding:18px;
+  .product-list-section .section-title h2{
+    font-size:2.55rem;
+  }
 
-    }
+  .product-list-section .section-title p{
+    margin-top:18px;
+
+    font-size:1rem;
+    line-height:1.65;
+  }
+
+  .widget-shell{
+    min-height:900px;
+    padding:13px;
+
+    border-radius:23px;
+
+    box-shadow:
+      0 24px 55px rgba(5,55,65,.22);
+  }
+
+  .widget-shell::after{
+    display:none;
+  }
+
+  .widget-shell iframe{
+    border-radius:14px;
+  }
 
 }
 
