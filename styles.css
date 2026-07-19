@@ -1351,35 +1351,42 @@ SECTION TITLE
 
 
 /* ==========================================
-DARK BÓKUN WIDGET FRAME
+BÓKUN — OUTER DARK MENU FRAME
 ========================================== */
 
 .widget-shell{
   position:relative;
 
   min-height:1100px;
-  padding:28px;
+  padding:34px;
 
   background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(89,219,215,.18),
+      transparent 30%
+    ),
     linear-gradient(
       145deg,
-      #074653 0%,
-      #063944 46%,
+      #0a5360 0%,
+      #063944 48%,
       #042f38 100%
     );
 
-  border:1px solid rgba(255,255,255,.13);
-  border-radius:36px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:38px;
 
   overflow:hidden;
 
   box-shadow:
-    0 35px 80px rgba(5,55,65,.24),
-    0 10px 30px rgba(5,55,65,.14);
+    0 36px 80px rgba(5,55,65,.25),
+    0 12px 32px rgba(5,55,65,.16);
 }
 
 
-/* Soft shell highlight */
+/* ==========================================
+BÓKUN — OUTER FRAME HIGHLIGHT
+========================================== */
 
 .widget-shell::before{
   content:"";
@@ -1388,43 +1395,25 @@ DARK BÓKUN WIDGET FRAME
   inset:0;
 
   background:
-    radial-gradient(
-      circle at 12% 0%,
-      rgba(89,219,215,.20),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 100% 100%,
-      rgba(15,168,196,.13),
-      transparent 32%
-    ),
     linear-gradient(
       180deg,
-      rgba(255,255,255,.055),
-      rgba(255,255,255,0) 34%
+      rgba(255,255,255,.07),
+      rgba(255,255,255,0) 32%
     );
 
   pointer-events:none;
 }
 
 
-/* Fine border inside the dark shell */
+/* Remove the previous inner outline */
 
 .widget-shell::after{
-  content:"";
-
-  position:absolute;
-  inset:12px;
-
-  border:1px solid rgba(255,255,255,.07);
-  border-radius:27px;
-
-  pointer-events:none;
+  display:none;
 }
 
 
 /* ==========================================
-BÓKUN EMBED
+BÓKUN — THIN WHITE INNER SHELL
 ========================================== */
 
 .widget-shell .bokunWidget{
@@ -1434,14 +1423,23 @@ BÓKUN EMBED
   width:100%;
   min-height:1000px;
 
+  padding:10px;
+
   background:#ffffff;
-  border-radius:20px;
+  border-radius:22px;
 
   overflow:hidden;
+
+  box-sizing:border-box;
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.14);
 }
 
 
-/* Do not round or clip the iframe itself */
+/* ==========================================
+BÓKUN — IFRAME
+========================================== */
 
 .widget-shell iframe{
   display:block;
@@ -1455,7 +1453,28 @@ BÓKUN EMBED
   background:#ffffff;
 
   border:0 !important;
-  border-radius:0 !important;
+  border-radius:12px !important;
+
+  box-sizing:border-box;
+}
+
+
+/* ==========================================
+BÓKUN — NOSCRIPT MESSAGE
+========================================== */
+
+.widget-shell noscript{
+  position:relative;
+  z-index:1;
+
+  display:block;
+
+  padding:40px;
+
+  color:#ffffff;
+  font-size:1rem;
+  line-height:1.65;
+  text-align:center;
 }
 
 
@@ -1467,18 +1486,22 @@ BÓKUN — TABLET
 
   .widget-shell{
     min-height:1000px;
-    padding:20px;
 
-    border-radius:29px;
-  }
+    padding:24px;
 
-  .widget-shell::after{
-    inset:9px;
-    border-radius:21px;
+    border-radius:30px;
   }
 
   .widget-shell .bokunWidget{
-    border-radius:16px;
+    min-height:950px;
+
+    padding:8px;
+
+    border-radius:18px;
+  }
+
+  .widget-shell iframe{
+    border-radius:10px !important;
   }
 
 }
@@ -1492,20 +1515,25 @@ BÓKUN — MOBILE
 
   .widget-shell{
     min-height:900px;
-    padding:10px;
 
-    border-radius:23px;
+    padding:14px;
+
+    border-radius:24px;
 
     box-shadow:
-      0 24px 55px rgba(5,55,65,.22);
-  }
-
-  .widget-shell::after{
-    display:none;
+      0 25px 58px rgba(5,55,65,.23);
   }
 
   .widget-shell .bokunWidget{
-    border-radius:14px;
+    min-height:860px;
+
+    padding:6px;
+
+    border-radius:16px;
+  }
+
+  .widget-shell iframe{
+    border-radius:10px !important;
   }
 
 }
