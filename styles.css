@@ -1239,7 +1239,9 @@ ISLAND TIME — COMPLETE SECTION
 .island-time .container{
   position:relative;
   z-index:1;
-  width:100%;
+
+  width:min(calc(100% - 48px),1200px);
+  margin:0 auto;
 }
 
 .island-time h2{
@@ -1286,6 +1288,10 @@ ISLAND TIME — COMPLETE SECTION
 
   .island-time::before{
     background:rgba(2,18,18,.68);
+  }
+
+  .island-time .container{
+    width:min(calc(100% - 36px),1200px);
   }
 
   .island-time h2{
