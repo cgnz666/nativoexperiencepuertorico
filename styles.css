@@ -2121,83 +2121,310 @@ CONTACT
 ========================================== */
 
 .contact-section{
+  position:relative;
 
-background:linear-gradient(135deg,var(--ocean),var(--ocean2));
+  padding:110px 0;
 
-color:white;
+  color:#ffffff;
 
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(24,193,203,.12),
+      transparent 34%
+    ),
+    linear-gradient(
+      135deg,
+      var(--ocean),
+      var(--ocean2)
+    );
 }
+
 
 .contact-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  align-items:center;
 
-display:grid;
-
-grid-template-columns:1.2fr .8fr;
-
-gap:60px;
-
-align-items:center;
-
+  gap:60px;
 }
+
+
+/* ==========================================
+CONTACT — HEADING
+========================================== */
+
+.contact-section .eyebrow{
+  display:block;
+
+  color:#5edce0;
+
+  font-size:.82rem;
+  font-weight:800;
+  letter-spacing:2px;
+  line-height:1;
+  text-transform:uppercase;
+}
+
 
 .contact-section h2{
+  max-width:720px;
 
-font-size:clamp(2.4rem,5vw,4rem);
+  margin:20px 0;
 
-margin:20px 0;
+  color:#ffffff;
 
+  font-size:clamp(2.6rem,5vw,4.4rem);
+  line-height:1.25;
 }
+
 
 .contact-section p{
+  max-width:650px;
 
-font-size:1.1rem;
+  margin:0;
 
-max-width:620px;
+  color:rgba(255,255,255,.88);
 
-opacity:.9;
-
+  font-size:1.1rem;
+  line-height:1.75;
 }
+
+
+/* ==========================================
+CONTACT — ACTION BUTTONS
+========================================== */
 
 .contact-buttons{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
 
-display:flex;
+  gap:16px;
 
-gap:18px;
-
-margin-top:40px;
-
-flex-wrap:wrap;
-
+  margin-top:40px;
 }
+
+
+.contact-buttons .button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-width:190px;
+  min-height:54px;
+
+  padding:14px 28px;
+
+  border-radius:999px;
+
+  font-size:.96rem;
+  font-weight:800;
+  line-height:1;
+  text-align:center;
+  text-decoration:none;
+  white-space:nowrap;
+
+  transition:
+    transform .25s ease,
+    background-color .25s ease,
+    border-color .25s ease,
+    color .25s ease,
+    box-shadow .25s ease;
+}
+
+
+/* WhatsApp button */
+
+.contact-buttons .button-primary{
+  color:#ffffff;
+  background:var(--primary);
+  border:2px solid var(--primary);
+
+  box-shadow:
+    0 12px 30px rgba(20,145,143,.28);
+}
+
+
+.contact-buttons .button-primary:link,
+.contact-buttons .button-primary:visited{
+  color:#ffffff;
+}
+
+
+.contact-buttons .button-primary:hover{
+  color:#ffffff;
+  background:var(--primary-dark);
+  border-color:var(--primary-dark);
+
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 18px 40px rgba(20,145,143,.36);
+}
+
+
+/* Email button */
+
+.contact-buttons .button-secondary{
+  color:#ffffff;
+  background:rgba(255,255,255,.07);
+
+  border:2px solid rgba(255,255,255,.78);
+
+  box-shadow:
+    0 10px 26px rgba(0,0,0,.12);
+}
+
+
+.contact-buttons .button-secondary:link,
+.contact-buttons .button-secondary:visited{
+  color:#ffffff;
+}
+
+
+.contact-buttons .button-secondary:hover{
+  color:var(--ocean);
+  background:#ffffff;
+  border-color:#ffffff;
+
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.2);
+}
+
+
+/* ==========================================
+CONTACT — QUICK INFORMATION CARD
+========================================== */
 
 .contact-card{
+  padding:38px;
 
-padding:36px;
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:28px;
 
-background:rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
 
-backdrop-filter:blur(12px);
-
-border-radius:28px;
-
+  box-shadow:
+    0 22px 55px rgba(0,0,0,.16);
 }
+
 
 .contact-card h3{
+  margin:0 0 26px;
 
-margin-bottom:20px;
+  color:#ffffff;
 
+  font-size:1.3rem;
 }
+
 
 .contact-card ul{
+  display:grid;
 
-list-style:none;
+  gap:20px;
 
-display:grid;
+  margin:0;
+  padding:0;
 
-gap:18px;
+  list-style:none;
+}
+
+
+.contact-card li{
+  color:rgba(255,255,255,.92);
+
+  font-size:1rem;
+  line-height:1.55;
+}
+
+
+.contact-card a{
+  color:rgba(255,255,255,.92);
+
+  text-decoration:none;
+
+  transition:
+    color .25s ease,
+    transform .25s ease;
+}
+
+
+.contact-card a:link,
+.contact-card a:visited{
+  color:rgba(255,255,255,.92);
+}
+
+
+.contact-card a:hover{
+  color:#66e1e4;
+}
+
+
+/* ==========================================
+CONTACT — TABLET
+========================================== */
+
+@media (max-width:900px){
+
+  .contact-section{
+    padding:90px 0;
+  }
+
+  .contact-grid{
+    grid-template-columns:1fr;
+
+    gap:48px;
+  }
+
+  .contact-card{
+    max-width:680px;
+  }
 
 }
 
+
+/* ==========================================
+CONTACT — MOBILE
+========================================== */
+
+@media (max-width:560px){
+
+  .contact-section{
+    padding:76px 0;
+  }
+
+  .contact-section h2{
+    font-size:2.65rem;
+  }
+
+  .contact-section p{
+    font-size:1rem;
+    line-height:1.68;
+  }
+
+  .contact-buttons{
+    flex-direction:column;
+    align-items:stretch;
+
+    margin-top:32px;
+  }
+
+  .contact-buttons .button{
+    width:100%;
+  }
+
+  .contact-card{
+    padding:28px 24px;
+
+    border-radius:22px;
+  }
+
+}
 
 
 /* ==========================================
