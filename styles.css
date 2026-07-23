@@ -1870,7 +1870,9 @@ LOGO STORY
   background:url("assets/logo-outline.png") center center no-repeat;
   background-size:contain;
 
-  opacity:.05;
+  opacity:.08;
+
+  filter:brightness(0) invert(1);
 
   pointer-events:none;
 }
@@ -2585,11 +2587,21 @@ RESPONSIVE — GENERAL WEBSITE MOBILE
 
   .about-copy h2,
   .story-copy h2{
+    color:#ffffff;
+
+    text-shadow:
+        0 4px 24px rgba(0,0,0,.35);
+  .story-copy h2{
     font-size:2.2rem;
   }
 
   .story-copy p{
-    font-size:1.05rem;
+
+    color:rgba(255,255,255,.90);
+
+    text-shadow:
+        0 2px 12px rgba(0,0,0,.30);
+ font-size:1.05rem;
     line-height:1.75;
   }
 
