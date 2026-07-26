@@ -326,16 +326,22 @@ NAVIGATION BAR — SMALL LAPTOPS
 }
 
 
-/* ==========================================
+//* ==========================================
 HERO — MAIN LAYOUT
 ========================================== */
 
 .hero{
   position:relative;
   width:100%;
-  height:720px;
+
+  height:calc(100vh - 72px);
+  height:calc(100svh - 72px);
+  min-height:720px;
+  max-height:940px;
+
   margin-top:72px;
   overflow:hidden;
+
   color:#ffffff;
   background:var(--ocean);
 }
@@ -348,10 +354,12 @@ HERO — BACKGROUND VIDEO
 .hero-video{
   position:absolute;
   inset:0;
+
   display:block;
   width:100%;
   height:100%;
   max-width:none;
+
   object-fit:cover;
   object-position:center;
 }
@@ -364,6 +372,7 @@ HERO — VIDEO OVERLAY
 .hero-overlay{
   position:absolute;
   inset:0;
+
   background:
     linear-gradient(
       180deg,
@@ -385,15 +394,17 @@ HERO — CONTENT CONTAINER
   width:min(1100px,94%);
   height:100%;
   margin:0 auto;
-  padding:16px 0 72px;
+  padding:20px 0 56px;
   box-sizing:border-box;
 
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:flex-start;
+  justify-content:center;
 
   text-align:center;
+
+  transform:translateY(-52px);
 }
 
 
@@ -431,7 +442,10 @@ HERO — LOGO IMAGES
   transform:translateX(-50%);
 
   transition:opacity .35s ease;
-  filter:drop-shadow(0 18px 36px rgba(0,0,0,.30));
+
+  filter:drop-shadow(
+    0 18px 36px rgba(0,0,0,.30)
+  );
 }
 
 .hero-logo-white{
@@ -462,7 +476,8 @@ HERO — SUBTITLE
   margin:6px auto 0;
 
   color:#ffffff;
-  font-size:1.26rem;
+
+  font-size:clamp(1.18rem,1.1vw,1.34rem);
   font-weight:500;
   line-height:1.55;
   letter-spacing:.15px;
@@ -480,7 +495,7 @@ HERO — BUTTON ROW
 
   gap:24px;
 
-  margin-top:30px;
+  margin-top:28px;
   margin-bottom:0;
 }
 
@@ -524,7 +539,9 @@ HERO — BUTTONS
 .hero-cta-primary{
   color:var(--ocean);
   background:#ffffff;
-  box-shadow:0 12px 28px rgba(0,0,0,.18);
+
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.18);
 }
 
 .hero-cta-primary:link,
@@ -540,6 +557,7 @@ HERO — BUTTONS
 .hero-cta-secondary{
   color:#ffffff;
   background:rgba(255,255,255,.05);
+
   border:2px solid rgba(255,255,255,.92);
 
   backdrop-filter:blur(5px);
@@ -558,18 +576,78 @@ HERO — BUTTONS
 
 
 /* ==========================================
+HERO — LARGE / HIGH-RESOLUTION SCREENS
+========================================== */
+
+@media (min-width:1600px){
+
+  .hero{
+    min-height:780px;
+    max-height:980px;
+  }
+
+  .hero-inner{
+    width:min(1320px,92%);
+    padding:24px 0 64px;
+
+    transform:translateY(-58px);
+  }
+
+  .hero-logo-wrapper{
+    width:min(740px,46vw);
+    height:455px;
+    flex-basis:455px;
+  }
+
+  .hero-logo{
+    top:-70px;
+    width:112%;
+  }
+
+  .hero-subtitle{
+    width:min(900px,88%);
+    max-width:900px;
+
+    margin-top:10px;
+
+    font-size:1.34rem;
+  }
+
+  .hero-cta-row{
+    margin-top:32px;
+    gap:28px;
+  }
+
+  .hero-cta{
+    min-width:205px;
+    height:54px;
+    padding:0 32px;
+
+    font-size:.98rem;
+  }
+
+}
+
+
+/* ==========================================
 HERO — LAPTOPS / HALF-SCREEN WINDOWS
 ========================================== */
 
 @media (max-width:1100px){
 
   .hero{
-    height:690px;
+    height:calc(100vh - 72px);
+    height:calc(100svh - 72px);
+
+    min-height:690px;
+    max-height:820px;
   }
 
   .hero-inner{
     width:96%;
-    padding:12px 0 66px;
+    padding:16px 0 52px;
+
+    transform:translateY(-44px);
   }
 
   .hero-logo-wrapper{
@@ -585,13 +663,15 @@ HERO — LAPTOPS / HALF-SCREEN WINDOWS
 
   .hero-subtitle{
     width:min(760px,90%);
+
     margin-top:6px;
+
     font-size:1.18rem;
     line-height:1.5;
   }
 
   .hero-cta-row{
-    margin-top:28px;
+    margin-top:26px;
     gap:26px;
   }
 
@@ -612,11 +692,15 @@ HERO — SMALL LAPTOPS / TABLETS
 
   .hero{
     height:660px;
+    min-height:660px;
+    max-height:none;
   }
 
   .hero-inner{
     width:96%;
-    padding:10px 0 58px;
+    padding:12px 0 46px;
+
+    transform:translateY(-34px);
   }
 
   .hero-logo-wrapper{
@@ -632,13 +716,15 @@ HERO — SMALL LAPTOPS / TABLETS
 
   .hero-subtitle{
     width:90%;
+
     margin-top:6px;
+
     font-size:1.1rem;
     line-height:1.5;
   }
 
   .hero-cta-row{
-    margin-top:26px;
+    margin-top:24px;
     gap:18px;
   }
 
@@ -646,6 +732,7 @@ HERO — SMALL LAPTOPS / TABLETS
     min-width:168px;
     height:48px;
     padding:0 20px;
+
     font-size:.88rem;
   }
 
@@ -660,12 +747,17 @@ HERO — MOBILE
 
   .hero{
     height:620px;
+    min-height:620px;
+    max-height:none;
+
     margin-top:68px;
   }
 
   .hero-inner{
     width:97%;
-    padding:8px 0 44px;
+    padding:10px 0 34px;
+
+    transform:translateY(-26px);
   }
 
   .hero-logo-wrapper{
@@ -681,15 +773,19 @@ HERO — MOBILE
 
   .hero-subtitle{
     width:92%;
+
     margin-top:4px;
+
     font-size:1rem;
     line-height:1.45;
   }
 
   .hero-cta-row{
     width:100%;
-    margin-top:22px;
+
+    margin-top:20px;
     gap:12px;
+
     flex-wrap:nowrap;
   }
 
@@ -698,6 +794,7 @@ HERO — MOBILE
     min-width:0;
     height:46px;
     padding:0 10px;
+
     font-size:.78rem;
   }
 
@@ -712,6 +809,13 @@ HERO — VERY SMALL MOBILE
 
   .hero{
     height:650px;
+    min-height:650px;
+  }
+
+  .hero-inner{
+    padding-bottom:32px;
+
+    transform:translateY(-18px);
   }
 
   .hero-logo-wrapper{
@@ -725,16 +829,18 @@ HERO — VERY SMALL MOBILE
 
   .hero-cta-row{
     flex-direction:column;
+
+    margin-top:20px;
     gap:12px;
   }
 
   .hero-cta{
     width:min(280px,88%);
+
     font-size:.84rem;
   }
 
 }
-
 
 
 
