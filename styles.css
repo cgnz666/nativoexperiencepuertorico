@@ -326,7 +326,7 @@ NAVIGATION BAR — SMALL LAPTOPS
 }
 
 
-//* ==========================================
+/* ==========================================
 HERO — MAIN LAYOUT
 ========================================== */
 
@@ -404,7 +404,7 @@ HERO — CONTENT CONTAINER
 
   text-align:center;
 
-  transform:translateY(-52px);
+  transform:translateY(-28px);
 }
 
 
@@ -590,7 +590,7 @@ HERO — LARGE / HIGH-RESOLUTION SCREENS
     width:min(1320px,92%);
     padding:24px 0 64px;
 
-    transform:translateY(-58px);
+    transform:translateY(-32px);
   }
 
   .hero-logo-wrapper{
@@ -647,7 +647,7 @@ HERO — LAPTOPS / HALF-SCREEN WINDOWS
     width:96%;
     padding:16px 0 52px;
 
-    transform:translateY(-44px);
+    transform:translateY(-24px);
   }
 
   .hero-logo-wrapper{
@@ -700,7 +700,7 @@ HERO — SMALL LAPTOPS / TABLETS
     width:96%;
     padding:12px 0 46px;
 
-    transform:translateY(-34px);
+    transform:translateY(-18px);
   }
 
   .hero-logo-wrapper{
@@ -757,7 +757,7 @@ HERO — MOBILE
     width:97%;
     padding:10px 0 34px;
 
-    transform:translateY(-26px);
+    transform:translateY(-12px);
   }
 
   .hero-logo-wrapper{
@@ -815,7 +815,7 @@ HERO — VERY SMALL MOBILE
   .hero-inner{
     padding-bottom:32px;
 
-    transform:translateY(-18px);
+    transform:translateY(-8px);
   }
 
   .hero-logo-wrapper{
