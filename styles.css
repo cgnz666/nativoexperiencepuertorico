@@ -1709,6 +1709,47 @@ BÓKUN — MOBILE
 
 
 /* ==========================================
+ISLAND STORY
+========================================== */
+
+.island-story{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+
+  background-image:
+    linear-gradient(rgba(5,28,34,.55), rgba(5,28,34,.55)),
+    url("assets/island-story-bg.png");
+
+  background-repeat:
+    no-repeat,
+    repeat-y;
+
+  background-position:
+    center center,
+    center top;
+
+  background-size:
+    cover,
+    100% auto;
+}
+
+.island-story::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(61,211,205,.10), transparent 34%),
+    radial-gradient(circle at 82% 72%, rgba(61,211,205,.06), transparent 38%);
+}
+
+.island-story > *{
+  position:relative;
+  z-index:1;
+}
+
+/* ==========================================
 ISLAND TIME
 ========================================== */
 
