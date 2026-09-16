@@ -9,14 +9,15 @@ Este archivo es el "cerebro" del proyecto. Claude lo lee al comenzar cada sesió
 | Proyecto | Sitio web de Nativo Experience Puerto Rico |
 | Tipo | Sitio estático (HTML, CSS, JS) publicado con dominio propio (CNAME) |
 | Archivos principales | `index.html`, `styles.css`, `script.js`, `assets/` |
-| Idioma del contenido | Español (Puerto Rico) |
+| Idioma del contenido | Se define por proyecto, nunca se asume. Este sitio: **inglés**. |
 | Público | Visitantes y turistas, mayormente desde el celular |
 
 Si existe una carpeta `contexto/` en el proyecto, leer sus archivos antes de empezar y aplicarlos.
 
 ## 2. Reglas generales
 
-- Responder y redactar en español.
+- Responder en el chat en español.
+- El idioma del contenido de un entregable no se asume. Si no está definido en la tabla de arriba, preguntar a C antes de redactar. Si un entregable nuevo va en un idioma distinto al del resto del sitio, avisarlo antes de construir.
 - No usar guiones largos pareados como paréntesis. Usar comas, paréntesis o reestructurar.
 - Moneda siempre en formato `$000.00`.
 - No borrar ni sobrescribir archivos sin que se pida. Cambios grandes van en una rama de git.
@@ -104,4 +105,4 @@ Cuando C corrija algo, agregar aquí la regla correspondiente para que el error 
 
 ### Reglas aprendidas
 
-- (vacío por ahora)
+- El idioma del contenido lo decide C, no este archivo. Al detectar que una petición choca con el idioma del sitio existente, preguntar antes de escribir una sola línea.

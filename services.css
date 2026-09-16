@@ -1,0 +1,1085 @@
+/* ==========================================
+NATIVO · PRIVATE SERVICES
+Hoja de estilos de services.html
+
+Se apoya en styles.css: usa las mismas variables
+de marca, la misma tipografía y el mismo header
+y footer. Aquí solo va lo propio de esta página.
+========================================== */
+
+.services-page{
+
+  --svc-sand:#efe6d9;
+  --svc-clay:#8a5636;
+  --svc-hairline:rgba(3,40,51,.14);
+
+  background:var(--sand);
+
+}
+
+
+/* El header es fijo: los anclajes no pueden
+   quedar escondidos debajo de la barra */
+
+.services-page section[id]{
+  scroll-margin-top:80px;
+}
+
+
+/* ==========================================
+PIEZAS COMPARTIDAS DE LA PÁGINA
+========================================== */
+
+.svc-eyebrow{
+
+  display:inline-block;
+
+  color:#056a7e;
+
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+
+}
+
+.svc-eyebrow-light{
+  color:#7fe0e8;
+}
+
+.svc-head{
+
+  max-width:760px;
+
+  margin:0 0 60px;
+
+}
+
+.svc-head h2{
+
+  margin-top:16px;
+
+  color:var(--ocean);
+
+  font-size:clamp(2.1rem,4vw,3.4rem);
+  font-weight:300;
+  line-height:1.06;
+  letter-spacing:-.02em;
+
+}
+
+.svc-button{
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-width:186px;
+  height:54px;
+
+  padding:0 32px;
+
+  border-radius:999px;
+
+  font-size:1rem;
+  font-weight:800;
+  letter-spacing:.01em;
+
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    color .25s ease,
+    box-shadow .25s ease;
+
+}
+
+.svc-button-primary{
+
+  background:var(--primary);
+  color:#ffffff;
+
+  box-shadow:0 16px 34px rgba(9,167,195,.28);
+
+}
+
+.svc-button-primary:link,
+.svc-button-primary:visited{
+  color:#ffffff;
+}
+
+.svc-button-primary:hover{
+
+  background:var(--primary-dark);
+
+  transform:translateY(-2px);
+
+}
+
+.svc-button-ghost{
+
+  border:2px solid rgba(255,255,255,.55);
+
+  color:#ffffff;
+
+}
+
+.svc-button-ghost:link,
+.svc-button-ghost:visited{
+  color:#ffffff;
+}
+
+.svc-button-ghost:hover{
+
+  background:rgba(255,255,255,.12);
+
+  transform:translateY(-2px);
+
+}
+
+
+/* ==========================================
+HERO
+========================================== */
+
+.svc-hero{
+
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+
+  min-height:min(88vh,860px);
+
+  margin-top:73px;
+  padding:150px 0 0;
+
+  color:#ffffff;
+
+  background-color:var(--ocean);
+
+  background-image:url("assets/island-story-bg.jpg");
+
+  background-image:
+    image-set(
+      url("assets/island-story-bg.webp") type("image/webp"),
+      url("assets/island-story-bg.jpg") type("image/jpeg")
+    );
+
+  background-repeat:no-repeat;
+  background-position:center 20%;
+  background-size:cover;
+
+}
+
+.svc-hero-overlay{
+
+  position:absolute;
+  inset:0;
+  z-index:-1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2,20,26,.72) 0%,
+      rgba(2,20,26,.58) 42%,
+      rgba(2,20,26,.88) 100%
+    );
+
+}
+
+.svc-hero-inner{
+
+  position:relative;
+
+  padding-bottom:70px;
+
+}
+
+.svc-hero h1{
+
+  max-width:15ch;
+
+  margin:22px 0 0;
+
+  font-size:clamp(2.7rem,6.2vw,5.4rem);
+  font-weight:300;
+  line-height:1.02;
+  letter-spacing:-.025em;
+
+  text-shadow:0 4px 30px rgba(0,0,0,.35);
+
+}
+
+.svc-hero-accent{
+
+  display:block;
+
+  color:#e8d7c0;
+
+}
+
+.svc-hero-lead{
+
+  max-width:52ch;
+
+  margin:28px 0 0;
+
+  color:rgba(255,255,255,.88);
+
+  font-size:1.13rem;
+  line-height:1.75;
+
+  text-shadow:0 2px 16px rgba(0,0,0,.35);
+
+}
+
+.svc-hero-actions{
+
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+
+  margin-top:38px;
+
+}
+
+
+/* Índice de servicios al pie del hero */
+
+.svc-hero-index{
+
+  position:relative;
+
+  width:min(1180px,92%);
+
+  margin:0 auto;
+  padding:0;
+
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+
+  list-style:none;
+
+  border-top:1px solid rgba(255,255,255,.22);
+
+}
+
+.svc-hero-index li + li{
+  border-left:1px solid rgba(255,255,255,.22);
+}
+
+.svc-hero-index a{
+
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+
+  height:100%;
+
+  padding:26px 22px 30px;
+
+  transition:background .25s ease;
+
+}
+
+.svc-hero-index li:first-child a{
+  padding-left:0;
+}
+
+.svc-hero-index a:hover{
+  background:rgba(255,255,255,.07);
+}
+
+.svc-index-number{
+
+  color:#7fe0e8;
+
+  font-size:.76rem;
+  font-weight:800;
+  letter-spacing:.24em;
+
+}
+
+.svc-index-label{
+
+  color:rgba(255,255,255,.94);
+
+  font-size:1.02rem;
+  font-weight:600;
+
+}
+
+
+/* ==========================================
+INTRO
+========================================== */
+
+.svc-intro{
+
+  padding:104px 0 72px;
+
+  background:var(--sand);
+
+}
+
+.svc-intro-grid{
+
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:60px;
+
+  align-items:start;
+
+}
+
+.svc-quote{
+
+  margin:0;
+
+  color:var(--ocean);
+
+  font-size:clamp(1.7rem,3vw,2.6rem);
+  font-weight:300;
+  line-height:1.25;
+  letter-spacing:-.015em;
+
+}
+
+.svc-intro-copy{
+
+  padding-top:10px;
+
+  border-top:1px solid var(--svc-hairline);
+
+}
+
+.svc-intro-copy p{
+
+  margin-top:20px;
+
+  color:#52636a;
+
+  font-size:1.05rem;
+  line-height:1.8;
+
+}
+
+
+/* ==========================================
+FILAS DE SERVICIO
+========================================== */
+
+.svc-row{
+
+  padding:96px 0;
+
+  background:var(--sand);
+
+}
+
+.svc-row-alt{
+  background:#ffffff;
+}
+
+.svc-row-grid{
+
+  display:grid;
+  grid-template-columns:.92fr 1.08fr;
+  gap:70px;
+
+  align-items:center;
+
+}
+
+.svc-row-alt .svc-row-grid{
+  grid-template-columns:1.08fr .92fr;
+}
+
+.svc-row-alt .svc-figure{
+  order:2;
+}
+
+.svc-figure{
+
+  margin:0;
+
+}
+
+.svc-figure img{
+
+  width:100%;
+  height:auto;
+
+  border-radius:8px;
+
+  box-shadow:0 30px 60px rgba(3,40,51,.16);
+
+}
+
+.svc-figure figcaption{
+
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  margin-top:18px;
+
+  color:#55666c;
+
+  font-size:.74rem;
+  font-weight:700;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+
+}
+
+.svc-figure figcaption::before{
+
+  content:"";
+
+  width:28px;
+  height:1px;
+
+  background:var(--svc-clay);
+
+}
+
+.svc-number{
+
+  display:block;
+
+  color:var(--svc-clay);
+
+  font-size:.8rem;
+  font-weight:800;
+  letter-spacing:.26em;
+
+}
+
+.svc-row-copy h2{
+
+  margin:16px 0 0;
+
+  color:var(--ocean);
+
+  font-size:clamp(2rem,3.4vw,3.1rem);
+  font-weight:300;
+  line-height:1.08;
+  letter-spacing:-.02em;
+
+}
+
+.svc-row-lead{
+
+  max-width:52ch;
+
+  margin:22px 0 0;
+
+  color:#52636a;
+
+  font-size:1.08rem;
+  line-height:1.8;
+
+}
+
+.svc-list{
+
+  margin:32px 0 0;
+  padding:0;
+
+  list-style:none;
+
+  border-top:1px solid var(--svc-hairline);
+
+}
+
+.svc-list li{
+
+  position:relative;
+
+  padding:13px 0 13px 26px;
+
+  border-bottom:1px solid var(--svc-hairline);
+
+  color:var(--text);
+
+  font-size:.98rem;
+  line-height:1.55;
+
+}
+
+.svc-list li::before{
+
+  content:"";
+
+  position:absolute;
+  top:21px;
+  left:2px;
+
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:var(--primary);
+
+}
+
+.svc-tags{
+
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+
+  margin:26px 0 0;
+  padding:0;
+
+  list-style:none;
+
+}
+
+.svc-tags li{
+
+  padding:8px 16px;
+
+  border-radius:999px;
+
+  background:var(--svc-sand);
+
+  color:#5c5346;
+
+  font-size:.74rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+
+}
+
+.svc-cta{
+
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+
+  margin-top:32px;
+  padding-bottom:6px;
+
+  border-bottom:1px solid var(--primary);
+
+  color:var(--primary-dark);
+
+  font-size:1rem;
+  font-weight:700;
+
+  transition:gap .25s ease,color .25s ease;
+
+}
+
+.svc-cta:link,
+.svc-cta:visited{
+  color:var(--primary-dark);
+}
+
+.svc-cta:hover{
+
+  gap:16px;
+
+  color:var(--primary);
+
+}
+
+
+/* ==========================================
+PROCESO
+========================================== */
+
+.svc-process{
+
+  padding:104px 0;
+
+  background:var(--svc-sand);
+
+}
+
+.svc-steps{
+
+  margin:0;
+  padding:0;
+
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+
+  list-style:none;
+
+}
+
+.svc-steps li{
+
+  padding:30px 28px 10px 0;
+
+  border-top:1px solid rgba(3,40,51,.18);
+
+}
+
+.svc-steps li + li{
+
+  padding-left:28px;
+
+  border-left:1px solid rgba(3,40,51,.12);
+
+}
+
+.svc-step-number{
+
+  display:block;
+
+  color:var(--svc-clay);
+
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.26em;
+
+}
+
+.svc-steps h3{
+
+  margin:14px 0 10px;
+
+  color:var(--ocean);
+
+  font-size:1.28rem;
+  font-weight:600;
+  line-height:1.25;
+
+}
+
+.svc-steps p{
+
+  color:#5c5346;
+
+  font-size:.98rem;
+  line-height:1.72;
+
+}
+
+
+/* ==========================================
+BUENO SABER
+========================================== */
+
+.svc-notes{
+
+  padding:104px 0;
+
+  background:#ffffff;
+
+}
+
+.svc-notes-grid{
+
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:38px;
+
+}
+
+.svc-notes-grid h3{
+
+  padding-top:20px;
+
+  border-top:1px solid var(--svc-hairline);
+
+  color:var(--ocean);
+
+  font-size:1.14rem;
+  font-weight:600;
+
+}
+
+.svc-notes-grid p{
+
+  margin-top:12px;
+
+  color:#52636a;
+
+  font-size:.98rem;
+  line-height:1.72;
+
+}
+
+
+/* ==========================================
+INVITACIÓN FINAL
+========================================== */
+
+.svc-inquire{
+
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+
+  padding:120px 0;
+
+  color:#ffffff;
+
+  background:
+    radial-gradient(
+      circle at 18% 22%,
+      rgba(9,167,195,.28),
+      transparent 42%
+    ),
+    linear-gradient(
+      160deg,
+      var(--ocean) 0%,
+      var(--ocean2) 100%
+    );
+
+}
+
+.svc-inquire::before{
+
+  content:"";
+
+  position:absolute;
+  inset:0;
+  z-index:-1;
+
+  background-image:url("assets/textura-olas.svg");
+  background-repeat:repeat;
+  background-size:520px auto;
+
+  opacity:.12;
+
+}
+
+.svc-inquire-inner{
+
+  position:relative;
+
+}
+
+.svc-inquire h2,
+.svc-inquire-inner > .svc-eyebrow{
+
+  max-width:16ch;
+
+}
+
+.svc-inquire h2{
+
+  margin:20px 0 0;
+
+  font-size:clamp(2.2rem,4.4vw,3.6rem);
+  font-weight:300;
+  line-height:1.06;
+  letter-spacing:-.02em;
+
+}
+
+.svc-inquire p{
+
+  max-width:56ch;
+
+  margin:22px 0 0;
+
+  color:rgba(255,255,255,.86);
+
+  font-size:1.08rem;
+  line-height:1.78;
+
+}
+
+.svc-inquire-actions{
+
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+
+  margin-top:38px;
+
+}
+
+.svc-inquire-meta{
+
+  margin-top:34px;
+
+  color:rgba(255,255,255,.62);
+
+  font-size:.92rem;
+
+}
+
+.svc-inquire-meta a{
+
+  border-bottom:1px solid rgba(255,255,255,.3);
+
+  transition:color .25s ease,border-color .25s ease;
+
+}
+
+.svc-inquire-meta a:hover{
+
+  color:#7fe0e8;
+
+  border-color:#7fe0e8;
+
+}
+
+
+/* ==========================================
+APARICIÓN SUAVE AL HACER SCROLL
+========================================== */
+
+.svc-reveal{
+
+  opacity:0;
+
+  transform:translateY(26px);
+
+  transition:
+    opacity .7s ease,
+    transform .7s ease;
+
+}
+
+.svc-reveal.is-visible{
+
+  opacity:1;
+
+  transform:none;
+
+}
+
+@media (prefers-reduced-motion:reduce){
+
+  .svc-reveal{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+
+}
+
+
+/* ==========================================
+TABLETA
+========================================== */
+
+@media (max-width:1000px){
+
+  .svc-hero{
+    min-height:0;
+    padding:120px 0 0;
+  }
+
+  .svc-hero-inner{
+    padding-bottom:56px;
+  }
+
+  .svc-hero-index{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .svc-hero-index li:nth-child(3),
+  .svc-hero-index li:nth-child(4){
+    border-top:1px solid rgba(255,255,255,.22);
+  }
+
+  .svc-hero-index li:nth-child(3){
+    border-left:0;
+  }
+
+  .svc-hero-index li:nth-child(3) a{
+    padding-left:0;
+  }
+
+  .svc-intro-grid,
+  .svc-row-grid,
+  .svc-row-alt .svc-row-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .svc-row-alt .svc-figure{
+    order:0;
+  }
+
+  .svc-figure img{
+    max-height:520px;
+    object-fit:cover;
+  }
+
+  .svc-steps,
+  .svc-notes-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .svc-steps li{
+    padding:26px 24px 18px 0;
+  }
+
+  .svc-steps li:nth-child(3),
+  .svc-steps li:nth-child(4){
+    border-top:1px solid rgba(3,40,51,.18);
+  }
+
+  .svc-steps li:nth-child(3){
+    padding-left:0;
+    border-left:0;
+  }
+
+}
+
+
+/* ==========================================
+MÓVIL
+========================================== */
+
+@media (max-width:560px){
+
+  .svc-hero{
+    margin-top:69px;
+    padding:96px 0 0;
+
+    background-position:center center;
+  }
+
+  .svc-hero-inner{
+    padding-bottom:44px;
+  }
+
+  .svc-hero h1{
+    font-size:2.5rem;
+  }
+
+  .svc-hero-lead{
+    font-size:1.02rem;
+  }
+
+  .svc-hero-actions .svc-button{
+    width:100%;
+  }
+
+  .svc-hero-index{
+    grid-template-columns:1fr;
+  }
+
+  .svc-hero-index li + li{
+    border-left:0;
+    border-top:1px solid rgba(255,255,255,.22);
+  }
+
+  .svc-hero-index a{
+    flex-direction:row;
+    align-items:center;
+    gap:16px;
+
+    padding:16px 2px;
+  }
+
+  .svc-intro,
+  .svc-row,
+  .svc-process,
+  .svc-notes{
+    padding:64px 0;
+  }
+
+  .svc-intro-copy p,
+  .svc-row-lead{
+    font-size:1rem;
+  }
+
+  .svc-figure img{
+    max-height:420px;
+  }
+
+  .svc-head{
+    margin-bottom:38px;
+  }
+
+  .svc-steps,
+  .svc-notes-grid{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .svc-steps li,
+  .svc-steps li + li{
+    padding:24px 0 8px;
+
+    border-left:0;
+  }
+
+  .svc-steps li + li{
+    border-top:1px solid rgba(3,40,51,.18);
+  }
+
+  .svc-notes-grid article + article{
+    margin-top:28px;
+  }
+
+  .svc-inquire{
+    padding:80px 0;
+  }
+
+  .svc-inquire-actions .svc-button{
+    width:100%;
+  }
+
+  .svc-inquire-meta{
+    line-height:2;
+  }
+
+}
+
+
+/* ==========================================
+PANTALLAS GRANDES
+========================================== */
+
+@media (min-width:1800px){
+
+  /* styles.css ya reserva el alto de la barra con scroll-padding-top */
+
+  .services-page section[id]{
+    scroll-margin-top:0;
+  }
+
+  .svc-hero{
+    margin-top:85px;
+    padding-top:180px;
+  }
+
+  .svc-hero-index{
+    width:min(1480px,92%);
+  }
+
+  .svc-row{
+    padding:120px 0;
+  }
+
+  .svc-row-grid{
+    gap:90px;
+  }
+
+}
+
+
+/* ==========================================
+PANTALLAS MUY GRANDES
+
+La barra superior crece a 92px en styles.css
+========================================== */
+
+@media (min-width:2400px){
+
+  .svc-hero{
+    margin-top:93px;
+    padding-top:200px;
+  }
+
+}
