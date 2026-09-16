@@ -2940,3 +2940,378 @@ RESPONSIVE — GENERAL WEBSITE MOBILE
   }
 
 }
+
+/* ==========================================
+FONDOS — IMAGEN OPTIMIZADA (TODAS LAS PANTALLAS)
+Selva en WebP/JPG: misma imagen, mucho más liviana
+========================================== */
+
+.island-story{
+  background-image:
+    linear-gradient(rgba(5,28,34,.55), rgba(5,28,34,.55)),
+    url("assets/island-story-bg.jpg");
+
+  background-image:
+    linear-gradient(rgba(5,28,34,.55), rgba(5,28,34,.55)),
+    image-set(
+      url("assets/island-story-bg.webp") type("image/webp"),
+      url("assets/island-story-bg.jpg") type("image/jpeg")
+    );
+}
+
+
+/* ==========================================
+PANTALLAS GRANDES — 1800px o más
+
+1. El contenido se ensancha
+2. El texto crece un poco
+3. El agua (textura de olas) llena los costados
+========================================== */
+
+@media (min-width:1800px){
+
+  /* 1 · TEXTO UN POCO MÁS GRANDE */
+
+  html{
+    font-size:17px;
+    scroll-padding-top:85px;
+  }
+
+  /* 2 · CONTENIDO MÁS ANCHO */
+
+  .container{
+    width:min(1480px,92%);
+  }
+
+  /* Barra superior un poco más alta, para que no
+     se vea como una cinta fina en un monitor grande */
+
+  .nav-wrap,
+  .brand{
+    height:84px;
+  }
+
+  .hero{
+    margin-top:85px;
+    height:calc(100vh - 85px);
+    height:calc(100svh - 85px);
+  }
+
+  .featured-section .section-title{
+    width:min(960px,90%);
+    max-width:960px;
+  }
+
+  .product-list-section .section-title{
+    width:min(900px,90%);
+    max-width:900px;
+  }
+
+  /* Las tarjetas y el marco de tours usan todo el
+     ancho del contenedor, para que todo quede alineado */
+
+  .featured-grid{
+    width:100%;
+    gap:36px;
+  }
+
+  .tour-card-gallery{
+    height:440px;
+  }
+
+  .widget-shell{
+    width:100%;
+    min-height:1180px;
+  }
+
+  .hero-inner{
+    width:min(1280px,94%);
+  }
+
+  .hero-logo-wrapper{
+    width:min(780px,80vw);
+    height:500px;
+    flex:0 0 500px;
+  }
+
+  .hero-logo{
+    top:-74px;
+  }
+
+  .island-time h2{
+    max-width:880px;
+  }
+
+  .island-time p{
+    max-width:900px;
+  }
+
+  /* 3 · HERO: viñeta lateral para enfocar el centro
+     y disimular el escalado del video */
+
+  .hero{
+    max-height:1080px;
+  }
+
+  .hero-overlay{
+    background:
+      radial-gradient(
+        ellipse 70% 90% at 50% 45%,
+        rgba(1,20,27,0) 40%,
+        rgba(1,20,27,.42) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(1,20,27,.12) 0%,
+        rgba(1,20,27,.20) 48%,
+        rgba(1,20,27,.45) 100%
+      );
+  }
+
+  /* 4 · TOURS: agua clara con brillo al centro */
+
+  .tour-sections-background{
+    background:
+      radial-gradient(circle at 6% 14%, rgba(91,220,215,.26), transparent 26%),
+      radial-gradient(circle at 94% 30%, rgba(15,168,196,.18), transparent 28%),
+      radial-gradient(circle at 4% 62%, rgba(15,168,196,.16), transparent 26%),
+      radial-gradient(circle at 96% 82%, rgba(91,220,215,.22), transparent 28%),
+      radial-gradient(ellipse 58% 42% at 50% 50%, rgba(255,255,255,.42), transparent 72%),
+      linear-gradient(180deg, #eaf7f8 0%, #dcf1f4 48%, #eaf7f8 100%);
+  }
+
+  /* 5 · TEXTURA DE OLAS
+
+     ::before  capa suave en toda la sección
+     ::after   capa más marcada, solo en los costados,
+               fuera del ancho del contenido            */
+
+  .tour-sections-background::before,
+  .tour-sections-background::after,
+  .reviews-section::before,
+  .reviews-section::after,
+  .contact-section::before,
+  .contact-section::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+
+    background:url("assets/textura-olas.svg") repeat left top / 640px auto;
+  }
+
+  .tour-sections-background::after,
+  .reviews-section::after,
+  .contact-section::after{
+    -webkit-mask-image:
+      linear-gradient(
+        90deg,
+        #000 0,
+        #000 calc(50% - 900px),
+        transparent calc(50% - 720px),
+        transparent calc(50% + 720px),
+        #000 calc(50% + 900px),
+        #000 100%
+      );
+    mask-image:
+      linear-gradient(
+        90deg,
+        #000 0,
+        #000 calc(50% - 900px),
+        transparent calc(50% - 720px),
+        transparent calc(50% + 720px),
+        #000 calc(50% + 900px),
+        #000 100%
+      );
+  }
+
+  .tour-sections-background::before{
+    opacity:.20;
+  }
+
+  .tour-sections-background::after{
+    opacity:.40;
+  }
+
+  /* 6 · SELVA: viñeta en los bordes y tortuga más grande */
+
+  .island-story::before{
+    background:
+      radial-gradient(circle at 20% 15%, rgba(61,211,205,.10), transparent 34%),
+      radial-gradient(circle at 82% 72%, rgba(61,211,205,.06), transparent 38%),
+      linear-gradient(
+        90deg,
+        rgba(2,16,20,.55) 0%,
+        rgba(2,16,20,0) 22%,
+        rgba(2,16,20,0) 78%,
+        rgba(2,16,20,.55) 100%
+      );
+  }
+
+  .story-section::before{
+    width:1200px;
+    height:1200px;
+    opacity:.055;
+  }
+
+  /* 7 · RESEÑAS: continuidad con la sección de tours */
+
+  .reviews-section{
+    isolation:isolate;
+    overflow:hidden;
+
+    background:
+      radial-gradient(circle at 8% 30%, rgba(91,220,215,.20), transparent 28%),
+      radial-gradient(circle at 92% 70%, rgba(15,168,196,.14), transparent 30%),
+      #eaf7f8;
+  }
+
+  .reviews-section::before{
+    opacity:.16;
+  }
+
+  .reviews-section::after{
+    opacity:.34;
+  }
+
+  /* 8 · CONTACTO: agua profunda, olas en tono claro */
+
+  .contact-section{
+    isolation:isolate;
+    overflow:hidden;
+
+    background:
+      radial-gradient(circle at 8% 12%, rgba(24,193,203,.16), transparent 30%),
+      radial-gradient(circle at 92% 88%, rgba(24,193,203,.12), transparent 32%),
+      linear-gradient(135deg, var(--ocean), var(--ocean2));
+  }
+
+  .contact-section h2{
+    max-width:900px;
+  }
+
+  .contact-section p{
+    max-width:780px;
+  }
+
+  .contact-section::before{
+    background-image:url("assets/textura-olas-clara.svg");
+    opacity:.07;
+  }
+
+  .contact-section::after{
+    background-image:url("assets/textura-olas-clara.svg");
+    opacity:.14;
+  }
+
+}
+
+
+/* ==========================================
+PANTALLAS MUY GRANDES — 2400px o más
+========================================== */
+
+@media (min-width:2400px){
+
+  html{
+    font-size:18px;
+    scroll-padding-top:93px;
+  }
+
+  .container{
+    width:min(1680px,90%);
+  }
+
+  .nav-wrap,
+  .brand{
+    height:92px;
+  }
+
+  .hero{
+    margin-top:93px;
+    height:calc(100vh - 93px);
+    height:calc(100svh - 93px);
+    max-height:1240px;
+  }
+
+  .featured-grid{
+    gap:40px;
+  }
+
+  .tour-card-gallery{
+    height:500px;
+  }
+
+  .widget-shell{
+    min-height:1260px;
+  }
+
+  .hero-inner{
+    width:min(1440px,92%);
+  }
+
+  .hero-logo-wrapper{
+    width:min(900px,70vw);
+    height:575px;
+    flex:0 0 575px;
+  }
+
+  .hero-logo{
+    top:-86px;
+  }
+
+  .tour-sections-background::before,
+  .tour-sections-background::after,
+  .reviews-section::before,
+  .reviews-section::after,
+  .contact-section::before,
+  .contact-section::after{
+    background-size:800px auto;
+  }
+
+  .story-section::before{
+    width:1400px;
+    height:1400px;
+  }
+
+}
+
+
+/* ==========================================
+PANTALLAS 4K — 3200px o más
+========================================== */
+
+@media (min-width:3200px){
+
+  html{
+    font-size:19px;
+  }
+
+  .container{
+    width:min(1860px,88%);
+  }
+
+  .featured-section .section-title{
+    width:min(1200px,90%);
+    max-width:1200px;
+  }
+
+  .contact-section h2{
+    max-width:1040px;
+  }
+
+  .hero{
+    max-height:1440px;
+  }
+
+  .tour-sections-background::before,
+  .tour-sections-background::after,
+  .reviews-section::before,
+  .reviews-section::after,
+  .contact-section::before,
+  .contact-section::after{
+    background-size:980px auto;
+  }
+
+}
