@@ -1217,7 +1217,9 @@ FEATURED — TOUR TITLE
 .featured-tour-card .tour-content h3{
   margin:0;
 
-  color:var(--ocean);
+  /* El mismo turquesa oscuro de los titulares de sección,
+     en vez del casi negro que se usaba antes */
+  color:#073d49;
   font-size:clamp(1.55rem,2.2vw,2rem);
   line-height:1.18;
 }
@@ -1647,11 +1649,18 @@ trae Bókun y que las destacadas no tienen.
 
 .product-card .product-excerpt{
   margin-top:14px;
+
+  /* Tres líneas para todas: iguala el alto de las tarjetas
+     y quita el hueco muerto antes del precio */
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
 }
 
 .product-meta{
   display:flex;
-  align-items:flex-end;
+  align-items:baseline;
   justify-content:space-between;
   gap:14px;
 
@@ -1670,19 +1679,20 @@ trae Bókun y que las destacadas no tienen.
 }
 
 .product-price{
+  display:inline-flex;
+  align-items:baseline;
+  gap:6px;
+
   color:#5d7f86;
 
   font-size:.82rem;
-  text-align:right;
   white-space:nowrap;
 }
 
 .product-price strong{
-  display:block;
-
   color:var(--ocean);
 
-  font-size:1.32rem;
+  font-size:1.28rem;
   font-weight:800;
   letter-spacing:-.01em;
 }
