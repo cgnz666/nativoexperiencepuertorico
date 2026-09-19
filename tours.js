@@ -89,8 +89,11 @@ document.addEventListener("DOMContentLoaded", function () {
       )
       .join("");
 
+    const nota = Number(tour.rating);
+    const resenas = Number(tour.reviews);
+
     const valoracion =
-      tour.rating && tour.reviews
+      Number.isFinite(nota) && nota > 0 && Number.isFinite(resenas) && resenas > 0
         ? `
         <a
           class="product-rating"
@@ -98,8 +101,8 @@ document.addEventListener("DOMContentLoaded", function () {
           target="_blank"
           rel="noopener noreferrer">
           <span class="product-stars" aria-hidden="true">★</span>
-          <strong>${escapar(tour.rating.toFixed(1))}</strong>
-          <span>${escapar(tour.reviews)} reviews on Tripadvisor</span>
+          <strong>${escapar(nota.toFixed(1))}</strong>
+          <span>${escapar(resenas)} reviews on Tripadvisor</span>
         </a>`
         : "";
 
@@ -108,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
       : "";
 
     return `
-      <article class="tour-card featured-tour-card product-card">
+      <article class="tour-card featured-tour-card product-card" tabindex="-1">
 
         <div
           class="tour-card-gallery"
@@ -250,7 +253,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   if (buscador) {
-    buscador.addEventListener("input", pintar);
+    /* Sin esta espera, cada tecla rehacía las diecinueve tarjetas */
+    let esperaDeTecleo = null;
+
+    buscador.addEventListener("input", function () {
+      window.clearTimeout(esperaDeTecleo);
+      esperaDeTecleo = window.setTimeout(pintar, 150);
+    });
   }
 
   if (boton) {
@@ -258,10 +267,13 @@ document.addEventListener("DOMContentLoaded", function () {
       desplegado = true;
       pintar();
 
-      /* Dejar el foco donde estaba la lista, no al final */
-      const nuevas = rejilla.querySelectorAll(".product-card");
-      const primeraNueva = nuevas[AL_PRINCIPIO];
+      /* El botón que se acaba de pulsar queda oculto, así que el
+         foco se va con él. Se lleva a la primera tarjeta nueva,
+         para no dejar sin sitio a quien navega con teclado. */
+      const primeraNueva = rejilla.querySelectorAll(".product-card")[AL_PRINCIPIO];
+
       if (primeraNueva) {
+        primeraNueva.focus({ preventScroll: true });
         primeraNueva.scrollIntoView({ block: "center", behavior: "smooth" });
       }
     });

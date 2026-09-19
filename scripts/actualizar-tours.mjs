@@ -21,7 +21,19 @@ const URL_BUSQUEDA =
   `https://widgets.bokun.io/widgets/${UUID}/search?currency=USD&lang=en_GB`;
 
 const enlaceDeReserva = (id) =>
-  `https://widgets.bokun.io/online-sales/${UUID}/experience/${id}?partialView=1`;
+  `https://widgets.bokun.io/online-sales/${UUID}/experience/${Number(id)}?partialView=1`;
+
+/* Todo lo que acabe en un href o en un src pasa por aquí:
+   una dirección con esquema javascript: no debe llegar a la página. */
+function direccionSegura(valor) {
+  if (!valor) return null;
+  try {
+    const url = new URL(valor);
+    return url.protocol === "https:" || url.protocol === "http:" ? url.href : null;
+  } catch {
+    return null;
+  }
+}
 
 /* Las fotos vienen del CDN de Bókun. Pedimos el
    recorte que necesita la tarjeta en vez del
@@ -39,7 +51,15 @@ function fotosDe(producto) {
       const grande = foto.derived?.find((d) => d.name === "large");
       return grande?.url || foto.originalUrl || null;
     })
+    .map(direccionSegura)
     .filter(Boolean);
+}
+
+/* Bókun podría mandar un número como texto. Si no es un
+   número utilizable, mejor nulo que reventar la página. */
+function numero(valor) {
+  const n = Number(valor);
+  return Number.isFinite(n) ? n : null;
 }
 
 function limpiar(producto) {
@@ -50,12 +70,12 @@ function limpiar(producto) {
     title: (producto.title || "").trim(),
     excerpt: (producto.excerpt || "").trim(),
     duration: (producto.durationText || "").trim(),
-    price: producto.price ?? null,
+    price: numero(producto.price),
     currency: "USD",
     vendor: (producto.vendor?.title || "").trim(),
-    rating: ta.rating ?? null,
-    reviews: ta.numReviews ?? null,
-    reviewUrl: ta.url || null,
+    rating: numero(ta.rating),
+    reviews: numero(ta.numReviews),
+    reviewUrl: direccionSegura(ta.url),
     photos: fotosDe(producto),
     bookingUrl: enlaceDeReserva(producto.id)
   };
@@ -93,6 +113,12 @@ async function main() {
   const publicables = tours.filter((t) => t.price !== null && t.price > 0);
   const descartados = tours.length - publicables.length;
 
+  if (!publicables.length) {
+    throw new Error(
+      "Ningún tour tiene precio utilizable, no se sobrescribe nada"
+    );
+  }
+
   const salida = {
     updated: new Date().toISOString(),
     source: `Bókun · lista de producto ${LISTA_DE_PRODUCTO}`,
@@ -112,6 +138,19 @@ async function main() {
   if (anterior && JSON.stringify(anterior.tours) === JSON.stringify(salida.tours)) {
     console.log(`Sin cambios: ${publicables.length} tours.`);
     return;
+  }
+
+  /* Perder de golpe media lista suele ser un fallo de Bókun,
+     no una decisión de negocio. Preferimos dejar el archivo
+     viejo y que el flujo se ponga rojo. */
+  const antes = anterior?.tours?.length || 0;
+
+  if (antes && publicables.length < antes * 0.6) {
+    throw new Error(
+      `El catálogo cae de ${antes} a ${publicables.length} tours. ` +
+        `Se deja el archivo anterior. Si el recorte es a propósito, ` +
+        `bórralo a mano y vuelve a ejecutar.`
+    );
   }
 
   await writeFile(DESTINO, JSON.stringify(salida, null, 2) + "\n", "utf8");

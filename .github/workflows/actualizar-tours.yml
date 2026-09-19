@@ -53,4 +53,15 @@ jobs:
           cantidad=$(node -e "console.log(require('./tours.json').count)")
           git add tours.json
           git commit -m "Actualizar datos de tours desde Bókun ($cantidad tours)"
-          git push
+
+          # Alguien pudo empujar a main mientras corríamos
+          for intento in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            echo "Push rechazado, reintentando ($intento de 3)"
+            git pull --rebase origin main
+          done
+
+          echo "No se pudo empujar tras tres intentos."
+          exit 1

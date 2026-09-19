@@ -33,6 +33,12 @@ function iniciarCarruseles(raiz) {
     "[data-featured-slideshow]"
   );
 
+  /* Si el sistema pide menos movimiento, las tarjetas se quedan
+     con su primera foto. Solas no se mueven. */
+  const menosMovimiento = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
   galerias.forEach(function (galeria) {
     /* Una galería ya iniciada no se vuelve a iniciar:
        duplicaría los puntos y los temporizadores. */
@@ -63,6 +69,14 @@ function iniciarCarruseles(raiz) {
        avanza, en vez de las ocho de golpe. */
     function cargar(lamina) {
       if (lamina && lamina.dataset.lazy) {
+        lamina.addEventListener(
+          "error",
+          function () {
+            lamina.dataset.rota = "si";
+          },
+          { once: true }
+        );
+
         lamina.src = lamina.dataset.lazy;
         delete lamina.dataset.lazy;
       }
@@ -98,16 +112,24 @@ function iniciarCarruseles(raiz) {
     }
 
     function avanzar() {
-      const siguiente = (actual + 1) % laminas.length;
-      const lamina = laminas[siguiente];
+      /* Se busca la siguiente lámina que esté lista. Una que
+         falló se salta para siempre; una que todavía no llegó
+         se salta solo esta vuelta, y le tocará más adelante.
+         Así una foto lenta o rota nunca congela la tarjeta. */
+      for (let salto = 1; salto <= laminas.length; salto++) {
+        const siguiente = (actual + salto) % laminas.length;
+        const lamina = laminas[siguiente];
 
-      cargar(lamina);
+        if (lamina.dataset.rota) {
+          continue;
+        }
 
-      /* Si la foto todavía no llegó no se avanza: enseñar
-         una lámina vacía deja ver el fondo de la galería.
-         En el siguiente tic se vuelve a intentar. */
-      if (lamina.complete && lamina.naturalWidth > 0) {
-        mostrar(siguiente);
+        cargar(lamina);
+
+        if (lamina.complete && lamina.naturalWidth > 0) {
+          mostrar(siguiente);
+          return;
+        }
       }
     }
 
@@ -126,6 +148,10 @@ function iniciarCarruseles(raiz) {
     if (tarjeta) {
       tarjeta.addEventListener("mouseenter", pausar);
       tarjeta.addEventListener("mouseleave", arrancar);
+    }
+
+    if (menosMovimiento) {
+      return;
     }
 
     /* La segunda foto se adelanta, para que el primer
