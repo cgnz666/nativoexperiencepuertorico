@@ -1,88 +1,145 @@
-const menuButton=document.querySelector('.menu-toggle');const navigation=document.querySelector('.primary-nav');if(menuButton&&navigation){menuButton.addEventListener('click',()=>{const isOpen=navigation.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(isOpen));});navigation.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navigation.classList.remove('open');menuButton.setAttribute('aria-expanded','false');}));}
+/* ==========================================
+MENÚ MÓVIL
+========================================== */
+
+const menuButton = document.querySelector('.menu-toggle');
+const navigation = document.querySelector('.primary-nav');
+
+if (menuButton && navigation) {
+  menuButton.addEventListener('click', () => {
+    const isOpen = navigation.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  navigation.querySelectorAll('a').forEach(link =>
+    link.addEventListener('click', () => {
+      navigation.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+    })
+  );
+}
 
 
 /* ==========================================
-FEATURED EXPERIENCES — IMAGE SLIDESHOW
+CARRUSELES DE LAS TARJETAS
+
+Lo usan las tarjetas destacadas del HTML y también
+las tarjetas de tours que se crean desde tours.js,
+por eso la función se expone en window.
 ========================================== */
 
-document.addEventListener("DOMContentLoaded", function () {
-  const galleries = document.querySelectorAll(
+function iniciarCarruseles(raiz) {
+  const galerias = (raiz || document).querySelectorAll(
     "[data-featured-slideshow]"
   );
 
-  galleries.forEach(function (gallery) {
-    const slides = Array.from(
-      gallery.querySelectorAll(".tour-card-slide")
-    );
-
-    const dotsContainer = gallery.querySelector(
-      ".tour-card-dots"
-    );
-
-    if (slides.length < 2 || !dotsContainer) {
+  galerias.forEach(function (galeria) {
+    /* Una galería ya iniciada no se vuelve a iniciar:
+       duplicaría los puntos y los temporizadores. */
+    if (galeria.dataset.carruselIniciado === "si") {
       return;
     }
 
-    let currentSlide = 0;
-    let slideshowTimer = null;
+    const laminas = Array.from(
+      galeria.querySelectorAll(".tour-card-slide")
+    );
 
-    const startingDelay =
-      Number(gallery.dataset.delay) || 0;
+    const contenedorDePuntos = galeria.querySelector(
+      ".tour-card-dots"
+    );
 
-    const dots = slides.map(function (_, index) {
-      const dot = document.createElement("span");
+    if (laminas.length < 2 || !contenedorDePuntos) {
+      return;
+    }
 
-      dot.className = "tour-card-dot";
+    galeria.dataset.carruselIniciado = "si";
 
-      if (index === 0) {
-        dot.classList.add("is-active");
+    let actual = 0;
+    let temporizador = null;
+
+    /* Las láminas que no son la primera llegan sin src,
+       con la dirección guardada en data-lazy. Así una
+       tarjeta pide una sola foto hasta que el carrusel
+       avanza, en vez de las ocho de golpe. */
+    function cargar(lamina) {
+      if (lamina && lamina.dataset.lazy) {
+        lamina.src = lamina.dataset.lazy;
+        delete lamina.dataset.lazy;
+      }
+    }
+
+    const retrasoInicial = Number(galeria.dataset.delay) || 0;
+
+    const puntos = laminas.map(function (_, indice) {
+      const punto = document.createElement("span");
+
+      punto.className = "tour-card-dot";
+
+      if (indice === 0) {
+        punto.classList.add("is-active");
       }
 
-      dotsContainer.appendChild(dot);
+      contenedorDePuntos.appendChild(punto);
 
-      return dot;
+      return punto;
     });
 
-    function showSlide(nextIndex) {
-      slides[currentSlide].classList.remove("is-active");
-      dots[currentSlide].classList.remove("is-active");
+    function mostrar(siguiente) {
+      cargar(laminas[siguiente]);
+      cargar(laminas[(siguiente + 1) % laminas.length]);
 
-      currentSlide = nextIndex;
+      laminas[actual].classList.remove("is-active");
+      puntos[actual].classList.remove("is-active");
 
-      slides[currentSlide].classList.add("is-active");
-      dots[currentSlide].classList.add("is-active");
+      actual = siguiente;
+
+      laminas[actual].classList.add("is-active");
+      puntos[actual].classList.add("is-active");
     }
 
-    function nextSlide() {
-      const nextIndex =
-        (currentSlide + 1) % slides.length;
+    function avanzar() {
+      const siguiente = (actual + 1) % laminas.length;
+      const lamina = laminas[siguiente];
 
-      showSlide(nextIndex);
+      cargar(lamina);
+
+      /* Si la foto todavía no llegó no se avanza: enseñar
+         una lámina vacía deja ver el fondo de la galería.
+         En el siguiente tic se vuelve a intentar. */
+      if (lamina.complete && lamina.naturalWidth > 0) {
+        mostrar(siguiente);
+      }
     }
 
-    function startSlideshow() {
-      window.clearInterval(slideshowTimer);
-
-      slideshowTimer = window.setInterval(
-        nextSlide,
-        4500
-      );
+    function arrancar() {
+      window.clearInterval(temporizador);
+      temporizador = window.setInterval(avanzar, 4500);
     }
 
-    function pauseSlideshow() {
-      window.clearInterval(slideshowTimer);
+    function pausar() {
+      window.clearInterval(temporizador);
     }
 
-    const card = gallery.closest(".featured-tour-card");
+    const tarjeta = galeria.closest(".tour-card");
 
-    if (card) {
-      card.addEventListener("mouseenter", pauseSlideshow);
-      card.addEventListener("mouseleave", startSlideshow);
+    if (tarjeta) {
+      tarjeta.addEventListener("mouseenter", pausar);
+      tarjeta.addEventListener("mouseleave", arrancar);
     }
+
+    /* La segunda foto se adelanta, para que el primer
+       cambio no se vea vacío */
+    cargar(laminas[1]);
 
     window.setTimeout(function () {
-      nextSlide();
-      startSlideshow();
-    }, 4500 + startingDelay);
+      avanzar();
+      arrancar();
+    }, 4500 + retrasoInicial);
   });
+}
+
+window.iniciarCarruseles = iniciarCarruseles;
+
+document.addEventListener("DOMContentLoaded", function () {
+  iniciarCarruseles(document);
 });

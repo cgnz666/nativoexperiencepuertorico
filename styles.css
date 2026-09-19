@@ -1489,86 +1489,268 @@ SECTION TITLE
 
 
 /* ==========================================
-BÓKUN — SUPERFICIE DEL WIDGET
-
-Sin marco. El widget trae su propio fondo blanco,
-así que él mismo hace de panel sobre el crema de
-la sección. Antes había cuatro capas apiladas:
-fondo, marco oscuro, caja blanca y widget.
+LISTADO DE TOURS — BARRA DE BÚSQUEDA
 ========================================== */
 
-.widget-shell{
-  position:relative;
+.tours-toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:16px;
 
   width:min(1320px,100%);
 
-  /* Reserva mientras Bókun carga. No fuerza el alto:
-     si el widget mide menos, no queda hueco muerto. */
-  min-height:480px;
-
-  margin:0 auto;
-  padding:0;
-  box-sizing:border-box;
-
-  background:transparent;
-  border:0;
-  border-radius:0;
-  box-shadow:none;
+  margin:0 auto 34px;
 }
 
-
-/* ==========================================
-BÓKUN — CONTENEDOR DEL WIDGET
-========================================== */
-
-.widget-shell .bokunWidget{
+.tours-search{
   position:relative;
 
-  width:100%;
+  display:flex;
+  align-items:center;
 
-  padding:0;
-
-  background:transparent;
-
-  box-sizing:border-box;
+  flex:1 1 340px;
+  max-width:460px;
 }
 
+.tours-search-icon{
+  position:absolute;
+  left:18px;
 
-/* ==========================================
-BÓKUN — IFRAME
-========================================== */
+  width:19px;
+  height:19px;
 
-.widget-shell iframe{
-  display:block;
+  color:#5d7f86;
 
-  width:100% !important;
-  max-width:100% !important;
+  pointer-events:none;
+}
 
-  margin:0;
-  padding:0;
+.tours-search input{
+  width:100%;
+  height:54px;
+
+  padding:0 20px 0 48px;
+
+  font-family:inherit;
+  font-size:1rem;
+  color:var(--ocean);
 
   background:#ffffff;
+  border:1px solid rgba(7,49,62,.12);
+  border-radius:999px;
 
-  border:0 !important;
-  border-radius:0 !important;
+  box-shadow:0 8px 24px rgba(5,79,90,.07);
 
-  box-sizing:border-box;
+  transition:
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.tours-search input::placeholder{
+  color:#7d959b;
+}
+
+.tours-search input:focus{
+  outline:none;
+
+  border-color:var(--primary);
+
+  box-shadow:
+    0 0 0 4px rgba(9,167,195,.16),
+    0 8px 24px rgba(5,79,90,.07);
+}
+
+/* El aspa que Chrome pone dentro de los campos de
+   búsqueda desentona con el resto de la barra */
+.tours-search input::-webkit-search-cancel-button{
+  -webkit-appearance:none;
+  appearance:none;
+}
+
+.tours-count{
+  color:#4e6a70;
+
+  font-size:.95rem;
+  font-weight:600;
 }
 
 
 /* ==========================================
-BÓKUN — MENSAJE SIN JAVASCRIPT
+LISTADO DE TOURS — REJILLA
 ========================================== */
 
-.widget-shell noscript{
+.tours-grid{
+  width:min(1320px,100%);
+
+  margin:0 auto;
+
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:28px;
+}
+
+
+/* ==========================================
+LISTADO DE TOURS — DATOS DE LA TARJETA
+
+La tarjeta hereda marco, carrusel y tipografía de
+.featured-tour-card. Aquí solo van los datos que
+trae Bókun y que las destacadas no tienen.
+========================================== */
+
+.product-card .tour-content{
+  padding:26px 26px 28px;
+}
+
+.product-vendor{
+  margin-top:6px;
+
+  color:#6d8289;
+
+  font-size:.9rem;
+}
+
+.product-rating{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+
+  margin-top:10px;
+
+  color:#4e6a70;
+
+  font-size:.9rem;
+
+  transition:color .25s ease;
+}
+
+.product-rating:link,
+.product-rating:visited{
+  color:#4e6a70;
+}
+
+.product-rating:hover{
+  color:var(--primary-dark);
+}
+
+.product-rating strong{
+  color:var(--ocean);
+}
+
+.product-stars{
+  color:#e8a33d;
+
+  font-size:1.05rem;
+  line-height:1;
+}
+
+.product-card .product-excerpt{
+  margin-top:14px;
+}
+
+.product-meta{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:14px;
+
+  /* Empuja el precio al pie de la tarjeta, para que
+     todas las tarjetas lo alineen a la misma altura */
+  margin-top:auto;
+  padding-top:18px;
+
+  border-top:1px solid rgba(7,49,62,.10);
+}
+
+.product-duration{
+  color:#5d7f86;
+
+  font-size:.88rem;
+}
+
+.product-price{
+  color:#5d7f86;
+
+  font-size:.82rem;
+  text-align:right;
+  white-space:nowrap;
+}
+
+.product-price strong{
   display:block;
 
-  padding:40px;
+  color:var(--ocean);
 
-  color:var(--text);
+  font-size:1.32rem;
+  font-weight:800;
+  letter-spacing:-.01em;
+}
+
+.product-card .card-button{
+  margin-top:20px;
+}
+
+
+/* ==========================================
+LISTADO DE TOURS — VER MÁS, VACÍO Y ERROR
+========================================== */
+
+.tours-more{
+  display:flex;
+  justify-content:center;
+
+  margin-top:44px;
+}
+
+.tours-more button{
+  height:56px;
+
+  padding:0 38px;
+
+  font-family:inherit;
   font-size:1rem;
-  line-height:1.65;
+  font-weight:800;
+  color:#ffffff;
+
+  background:var(--primary);
+  border:0;
+  border-radius:999px;
+
+  cursor:pointer;
+
+  box-shadow:0 16px 34px rgba(9,167,195,.28);
+
+  transition:
+    background .25s ease,
+    transform .25s ease;
+}
+
+.tours-more button:hover{
+  background:var(--primary-dark);
+
+  transform:translateY(-2px);
+}
+
+.tours-empty,
+.tours-error{
+  max-width:560px;
+
+  margin:40px auto 0;
+
+  color:#4e6a70;
+
+  font-size:1.05rem;
+  line-height:1.7;
   text-align:center;
+}
+
+.tours-error a{
+  color:var(--primary-dark);
+
+  font-weight:700;
+
+  border-bottom:1px solid currentColor;
 }
 
 
@@ -1588,7 +1770,8 @@ PRODUCT LIST — LARGE / HIGH-RESOLUTION SCREENS
     margin-bottom:62px;
   }
 
-  .widget-shell{
+  .tours-toolbar,
+  .tours-grid{
     width:min(1480px,100%);
   }
 
@@ -1601,8 +1784,9 @@ BÓKUN — TABLET
 
 @media (max-width:900px){
 
-  .widget-shell{
-    width:100%;
+  .tours-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:22px;
   }
 
 }
@@ -1631,9 +1815,31 @@ BÓKUN — MOBILE
     font-size:1rem;
   }
 
-  .widget-shell{
+  .tours-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .tours-toolbar{
+    flex-direction:column;
+    align-items:stretch;
+
+    margin-bottom:26px;
+  }
+
+  .tours-search{
+    /* En columna el flex-basis marca la altura, no el ancho */
+    flex:0 0 auto;
+
+    max-width:none;
+  }
+
+  .tours-count{
+    text-align:center;
+  }
+
+  .tours-more button{
     width:100%;
-    min-height:420px;
   }
 
 }
@@ -2942,10 +3148,6 @@ PANTALLAS GRANDES — 1800px o más
 
   .tour-card-gallery{
     height:440px;
-  }
-
-  .widget-shell{
-    width:100%;
   }
 
   .hero-inner{

@@ -641,21 +641,74 @@ experiences across Puerto Rico.
 
 </div>
 
-<div class="widget-shell">
+<div class="tours-toolbar">
 
-<div
-class="bokunWidget"
-data-src="https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/product-list/110434">
+  <label class="tours-search">
+
+    <svg
+      class="tours-search-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      aria-hidden="true">
+      <circle cx="11" cy="11" r="7"></circle>
+      <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+    </svg>
+
+    <input
+      type="search"
+      data-tours-search
+      placeholder="Search by name, town or interest"
+      aria-label="Search experiences"
+      autocomplete="off">
+
+  </label>
+
+  <p class="tours-count" data-tours-count role="status">
+    Loading experiences…
+  </p>
 
 </div>
+
+
+<div class="tours-grid" data-tours-grid></div>
+
+
+<p class="tours-empty" data-tours-empty hidden>
+  Nothing matches that search. Try a town, like Ponce, or
+  something you feel like doing, like waterfalls or coffee.
+</p>
+
+
+<div class="tours-more" data-tours-more hidden>
+
+  <button class="button" type="button">
+    Show all experiences
+  </button>
+
+</div>
+
+
+<p class="tours-error" data-tours-error hidden>
+  We couldn't load the experience list right now.
+  <a
+    href="https://wa.me/19393609002"
+    target="_blank"
+    rel="noopener noreferrer">Message us on WhatsApp</a>
+  and we'll send you everything we run.
+</p>
+
 
 <noscript>
 
-Please enable JavaScript to load our booking system.
+  <p class="tours-error">
+    Please enable JavaScript to browse our experiences, or
+    <a href="https://wa.me/19393609002">message us on WhatsApp</a>.
+  </p>
 
 </noscript>
-
-</div>
 
 </div>
 
@@ -1124,6 +1177,8 @@ async>
 </script>
 
 <script src="script.js"></script>
+
+<script src="tours.js"></script>
 
 </body>
 

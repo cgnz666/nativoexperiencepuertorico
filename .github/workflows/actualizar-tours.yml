@@ -1,0 +1,56 @@
+# ==========================================
+# ACTUALIZAR LOS TOURS DESDE BÓKUN
+#
+# Consulta la lista de producto de Bókun y guarda
+# tours.json en el repositorio. La página lee ese
+# archivo, así que el sitio refleja lo que haya en
+# Bókun sin que nadie toque código.
+#
+# No usa credenciales: el endpoint es público.
+# ==========================================
+
+name: Actualizar tours
+
+on:
+  schedule:
+    # Cuatro veces al día, en horas UTC
+    - cron: "0 5,11,17,23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: actualizar-tours
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Consultar Bókun
+        run: node scripts/actualizar-tours.mjs
+
+      - name: Publicar si algo cambió
+        run: |
+          if [ -z "$(git status --porcelain tours.json)" ]; then
+            echo "Sin cambios en los tours."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          cantidad=$(node -e "console.log(require('./tours.json').count)")
+          git add tours.json
+          git commit -m "Actualizar datos de tours desde Bókun ($cantidad tours)"
+          git push
