@@ -23,6 +23,32 @@ Si existe una carpeta `contexto/` en el proyecto, leer sus archivos antes de emp
 - No borrar ni sobrescribir archivos sin que se pida. Cambios grandes van en una rama de git.
 - Las notas internas (dudas, pendientes, cosas a verificar) van en el chat, nunca dentro del sitio ni de los entregables.
 - No inventar datos del negocio (precios, horarios, teléfonos, direcciones). Si falta un dato, preguntar o dejarlo marcado en el chat.
+- Nunca trabajar a ciegas sobre algo que no se ha podido ver. Si hace falta cargar el sitio publicado, un widget de terceros o cualquier recurso externo, pedírselo a C antes de empezar, nombrando los dominios exactos y para qué se necesitan. Ver **Acceso a sitios externos**.
+
+## 2.1 Acceso a sitios externos
+
+Las sesiones en la nube salen a internet por una política de red del entorno.
+Por defecto está en **Trusted**, que solo permite paquetes, GitHub y SDKs: ni el
+sitio publicado ni los widgets de terceros se pueden cargar. Sin eso, Claude
+trabaja a ciegas y adivina cómo se ve el resultado.
+
+Cuando haga falta un dominio nuevo, Claude lo pide así: qué dominio, para qué, y
+qué deja de poder verificar si no lo tiene.
+
+C lo habilita en **claude.ai/code** → icono de nube sobre la caja de mensaje →
+**Nube** → pasar el cursor sobre el entorno y pulsar el **engranaje** →
+**Network access** a **Custom** → un dominio por línea, marcando
+**"Also include default list of common package managers"** para no perder lo
+que ya funciona.
+
+Dominios ya habilitados en este proyecto:
+
+| Dominio | Para qué |
+|---|---|
+| `*.bokun.io` | Cargar el widget de reservas y consultar la API de productos |
+| `imgcdn.bokun.tools` | Fotos de los tours. Ojo, es `.tools`, no lo cubre el comodín de `.io` |
+| `nativoexperiencepuertorico.com` | Ver el sitio publicado tal como lo ve un visitante |
+| `cgnz666.github.io` | Ver la versión de GitHub Pages antes del dominio propio |
 
 ## 3. El ciclo de trabajo
 
@@ -106,3 +132,4 @@ Cuando C corrija algo, agregar aquí la regla correspondiente para que el error 
 ### Reglas aprendidas
 
 - El idioma del contenido lo decide C, no este archivo. Al detectar que una petición choca con el idioma del sitio existente, preguntar antes de escribir una sola línea.
+- Antes de opinar o rediseñar algo que depende de un recurso externo, comprobar si se puede cargar de verdad. Si no, pedir el dominio y esperar, en vez de trabajar sobre un simulacro.
