@@ -1432,7 +1432,7 @@ BÓKUN PRODUCT LIST
 
   padding:120px 0 135px;
 
-  background:var(--sand);
+  background:transparent;
 }
 
 
@@ -1451,15 +1451,22 @@ SECTION TITLE
 .product-list-section .section-title span{
   display:inline-block;
 
-  margin-bottom:14px;
+  margin-bottom:16px;
+  padding:8px 15px;
 
-  color:#056a7e;
+  color:#087b8c;
+  background:rgba(255,255,255,.65);
+  border:1px solid rgba(8,123,140,.14);
+  border-radius:999px;
 
-  font-size:.82rem;
+  font-size:.78rem;
   font-weight:800;
-  letter-spacing:.22em;
+  letter-spacing:2px;
   line-height:1;
   text-transform:uppercase;
+
+  box-shadow:
+    0 8px 24px rgba(5,79,90,.08);
 }
 
 .product-list-section .section-title h2{
