@@ -114,6 +114,7 @@ function iniciarCarruseles(raiz) {
     function arrancar() {
       window.clearInterval(temporizador);
       temporizador = window.setInterval(avanzar, 4500);
+      galeria.temporizadorDelCarrusel = temporizador;
     }
 
     function pausar() {
@@ -131,14 +132,27 @@ function iniciarCarruseles(raiz) {
        cambio no se vea vacío */
     cargar(laminas[1]);
 
-    window.setTimeout(function () {
+    galeria.arranqueDelCarrusel = window.setTimeout(function () {
       avanzar();
       arrancar();
     }, 4500 + retrasoInicial);
   });
 }
 
+/* Al repintar una lista, los carruseles anteriores hay que
+   pararlos: si no, sus temporizadores siguen vivos apuntando
+   a tarjetas que ya no están en la página. */
+function detenerCarruseles(raiz) {
+  (raiz || document)
+    .querySelectorAll("[data-featured-slideshow]")
+    .forEach(function (galeria) {
+      window.clearInterval(galeria.temporizadorDelCarrusel);
+      window.clearTimeout(galeria.arranqueDelCarrusel);
+    });
+}
+
 window.iniciarCarruseles = iniciarCarruseles;
+window.detenerCarruseles = detenerCarruseles;
 
 document.addEventListener("DOMContentLoaded", function () {
   iniciarCarruseles(document);

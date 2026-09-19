@@ -176,6 +176,10 @@ document.addEventListener("DOMContentLoaded", function () {
         ? encontrados
         : encontrados.slice(0, AL_PRINCIPIO);
 
+    if (window.detenerCarruseles) {
+      window.detenerCarruseles(rejilla);
+    }
+
     rejilla.innerHTML = visibles
       .map((tour, indice) => tarjetaDe(tour, indice))
       .join("");
