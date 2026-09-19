@@ -1432,7 +1432,7 @@ BÓKUN PRODUCT LIST
 
   padding:120px 0 135px;
 
-  background:transparent;
+  background:var(--sand);
 }
 
 
@@ -1451,22 +1451,15 @@ SECTION TITLE
 .product-list-section .section-title span{
   display:inline-block;
 
-  margin-bottom:16px;
-  padding:8px 15px;
+  margin-bottom:14px;
 
-  color:#087b8c;
-  background:rgba(255,255,255,.65);
-  border:1px solid rgba(8,123,140,.14);
-  border-radius:999px;
+  color:#056a7e;
 
-  font-size:.78rem;
+  font-size:.82rem;
   font-weight:800;
-  letter-spacing:2px;
+  letter-spacing:.22em;
   line-height:1;
   text-transform:uppercase;
-
-  box-shadow:
-    0 8px 24px rgba(5,79,90,.08);
 }
 
 .product-list-section .section-title h2{
@@ -1489,92 +1482,48 @@ SECTION TITLE
 
 
 /* ==========================================
-BÓKUN — OUTER DARK MENU FRAME
+BÓKUN — SUPERFICIE DEL WIDGET
+
+Sin marco. El widget trae su propio fondo blanco,
+así que él mismo hace de panel sobre el crema de
+la sección. Antes había cuatro capas apiladas:
+fondo, marco oscuro, caja blanca y widget.
 ========================================== */
 
 .widget-shell{
   position:relative;
 
-  width:min(1320px,92%);
-  min-height:1100px;
+  width:min(1320px,100%);
+
+  /* Reserva mientras Bókun carga. No fuerza el alto:
+     si el widget mide menos, no queda hueco muerto. */
+  min-height:480px;
+
   margin:0 auto;
-  padding:34px;
+  padding:0;
   box-sizing:border-box;
 
-  background:
-    radial-gradient(
-      circle at 10% 0%,
-      rgba(89,219,215,.18),
-      transparent 30%
-    ),
-    linear-gradient(
-      145deg,
-      #0a5360 0%,
-      #063944 48%,
-      #042f38 100%
-    );
-
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:38px;
-
-  overflow:hidden;
-
-  box-shadow:
-    0 36px 80px rgba(5,55,65,.25),
-    0 12px 32px rgba(5,55,65,.16);
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
 }
 
 
 /* ==========================================
-BÓKUN — OUTER FRAME HIGHLIGHT
-========================================== */
-
-.widget-shell::before{
-  content:"";
-
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,.07),
-      rgba(255,255,255,0) 32%
-    );
-
-  pointer-events:none;
-}
-
-
-/* Remove the previous inner outline */
-
-.widget-shell::after{
-  display:none;
-}
-
-
-/* ==========================================
-BÓKUN — WHITE INNER SHELL
+BÓKUN — CONTENEDOR DEL WIDGET
 ========================================== */
 
 .widget-shell .bokunWidget{
   position:relative;
-  z-index:1;
 
   width:100%;
-  min-height:1000px;
 
-  padding:12px;
+  padding:0;
 
-  background:#ffffff;
-  border-radius:22px;
-
-  overflow:visible;
+  background:transparent;
 
   box-sizing:border-box;
-
-  box-shadow:
-    0 8px 24px rgba(0,0,0,.14);
 }
 
 
@@ -1601,18 +1550,15 @@ BÓKUN — IFRAME
 
 
 /* ==========================================
-BÓKUN — NOSCRIPT MESSAGE
+BÓKUN — MENSAJE SIN JAVASCRIPT
 ========================================== */
 
 .widget-shell noscript{
-  position:relative;
-  z-index:1;
-
   display:block;
 
   padding:40px;
 
-  color:#ffffff;
+  color:var(--text);
   font-size:1rem;
   line-height:1.65;
   text-align:center;
@@ -1636,9 +1582,7 @@ PRODUCT LIST — LARGE / HIGH-RESOLUTION SCREENS
   }
 
   .widget-shell{
-    width:min(1480px,90%);
-    padding:40px;
-    border-radius:42px;
+    width:min(1480px,100%);
   }
 
 }
@@ -1651,17 +1595,7 @@ BÓKUN — TABLET
 @media (max-width:900px){
 
   .widget-shell{
-    width:min(740px,90%);
-    padding:24px;
-    border-radius:30px;
-  }
-
-  .widget-shell .bokunWidget{
-    min-height:950px;
-
-    padding:10px;
-
-    border-radius:18px;
+    width:100%;
   }
 
 }
@@ -1691,18 +1625,8 @@ BÓKUN — MOBILE
   }
 
   .widget-shell{
-    width:92%;
-    min-height:930px;
-    padding:12px;
-    border-radius:24px;
-  }
-
-  .widget-shell .bokunWidget{
-    min-height:860px;
-
-    padding:7px;
-
-    border-radius:16px;
+    width:100%;
+    min-height:420px;
   }
 
 }
@@ -2877,12 +2801,6 @@ RESPONSIVE — GENERAL WEBSITE MOBILE
     width:100%;
   }
 
-  .widget-shell{
-    min-height:1200px;
-    padding:14px;
-    border-radius:18px;
-  }
-
   .about-video{
     height:380px;
   }
@@ -3021,7 +2939,6 @@ PANTALLAS GRANDES — 1800px o más
 
   .widget-shell{
     width:100%;
-    min-height:1180px;
   }
 
   .hero-inner{
@@ -3241,10 +3158,6 @@ PANTALLAS MUY GRANDES — 2400px o más
 
   .tour-card-gallery{
     height:500px;
-  }
-
-  .widget-shell{
-    min-height:1260px;
   }
 
   .hero-inner{
