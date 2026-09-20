@@ -3,6 +3,12 @@
 --primary:#09a7c3;
 --primary-dark:#067b92;
 
+/* Fondo de los botones. El turquesa de marca con texto blanco
+   encima da 2.87:1 y el mínimo legible es 4.5:1. Estos dos dan
+   4.93:1 y 7.14:1, y apenas cambian el color de la marca. */
+--boton:#067b92;
+--boton-hover:#045a6b;
+
 --ocean:#032833;
 --ocean2:#021d26;
 
@@ -12,7 +18,9 @@
 
 --text:#14343b;
 
---muted:#6d7f84;
+/* Oscurecido: el gris anterior daba 3.81:1 sobre el
+   turquesa claro de las secciones, por debajo del mínimo */
+--muted:#55666c;
 
 --shadow:0 20px 60px rgba(0,0,0,.14);
 
@@ -206,7 +214,7 @@ HEADER / NAVIGATION BAR
 
   padding:0 28px;
 
-  background:var(--primary);
+  background:var(--boton);
   color:#ffffff;
 
   border-radius:999px;
@@ -233,7 +241,7 @@ HEADER / NAVIGATION BAR
 
 .nav-button:hover{
   color:#ffffff;
-  background:var(--primary-dark);
+  background:var(--boton-hover);
 
   transform:translateY(-2px);
 
@@ -879,7 +887,9 @@ letter-spacing:.22em;
 
 text-transform:uppercase;
 
-color:var(--primary);
+/* El turquesa de marca en texto pequeño sobre fondo
+   claro se queda en 2.6:1. Este llega a 5.7:1. */
+color:#056a7e;
 
 }
 
@@ -968,7 +978,7 @@ FEATURED — SECTION TITLE
 .featured-section .section-title span{
   display:block;
   margin-bottom:12px;
-  color:var(--primary);
+  color:#056a7e;
   font-size:.86rem;
   font-weight:800;
   letter-spacing:1.8px;
@@ -1202,7 +1212,9 @@ FEATURED — CONTENT TAG
   display:block;
   margin-bottom:12px;
 
-  color:var(--primary);
+  /* El turquesa de marca en mayúsculas pequeñas sobre
+     blanco se queda en 2.86:1. Este llega a 6.2:1. */
+  color:#056a7e;
   font-size:.76rem;
   font-weight:800;
   letter-spacing:1.5px;
@@ -1255,7 +1267,7 @@ FEATURED — CARD BUTTON
   box-sizing:border-box;
 
   color:#ffffff;
-  background:var(--primary);
+  background:var(--boton);
   border:0;
   border-radius:999px;
 
@@ -1285,7 +1297,7 @@ FEATURED — CARD BUTTON
 
 .featured-tour-card .card-button:hover{
   color:#ffffff;
-  background:var(--primary-dark);
+  background:var(--boton-hover);
   transform:translateY(-2px);
 
   box-shadow:
@@ -1554,12 +1566,10 @@ LISTADO DE TOURS — BARRA DE BÚSQUEDA
 }
 
 .tours-search input:focus{
-  outline:none;
-
-  border-color:var(--primary);
+  border-color:var(--boton);
 
   box-shadow:
-    0 0 0 4px rgba(9,167,195,.16),
+    0 0 0 4px rgba(6,123,146,.22),
     0 8px 24px rgba(5,79,90,.07);
 }
 
@@ -1570,11 +1580,23 @@ LISTADO DE TOURS — BARRA DE BÚSQUEDA
   appearance:none;
 }
 
-.tours-count{
-  color:#4e6a70;
+/* Texto que solo existe para los lectores de pantalla */
 
-  font-size:.95rem;
-  font-weight:600;
+.solo-lectores{
+  position:absolute;
+
+  width:1px;
+  height:1px;
+
+  margin:-1px;
+  padding:0;
+
+  overflow:hidden;
+
+  clip-path:inset(50%);
+  white-space:nowrap;
+
+  border:0;
 }
 
 
@@ -1640,11 +1662,34 @@ trae Bókun y que las destacadas no tienen.
   color:var(--ocean);
 }
 
-.product-stars{
-  color:#e8a33d;
+/* Las mismas estrellas de la sección de reseñas. Se dibujan
+   dos veces, una apagada y otra encima recortada al ancho que
+   corresponde a la nota, para que un 4.9 se vea distinto de un 5. */
 
-  font-size:1.05rem;
+.product-stars{
+  position:relative;
+
+  display:inline-block;
+
+  font-size:1rem;
   line-height:1;
+  letter-spacing:2px;
+
+  white-space:nowrap;
+}
+
+.product-stars-base{
+  color:rgba(9,167,195,.26);
+}
+
+.product-stars-fill{
+  position:absolute;
+  top:0;
+  left:0;
+
+  overflow:hidden;
+
+  color:var(--primary);
 }
 
 .product-card .product-excerpt{
@@ -1673,7 +1718,7 @@ trae Bókun y que las destacadas no tienen.
 }
 
 .product-duration{
-  color:#5d7f86;
+  color:#55666c;
 
   font-size:.88rem;
 }
@@ -1683,7 +1728,7 @@ trae Bókun y que las destacadas no tienen.
   align-items:baseline;
   gap:6px;
 
-  color:#5d7f86;
+  color:#55666c;
 
   font-size:.82rem;
   white-space:nowrap;
@@ -1723,7 +1768,7 @@ LISTADO DE TOURS — VER MÁS, VACÍO Y ERROR
   font-weight:800;
   color:#ffffff;
 
-  background:var(--primary);
+  background:var(--boton);
   border:0;
   border-radius:999px;
 
@@ -1737,7 +1782,7 @@ LISTADO DE TOURS — VER MÁS, VACÍO Y ERROR
 }
 
 .tours-more button:hover{
-  background:var(--primary-dark);
+  background:var(--boton-hover);
 
   transform:translateY(-2px);
 }
@@ -1842,10 +1887,6 @@ LISTADO DE TOURS — MÓVIL
     flex:0 0 auto;
 
     max-width:none;
-  }
-
-  .tours-count{
-    text-align:center;
   }
 
   .tours-more button{
@@ -2028,7 +2069,7 @@ ABOUT
   padding:13px 25px;
 
   color:#ffffff;
-  background:#0fa8c4;
+  background:var(--boton);
   border:0;
   border-radius:999px;
 
@@ -2477,7 +2518,7 @@ REVIEWS — TEXT
 .review-card span{
   display:block;
 
-  color:#7c8b90;
+  color:#5f7075;
   font-size:.9rem;
 }
 
@@ -2503,7 +2544,7 @@ REVIEWS — BUTTON
   padding:16px 34px;
 
   color:#ffffff;
-  background:var(--primary);
+  background:var(--boton);
   border:2px solid var(--primary);
   border-radius:999px;
 
@@ -2527,7 +2568,7 @@ REVIEWS — BUTTON
 
 .reviews-button .button:hover{
   color:#ffffff;
-  background:var(--primary-dark);
+  background:var(--boton-hover);
   border-color:var(--primary-dark);
 
   transform:translateY(-3px);
@@ -2689,7 +2730,7 @@ CONTACT — ACTION BUTTONS
 
 .contact-buttons .button-primary{
   color:#ffffff;
-  background:var(--primary);
+  background:var(--boton);
   border:2px solid var(--primary);
 
   box-shadow:
@@ -2705,7 +2746,7 @@ CONTACT — ACTION BUTTONS
 
 .contact-buttons .button-primary:hover{
   color:#ffffff;
-  background:var(--primary-dark);
+  background:var(--boton-hover);
   border-color:var(--primary-dark);
 
   transform:translateY(-3px);
@@ -3606,6 +3647,433 @@ devuelve dentro de un panel desplegable.
   .nav-cta-item a:link,
   .nav-cta-item a:visited{
     color:var(--primary-dark);
+  }
+
+}
+
+
+/* ==========================================
+PÁGINA DE TOURS — EL MAR DE FONDO
+
+El video va fijo al viewport y el contenido pasa
+por encima. Si se estirara sobre el alto completo
+de la página, que son varios miles de píxeles, se
+vería borroso y pesaría en el desplazamiento.
+========================================== */
+
+.tours-page{
+  background:var(--ocean);
+}
+
+.ocean-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:0;
+
+  overflow:hidden;
+}
+
+.ocean-video{
+  display:block;
+
+  width:100%;
+  height:100%;
+  max-width:none;
+
+  object-fit:cover;
+  object-position:center;
+}
+
+.ocean-overlay{
+  position:absolute;
+  inset:0;
+
+  /* Fuerte arriba, donde va el titular en blanco, y más
+     suave abajo, donde solo hay tarjetas opacas y el agua
+     puede verse de verdad. */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2,26,34,.72) 0%,
+      rgba(2,26,34,.60) 38%,
+      rgba(2,26,34,.46) 100%
+    );
+}
+
+/* Todo lo demás navega por encima del mar */
+
+.tours-page .site-header,
+.tours-page main,
+.tours-page footer{
+  position:relative;
+  z-index:1;
+}
+
+.tours-page section[id]{
+  scroll-margin-top:80px;
+}
+
+
+/* ==========================================
+PÁGINA DE TOURS — HERO
+========================================== */
+
+.tours-hero{
+  padding:170px 0 54px;
+
+  color:#ffffff;
+}
+
+.tours-hero-eyebrow{
+  display:inline-block;
+
+  margin-bottom:18px;
+
+  color:#7fe0e8;
+
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+}
+
+.tours-hero h1{
+  max-width:14ch;
+
+  margin:0;
+
+  font-size:clamp(2.6rem,6vw,5rem);
+  font-weight:300;
+  line-height:1.02;
+  letter-spacing:-.025em;
+
+  text-shadow:0 4px 30px rgba(0,0,0,.3);
+}
+
+.tours-hero h1 span{
+  display:block;
+
+  color:#e8d7c0;
+}
+
+.tours-hero-lead{
+  max-width:52ch;
+
+  margin:26px 0 0;
+
+  color:rgba(255,255,255,.88);
+
+  font-size:1.13rem;
+  line-height:1.75;
+
+  text-shadow:0 2px 16px rgba(0,0,0,.3);
+}
+
+
+/* ==========================================
+PÁGINA DE TOURS — CATÁLOGO SOBRE EL MAR
+
+Las tarjetas son blancas y se leen solas. Lo que
+cambia es el texto suelto, que sobre el agua tiene
+que ir en claro.
+========================================== */
+
+.tours-catalog{
+  padding:0 0 110px;
+}
+
+.tours-page .tours-empty,
+.tours-page .tours-error{
+  color:rgba(255,255,255,.92);
+
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
+}
+
+.tours-page .tours-error a{
+  color:#7fe0e8;
+}
+
+.tours-page .tours-grid{
+  width:100%;
+
+  /* Más separación que en la portada: por ahí se ve el mar */
+  gap:34px;
+}
+
+.tours-page .tours-toolbar{
+  width:100%;
+}
+
+
+/* ==========================================
+PORTADA — BOTÓN HACIA EL CATÁLOGO COMPLETO
+========================================== */
+
+.featured-more{
+  display:flex;
+  justify-content:center;
+
+  margin-top:52px;
+}
+
+.featured-more a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  height:58px;
+
+  padding:0 40px;
+
+  border-radius:999px;
+
+  background:var(--boton);
+  color:#ffffff;
+
+  font-size:1.02rem;
+  font-weight:800;
+
+  box-shadow:0 18px 38px rgba(9,167,195,.28);
+
+  transition:
+    background .25s ease,
+    transform .25s ease,
+    gap .25s ease;
+}
+
+.featured-more a:link,
+.featured-more a:visited{
+  color:#ffffff;
+}
+
+.featured-more a:hover{
+  gap:16px;
+
+  background:var(--boton-hover);
+
+  transform:translateY(-2px);
+}
+
+
+@media (max-width:700px){
+
+  .tours-hero{
+    padding:130px 0 40px;
+  }
+
+}
+
+
+@media (max-width:560px){
+
+  .tours-hero{
+    padding:112px 0 32px;
+  }
+
+  .tours-hero h1{
+    font-size:2.5rem;
+  }
+
+  .tours-hero-lead{
+    font-size:1.02rem;
+  }
+
+  .tours-catalog{
+    padding-bottom:76px;
+  }
+
+  .featured-more{
+    margin-top:36px;
+  }
+
+  .featured-more a{
+    width:100%;
+  }
+
+}
+
+
+/* ==========================================
+ACCESIBILIDAD
+
+Tres cosas que cambian mucho para quien ve poco
+o navega sin ratón.
+========================================== */
+
+/* 1 · Salto al contenido. Invisible hasta que el
+   tabulador lo alcanza. Sin esto hay que recorrer
+   todo el menú en cada página. */
+
+.salto-al-contenido{
+  position:absolute;
+  top:-100px;
+  left:16px;
+  z-index:2000;
+
+  padding:14px 22px;
+
+  background:var(--ocean);
+  color:#ffffff;
+
+  font-size:1rem;
+  font-weight:700;
+
+  border-radius:0 0 12px 12px;
+
+  transition:top .18s ease;
+}
+
+.salto-al-contenido:link,
+.salto-al-contenido:visited{
+  color:#ffffff;
+}
+
+.salto-al-contenido:focus{
+  top:0;
+}
+
+
+/* 2 · Un indicador de foco propio, grueso y separado
+   del elemento, en lugar del contorno de 1px del
+   navegador. Solo aparece al navegar con teclado. */
+
+:focus-visible{
+  outline:3px solid var(--ocean);
+  outline-offset:3px;
+
+  border-radius:4px;
+}
+
+/* Sobre fondos oscuros el contorno oscuro no se vería */
+
+.site-header .nav-button:focus-visible,
+.hero :focus-visible,
+.island-story :focus-visible,
+.contact-section :focus-visible,
+footer :focus-visible,
+.tours-page :focus-visible,
+.svc-inquire :focus-visible{
+  outline-color:#ffffff;
+}
+
+.tours-page .product-card :focus-visible,
+.tours-page .tours-search input:focus-visible{
+  outline-color:var(--ocean);
+}
+
+/* El campo de búsqueda anulaba el contorno y lo
+   sustituía por un halo demasiado tenue */
+
+.tours-search input:focus-visible{
+  outline:3px solid var(--ocean);
+  outline-offset:2px;
+}
+
+
+/* 3 · La línea de estrellas se quedaba en 23px de alto
+   y el mínimo para pulsar con el dedo son 24 */
+
+.product-rating{
+  min-height:24px;
+
+  padding:2px 0;
+}
+
+
+/* ==========================================
+ACCESIBILIDAD · PARAR LAS FOTOS QUE ROTAN
+========================================== */
+
+.pausar-fotos{
+  padding:9px 16px;
+
+  background:transparent;
+  border:1px solid rgba(7,49,62,.22);
+  border-radius:999px;
+
+  color:#4e6a70;
+
+  font-family:inherit;
+  font-size:.84rem;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:
+    border-color .25s ease,
+    color .25s ease;
+}
+
+.pausar-fotos:hover{
+  border-color:var(--boton);
+
+  color:var(--boton);
+}
+
+.featured-controles{
+  display:flex;
+  justify-content:center;
+
+  margin-top:34px;
+}
+
+.tours-page .pausar-fotos{
+  border-color:rgba(255,255,255,.4);
+
+  color:rgba(255,255,255,.92);
+}
+
+.tours-page .pausar-fotos:hover{
+  border-color:#ffffff;
+
+  color:#ffffff;
+}
+
+
+/* ==========================================
+RESERVAR HABLANDO CON ALGUIEN
+
+Para quien el calendario del widget no es la vía
+más cómoda, y para quien prefiere que se lo
+resuelvan por voz.
+========================================== */
+
+.reserva-por-voz{
+  width:min(1320px,100%);
+
+  margin:0 auto 34px;
+  padding:16px 22px;
+
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:16px;
+
+  color:#ffffff;
+
+  font-size:1rem;
+  line-height:1.65;
+}
+
+.reserva-por-voz a{
+  color:#ffffff;
+
+  font-weight:700;
+
+  border-bottom:2px solid rgba(255,255,255,.6);
+}
+
+.reserva-por-voz a:hover{
+  border-bottom-color:#ffffff;
+}
+
+
+@media (max-width:560px){
+
+  .reserva-por-voz{
+    padding:14px 18px;
+
+    font-size:.96rem;
   }
 
 }

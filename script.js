@@ -134,10 +134,16 @@ function iniciarCarruseles(raiz) {
     }
 
     function arrancar() {
+      if (window.carruselesPausados) {
+        return;
+      }
+
       window.clearInterval(temporizador);
       temporizador = window.setInterval(avanzar, 4500);
       galeria.temporizadorDelCarrusel = temporizador;
     }
+
+    galeria.reanudarCarrusel = arrancar;
 
     function pausar() {
       window.clearInterval(temporizador);
@@ -150,7 +156,7 @@ function iniciarCarruseles(raiz) {
       tarjeta.addEventListener("mouseleave", arrancar);
     }
 
-    if (menosMovimiento) {
+    if (menosMovimiento || window.carruselesPausados) {
       return;
     }
 
@@ -177,8 +183,46 @@ function detenerCarruseles(raiz) {
     });
 }
 
+/* Interruptor general de las fotos que rotan solas. Hace falta
+   para quien necesita parar el movimiento para poder leer, y no
+   tiene activada la preferencia del sistema. */
+function alternarCarruseles(pausar) {
+  window.carruselesPausados = pausar;
+
+  document
+    .querySelectorAll("[data-featured-slideshow]")
+    .forEach(function (galeria) {
+      if (pausar) {
+        window.clearInterval(galeria.temporizadorDelCarrusel);
+        window.clearTimeout(galeria.arranqueDelCarrusel);
+      } else if (galeria.reanudarCarrusel) {
+        galeria.reanudarCarrusel();
+      }
+    });
+}
+
 window.iniciarCarruseles = iniciarCarruseles;
 window.detenerCarruseles = detenerCarruseles;
+window.alternarCarruseles = alternarCarruseles;
+
+document.addEventListener("DOMContentLoaded", function () {
+  const interruptor = document.querySelector("[data-pausar-fotos]");
+
+  if (!interruptor) {
+    return;
+  }
+
+  interruptor.addEventListener("click", function () {
+    const pausar = interruptor.getAttribute("aria-pressed") !== "true";
+
+    alternarCarruseles(pausar);
+
+    interruptor.setAttribute("aria-pressed", String(pausar));
+    interruptor.textContent = pausar
+      ? "Resume photo slideshows"
+      : "Pause photo slideshows";
+  });
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   iniciarCarruseles(document);

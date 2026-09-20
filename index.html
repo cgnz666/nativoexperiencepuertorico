@@ -24,6 +24,8 @@ rel="stylesheet">
 
 <body>
 
+<a class="salto-al-contenido" href="#contenido">Skip to main content</a>
+
 <header class="site-header">
 
 <div class="container nav-wrap">
@@ -54,7 +56,7 @@ rel="stylesheet">
 
 <li><a href="#featured">Featured</a></li>
 
-<li><a href="#tours">Tours</a></li>
+<li><a href="tours.html">Tours</a></li>
 
 <li><a href="services.html">Services</a></li>
 
@@ -63,13 +65,13 @@ rel="stylesheet">
 
 <li><a href="#contact">Contact</a></li>
 
-<li class="nav-cta-item"><a href="#tours">Book Now</a></li>
+<li class="nav-cta-item"><a href="tours.html">Book Now</a></li>
 
 </ul>
 
 </nav>
 
-<a class="nav-button" href="#tours">
+<a class="nav-button" href="tours.html">
 
 Book Now
 
@@ -78,6 +80,8 @@ Book Now
 </div>
 
 </header>
+
+<main id="contenido">
 
 <section class="hero" id="home">
 
@@ -88,6 +92,11 @@ Book Now
     <div class="hero-overlay"></div>
 
     <div class="hero-inner">
+
+        <h1 class="solo-lectores">
+            Nativo Experience Puerto Rico: authentic tours and private
+            services across the island
+        </h1>
 
         <div class="hero-logo-wrapper">
 
@@ -113,7 +122,7 @@ Book Now
 
         <div class="hero-cta-row">
 
-            <a class="hero-cta hero-cta-primary" href="#tours">
+            <a class="hero-cta hero-cta-primary" href="tours.html">
                 Explore Experiences
             </a>
 
@@ -605,6 +614,29 @@ FEATURED CARD — BEYOND LA PERLA
 
     </div>
 
+
+    <div class="featured-controles">
+
+      <button
+        class="pausar-fotos"
+        type="button"
+        data-pausar-fotos
+        aria-pressed="false">
+        Pause photo slideshows
+      </button>
+
+    </div>
+
+
+    <div class="featured-more">
+
+      <a href="tours.html">
+        View all experiences
+        <span aria-hidden="true">→</span>
+      </a>
+
+    </div>
+
   </div>
 
 </section>
@@ -614,105 +646,6 @@ FEATURED CARD — BEYOND LA PERLA
 
 
 
-<section id="tours" class="product-list-section">
-
-<div class="container">
-
-<div class="section-title">
-
-<span>
-
-Explore Everything
-
-</span>
-
-<h2>
-
-Adventures We Offer
-
-</h2>
-
-<p>
-
-Looking for something different? Browse our complete collection of
-experiences across Puerto Rico.
-
-</p>
-
-</div>
-
-<div class="tours-toolbar">
-
-  <label class="tours-search">
-
-    <svg
-      class="tours-search-icon"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      aria-hidden="true">
-      <circle cx="11" cy="11" r="7"></circle>
-      <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
-    </svg>
-
-    <input
-      type="search"
-      data-tours-search
-      placeholder="Search by name, town or interest"
-      aria-label="Search experiences"
-      autocomplete="off">
-
-  </label>
-
-  <p class="tours-count" data-tours-count role="status">
-    Loading experiences…
-  </p>
-
-</div>
-
-
-<div class="tours-grid" data-tours-grid></div>
-
-
-<p class="tours-empty" data-tours-empty hidden>
-  Nothing matches that search. Try a town, like Ponce, or
-  something you feel like doing, like waterfalls or coffee.
-</p>
-
-
-<div class="tours-more" data-tours-more hidden>
-
-  <button type="button">
-    Show all experiences
-  </button>
-
-</div>
-
-
-<p class="tours-error" data-tours-error hidden>
-  We couldn't load the experience list right now.
-  <a
-    href="https://wa.me/19393609002"
-    target="_blank"
-    rel="noopener noreferrer">Message us on WhatsApp</a>
-  and we'll send you everything we run.
-</p>
-
-
-<noscript>
-
-  <p class="tours-error">
-    Please enable JavaScript to browse our experiences, or
-    <a href="https://wa.me/19393609002">message us on WhatsApp</a>.
-  </p>
-
-</noscript>
-
-</div>
-
-</section>
 
       </div>
 
@@ -791,7 +724,7 @@ ISLAND STORY — SHARED CONTINUOUS BACKGROUND
         </p>
 
        <a
-  href="#tours"
+  href="tours.html"
   class="button button-primary">
 
   Explore All Experiences
@@ -838,7 +771,8 @@ but through the eyes of those who call it home.
 
 <img
 src="assets/logo-outline.png"
-class="story-logo">
+class="story-logo"
+alt="Nativo Experience turtle emblem">
 
 </div>
 
@@ -1069,6 +1003,9 @@ Read all ★★★★★ Reviews →
 
 
 
+</main>
+
+
 <footer>
 
 <div class="container footer-grid">
@@ -1103,7 +1040,7 @@ Featured
 
 </a>
 
-<a href="#tours">
+<a href="tours.html">
 
 Tours
 
@@ -1177,8 +1114,6 @@ async>
 </script>
 
 <script src="script.js"></script>
-
-<script src="tours.js"></script>
 
 </body>
 

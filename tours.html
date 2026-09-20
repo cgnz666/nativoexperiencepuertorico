@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>All Experiences | Nativo Experience Puerto Rico</title>
+
+<meta
+name="description"
+content="Every tour and experience Nativo Experience runs across Puerto Rico, from waterfalls and coffee farms to Old San Juan and the south coast.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body class="tours-page">
+
+<a class="salto-al-contenido" href="#contenido">Skip to main content</a>
+
+<!-- ==========================================
+EL MAR, DETRÁS DE TODO
+
+Va fijo al viewport: si se estirara sobre el alto
+completo de la página se vería borroso.
+========================================== -->
+
+<div class="ocean-backdrop" aria-hidden="true">
+
+  <video
+    class="ocean-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="assets/ocean-poster.jpg">
+    <source src="assets/ocean-loop.mp4" type="video/mp4">
+    <source src="assets/ocean-loop.webm" type="video/webm">
+  </video>
+
+  <div class="ocean-overlay"></div>
+
+</div>
+
+
+<header class="site-header">
+
+  <div class="container nav-wrap">
+
+    <a class="brand" href="index.html#home" aria-label="Nativo Experience Puerto Rico">
+      <img
+        class="nav-island-logo"
+        src="assets/pr-island.png"
+        alt="Puerto Rico"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="primary-nav"
+      aria-label="Menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="primary-nav" id="primary-nav">
+
+      <ul class="nav-links">
+
+        <li><a href="index.html#featured">Featured</a></li>
+
+        <li><a href="tours.html" aria-current="page">Tours</a></li>
+
+        <li><a href="services.html">Services</a></li>
+
+        <li><a href="index.html#about">About</a></li>
+
+        <li><a href="index.html#contact">Contact</a></li>
+
+        <li class="nav-cta-item"><a href="#catalog">Browse Tours</a></li>
+
+      </ul>
+
+    </nav>
+
+    <a class="nav-button" href="#catalog">
+
+      Browse Tours
+
+    </a>
+
+  </div>
+
+</header>
+
+
+<main id="contenido">
+
+<!-- ==========================================
+HERO
+========================================== -->
+
+<section class="tours-hero">
+
+  <div class="container">
+
+    <span class="tours-hero-eyebrow">
+      Every Experience
+    </span>
+
+    <h1>
+      Adventures
+      <span>we offer.</span>
+    </h1>
+
+    <p class="tours-hero-lead">
+      Every tour we run, in one place. Search by town, by what you feel
+      like doing, or just scroll until something pulls you in.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ==========================================
+CATÁLOGO
+========================================== -->
+
+<section class="tours-catalog" id="catalog">
+
+  <div class="container">
+
+    <div class="tours-toolbar">
+
+      <label class="tours-search">
+
+        <svg
+          class="tours-search-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+        </svg>
+
+        <input
+          type="search"
+          data-tours-search
+          placeholder="Search by name, town or interest"
+          aria-label="Search experiences"
+          autocomplete="off">
+
+      </label>
+
+      <p class="solo-lectores" data-tours-count role="status"></p>
+
+      <button
+        class="pausar-fotos"
+        type="button"
+        data-pausar-fotos
+        aria-pressed="false">
+        Pause photo slideshows
+      </button>
+
+    </div>
+
+
+    <p class="reserva-por-voz">
+      Rather talk to a person? We take bookings by
+      <a
+        href="https://wa.me/19393609002"
+        target="_blank"
+        rel="noopener noreferrer">WhatsApp</a>
+      and by phone at
+      <a href="tel:+19393609002">+1 (939) 360-9002</a>,
+      and we'll set the whole thing up for you.
+    </p>
+
+
+    <div class="tours-grid" data-tours-grid></div>
+
+
+    <p class="tours-empty" data-tours-empty hidden>
+      Nothing matches that search. Try a town, like Ponce, or
+      something you feel like doing, like waterfalls or coffee.
+    </p>
+
+
+    <div class="tours-more" data-tours-more hidden>
+
+      <button type="button">
+        View all experiences
+      </button>
+
+    </div>
+
+
+    <p class="tours-error" data-tours-error hidden>
+      We couldn't load the experience list right now.
+      <a
+        href="https://wa.me/19393609002"
+        target="_blank"
+        rel="noopener noreferrer">Message us on WhatsApp</a>
+      and we'll send you everything we run.
+    </p>
+
+
+    <noscript>
+
+      <p class="tours-error">
+        Please enable JavaScript to browse our experiences, or
+        <a href="https://wa.me/19393609002">message us on WhatsApp</a>.
+      </p>
+
+    </noscript>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+  <div class="container footer-grid">
+
+    <div>
+
+      <img
+        class="footer-logo"
+        src="assets/logo-white.png"
+        alt="Nativo Experience Puerto Rico">
+
+      <p>
+
+        Authentic cultural experiences
+        across Puerto Rico.
+
+      </p>
+
+    </div>
+
+    <div>
+
+      <h4>
+
+        Explore
+
+      </h4>
+
+      <a href="index.html#featured">
+
+        Featured
+
+      </a>
+
+      <a href="tours.html">
+
+        Tours
+
+      </a>
+
+      <a href="services.html">
+
+        Services
+
+      </a>
+
+      <a href="index.html#about">
+
+        About
+
+      </a>
+
+      <a href="index.html#contact">
+
+        Contact
+
+      </a>
+
+    </div>
+
+    <div>
+
+      <h4>
+
+        Connect
+
+      </h4>
+
+      <a
+        href="https://www.instagram.com/nativoexperiencepr/"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        Instagram
+
+      </a>
+
+      <a
+        href="https://www.tripadvisor.com/Attraction_Review-g147320-d28063850-Reviews-Nativo_Experiences_Puerto_Rico-San_Juan_Puerto_Rico.html"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        Tripadvisor
+
+      </a>
+
+      <a
+        href="https://wa.me/19393609002"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        WhatsApp
+
+      </a>
+
+    </div>
+
+  </div>
+
+</footer>
+
+<script
+src="https://widgets.bokun.io/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=7fab5ffc-1687-4220-aff5-7a5a1f460898"
+async>
+
+</script>
+
+<script src="script.js"></script>
+
+<script src="tours.js"></script>
+
+</body>
+
+</html>

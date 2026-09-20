@@ -2,12 +2,28 @@
 
 Files:
 - index.html
+- tours.html
 - services.html
 - styles.css
 - services.css
 - script.js
+- tours.js
 - services.js
+- tours.json
+- scripts/actualizar-tours.mjs
+- .github/workflows/actualizar-tours.yml
 - assets/
+
+Tour catalogue (`tours.html`):
+The cards are built from `tours.json`, which a scheduled GitHub Action
+refreshes four times a day from the Bokun product list 110434. To add or
+remove a tour from the website, change that product list in Bokun. No code
+change is needed. The Action can also be run by hand from the Actions tab.
+
+Ocean background:
+- assets/ocean-loop.mp4 / .webm
+- assets/ocean-poster.jpg (first frame, shown while the video loads and
+  when the visitor asks for reduced motion)
 
 Upload these exact asset filenames:
 - assets/logo.png
