@@ -246,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
       zonaDeBoton.hidden = !hacenFalta;
 
       if (boton && hacenFalta) {
-        boton.textContent = `Show all ${tours.length} experiences`;
+        boton.textContent = "View all experiences";
       }
     }
   }
