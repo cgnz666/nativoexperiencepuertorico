@@ -229,10 +229,15 @@ document.addEventListener("DOMContentLoaded", function () {
       window.initializeBokunWidgets();
     }
 
+    /* No se muestra ninguna cifra en pantalla. Este texto solo
+       lo leen los lectores de pantalla, para que quien busca sepa
+       cuántos resultados salieron. */
     if (contador) {
       contador.textContent = busqueda
-        ? `${encontrados.length} of ${tours.length} experiences`
-        : `${tours.length} experiences across Puerto Rico`;
+        ? `${encontrados.length} ${
+            encontrados.length === 1 ? "experience" : "experiences"
+          } found`
+        : "";
     }
 
     if (vacio) {
