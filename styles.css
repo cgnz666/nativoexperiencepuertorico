@@ -3727,20 +3727,51 @@ PÁGINA DE TOURS — HERO
 
 
 .tours-hero{
+  position:relative;
+
   padding:170px 0 78px;
 
-  /* Oscurece solo la franja del titular, que es texto blanco
-     directamente sobre el video. Se desvanece antes de llegar
-     a las tarjetas para no apagar el mar otra vez. */
+  color:#ffffff;
+}
+
+/* La sombra que sostiene el titular.
+
+   Va en un pseudo-elemento que baja bastante más que el héroe y
+   se apaga con una curva suave. Un degradado corto de dos paradas
+   deja un canto visible justo donde cambia la pendiente, y sobre
+   agua en movimiento ese canto se lee como una viñeta pegada
+   encima. Repartido en muchas paradas y sobre el doble de altura,
+   el ojo no encuentra dónde empieza ni dónde acaba. */
+
+.tours-hero::before{
+  content:"";
+
+  position:absolute;
+  z-index:-1;
+  inset:0 0 auto;
+  height:210%;
+
   background:
     linear-gradient(
       180deg,
-      rgba(2,26,34,.58) 0%,
-      rgba(2,26,34,.52) 80%,
+      rgba(2,26,34,.44) 0%,
+      rgba(2,26,34,.435) 8%,
+      rgba(2,26,34,.42) 16%,
+      rgba(2,26,34,.395) 24%,
+      rgba(2,26,34,.36) 31%,
+      rgba(2,26,34,.32) 38%,
+      rgba(2,26,34,.27) 45%,
+      rgba(2,26,34,.22) 52%,
+      rgba(2,26,34,.175) 59%,
+      rgba(2,26,34,.13) 66%,
+      rgba(2,26,34,.09) 73%,
+      rgba(2,26,34,.058) 80%,
+      rgba(2,26,34,.032) 87%,
+      rgba(2,26,34,.013) 94%,
       rgba(2,26,34,0) 100%
     );
 
-  color:#ffffff;
+  pointer-events:none;
 }
 
 .tours-hero-eyebrow{
