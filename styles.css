@@ -4032,8 +4032,12 @@ resuelvan por voz.
 
   /* Va después del botón de ver todas: quien llegó al final
      de la lista sin decidirse es justo quien agradece hablar
-     con alguien. */
-  margin:44px auto 0;
+     con alguien.
+
+     El margen es generoso a propósito. En un teléfono el botón
+     y este aviso ocupan los dos todo el ancho, y con poca
+     separación parecen dos botones pegados. */
+  margin:80px auto 0;
 
   text-align:center;
   padding:16px 22px;
@@ -4064,7 +4068,8 @@ resuelvan por voz.
 @media (max-width:560px){
 
   .reserva-por-voz{
-    padding:14px 18px;
+    margin-top:64px;
+    padding:18px;
 
     font-size:.96rem;
   }

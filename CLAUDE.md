@@ -110,6 +110,17 @@ Antes de entregar, confirmar cada punto:
 
 Si algún punto falla, volver a la Fase 2.
 
+### Fase 4.1 · Antes de publicar: refrescar la versión de los archivos
+
+Los navegadores guardan `styles.css` y los `.js` en caché, y en móvil
+los estiran más de lo que dice `cache-control`. Si no se cambia el
+nombre, C sigue viendo la versión vieja y parece que el arreglo no se
+publicó.
+
+Antes de cada publicación, subir el sufijo `?v=` de los enlaces a CSS
+y JS en `index.html`, `tours.html` y `services.html`. El formato es
+`?v=AAAAMMDD` más una letra si ya hubo una publicación ese día.
+
 ### Fase 5 · Entregar
 
 El mensaje de entrega en el chat es breve e incluye:
@@ -134,3 +145,5 @@ Cuando C corrija algo, agregar aquí la regla correspondiente para que el error 
 
 - El idioma del contenido lo decide C, no este archivo. Al detectar que una petición choca con el idioma del sitio existente, preguntar antes de escribir una sola línea.
 - Antes de opinar o rediseñar algo que depende de un recurso externo, comprobar si se puede cargar de verdad. Si no, pedir el dominio y esperar, en vez de trabajar sobre un simulacro.
+- Medir un espaciado no basta para darlo por bueno. En un teléfono, dos bloques que ocupan todo el ancho necesitan mucha más separación que los mismos elementos en escritorio, aunque el número de píxeles sea idéntico. Mirar la captura de móvil preguntándose si parecen dos piezas o una sola.
+- Si C dice que un arreglo publicado no le funciona, comprobar primero qué está sirviendo el dominio de verdad, antes de tocar código.
