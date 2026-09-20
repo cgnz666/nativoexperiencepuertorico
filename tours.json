@@ -1,12 +1,12 @@
 {
-  "updated": "2026-09-19T05:51:42.134Z",
+  "updated": "2026-09-20T19:13:56.476Z",
   "source": "Bókun · lista de producto 110434",
   "count": 19,
   "tours": [
     {
       "id": "1213460",
       "title": "Coffee Farm Hacienda Munoz, Caguas and Guavate Tour",
-      "excerpt": "Venture to Hacienda Muñoz, where the hills of San Lorenzo promise an authentic coffee adventure far from the crowds and deep in Puerto Rico's lush heart.",
+      "excerpt": "Venture to Hacienda Muñoz, where the hills of San Lorenzo promise an authentic coffee adventure far from the crowds.",
       "duration": "6 hours and 30 minutes",
       "price": 150,
       "currency": "USD",
@@ -16,20 +16,20 @@
       "reviewUrl": "https://www.tripadvisor.com/Attraction_Review-g147319-d28063850-Reviews-Nativo_Experiences_Puerto_Rico-Puerto_Rico.html",
       "photos": [
         "https://imgcdn.bokun.tools/f48e4a7f-79fc-429b-b20d-457044d358a1.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/69ccedfb-6e3a-4009-8793-80c09307ff36.jpg?w=800&h=600&mode=crop",
         "https://imgcdn.bokun.tools/eb87f7c7-605c-4f93-8d05-10cc00bfd841.jpg?w=800&h=600&mode=crop",
         "https://imgcdn.bokun.tools/563f9764-d598-4b7c-a568-707df31d677f.jpg?w=800&h=600&mode=crop",
-        "https://imgcdn.bokun.tools/712f2c94-5682-4432-aac2-db492e3c55c5.jpg?w=800&h=600&mode=crop",
-        "https://imgcdn.bokun.tools/2affc9b8-9a86-418e-bf3b-9f9f967e563f.jpg?w=800&h=600&mode=crop",
         "https://imgcdn.bokun.tools/fc474972-9dee-4e5e-a080-3cbce380bcc0.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/a7a62181-3ef4-465d-90dd-a14453e18d78.jpg?w=800&h=600&mode=crop",
         "https://imgcdn.bokun.tools/9504bb95-8a0e-4d03-b383-013ed442528d.jpg?w=800&h=600&mode=crop",
-        "https://imgcdn.bokun.tools/9068c043-07b9-47c7-a69c-69214ea16af8.jpg?w=800&h=600&mode=crop"
+        "https://imgcdn.bokun.tools/712f2c94-5682-4432-aac2-db492e3c55c5.jpg?w=800&h=600&mode=crop"
       ],
       "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1213460?partialView=1"
     },
     {
       "id": "1198170",
       "title": "El Yunque Pristine Waterfalls & Natural Pools Experience",
-      "excerpt": "Embark on a thrilling rainforest quest to Quebrada Sonadora - a secret waterfall gem near El Yunque that locals treasure, far from the bustle of San Juan and deep into Puerto Rico's wild heart.",
+      "excerpt": "Embark on a thrilling rainforest quest to Quebrada Sonadora - a secret waterfall gem near El Yunque that locals treasure, deep into Puerto Rico's wild heart.",
       "duration": "5 hours",
       "price": 100,
       "currency": "USD",
@@ -39,10 +39,10 @@
       "reviewUrl": null,
       "photos": [
         "https://imgcdn.bokun.tools/997855ae-84b6-4f88-aa7a-f9937f2171c7.jpeg?w=800&h=600&mode=crop",
-        "https://imgcdn.bokun.tools/e5662bbf-35da-4c54-8bcf-6e1246831e83.jpeg?w=800&h=600&mode=crop",
-        "https://imgcdn.bokun.tools/ec80c514-c24a-4a0d-becc-861cbe29a3ad.jpeg?w=800&h=600&mode=crop",
         "https://imgcdn.bokun.tools/f523be7e-3ed8-4a72-950b-8b2c5001450e.jpeg?w=800&h=600&mode=crop",
-        "https://imgcdn.bokun.tools/24453b69-196c-42d9-8910-18821919ab21.jpeg?w=800&h=600&mode=crop"
+        "https://imgcdn.bokun.tools/24453b69-196c-42d9-8910-18821919ab21.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/e5662bbf-35da-4c54-8bcf-6e1246831e83.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/ec80c514-c24a-4a0d-becc-861cbe29a3ad.jpeg?w=800&h=600&mode=crop"
       ],
       "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1198170?partialView=1"
     },
