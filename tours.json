@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-20T19:13:56.476Z",
+  "updated": "2026-09-20T20:14:28.273Z",
   "source": "Bókun · lista de producto 110434",
-  "count": 19,
+  "count": 20,
   "tours": [
     {
       "id": "1213460",
@@ -405,6 +405,29 @@
         "https://imgcdn.bokun.tools/2dcc0127-0747-4bd0-b5b8-dba4e204bc79.jpeg?w=800&h=600&mode=crop"
       ],
       "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1265967?partialView=1"
+    },
+    {
+      "id": "1275712",
+      "title": "San Juan: Cocktail and Bar Hopping Taster",
+      "excerpt": "Miramar's top restaurants and bars in Puerto Rico. Unique mixology at three selected cocktail bars, each offering a cozy ambiance and distinctive style for a relaxing night out.",
+      "duration": "3 hours",
+      "price": 121,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": null,
+      "reviews": null,
+      "reviewUrl": null,
+      "photos": [
+        "https://imgcdn.bokun.tools/9e2ef0ae-cd83-4922-83bc-f2e326a0b9e7.png?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/abefa436-61df-41d1-8d0b-2db412eec2b2.png?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/28f4973a-181a-4703-a5c2-875aa2bcad2d.png?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/5f6da572-bf91-49b7-9b65-4f14cf48a478.png?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/429d700f-08df-45aa-9dd0-a78b48380d9d.png?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/2da6e998-2bb2-48a2-8e80-8e50496b2516.png?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/60bdcd14-e264-4d5d-812c-4563836031a2.png?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/369d23ba-2fa2-4ce4-a660-97210a4e1dac.png?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1275712?partialView=1"
     }
   ]
 }

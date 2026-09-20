@@ -3673,21 +3673,24 @@ vería borroso y pesaría en el desplazamiento.
 
   object-fit:cover;
   object-position:center;
+
+  filter:brightness(1.1) saturate(1.06);
 }
 
 .ocean-overlay{
   position:absolute;
   inset:0;
 
-  /* Fuerte arriba, donde va el titular en blanco, y más
-     suave abajo, donde solo hay tarjetas opacas y el agua
-     puede verse de verdad. */
+  /* El velo es fijo al viewport, así que no puede distinguir
+     el titular de las tarjetas: se queda ligero y cada texto
+     blanco lleva su propio respaldo. Lo único que hace aquí
+     es asentar el color del agua bajo las tarjetas. */
   background:
     linear-gradient(
       180deg,
-      rgba(2,26,34,.72) 0%,
-      rgba(2,26,34,.60) 38%,
-      rgba(2,26,34,.46) 100%
+      rgba(2,26,34,.34) 0%,
+      rgba(2,26,34,.26) 55%,
+      rgba(2,26,34,.20) 100%
     );
 }
 
@@ -3712,8 +3715,30 @@ vería borroso y pesaría en el desplazamiento.
 PÁGINA DE TOURS — HERO
 ========================================== */
 
+/* El marco de 1 px de la tarjeta se pintaba encima de su
+   propio fondo blanco, así que sobre fondo claro no se veía,
+   pero sobre el mar dibujaba una línea blanca alrededor del
+   carrusel. Aquí sobra: la sombra ya despega la tarjeta
+   del agua. */
+
+.tours-page .product-card{
+  border:0;
+}
+
+
 .tours-hero{
-  padding:170px 0 54px;
+  padding:170px 0 78px;
+
+  /* Oscurece solo la franja del titular, que es texto blanco
+     directamente sobre el video. Se desvanece antes de llegar
+     a las tarjetas para no apagar el mar otra vez. */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2,26,34,.58) 0%,
+      rgba(2,26,34,.52) 80%,
+      rgba(2,26,34,0) 100%
+    );
 
   color:#ffffff;
 }
@@ -3741,7 +3766,7 @@ PÁGINA DE TOURS — HERO
   line-height:1.02;
   letter-spacing:-.025em;
 
-  text-shadow:0 4px 30px rgba(0,0,0,.3);
+  text-shadow:0 4px 26px rgba(0,22,30,.6);
 }
 
 .tours-hero h1 span{
@@ -3755,12 +3780,12 @@ PÁGINA DE TOURS — HERO
 
   margin:26px 0 0;
 
-  color:rgba(255,255,255,.88);
+  color:#ffffff;
 
   font-size:1.13rem;
   line-height:1.75;
 
-  text-shadow:0 2px 16px rgba(0,0,0,.3);
+  text-shadow:0 2px 14px rgba(0,22,30,.7);
 }
 
 
@@ -3778,9 +3803,15 @@ que ir en claro.
 
 .tours-page .tours-empty,
 .tours-page .tours-error{
-  color:rgba(255,255,255,.92);
+  padding:18px 22px;
 
-  text-shadow:0 2px 12px rgba(0,0,0,.35);
+  background:rgba(3,32,42,.66);
+  border-radius:16px;
+
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+
+  color:#ffffff;
 }
 
 .tours-page .tours-error a{
@@ -4011,10 +4042,22 @@ ACCESIBILIDAD · PARAR LAS FOTOS QUE ROTAN
 }
 
 .tours-page .pausar-fotos{
-  color:rgba(255,255,255,.8);
+  padding:8px 15px;
+
+  background:rgba(3,32,42,.66);
+  border:1px solid rgba(255,255,255,.24);
+  border-radius:999px;
+
+  color:#ffffff;
+
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+
+  transition:background .25s ease;
 }
 
 .tours-page .pausar-fotos:hover{
+  background:rgba(3,32,42,.82);
   color:#ffffff;
 }
 
@@ -4040,11 +4083,19 @@ resuelvan por voz.
   margin:80px auto 0;
 
   text-align:center;
+  text-wrap:balance;
   padding:16px 22px;
 
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.28);
+  /* El panel es oscuro, no claro. Con el mar más luminoso,
+     un vidrio blanco dejaba el texto blanco encima de la
+     espuma, ilegible. Oscureciendo el panel el texto se lee
+     igual de bien sobre cualquier fotograma del video. */
+  background:rgba(3,32,42,.66);
+  border:1px solid rgba(255,255,255,.26);
   border-radius:16px;
+
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
 
   color:#ffffff;
 
@@ -4054,6 +4105,10 @@ resuelvan por voz.
 
 .reserva-por-voz a{
   color:#ffffff;
+
+  /* Un número de teléfono partido en dos renglones, con el
+     subrayado cortado por la mitad, se lee fatal. */
+  white-space:nowrap;
 
   font-weight:700;
 
