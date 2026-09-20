@@ -1640,11 +1640,34 @@ trae Bókun y que las destacadas no tienen.
   color:var(--ocean);
 }
 
-.product-stars{
-  color:#e8a33d;
+/* Las mismas estrellas de la sección de reseñas. Se dibujan
+   dos veces, una apagada y otra encima recortada al ancho que
+   corresponde a la nota, para que un 4.9 se vea distinto de un 5. */
 
-  font-size:1.05rem;
+.product-stars{
+  position:relative;
+
+  display:inline-block;
+
+  font-size:1rem;
   line-height:1;
+  letter-spacing:2px;
+
+  white-space:nowrap;
+}
+
+.product-stars-base{
+  color:rgba(9,167,195,.26);
+}
+
+.product-stars-fill{
+  position:absolute;
+  top:0;
+  left:0;
+
+  overflow:hidden;
+
+  color:var(--primary);
 }
 
 .product-card .product-excerpt{
@@ -3606,6 +3629,254 @@ devuelve dentro de un panel desplegable.
   .nav-cta-item a:link,
   .nav-cta-item a:visited{
     color:var(--primary-dark);
+  }
+
+}
+
+
+/* ==========================================
+PÁGINA DE TOURS — EL MAR DE FONDO
+
+El video va fijo al viewport y el contenido pasa
+por encima. Si se estirara sobre el alto completo
+de la página, que son varios miles de píxeles, se
+vería borroso y pesaría en el desplazamiento.
+========================================== */
+
+.tours-page{
+  background:var(--ocean);
+}
+
+.ocean-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:0;
+
+  overflow:hidden;
+}
+
+.ocean-video{
+  display:block;
+
+  width:100%;
+  height:100%;
+  max-width:none;
+
+  object-fit:cover;
+  object-position:center;
+}
+
+.ocean-overlay{
+  position:absolute;
+  inset:0;
+
+  /* Fuerte arriba, donde va el titular en blanco, y más
+     suave abajo, donde solo hay tarjetas opacas y el agua
+     puede verse de verdad. */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2,26,34,.72) 0%,
+      rgba(2,26,34,.60) 38%,
+      rgba(2,26,34,.46) 100%
+    );
+}
+
+/* Todo lo demás navega por encima del mar */
+
+.tours-page .site-header,
+.tours-page main,
+.tours-page footer{
+  position:relative;
+  z-index:1;
+}
+
+.tours-page section[id]{
+  scroll-margin-top:80px;
+}
+
+
+/* ==========================================
+PÁGINA DE TOURS — HERO
+========================================== */
+
+.tours-hero{
+  padding:170px 0 54px;
+
+  color:#ffffff;
+}
+
+.tours-hero-eyebrow{
+  display:inline-block;
+
+  margin-bottom:18px;
+
+  color:#7fe0e8;
+
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+}
+
+.tours-hero h1{
+  max-width:14ch;
+
+  margin:0;
+
+  font-size:clamp(2.6rem,6vw,5rem);
+  font-weight:300;
+  line-height:1.02;
+  letter-spacing:-.025em;
+
+  text-shadow:0 4px 30px rgba(0,0,0,.3);
+}
+
+.tours-hero h1 span{
+  display:block;
+
+  color:#e8d7c0;
+}
+
+.tours-hero-lead{
+  max-width:52ch;
+
+  margin:26px 0 0;
+
+  color:rgba(255,255,255,.88);
+
+  font-size:1.13rem;
+  line-height:1.75;
+
+  text-shadow:0 2px 16px rgba(0,0,0,.3);
+}
+
+
+/* ==========================================
+PÁGINA DE TOURS — CATÁLOGO SOBRE EL MAR
+
+Las tarjetas son blancas y se leen solas. Lo que
+cambia es el texto suelto, que sobre el agua tiene
+que ir en claro.
+========================================== */
+
+.tours-catalog{
+  padding:0 0 110px;
+}
+
+.tours-page .tours-count{
+  color:rgba(255,255,255,.92);
+
+  text-shadow:0 2px 10px rgba(0,0,0,.35);
+}
+
+.tours-page .tours-empty,
+.tours-page .tours-error{
+  color:rgba(255,255,255,.92);
+
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
+}
+
+.tours-page .tours-error a{
+  color:#7fe0e8;
+}
+
+.tours-page .tours-grid{
+  width:100%;
+
+  /* Más separación que en la portada: por ahí se ve el mar */
+  gap:34px;
+}
+
+.tours-page .tours-toolbar{
+  width:100%;
+}
+
+
+/* ==========================================
+PORTADA — BOTÓN HACIA EL CATÁLOGO COMPLETO
+========================================== */
+
+.featured-more{
+  display:flex;
+  justify-content:center;
+
+  margin-top:52px;
+}
+
+.featured-more a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  height:58px;
+
+  padding:0 40px;
+
+  border-radius:999px;
+
+  background:var(--primary);
+  color:#ffffff;
+
+  font-size:1.02rem;
+  font-weight:800;
+
+  box-shadow:0 18px 38px rgba(9,167,195,.28);
+
+  transition:
+    background .25s ease,
+    transform .25s ease,
+    gap .25s ease;
+}
+
+.featured-more a:link,
+.featured-more a:visited{
+  color:#ffffff;
+}
+
+.featured-more a:hover{
+  gap:16px;
+
+  background:var(--primary-dark);
+
+  transform:translateY(-2px);
+}
+
+
+@media (max-width:700px){
+
+  .tours-hero{
+    padding:130px 0 40px;
+  }
+
+}
+
+
+@media (max-width:560px){
+
+  .tours-hero{
+    padding:112px 0 32px;
+  }
+
+  .tours-hero h1{
+    font-size:2.5rem;
+  }
+
+  .tours-hero-lead{
+    font-size:1.02rem;
+  }
+
+  .tours-catalog{
+    padding-bottom:76px;
+  }
+
+  .featured-more{
+    margin-top:36px;
+  }
+
+  .featured-more a{
+    width:100%;
   }
 
 }

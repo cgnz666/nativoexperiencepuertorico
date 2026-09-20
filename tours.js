@@ -11,6 +11,23 @@ después de cargar la página.
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
+  /* El mar de fondo se detiene si el sistema pide menos
+     movimiento, o si el visitante navega con ahorro de datos.
+     En ambos casos queda el fotograma del póster. */
+  const mar = document.querySelector(".ocean-video");
+
+  if (mar) {
+    const quietud =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      (navigator.connection && navigator.connection.saveData);
+
+    if (quietud) {
+      mar.autoplay = false;
+      mar.removeAttribute("autoplay");
+      mar.pause();
+    }
+  }
+
   const rejilla = document.querySelector("[data-tours-grid]");
 
   if (!rejilla) {
@@ -92,6 +109,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const nota = Number(tour.rating);
     const resenas = Number(tour.reviews);
 
+    /* Cinco estrellas como las de las reseñas. La nota se
+       representa rellenando solo la parte que le toca, así un
+       4.9 no se dibuja igual que un 5.0. */
+    const relleno = Math.max(0, Math.min(100, (nota / 5) * 100));
+
     const valoracion =
       Number.isFinite(nota) && nota > 0 && Number.isFinite(resenas) && resenas > 0
         ? `
@@ -99,10 +121,19 @@ document.addEventListener("DOMContentLoaded", function () {
           class="product-rating"
           href="${escapar(tour.reviewUrl || "#")}"
           target="_blank"
-          rel="noopener noreferrer">
-          <span class="product-stars" aria-hidden="true">★</span>
-          <strong>${escapar(nota.toFixed(1))}</strong>
-          <span>${escapar(resenas)} reviews on Tripadvisor</span>
+          rel="noopener noreferrer"
+          aria-label="Rated ${escapar(nota.toFixed(1))} out of 5 by ${escapar(
+            resenas
+          )} travelers on Tripadvisor">
+          <span class="product-stars" aria-hidden="true">
+            <span class="product-stars-base">★★★★★</span>
+            <span
+              class="product-stars-fill"
+              style="width:${relleno.toFixed(1)}%">★★★★★</span>
+          </span>
+          <span aria-hidden="true">${escapar(
+            resenas
+          )} reviews on Tripadvisor</span>
         </a>`
         : "";
 

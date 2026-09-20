@@ -19,7 +19,8 @@ Si existe una carpeta `contexto/` en el proyecto, leer sus archivos antes de emp
 - Responder en el chat en español.
 - El idioma del contenido de un entregable no se asume. Si no está definido en la tabla de arriba, preguntar a C antes de redactar. Si un entregable nuevo va en un idioma distinto al del resto del sitio, avisarlo antes de construir.
 - No usar guiones largos pareados como paréntesis. Usar comas, paréntesis o reestructurar.
-- Moneda siempre en formato `$000.00`.
+- Moneda siempre con dos decimales y con separador de millares cuando toque:
+  `$90.00`, `$1,300.00`. Nunca `$90` ni `$1300.00`.
 - No borrar ni sobrescribir archivos sin que se pida. Cambios grandes van en una rama de git.
 - Las notas internas (dudas, pendientes, cosas a verificar) van en el chat, nunca dentro del sitio ni de los entregables.
 - No inventar datos del negocio (precios, horarios, teléfonos, direcciones). Si falta un dato, preguntar o dejarlo marcado en el chat.
