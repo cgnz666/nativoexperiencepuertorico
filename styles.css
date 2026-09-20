@@ -1695,12 +1695,6 @@ trae Bókun y que las destacadas no tienen.
 .product-card .product-excerpt{
   margin-top:14px;
 
-  /* Tres líneas para todas: iguala el alto de las tarjetas
-     y quita el hueco muerto antes del precio */
-  display:-webkit-box;
-  -webkit-line-clamp:3;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
 }
 
 .product-meta{
@@ -3575,10 +3569,7 @@ devuelve dentro de un panel desplegable.
     max-height:min(70vh,420px);
     overflow-y:auto;
 
-    background:rgba(234,247,248,.98);
-
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
+    background:#eaf7f8;
 
     border-bottom:1px solid rgba(7,61,73,.10);
 
@@ -3700,9 +3691,12 @@ vería borroso y pesaría en el desplazamiento.
     );
 }
 
-/* Todo lo demás navega por encima del mar */
+/* El contenido navega por encima del mar.
 
-.tours-page .site-header,
+   La cabecera NO se toca: ya es position:fixed con z-index:1000,
+   y tiene que quedar por encima del contenido para que su menú
+   desplegable no acabe debajo de la página. */
+
 .tours-page main,
 .tours-page footer{
   position:relative;
@@ -3986,28 +3980,26 @@ ACCESIBILIDAD · PARAR LAS FOTOS QUE ROTAN
 ========================================== */
 
 .pausar-fotos{
-  padding:9px 16px;
+  align-self:center;
+
+  padding:6px 4px;
 
   background:transparent;
-  border:1px solid rgba(7,49,62,.22);
-  border-radius:999px;
+  border:0;
+  border-bottom:1px solid currentColor;
 
-  color:#4e6a70;
+  color:#55666c;
 
   font-family:inherit;
-  font-size:.84rem;
-  font-weight:700;
+  font-size:.78rem;
+  font-weight:600;
 
   cursor:pointer;
 
-  transition:
-    border-color .25s ease,
-    color .25s ease;
+  transition:color .25s ease;
 }
 
 .pausar-fotos:hover{
-  border-color:var(--boton);
-
   color:var(--boton);
 }
 
@@ -4015,18 +4007,14 @@ ACCESIBILIDAD · PARAR LAS FOTOS QUE ROTAN
   display:flex;
   justify-content:center;
 
-  margin-top:34px;
+  margin-top:26px;
 }
 
 .tours-page .pausar-fotos{
-  border-color:rgba(255,255,255,.4);
-
-  color:rgba(255,255,255,.92);
+  color:rgba(255,255,255,.8);
 }
 
 .tours-page .pausar-fotos:hover{
-  border-color:#ffffff;
-
   color:#ffffff;
 }
 
@@ -4040,9 +4028,14 @@ resuelvan por voz.
 ========================================== */
 
 .reserva-por-voz{
-  width:min(1320px,100%);
+  width:min(720px,100%);
 
-  margin:0 auto 34px;
+  /* Va después del botón de ver todas: quien llegó al final
+     de la lista sin decidirse es justo quien agradece hablar
+     con alguien. */
+  margin:44px auto 0;
+
+  text-align:center;
   padding:16px 22px;
 
   background:rgba(255,255,255,.12);
