@@ -24,6 +24,8 @@ rel="stylesheet">
 
 <body class="tours-page">
 
+<a class="salto-al-contenido" href="#contenido">Skip to main content</a>
+
 <!-- ==========================================
 EL MAR, DETRÁS DE TODO
 
@@ -105,7 +107,7 @@ completo de la página se vería borroso.
 </header>
 
 
-<main>
+<main id="contenido">
 
 <!-- ==========================================
 HERO
@@ -169,7 +171,27 @@ CATÁLOGO
 
       <p class="solo-lectores" data-tours-count role="status"></p>
 
+      <button
+        class="pausar-fotos"
+        type="button"
+        data-pausar-fotos
+        aria-pressed="false">
+        Pause photo slideshows
+      </button>
+
     </div>
+
+
+    <p class="reserva-por-voz">
+      Rather talk to a person? We take bookings by
+      <a
+        href="https://wa.me/19393609002"
+        target="_blank"
+        rel="noopener noreferrer">WhatsApp</a>
+      and by phone at
+      <a href="tel:+19393609002">+1 (939) 360-9002</a>,
+      and we'll set the whole thing up for you.
+    </p>
 
 
     <div class="tours-grid" data-tours-grid></div>

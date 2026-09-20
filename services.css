@@ -95,10 +95,10 @@ PIEZAS COMPARTIDAS DE LA PÁGINA
 
 .svc-button-primary{
 
-  background:var(--primary);
+  background:var(--boton);
   color:#ffffff;
 
-  box-shadow:0 16px 34px rgba(9,167,195,.28);
+  box-shadow:0 16px 34px rgba(6,123,146,.30);
 
 }
 
@@ -109,7 +109,7 @@ PIEZAS COMPARTIDAS DE LA PÁGINA
 
 .svc-button-primary:hover{
 
-  background:var(--primary-dark);
+  background:var(--boton-hover);
 
   transform:translateY(-2px);
 
