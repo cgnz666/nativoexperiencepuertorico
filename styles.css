@@ -2589,6 +2589,21 @@ CONTACT
 }
 
 
+/* Misma historia que en el pie: una columna de rejilla no baja
+   de su contenido mínimo salvo que se le diga, y aquí el
+   contenido mínimo es la palabra más larga del titular. Con la
+   letra del sistema muy agrandada, esa palabra empujaba la
+   sección fuera de la pantalla. */
+
+.contact-grid > *{
+  min-width:0;
+}
+
+.contact-section h2{
+  overflow-wrap:break-word;
+}
+
+
 /* ==========================================
 CONTACT — HEADING
 ========================================== */
@@ -2923,6 +2938,21 @@ gap:50px;
 
 }
 
+
+/* Una columna de rejilla no encoge por debajo de su contenido a
+   menos que se le diga. Sin esto, una palabra como "Tripadvisor"
+   marca el ancho mínimo de su columna, y con la letra del sistema
+   agrandada las tres columnas suman más que la pantalla: el pie
+   se salía y aparecía scroll horizontal. */
+
+.footer-grid > *{
+  min-width:0;
+}
+
+.footer-grid a{
+  overflow-wrap:break-word;
+}
+
 .footer-logo{
 
 width:180px;
@@ -3087,8 +3117,18 @@ RESPONSIVE — GENERAL WEBSITE MOBILE
     width:100%;
   }
 
+  /* Tres columnas en un teléfono dejaban los enlaces pegados al
+     borde. La marca pasa a ocupar el ancho completo y las dos
+     listas se reparten debajo. */
+
   .footer-grid{
-    gap:34px;
+    grid-template-columns:1fr 1fr;
+
+    gap:34px 26px;
+  }
+
+  .footer-grid > :first-child{
+    grid-column:1 / -1;
   }
 
 }
