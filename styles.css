@@ -106,6 +106,37 @@ HEADER / NAVIGATION BAR
   gap:30px;
 }
 
+
+/* El menú va anclado al centro de la barra, no a lo que tenga
+   al lado.
+
+   Repartido con el flex, su sitio dependía del ancho del botón
+   de la derecha, y la página de tours ni siquiera lleva botón.
+   Entre la portada y tours los enlaces saltaban más de 400 px,
+   y entre la portada y servicios otros 15, porque "Book Now" y
+   "Plan Your Stay" no miden lo mismo. Al pasar de una página a
+   otra el menú parecía brincar.
+
+   Solo de 701 px en adelante: por debajo, .primary-nav es el
+   panel desplegable y se ancla a la cabecera, no a este
+   contenedor. */
+
+@media (min-width:701px){
+
+  .nav-wrap{
+    position:relative;
+  }
+
+  .primary-nav{
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+  }
+
+}
+
 .brand{
   display:flex;
   align-items:center;
