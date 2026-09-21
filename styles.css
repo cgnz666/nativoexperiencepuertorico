@@ -46,6 +46,16 @@ html{
   scroll-padding-top:var(--alto-cabecera);
 }
 
+
+/* Un número de teléfono partido en dos renglones, con el subrayado
+   cortado a la mitad, se lee fatal. Va aquí y no en cada sitio
+   donde aparezca uno: la primera vez lo arreglé solo en la página
+   de tours y se quedó roto en servicios. */
+
+a[href^="tel:"]{
+  white-space:nowrap;
+}
+
 *{
 margin:0;
 padding:0;
@@ -4222,10 +4232,6 @@ resuelvan por voz.
 
 .reserva-por-voz a{
   color:#ffffff;
-
-  /* Un número de teléfono partido en dos renglones, con el
-     subrayado cortado por la mitad, se lee fatal. */
-  white-space:nowrap;
 
   font-weight:700;
 
