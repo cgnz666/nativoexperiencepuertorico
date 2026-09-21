@@ -3675,23 +3675,6 @@ vería borroso y pesaría en el desplazamiento.
   filter:brightness(1.1) saturate(1.06);
 }
 
-.ocean-overlay{
-  position:absolute;
-  inset:0;
-
-  /* El velo es fijo al viewport, así que no puede distinguir
-     el titular de las tarjetas: se queda ligero y cada texto
-     blanco lleva su propio respaldo. Lo único que hace aquí
-     es asentar el color del agua bajo las tarjetas. */
-  background:
-    linear-gradient(
-      180deg,
-      rgba(2,26,34,.34) 0%,
-      rgba(2,26,34,.26) 55%,
-      rgba(2,26,34,.20) 100%
-    );
-}
-
 /* El contenido navega por encima del mar.
 
    La cabecera NO se toca: ya es position:fixed con z-index:1000,
@@ -3725,51 +3708,9 @@ PÁGINA DE TOURS — HERO
 
 
 .tours-hero{
-  position:relative;
-
   padding:170px 0 78px;
 
   color:#ffffff;
-}
-
-/* La sombra que sostiene el titular.
-
-   Va en un pseudo-elemento que baja bastante más que el héroe y
-   se apaga con una curva suave. Un degradado corto de dos paradas
-   deja un canto visible justo donde cambia la pendiente, y sobre
-   agua en movimiento ese canto se lee como una viñeta pegada
-   encima. Repartido en muchas paradas y sobre el doble de altura,
-   el ojo no encuentra dónde empieza ni dónde acaba. */
-
-.tours-hero::before{
-  content:"";
-
-  position:absolute;
-  z-index:-1;
-  inset:0 0 auto;
-  height:210%;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(2,26,34,.44) 0%,
-      rgba(2,26,34,.435) 8%,
-      rgba(2,26,34,.42) 16%,
-      rgba(2,26,34,.395) 24%,
-      rgba(2,26,34,.36) 31%,
-      rgba(2,26,34,.32) 38%,
-      rgba(2,26,34,.27) 45%,
-      rgba(2,26,34,.22) 52%,
-      rgba(2,26,34,.175) 59%,
-      rgba(2,26,34,.13) 66%,
-      rgba(2,26,34,.09) 73%,
-      rgba(2,26,34,.058) 80%,
-      rgba(2,26,34,.032) 87%,
-      rgba(2,26,34,.013) 94%,
-      rgba(2,26,34,0) 100%
-    );
-
-  pointer-events:none;
 }
 
 .tours-hero-eyebrow{
@@ -3795,7 +3736,9 @@ PÁGINA DE TOURS — HERO
   line-height:1.02;
   letter-spacing:-.025em;
 
-  text-shadow:0 4px 26px rgba(0,22,30,.6);
+  text-shadow:
+    0 2px 4px rgba(0,22,30,.55),
+    0 6px 26px rgba(0,22,30,.75);
 }
 
 .tours-hero h1 span{
@@ -3814,7 +3757,9 @@ PÁGINA DE TOURS — HERO
   font-size:1.13rem;
   line-height:1.75;
 
-  text-shadow:0 2px 14px rgba(0,22,30,.7);
+  text-shadow:
+    0 1px 3px rgba(0,22,30,.6),
+    0 3px 16px rgba(0,22,30,.8);
 }
 
 
