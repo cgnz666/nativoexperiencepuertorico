@@ -2738,34 +2738,21 @@ CONTACT — ACTION BUTTONS
 CONTACT — QUICK INFORMATION CARD
 ========================================== */
 
-.contact-card{
-  padding:38px;
+/* Cada dato va en su propia cápsula, con el icono en un
+   círculo a la izquierda.
 
-  background:rgba(255,255,255,.09);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:28px;
+   Antes eran emoji dentro de una lista. Un emoji se dibuja
+   distinto en cada teléfono, queda borroso al ampliarlo y el
+   lector de pantalla lo lee en voz alta ("chincheta"), así que
+   ahora son iconos de trazo y el emoji desaparece del texto.
 
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
+   La cápsula entera es el enlace, no solo las letras: en un
+   teléfono eso es la diferencia entre acertar y no acertar. */
 
-  box-shadow:
-    0 22px 55px rgba(0,0,0,.16);
-}
-
-
-.contact-card h3{
-  margin:0 0 26px;
-
-  color:#ffffff;
-
-  font-size:1.3rem;
-}
-
-
-.contact-card ul{
+.contact-pills{
   display:grid;
 
-  gap:20px;
+  gap:12px;
 
   margin:0;
   padding:0;
@@ -2774,33 +2761,79 @@ CONTACT — QUICK INFORMATION CARD
 }
 
 
-.contact-card li{
-  color:rgba(255,255,255,.92);
+.contact-pill{
+  display:flex;
+  align-items:center;
+
+  gap:16px;
+
+  min-height:60px;
+
+  padding:10px 22px 10px 10px;
+
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:999px;
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  color:#ffffff;
 
   font-size:1rem;
-  line-height:1.55;
-}
-
-
-.contact-card a{
-  color:rgba(255,255,255,.92);
-
+  line-height:1.4;
   text-decoration:none;
 
   transition:
-    color .25s ease,
+    background-color .25s ease,
+    border-color .25s ease,
     transform .25s ease;
 }
 
 
-.contact-card a:link,
-.contact-card a:visited{
-  color:rgba(255,255,255,.92);
+.contact-pill:link,
+.contact-pill:visited{
+  color:#ffffff;
 }
 
 
-.contact-card a:hover{
-  color:#66e1e4;
+a.contact-pill:hover{
+  background:rgba(255,255,255,.16);
+  border-color:rgba(255,255,255,.34);
+
+  transform:translateX(4px);
+}
+
+
+/* El círculo del icono */
+
+.contact-pill-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  flex:0 0 44px;
+
+  width:44px;
+  height:44px;
+
+  background:var(--primary);
+  border-radius:50%;
+
+  color:#ffffff;
+}
+
+
+.contact-pill-icon svg{
+  width:21px;
+  height:21px;
+}
+
+
+.contact-pill-text{
+  min-width:0;
+
+  overflow-wrap:anywhere;
 }
 
 
@@ -2820,7 +2853,7 @@ CONTACT — TABLET
     gap:48px;
   }
 
-  .contact-card{
+  .contact-ways{
     max-width:680px;
   }
 
@@ -2857,10 +2890,10 @@ CONTACT — MOBILE
     width:100%;
   }
 
-  .contact-card{
-    padding:28px 24px;
+  .contact-pill{
+    padding:9px 18px 9px 9px;
 
-    border-radius:22px;
+    font-size:.97rem;
   }
 
 }
@@ -3034,8 +3067,7 @@ RESPONSIVE — GENERAL WEBSITE MOBILE
   }
 
   .private-card,
-  .review-card,
-  .contact-card{
+  .review-card{
     padding:26px;
   }
 
