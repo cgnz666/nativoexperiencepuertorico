@@ -26,6 +26,24 @@
 
 --radius:24px;
 
+/* Alto real de la barra: los 72 px del contenido más el píxel
+   del borde de abajo. Se usa para frenar el desplazamiento de
+   los enlaces con almohadilla, que si no acaban por debajo de
+   la barra fija. */
+--alto-cabecera:73px;
+
+}
+
+
+/* Un enlace a #home o a #about llevaba el navegador a poner la
+   sección pegada al borde de arriba, y ahí es donde vive la
+   cabecera fija: los primeros 73 px de la sección quedaban
+   tapados. En la portada eso cortaba el logo de la tortuga y
+   dejaba asomando una franja clara de la sección siguiente.
+   Con esto el navegador frena justo esos 73 px antes. */
+
+html{
+  scroll-padding-top:var(--alto-cabecera);
 }
 
 *{
@@ -715,6 +733,10 @@ HERO — MOBILE
 ========================================== */
 
 @media (max-width:560px){
+
+  :root{
+    --alto-cabecera:69px;
+  }
 
   .hero{
     height:620px;
@@ -3166,7 +3188,12 @@ PANTALLAS GRANDES — 1800px o más
 
   html{
     font-size:17px;
-    scroll-padding-top:85px;
+  }
+
+  /* La barra crece aquí, y con ella el freno de los anclajes */
+
+  :root{
+    --alto-cabecera:85px;
   }
 
   /* 2 · CONTENIDO MÁS ANCHO */
@@ -3403,7 +3430,10 @@ PANTALLAS MUY GRANDES — 2400px o más
 
   html{
     font-size:18px;
-    scroll-padding-top:93px;
+  }
+
+  :root{
+    --alto-cabecera:93px;
   }
 
   .container{
@@ -3686,11 +3716,6 @@ vería borroso y pesaría en el desplazamiento.
   position:relative;
   z-index:1;
 }
-
-.tours-page section[id]{
-  scroll-margin-top:80px;
-}
-
 
 /* ==========================================
 PÁGINA DE TOURS — HERO

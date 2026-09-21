@@ -18,14 +18,6 @@ y footer. Aquí solo va lo propio de esta página.
 }
 
 
-/* El header es fijo: los anclajes no pueden
-   quedar escondidos debajo de la barra */
-
-.services-page section[id]{
-  scroll-margin-top:80px;
-}
-
-
 /* ==========================================
 PIEZAS COMPARTIDAS DE LA PÁGINA
 ========================================== */
@@ -1042,12 +1034,6 @@ PANTALLAS GRANDES
 ========================================== */
 
 @media (min-width:1800px){
-
-  /* styles.css ya reserva el alto de la barra con scroll-padding-top */
-
-  .services-page section[id]{
-    scroll-margin-top:0;
-  }
 
   .svc-hero{
     margin-top:85px;
