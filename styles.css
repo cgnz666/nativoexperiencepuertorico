@@ -71,8 +71,6 @@ margin:auto;
 }
 
 
-
-
 /* ==========================================
 HEADER / NAVIGATION BAR
 ========================================== */
@@ -233,54 +231,6 @@ HEADER / NAVIGATION BAR
   width:100%;
 }
 
-.nav-button{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-
-  flex:0 0 auto;
-
-  min-width:138px;
-  height:52px;
-
-  padding:0 28px;
-
-  background:var(--boton);
-  color:#ffffff;
-
-  border-radius:999px;
-
-  font-weight:800;
-  line-height:1;
-  text-align:center;
-  text-decoration:none;
-  white-space:nowrap;
-
-  box-shadow:
-    0 8px 24px rgba(20,145,143,.20);
-
-  transition:
-    transform .25s ease,
-    background .25s ease,
-    box-shadow .25s ease;
-}
-
-.nav-button:link,
-.nav-button:visited{
-  color:#ffffff;
-}
-
-.nav-button:hover{
-  color:#ffffff;
-  background:var(--boton-hover);
-
-  transform:translateY(-2px);
-
-  box-shadow:
-    0 14px 34px rgba(20,145,143,.28);
-}
-
-
 /* ==========================================
 NAVIGATION BAR — LAPTOPS / HALF-SCREEN WINDOWS
 ========================================== */
@@ -309,15 +259,6 @@ NAVIGATION BAR — LAPTOPS / HALF-SCREEN WINDOWS
 
   .nav-links a{
     font-size:.92rem;
-  }
-
-  .nav-button{
-    min-width:122px;
-    height:48px;
-
-    padding:0 22px;
-
-    font-size:.95rem;
   }
 
 }
@@ -351,15 +292,6 @@ NAVIGATION BAR — SMALL LAPTOPS
 
   .nav-links a{
     font-size:.84rem;
-  }
-
-  .nav-button{
-    min-width:110px;
-    height:46px;
-
-    padding:0 18px;
-
-    font-size:.9rem;
   }
 
 }
@@ -882,8 +814,6 @@ HERO — VERY SMALL MOBILE
 }
 
 
-
-
 /* ==========================================
 SECTION HEADINGS
 ========================================== */
@@ -947,8 +877,6 @@ max-width:700px;
 margin:auto;
 
 }
-
-
 
 
 
@@ -2238,8 +2166,6 @@ ISLAND STORY — MOBILE
 
 }
 
-
-
 /* ==========================================
 LOGO STORY
 ========================================== */
@@ -2423,8 +2349,6 @@ LOGO STORY — MOBILE
   }
 
 }
-
-
 
 
 
@@ -2629,8 +2553,6 @@ REVIEWS — TABLET / MOBILE
   }
 
 }
-
-
 
 
 /* ==========================================
@@ -3002,8 +2924,6 @@ color:var(--primary);
 
 }
 
-
-
 /* ==========================================
 ANIMATIONS
 ========================================== */
@@ -3032,8 +2952,6 @@ box-shadow:
 }
 
 
-
-
 /* ==========================================
 RESPONSIVE — GENERAL WEBSITE MOBILE
 ========================================== */
@@ -3046,11 +2964,6 @@ RESPONSIVE — GENERAL WEBSITE MOBILE
 
   .nav-wrap{
     height:68px;
-  }
-
-  .nav-links,
-  .nav-button{
-    display:none;
   }
 
   section{
@@ -3574,19 +3487,10 @@ devuelve dentro de un panel desplegable.
   transform:translateY(-7px) rotate(-45deg);
 }
 
-.nav-cta-item{
-  display:none;
-}
-
-
 @media (max-width:700px){
 
   .menu-toggle{
     display:flex;
-  }
-
-  .nav-button{
-    display:none;
   }
 
   .primary-nav{
@@ -3660,15 +3564,6 @@ devuelve dentro de un panel desplegable.
 
   .primary-nav .nav-links a:hover{
     transform:none;
-  }
-
-  .nav-cta-item{
-    display:block;
-  }
-
-  .nav-cta-item a:link,
-  .nav-cta-item a:visited{
-    color:var(--primary-dark);
   }
 
 }
@@ -4034,7 +3929,6 @@ o navega sin ratón.
 
 /* Sobre fondos oscuros el contorno oscuro no se vería */
 
-.site-header .nav-button:focus-visible,
 .hero :focus-visible,
 .island-story :focus-visible,
 .contact-section :focus-visible,
