@@ -227,3 +227,16 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   iniciarCarruseles(document);
 });
+
+
+/* El año del pie se pone solo. En el HTML va escrito uno de
+   verdad, así que si esto no llega a correr tampoco se ve un
+   hueco. */
+
+document.addEventListener("DOMContentLoaded", function () {
+  const anio = String(new Date().getFullYear());
+
+  document.querySelectorAll("[data-anio]").forEach(function (hueco) {
+    hueco.textContent = anio;
+  });
+});

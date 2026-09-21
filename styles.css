@@ -2940,24 +2940,36 @@ CONTACT — MOBILE
 FOOTER
 ========================================== */
 
+/* ==========================================
+PIE DE PÁGINA
+
+Sigue la misma idea que la sección de contacto:
+iconos de trazo dentro de un círculo, líneas
+finas para separar y una franja abajo que cierra
+la página.
+========================================== */
+
 footer{
+  background:#01161d;
 
-background:#01161d;
+  padding:80px 0 0;
 
-color:white;
-
-padding:80px 0 40px;
-
+  color:#ffffff;
 }
 
+
+.footer-inner{
+  display:grid;
+
+  gap:56px;
+}
+
+
 .footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
 
-display:grid;
-
-grid-template-columns:2fr 1fr 1fr;
-
-gap:50px;
-
+  gap:50px;
 }
 
 
@@ -2971,43 +2983,150 @@ gap:50px;
   min-width:0;
 }
 
-.footer-grid a{
-  overflow-wrap:break-word;
-}
+
+/* La marca */
 
 .footer-logo{
+  width:180px;
 
-width:180px;
-
-margin-bottom:20px;
-
+  margin-bottom:22px;
 }
 
-.footer-grid h4{
 
-margin-bottom:20px;
+.footer-marca p{
+  max-width:34ch;
 
+  margin:0;
+
+  color:rgba(255,255,255,.78);
+
+  font-size:1rem;
+  line-height:1.7;
 }
 
-.footer-grid a{
 
-display:block;
+/* Los encabezados de columna, con el mismo aire que los
+   antetítulos del resto del sitio */
 
-margin-bottom:12px;
+.footer-col h4{
+  margin:0 0 22px;
 
-opacity:.75;
+  color:#7fe0e8;
 
-transition:.25s;
-
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
 }
 
-.footer-grid a:hover{
 
-opacity:1;
+.footer-col ul{
+  margin:0;
+  padding:0;
 
-color:var(--primary);
-
+  list-style:none;
 }
+
+
+/* Una línea fina entre enlace y enlace, como en las plantillas.
+   Va arriba de cada uno menos del primero, así no queda un filo
+   suelto al final de la lista. */
+
+.footer-col li + li{
+  border-top:1px solid rgba(255,255,255,.12);
+}
+
+
+.footer-col a{
+  display:flex;
+  align-items:center;
+
+  gap:12px;
+
+  padding:13px 0;
+
+  color:rgba(255,255,255,.82);
+
+  font-size:1rem;
+  text-decoration:none;
+
+  overflow-wrap:break-word;
+
+  transition:
+    color .25s ease,
+    transform .25s ease;
+}
+
+
+.footer-col a:link,
+.footer-col a:visited{
+  color:rgba(255,255,255,.82);
+}
+
+
+.footer-col a:hover{
+  color:#ffffff;
+
+  transform:translateX(4px);
+}
+
+
+/* El círculo del icono, el mismo de las píldoras de contacto
+   pero más pequeño, que aquí acompaña y no manda */
+
+.footer-social-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  flex:0 0 34px;
+
+  width:34px;
+  height:34px;
+
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:50%;
+
+  color:#7fe0e8;
+
+  transition:
+    background-color .25s ease,
+    border-color .25s ease;
+}
+
+
+.footer-social:hover .footer-social-icon{
+  background:var(--primary);
+  border-color:var(--primary);
+
+  color:#ffffff;
+}
+
+
+.footer-social-icon svg{
+  width:16px;
+  height:16px;
+}
+
+
+/* La franja de abajo cierra la página */
+
+.footer-base{
+  padding:26px 0 30px;
+
+  border-top:1px solid rgba(255,255,255,.12);
+}
+
+
+.footer-base p{
+  margin:0;
+
+  color:rgba(255,255,255,.62);
+
+  font-size:.88rem;
+}
+
 
 /* ==========================================
 ANIMATIONS
