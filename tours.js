@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (contador) {
       contador.textContent = busqueda
         ? `${encontrados.length} ${
-            encontrados.length === 1 ? "experience" : "experiences"
+            encontrados.length === 1 ? "tour" : "tours"
           } found`
         : "";
     }
@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function () {
       zonaDeBoton.hidden = !hacenFalta;
 
       if (boton && hacenFalta) {
-        boton.textContent = "View all experiences";
+        boton.textContent = "View all tours";
       }
     }
   }
