@@ -251,7 +251,7 @@ HERO
   padding:0;
 
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(5,1fr);
 
   list-style:none;
 
@@ -476,6 +476,54 @@ FILAS DE SERVICIO
   line-height:1.8;
 
 }
+
+/* El precio y las condiciones de la barra móvil.
+
+   Es el único servicio con precio publicado, porque es el único
+   con tarifa cerrada. Va destacado pero sin gritar, entre el
+   párrafo de entrada y la lista de lo que incluye. */
+
+.svc-price{
+  display:inline-block;
+
+  margin:22px 0 0;
+  padding:10px 18px;
+
+  background:rgba(6,123,146,.08);
+  border:1px solid rgba(6,123,146,.22);
+  border-radius:999px;
+
+  color:var(--boton-hover, #045a6b);
+
+  font-size:1rem;
+  line-height:1.5;
+}
+
+.svc-price strong{
+  font-weight:800;
+}
+
+
+/* Lo que no incluye y las condiciones. Van en gris, más pequeñas
+   que el párrafo de entrada, para que se lean como letra chica
+   honesta y no compitan con la lista de lo que sí incluye. */
+
+.svc-note{
+  max-width:52ch;
+
+  margin:18px 0 0;
+
+  color:#5d6e75;
+
+  font-size:.96rem;
+  line-height:1.72;
+}
+
+.svc-note strong{
+  color:#37474d;
+  font-weight:700;
+}
+
 
 .svc-list{
 
@@ -876,17 +924,25 @@ TABLETA
     grid-template-columns:repeat(2,1fr);
   }
 
-  .svc-hero-index li:nth-child(3),
-  .svc-hero-index li:nth-child(4){
+  .svc-hero-index li:nth-child(n+3){
     border-top:1px solid rgba(255,255,255,.22);
   }
 
-  .svc-hero-index li:nth-child(3){
+  .svc-hero-index li:nth-child(odd){
     border-left:0;
   }
 
-  .svc-hero-index li:nth-child(3) a{
+  .svc-hero-index li:nth-child(odd) a{
     padding-left:0;
+  }
+
+  /* Con un número impar de servicios, el último se queda solo y
+     deja medio renglón vacío con la línea colgando. Que ocupe las
+     dos columnas. La condición se cumple sola: si algún día hay
+     un número par, esta regla no se aplica. */
+
+  .svc-hero-index li:last-child:nth-child(odd){
+    grid-column:1 / -1;
   }
 
   .svc-intro-grid,
