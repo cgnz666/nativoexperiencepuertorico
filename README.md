@@ -43,3 +43,8 @@ portrait 4:5 crop, around 1100 x 1375 px:
 Bókun:
 - Booking channel UUID: 53a6da0f-77c9-4ae5-84a4-155de87c7fe0
 - Product List ID: 110434
+
+Convención de archivos:
+- Un archivo que empieza con `z_` está desactualizado, lo sustituyó una versión nueva.
+- Aplica a documentos y capturas, no al código ni a los assets del sitio.
+- La regla completa está en CONVENCION_ARCHIVOS.md.
