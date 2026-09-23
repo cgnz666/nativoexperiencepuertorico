@@ -1,0 +1,413 @@
+{
+  "updated": "2026-09-20T22:19:58.936Z",
+  "source": "Bókun · lista de producto 110434",
+  "count": 19,
+  "tours": [
+    {
+      "id": "1213460",
+      "title": "Coffee Farm Hacienda Muñoz Store and Caguas Tour",
+      "excerpt": "Venture to Hacienda Muñoz, where the hills of San Lorenzo promise an authentic coffee adventure far from the crowds.",
+      "duration": "6 hours and 30 minutes",
+      "price": 150,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": 5,
+      "reviews": 27,
+      "reviewUrl": "https://www.tripadvisor.com/Attraction_Review-g147319-d28063850-Reviews-Nativo_Experiences_Puerto_Rico-Puerto_Rico.html",
+      "photos": [
+        "https://imgcdn.bokun.tools/f48e4a7f-79fc-429b-b20d-457044d358a1.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/69ccedfb-6e3a-4009-8793-80c09307ff36.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/eb87f7c7-605c-4f93-8d05-10cc00bfd841.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/563f9764-d598-4b7c-a568-707df31d677f.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/fc474972-9dee-4e5e-a080-3cbce380bcc0.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/a7a62181-3ef4-465d-90dd-a14453e18d78.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/9504bb95-8a0e-4d03-b383-013ed442528d.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/712f2c94-5682-4432-aac2-db492e3c55c5.jpg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1213460?partialView=1"
+    },
+    {
+      "id": "1174842",
+      "title": "From San Juan: Full-Day Cultural Road Trip to Ponce",
+      "excerpt": "All-inclusive road trip to explore the cultural gems of southern Puerto Rico, with local stops, iconic sites, and flexible experiences guided by a friendly local.",
+      "duration": "7 hours",
+      "price": 365,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": 5,
+      "reviews": 7,
+      "reviewUrl": "https://www.tripadvisor.com/AttractionProductReview-g147323-d34194991-Full_Day_Cultural_Road_Trip_to_Ponce-Ponce_Puerto_Rico.html",
+      "photos": [
+        "https://imgcdn.bokun.tools/e0bf1149-d63d-4281-ba6b-4625851513c4.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/afa1f19b-ac28-4d8c-9370-8637e4f7cdc6.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/bd4343c9-7f1b-4088-97ca-31fd50eee409.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/dd143fe6-7ece-424f-94d8-5e4a0ab2204b.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/1d88127f-d458-4972-81d3-8b0f256e0433.jpg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1174842?partialView=1"
+    },
+    {
+      "id": "1174843",
+      "title": "San Juan: Caguas, Guavate, Ponce, Rincon & Isabela Day Trip",
+      "excerpt": "The best of Puerto Rico in one unforgettable day. From metro area through historic Caguas and Ponce, the “Pearl of the South,” before continuing to the scenic west coast of Rincón and Isabela.",
+      "duration": "10 hours",
+      "price": 438,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": 4.9,
+      "reviews": 12,
+      "reviewUrl": "https://www.tripadvisor.com/UserReviewEdit-g147320-d34219220-Full_Day_Puerto_RicoTrip_Caguas_Guavate_Ponce_Rincon_Isabela-San_Juan_Puerto_Rico.html",
+      "photos": [
+        "https://imgcdn.bokun.tools/0c8ecf9f-c337-456f-ac04-3d112b443030.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/e97d7170-d7ca-4e6a-a3bf-ff5e55144c50.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/ae55d187-e66a-4a34-b2f1-93d4e221ac56.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/1a195dd3-ffcc-48b3-a92b-0f56f2b4d0e2.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/24f49e3f-c9d4-4c3d-998c-87d40113d304.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/610960d9-3175-4db3-99b9-1588b514470d.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/67edc5bc-5a72-4658-a376-8f8dcfc23bc0.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/637a87c0-8df8-452d-9a52-1c65761fbbb1.jpeg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1174843?partialView=1"
+    },
+    {
+      "id": "1243144",
+      "title": "Guided Walking Tour at Parque de Bomba, Ponce",
+      "excerpt": "Ponce through the eyes of a native guide, unveiling exclusive neighborhood tales and hidden gems for a truly refined and personal journey beyond the ordinary.",
+      "duration": "2 hours and 30 minutes",
+      "price": 90,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": 5,
+      "reviews": 27,
+      "reviewUrl": "https://www.tripadvisor.com/Attraction_Review-g147319-d28063850-Reviews-Nativo_Experiences_Puerto_Rico-Puerto_Rico.html",
+      "photos": [
+        "https://imgcdn.bokun.tools/3b7869c0-76b2-485c-ab8c-df04a3f67f88.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/24a2ed3a-b333-41ff-809c-e3ae38bd05d6.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/7c64b2ba-0415-4969-8a0f-87970af8eb0a.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/af8782f5-b6c4-4d1e-859c-591b72d6dab2.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/36f40e88-d688-4459-9b54-0da973bd6a98.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/dfdc0eab-37fb-41bd-be61-9598c5432475.jpg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1243144?partialView=1"
+    },
+    {
+      "id": "1196867",
+      "title": "Old San Juan: La Perla Tour",
+      "excerpt": "Guided walking tour of La Perla featuring colorful streets, local art, ocean views, and insights into the neighborhood’s history and culture for a unique community perspective.",
+      "duration": "2 hours",
+      "price": 108,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": 5,
+      "reviews": 3,
+      "reviewUrl": "https://www.tripadvisor.com/AttractionProductReview-g147319-d34290376-La_Perla_Tour_Olds_San_Juan-Puerto_Rico.html#REVIEWS",
+      "photos": [
+        "https://imgcdn.bokun.tools/5815c402-5560-479a-be14-9f87a25c453c.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/b58a0ecf-f116-4802-b796-0b47d7ddcc31.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/a542a8ec-da05-4f37-8c71-7e31dbc006bc.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/197f2746-eae9-4db5-9c7f-a6b7f4f47d4d.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/8a0fdc4b-3743-44bf-bff1-2735efe049d8.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/161ae8d6-a258-4f3a-8d4f-aff4fe6f1146.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/c6dd5f2a-66c4-402f-9765-2a97c02ee366.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/c6d59358-1508-40ca-b33d-8205880f92c9.jpg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1196867?partialView=1"
+    },
+    {
+      "id": "1242779",
+      "title": "Private Multi City Excursion to Ponce and Parque de Bomba",
+      "excerpt": "Exclusive, full-day escape to Ponce, Puerto Rico's cultural gem, with a private guide, scenic stops in Caguas, and exquisite tastes of renowned Guavate flavors. A journey crafted for the discerning traveler.",
+      "duration": "6 hours and 30 minutes",
+      "price": 200,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": null,
+      "reviews": null,
+      "reviewUrl": null,
+      "photos": [
+        "https://imgcdn.bokun.tools/c6fede3b-7f74-4eae-8c5b-e3973eb87d74.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/8fd54b39-e356-4f04-b564-bc453769884c.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/ed77b65f-9c9c-44c2-b184-537084b7664d.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/38ccd15d-404e-4dc9-a749-7b3689627f6f.jpg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1242779?partialView=1"
+    },
+    {
+      "id": "1240411",
+      "title": "Puerto Rico Coastal Towns Tour",
+      "excerpt": "Historical sites like Caguas and Ponce to scenic views in Rincon and Isabela, providing a comprehensive overview of the island's culture and memories",
+      "duration": "8 hours",
+      "price": 438,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": null,
+      "reviews": null,
+      "reviewUrl": null,
+      "photos": [
+        "https://imgcdn.bokun.tools/668e3263-c952-4ae0-be03-289907b2c67c.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/fcfa938f-95a8-4db8-863e-e7e9baa9c8f6.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/99e4ca8a-79a9-4a94-b2ac-43f5e4e7d209.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/8419456e-33d1-474f-8ec4-51c879f81cc7.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/6526d0b1-d51f-4bd2-aac5-62904ae7b7d1.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/7aca13e3-5450-4f04-a534-8c85fa487f75.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/85a5ad74-3a87-4f2c-8a46-30cbfecece8e.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/ca2bdb2a-c211-4814-8415-eab2fb12145f.jpg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1240411?partialView=1"
+    },
+    {
+      "id": "1243165",
+      "title": "Puerto Rico: Forest Bathing, Yoga, and Hot Springs Retreat",
+      "excerpt": "Indulge in each destination curated for your well-being. Mindful movement in lush forests, exclusive riverfront breath work. Every moment elevates your senses in pure island experience.",
+      "duration": "5 hours and 30 minutes",
+      "price": 675,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": 5,
+      "reviews": 27,
+      "reviewUrl": "https://www.tripadvisor.com/Attraction_Review-g147319-d28063850-Reviews-Nativo_Experiences_Puerto_Rico-Puerto_Rico.html",
+      "photos": [
+        "https://imgcdn.bokun.tools/2bf82a4a-8f53-4839-a71c-c84c0b397313.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/26742e78-702b-4437-ab9b-36ddf8cb82ce.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/c5b2ccd8-0c6e-4d83-a644-c982f2773f94.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/220adfda-d9a0-49a4-9fd2-e163d3233761.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/11b3f109-3313-4098-8b8b-bfbd67d26fae.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/256c2211-324c-4c28-abd5-f78301bdbefe.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/b98ec5da-3681-41d2-bee5-45c6a90c9300.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/8abacd0c-9dac-4397-97c1-d604cd3dcdee.jpg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1243165?partialView=1"
+    },
+    {
+      "id": "1174841",
+      "title": "Rincón Day Tour North Coast Beaches & Waterfalls",
+      "excerpt": "Visit La Planta Waterfall, walk through the historic Túnel de Guajataca, enjoy artisan chocolate in Isabela, and take in ocean views at Punta Higuero Lighthouse.",
+      "duration": "7 hours",
+      "price": 373,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": 5,
+      "reviews": 4,
+      "reviewUrl": "https://www.tripadvisor.com/AttractionProductReview-g1383492-d34227906-Scenic_Puerto_Rico_FullDay_Tour_Waterfalls_Chocolate_and_Culture-Arecibo_Puerto_R.html",
+      "photos": [
+        "https://imgcdn.bokun.tools/65bedd84-5306-46d2-9093-312f09e4de33.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/ff0799de-ed32-4fb6-98cc-183f004c5db3.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/6725c9af-cc4c-4eae-8ed3-9949eb86944b.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/1e20a4d9-8473-43ed-bb6f-5a26e07ce681.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/f8480cbd-3318-4a93-8a9a-de5584d68e89.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/b8ee45c0-64a8-4786-a2ff-e2f84059738c.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/cf3a881c-6ffc-4017-992f-390588ab2ae7.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/3392aac0-b4c1-46ce-bb1f-6d0572287814.jpg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1174841?partialView=1"
+    },
+    {
+      "id": "903415",
+      "title": "San Juan: Visit 10+ Towns PR-10 Mountain Drive",
+      "excerpt": "One unforgettable day, traveling from San Juan through Caguas, Guavate, Ponce, Adjuntas, Utuado, and Arecibo. Mountain views, cultural landmarks, authentic local food, and natural wonders.",
+      "duration": "7 hours",
+      "price": 400,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": 5,
+      "reviews": 27,
+      "reviewUrl": "https://www.tripadvisor.com/Attraction_Review-g147319-d28063850-Reviews-Nativo_Experiences_Puerto_Rico-Puerto_Rico.html",
+      "photos": [
+        "https://imgcdn.bokun.tools/40cb173a-e083-4f9d-bb2b-6a05f7fa95d7.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/7bb3fd86-d987-4008-a032-9b004ac8e81d.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/f50c3818-d7af-4873-8653-5f1db80c828a.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/abb16111-c62e-4c7c-8539-baa56fa3261b.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/a869ff72-75ba-4b59-95f9-289da7ae2b87.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/6e3692df-12ad-4d33-ac9e-2d04c014954e.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/0443cd97-9955-4863-8368-eb1e12101d88.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/4d2758b7-e4db-41c7-842a-fae6067c15b0.jpeg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/903415?partialView=1"
+    },
+    {
+      "id": "1243154",
+      "title": "San Juan: Bad Bunny Origins & Cultural Food Tour",
+      "excerpt": "Discover Bad Bunny's roots on a tour that explores his childhood neighborhood, school, first job, and enjoy Puerto Rican food experiences along the way.",
+      "duration": "1 hour",
+      "price": 335,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": 5,
+      "reviews": 27,
+      "reviewUrl": "https://www.tripadvisor.com/Attraction_Review-g147319-d28063850-Reviews-Nativo_Experiences_Puerto_Rico-Puerto_Rico.html",
+      "photos": [
+        "https://imgcdn.bokun.tools/e455dfa7-89a8-4d9a-ab49-9eca7759c0e7.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/aa1e3615-31a5-44cf-bb09-a498054b5da9.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/f310dcd1-f30d-4793-ab12-e8b4a2a98a97.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/695a8d6d-c30b-418f-8d82-3f36e1fd8e38.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/fe7c753a-ee48-4427-a67a-86877a74d1ca.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/610df243-fa41-4794-804c-149b8e87f1b7.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/b8427a85-04eb-4e53-9e19-ab3986001714.jpeg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1243154?partialView=1"
+    },
+    {
+      "id": "1244586",
+      "title": "San Juan: Smoke Shops, Cigars and Island Vibes Experience",
+      "excerpt": "Local smoke shop culture, cigar traditions, lifestyle businesses, street art, music, food, and the communities that shape the island's modern identity.",
+      "duration": "2 hours and 30 minutes",
+      "price": 117,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": null,
+      "reviews": null,
+      "reviewUrl": null,
+      "photos": [
+        "https://imgcdn.bokun.tools/2a8f96ca-2c17-411a-80ed-707c615d5527.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/50b34a94-ed46-4206-9ce8-dcaf7247070c.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/f89e6675-a629-4b59-b526-81f2057ead55.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/d35dabf4-78d0-4748-a97d-763f5900e3cd.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/a7f83a91-4d9e-4a28-9e25-946d291bac53.jpg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/cfc0437e-66f0-4d30-8273-2efc2c6e7b22.jpg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1244586?partialView=1"
+    },
+    {
+      "id": "1261571",
+      "title": "San Juan: 3 Hidden Gems - Secret Locals Only Beaches",
+      "excerpt": "North of Puerto Rico on a tour that takes you beach hopping in picture-worthy coasts. Only the best have been chosen.",
+      "duration": "8 hours",
+      "price": 373,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": null,
+      "reviews": null,
+      "reviewUrl": null,
+      "photos": [
+        "https://imgcdn.bokun.tools/39980e93-b27c-402d-af78-e118b4467612.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/128ba2f0-4846-4744-91a1-612024a95405.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/43630a1d-4405-4914-a740-df58ac8e49cc.jpeg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1261571?partialView=1"
+    },
+    {
+      "id": "1262125",
+      "title": "San Juan: Puerto Rico in two day trip around Island",
+      "excerpt": "Two day road trip around the most enchanted island in the Caribbean. Depart from San Juan in the company of a local guide to sightsee the best of Puerto Rico.",
+      "duration": "16 hours",
+      "price": 1300,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": null,
+      "reviews": null,
+      "reviewUrl": null,
+      "photos": [
+        "https://imgcdn.bokun.tools/da43df86-2082-43e5-a3c2-5d6894fd2fcb.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/c16dc5b9-f0d6-4ea2-ad64-b5dfa1393b0b.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/9d8e35ca-0214-415f-aee3-4a5c1937aa17.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/da9456e2-4188-47e2-b179-6dea7086742c.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/94a9fc1e-c539-40d7-8f70-32bd959bd0f2.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/38464928-e0cb-42b5-ba8e-8a2a1417ef23.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/af8bcb96-3b54-4c9e-baf6-5224954a03c2.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/4252c8f5-7bdc-437e-9c90-5e63955e2a83.jpeg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1262125?partialView=1"
+    },
+    {
+      "id": "1262284",
+      "title": "From San Juan: Bad Bunny DTMF Tour – Album's Iconic Spots",
+      "excerpt": "Follow the trail of Puerto Rico’s biggest star, from lyrics to locations. This cultural road trip blends music, memory, and real-life settings from Bad Bunny’s albums.",
+      "duration": "6 hours",
+      "price": 400,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": null,
+      "reviews": null,
+      "reviewUrl": null,
+      "photos": [
+        "https://imgcdn.bokun.tools/c87497af-66a6-4c11-9dcc-e5fda7dfd4f1.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/c3741e94-488d-4668-af7f-d00c38bfd3c9.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/6879c364-b3e2-4c21-af00-b889931f3845.jpeg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1262284?partialView=1"
+    },
+    {
+      "id": "1263358",
+      "title": "San Juan - Arecibo: midwest expedition waterfalls and beach",
+      "excerpt": "Puerto Rico road trip, exploring enchanting mountains, beaches, and savoring local fritters. Enjoy a unique experience where you can swim in rivers and beaches on the same day.",
+      "duration": "7 hours",
+      "price": 310,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": null,
+      "reviews": null,
+      "reviewUrl": null,
+      "photos": [
+        "https://imgcdn.bokun.tools/d51e31d1-77d8-4488-a575-0737750d804e.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/853ad312-6dc6-4a34-a828-8c2e7e905abf.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/d66ce22c-92bb-44e0-b3ae-3ceea6696d8b.jpeg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1263358?partialView=1"
+    },
+    {
+      "id": "1263497",
+      "title": "Caguas: Waterfall and Cave Adventure",
+      "excerpt": "Natural beauty of the Caguas River Area. Explore a waterfall, and enjoy a day of adventure with the river and beach on the same day!",
+      "duration": "5 hours",
+      "price": 264,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": null,
+      "reviews": null,
+      "reviewUrl": null,
+      "photos": [
+        "https://imgcdn.bokun.tools/3e64aaa7-5262-4b85-a944-e667db089a18.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/8f9312f2-3358-4ef9-a307-acaac6c7edce.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/13dde9ce-8fb2-4977-929f-1c9eb703a430.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/32df3282-c2fb-4093-be04-c4c8f8e706d5.jpeg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1263497?partialView=1"
+    },
+    {
+      "id": "1265967",
+      "title": "From San Juan: Piñones, Loíza & Puerto Rico’s Coastal Culture",
+      "excerpt": "Discover history, culture, and coastal beauty on this guided San Juan and Piñones tour. Explore Old San Juan’s colorful streets, drive Condado and Isla Verde, then enjoy Piñones’ vibrant vibe.",
+      "duration": "4 hours and 30 minutes",
+      "price": 150,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": 5,
+      "reviews": 4,
+      "reviewUrl": "https://www.tripadvisor.com/AttractionProductReview-g1383492-d34227906-Scenic_Puerto_Rico_FullDay_Tour_Waterfalls_Chocolate_and_Culture-Arecibo_Puerto_R.html",
+      "photos": [
+        "https://imgcdn.bokun.tools/769a4216-7cfc-443b-942d-e1bc97ca1d4e.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/c8dd94d0-8bdd-4ea1-8ed9-1942f771db3e.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/1ddf2720-64fb-4fe7-9248-838d74beff64.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/793d6614-ed4f-4148-b246-74b9b69942fe.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/327eba92-25f4-4e3b-8764-e845d930a94d.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/1e7d146f-c643-4b51-a0c0-b7ac20ea9335.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/bf0ab0b2-575c-420a-b9e2-f99564c9641d.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/2dcc0127-0747-4bd0-b5b8-dba4e204bc79.jpeg?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1265967?partialView=1"
+    },
+    {
+      "id": "1275712",
+      "title": "San Juan: Cocktail and Bar Hopping Taster",
+      "excerpt": "Miramar's top restaurants and bars in Puerto Rico. Unique mixology at three selected cocktail bars, each offering a cozy ambiance and distinctive style for a relaxing night out.",
+      "duration": "3 hours",
+      "price": 121,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": null,
+      "reviews": null,
+      "reviewUrl": null,
+      "photos": [
+        "https://imgcdn.bokun.tools/9e2ef0ae-cd83-4922-83bc-f2e326a0b9e7.png?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/abefa436-61df-41d1-8d0b-2db412eec2b2.png?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/28f4973a-181a-4703-a5c2-875aa2bcad2d.png?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/5f6da572-bf91-49b7-9b65-4f14cf48a478.png?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/429d700f-08df-45aa-9dd0-a78b48380d9d.png?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/2da6e998-2bb2-48a2-8e80-8e50496b2516.png?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/60bdcd14-e264-4d5d-812c-4563836031a2.png?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/369d23ba-2fa2-4ce4-a660-97210a4e1dac.png?w=800&h=600&mode=crop"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1275712?partialView=1"
+    }
+  ]
+}
