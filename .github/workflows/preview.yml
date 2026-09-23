@@ -1,0 +1,79 @@
+# ==========================================
+# PREVIEW DE LA RAMA DE TRABAJO
+#
+# Cada vez que se empuja a una rama claude/*, esta tarea
+# regenera nativoexperiencepuertorico.com/preview/ con lo
+# que haya en esa rama.
+#
+# El sitio publicado no se toca: sigue saliendo de main
+# exactamente igual. El preview vive en una carpeta aparte,
+# con noindex y una línea en robots.txt para que no lo
+# indexe ningún buscador.
+#
+# No copia la carpeta assets/, que pasa de 120 MB. El script
+# reutiliza los assets ya publicados y solo guarda los que la
+# rama haya cambiado o añadido.
+# ==========================================
+
+name: Preview de la rama
+
+on:
+  push:
+    branches:
+      - "claude/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: preview
+  cancel-in-progress: false
+
+jobs:
+  armar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar la rama
+        uses: actions/checkout@v4
+        with:
+          path: rama
+
+      - name: Descargar main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: sitio
+
+      - name: Armar la carpeta preview
+        run: python3 rama/scripts/armar-preview.py rama sitio
+
+      - name: Publicar el preview si algo cambió
+        working-directory: sitio
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "El preview ya estaba al día."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add preview robots.txt
+          git commit -m "Actualizar el preview desde ${GITHUB_REF_NAME}"
+
+          # El Action de los tours también empuja a main
+          for intento in 1 2 3; do
+            if git push; then
+              echo "Preview publicado."
+              echo "https://nativoexperiencepuertorico.com/preview/" >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+            echo "Reintento $intento"
+            sleep $((intento * 5))
+            git pull --rebase
+          done
+
+          echo "No se pudo empujar el preview."
+          exit 1
