@@ -14,6 +14,39 @@ Este archivo es el "cerebro" del proyecto. Claude lo lee al comenzar cada sesió
 
 Si existe una carpeta `contexto/` en el proyecto, leer sus archivos antes de empezar y aplicarlos.
 
+## 1.1 Dónde vive cada cosa
+
+| Qué | Dónde | Quién lo puede abrir |
+|---|---|---|
+| Código del sitio | este repositorio, `origin/main` en GitHub | todas las sesiones |
+| Plantillas de diseño, fotos sin procesar, contexto de marca | `~/Documents/Nativo Experience/Mercadeo`, en la Mac de C | **solo las sesiones locales** |
+
+`origin/main` es la fuente de verdad del código: de ahí sale el sitio publicado.
+
+Una sesión en la nube no puede abrir la carpeta de Mercadeo. Si una tarea
+depende de esas plantillas o de esas fotos, solo se puede hacer en sesión
+local: decirlo y parar, nunca inventar el insumo que falta.
+
+## 1.2 Antes de tocar un archivo, comprobar que la copia está al día
+
+La copia local se queda atrás sin avisar, porque el trabajo entra por varios
+lados: GitHub, sesiones en la nube en ramas `claude/*`, y esta máquina.
+
+**Primer paso de toda sesión, antes de leer o editar nada:**
+
+```bash
+git fetch --quiet origin && git status -sb | head -3
+```
+
+- Si dice `behind N`, **decírselo a C y no editar todavía**. Acordar si se
+  sincroniza primero. Nunca hacer `pull` por cuenta propia: casi siempre hay
+  cambios sin confirmar que se perderían.
+- Si dice `ahead N`, hay trabajo aquí que el remoto no tiene. Avisarlo antes
+  de que se quede olvidado.
+- Servir el sitio en local y verlo bien **no demuestra** que sea la versión
+  actual. Un sitio atrasado se ve perfecto; simplemente le falta la mitad.
+
+
 ## 2. Reglas generales
 
 - Responder en el chat en español.
@@ -21,6 +54,7 @@ Si existe una carpeta `contexto/` en el proyecto, leer sus archivos antes de emp
 - No usar guiones largos pareados como paréntesis. Usar comas, paréntesis o reestructurar.
 - Moneda siempre con dos decimales y con separador de millares cuando toque:
   `$90.00`, `$1,300.00`. Nunca `$90` ni `$1300.00`.
+- Comprobar que la copia local está al día antes de editar. Ver **1.2**.
 - No borrar ni sobrescribir archivos sin que se pida. Cambios grandes van en una rama de git.
 - Las notas internas (dudas, pendientes, cosas a verificar) van en el chat, nunca dentro del sitio ni de los entregables.
 - No inventar datos del negocio (precios, horarios, teléfonos, direcciones). Si falta un dato, preguntar o dejarlo marcado en el chat.
@@ -152,3 +186,4 @@ Cuando C corrija algo, agregar aquí la regla correspondiente para que el error 
 - Los números de teléfono no se parten: `white-space:nowrap` en el enlace, o el subrayado queda cortado a mitad del número. La regla va **una sola vez** y por selector de atributo (`a[href^="tel:"]`), no pegada a la sección de turno. La primera vez la puse solo en la página de tours y el mismo fallo siguió vivo en servicios durante días.
 - Un arreglo que vale para un tipo de elemento se escribe una vez para todos. Antes de dar por cerrado un arreglo puntual, buscar en todo el proyecto los demás sitios donde aparece lo mismo (`grep`) y decidir si la regla debe ser global. Dos mecanismos distintos para lo mismo acaban sumándose o contradiciéndose, como pasó con los anclajes bajo la barra fija.
 - Al buscar texto visible, **no limitar el `grep` por extensión**. Parte del copy del sitio no está en los `.html`: el botón de "View all tours" y el mensaje para lectores de pantalla los escribe `tours.js` al vuelo, y en una limpieza de vocabulario se quedaron sin cambiar porque solo miré los HTML. Comprobar el resultado en el navegador, no en el código.
+- Trabajar sin comprobar la sincronía cuesta la tarea entera. El 22 de septiembre de 2026 rediseñé las tarjetas de recorrido sobre una copia local que estaba 49 commits atrás: faltaban `tours.html`, `services.html`, `tours.json`, el `script.js` reescrito y ~1,600 líneas de `styles.css`. El resultado se veía bien en el navegador, porque un sitio atrasado se ve perfecto, y lo notó C antes que yo. El `git fetch` de la regla 1.2 no es burocracia, es lo primero.
