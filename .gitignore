@@ -1,2 +1,5 @@
 # Capturas y material de trabajo, no forman parte del sitio publicado
 Claude outputs/
+
+# Archivo oculto que crea el Finder en cada carpeta, no es del sitio
+.DS_Store
