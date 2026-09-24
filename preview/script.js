@@ -240,3 +240,227 @@ document.addEventListener("DOMContentLoaded", function () {
     hueco.textContent = anio;
   });
 });
+
+
+/* ==========================================
+CARRUSEL DE RESEÑAS
+
+La tira se mueve sola, pero el desplazamiento lo hace
+el navegador: la tarjeta se puede arrastrar con el dedo
+igual que si no hubiera JavaScript. Si todas las reseñas
+caben a la vez, las flechas y los puntos se esconden.
+========================================== */
+
+function iniciarCarruselDeResenas() {
+  const marco = document.querySelector("[data-review-carousel]");
+
+  if (!marco) {
+    return;
+  }
+
+  const pista = marco.querySelector(".review-track");
+  const cajaDePuntos = marco.querySelector(".review-dots");
+  const anterior = marco.querySelector(".review-arrow-prev");
+  const siguiente = marco.querySelector(".review-arrow-next");
+  const tarjetas = Array.from(pista.querySelectorAll(".review-card"));
+
+  if (tarjetas.length < 2) {
+    return;
+  }
+
+  const menosMovimiento = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+
+  let temporizador = null;
+  let puntos = [];
+  let indice = 0;
+
+  /* El paso es de tarjeta a tarjeta, hueco incluido. Se mide
+     del DOM en vez de calcularlo, porque el ancho cambia con
+     la pantalla y con el tamaño de letra del sistema. */
+  function paso() {
+    return tarjetas[1].offsetLeft - tarjetas[0].offsetLeft;
+  }
+
+  function ultimoIndice() {
+    const salto = paso();
+
+    if (salto <= 0) {
+      return 0;
+    }
+
+    /* Cuántas tarjetas se ven enteras ahora mismo */
+    const caben = Math.max(1, Math.round(pista.clientWidth / salto));
+
+    return Math.max(0, tarjetas.length - caben);
+  }
+
+  function ir(destino) {
+    const tope = ultimoIndice();
+
+    indice = destino > tope ? 0 : destino < 0 ? tope : destino;
+
+    pista.scrollTo({
+      left: indice * paso(),
+      behavior: menosMovimiento.matches ? "auto" : "smooth"
+    });
+
+    pintarPuntos();
+  }
+
+  function pintarPuntos() {
+    puntos.forEach(function (punto, numero) {
+      const activo = numero === indice;
+
+      punto.classList.toggle("is-active", activo);
+      punto.setAttribute("aria-current", activo ? "true" : "false");
+    });
+  }
+
+  /* Los puntos se rehacen al cambiar el ancho, porque el
+     número de posiciones alcanzables depende de cuántas
+     tarjetas caben. */
+  function armarPuntos() {
+    const tope = ultimoIndice();
+
+    cajaDePuntos.textContent = "";
+    puntos = [];
+
+    if (tope === 0) {
+      cajaDePuntos.hidden = true;
+      anterior.hidden = true;
+      siguiente.hidden = true;
+      return;
+    }
+
+    cajaDePuntos.hidden = false;
+    anterior.hidden = false;
+    siguiente.hidden = false;
+
+    for (let numero = 0; numero <= tope; numero++) {
+      const punto = document.createElement("button");
+
+      punto.type = "button";
+      punto.className = "review-dot";
+      punto.setAttribute(
+        "aria-label",
+        "Show review " + (numero + 1) + " of " + (tope + 1)
+      );
+
+      punto.addEventListener("click", function () {
+        ir(numero);
+        arrancar();
+      });
+
+      cajaDePuntos.appendChild(punto);
+      puntos.push(punto);
+    }
+
+    if (indice > tope) {
+      indice = 0;
+    }
+
+    pintarPuntos();
+  }
+
+  function arrancar() {
+    parar();
+
+    if (menosMovimiento.matches || ultimoIndice() === 0) {
+      return;
+    }
+
+    temporizador = window.setInterval(function () {
+      ir(indice + 1);
+    }, 5200);
+  }
+
+  function parar() {
+    window.clearInterval(temporizador);
+    temporizador = null;
+  }
+
+  anterior.addEventListener("click", function () {
+    ir(indice - 1);
+    arrancar();
+  });
+
+  siguiente.addEventListener("click", function () {
+    ir(indice + 1);
+    arrancar();
+  });
+
+  /* Mientras se lee o se arrastra, la tira no se mueve sola */
+  marco.addEventListener("mouseenter", parar);
+  marco.addEventListener("mouseleave", arrancar);
+  marco.addEventListener("focusin", parar);
+  marco.addEventListener("focusout", arrancar);
+  pista.addEventListener("pointerdown", parar);
+
+  /* Si el visitante arrastra a mano, el punto activo tiene que
+     seguirle. Se espera a que el desplazamiento se asiente. */
+  let reposo = null;
+
+  pista.addEventListener("scroll", function () {
+    window.clearTimeout(reposo);
+
+    reposo = window.setTimeout(function () {
+      const salto = paso();
+
+      if (salto > 0) {
+        indice = Math.min(
+          Math.round(pista.scrollLeft / salto),
+          ultimoIndice()
+        );
+
+        pintarPuntos();
+      }
+    }, 120);
+  });
+
+  /* Fuera de pantalla o con la pestaña escondida no tiene
+     sentido gastar el temporizador. */
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      parar();
+    } else {
+      arrancar();
+    }
+  });
+
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(
+      function (entradas) {
+        entradas.forEach(function (entrada) {
+          if (entrada.isIntersecting) {
+            arrancar();
+          } else {
+            parar();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    ).observe(marco);
+  }
+
+  let reajuste = null;
+
+  window.addEventListener("resize", function () {
+    window.clearTimeout(reajuste);
+
+    reajuste = window.setTimeout(function () {
+      armarPuntos();
+      ir(indice);
+    }, 180);
+  });
+
+  menosMovimiento.addEventListener("change", arrancar);
+
+  armarPuntos();
+  arrancar();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  iniciarCarruselDeResenas();
+});
