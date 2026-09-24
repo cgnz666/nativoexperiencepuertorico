@@ -23,6 +23,13 @@ Si existe una carpeta `contexto/` en el proyecto, leer sus archivos antes de emp
 
 `origin/main` es la fuente de verdad del código: de ahí sale el sitio publicado.
 
+**Este repositorio es público.** Cualquiera puede leer todos sus archivos y
+todo su historial, no solo lo que se ve en el sitio. Un archivo dentro del
+repositorio no es una nota interna: es publicación. Los documentos de
+contexto con tarifas del aliado, pisos de precio, márgenes o nombres de
+terceros se quedan en la carpeta de Mercadeo, en la Mac de C, y se le pasan
+a Claude adjuntos en el chat, nunca commiteados.
+
 Una sesión en la nube no puede abrir la carpeta de Mercadeo. Si una tarea
 depende de esas plantillas o de esas fotos, solo se puede hacer en sesión
 local: decirlo y parar, nunca inventar el insumo que falta.
@@ -185,5 +192,14 @@ Cuando C corrija algo, agregar aquí la regla correspondiente para que el error 
 - Un borde de 1 px sobre fondo propio blanco es invisible sobre fondo claro y se convierte en una línea blanca sobre fondo oscuro. Al reutilizar una tarjeta en una página con otro fondo, revisar sus bordes.
 - Los números de teléfono no se parten: `white-space:nowrap` en el enlace, o el subrayado queda cortado a mitad del número. La regla va **una sola vez** y por selector de atributo (`a[href^="tel:"]`), no pegada a la sección de turno. La primera vez la puse solo en la página de tours y el mismo fallo siguió vivo en servicios durante días.
 - Un arreglo que vale para un tipo de elemento se escribe una vez para todos. Antes de dar por cerrado un arreglo puntual, buscar en todo el proyecto los demás sitios donde aparece lo mismo (`grep`) y decidir si la regla debe ser global. Dos mecanismos distintos para lo mismo acaban sumándose o contradiciéndose, como pasó con los anclajes bajo la barra fija.
+- El repositorio es público y el historial de git no se olvida. Un documento
+  de contexto con márgenes o tarifas del aliado no se sube "para que la
+  sesión en la nube lo lea": una vez commiteado queda visible para siempre,
+  aunque después se borre el archivo. Si una sesión necesita ese contexto, se
+  adjunta en el chat. Si hace falta dejar algo en el repositorio, se sube solo
+  la parte publicable: el texto aprobado y las reglas de qué no se puede
+  ofrecer, nunca los números de costo. El 23 de septiembre de 2026 un plan de
+  lanzamiento daba por hecho que el contexto ya estaba en `contexto/`; no
+  estaba, y no debía estar.
 - Al buscar texto visible, **no limitar el `grep` por extensión**. Parte del copy del sitio no está en los `.html`: el botón de "View all tours" y el mensaje para lectores de pantalla los escribe `tours.js` al vuelo, y en una limpieza de vocabulario se quedaron sin cambiar porque solo miré los HTML. Comprobar el resultado en el navegador, no en el código.
 - Trabajar sin comprobar la sincronía cuesta la tarea entera. El 22 de septiembre de 2026 rediseñé las tarjetas de recorrido sobre una copia local que estaba 49 commits atrás: faltaban `tours.html`, `services.html`, `tours.json`, el `script.js` reescrito y ~1,600 líneas de `styles.css`. El resultado se veía bien en el navegador, porque un sitio atrasado se ve perfecto, y lo notó C antes que yo. El `git fetch` de la regla 1.2 no es burocracia, es lo primero.
