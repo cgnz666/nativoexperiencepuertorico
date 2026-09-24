@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "git fetch --quiet origin 2>/dev/null || true; echo \"── Sincronía con origin (si dice 'behind N', la copia está atrasada: avisar a C y no editar todavía. Ver CLAUDE.md 1.2) ──\"; git status -sb | head -5",
+            "command": "git fetch --quiet origin 2>/dev/null || true; echo \"── Sincronía con origin. Qué hacer según lo que diga: CLAUDE.md 1.2 ──\"; git status -sb | head -5",
             "timeout": 25,
             "statusMessage": "Comprobando sincronía con el remoto"
           }

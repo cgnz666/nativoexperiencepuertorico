@@ -1,6 +1,6 @@
 # CLAUDE.md · Flujo de trabajo: construir, verificar, corregir
 
-Este archivo es el "cerebro" del proyecto. Claude lo lee al comenzar cada sesión y debe seguirlo en toda tarea. El objetivo es que cada entrega llegue terminada y verificada, de modo que C solo tenga que hacer una revisión mínima.
+Este archivo es el "cerebro" del proyecto. Claude lo lee al comenzar cada sesión. El objetivo es que cada entrega llegue terminada y verificada, de modo que C solo tenga que hacer una revisión mínima.
 
 ## 1. Contexto del proyecto
 
@@ -12,7 +12,7 @@ Este archivo es el "cerebro" del proyecto. Claude lo lee al comenzar cada sesió
 | Idioma del contenido | Se define por proyecto, nunca se asume. Este sitio: **inglés**. |
 | Público | Visitantes y turistas, mayormente desde el celular |
 
-Si existe una carpeta `contexto/` en el proyecto, leer sus archivos antes de empezar y aplicarlos.
+La carpeta `contexto/` tiene un documento de referencia por tema (por ejemplo, la oferta de la barra móvil). Antes de escribir o revisar algo de ese tema, leer el documento que le corresponde.
 
 ## 1.1 Dónde vive cada cosa
 
@@ -34,34 +34,29 @@ Una sesión en la nube no puede abrir la carpeta de Mercadeo. Si una tarea
 depende de esas plantillas o de esas fotos, solo se puede hacer en sesión
 local: decirlo y parar, nunca inventar el insumo que falta.
 
-## 1.2 Antes de tocar un archivo, comprobar que la copia está al día
+## 1.2 Antes de tocar un archivo, poner la copia al día
 
 La copia local se queda atrás sin avisar, porque el trabajo entra por varios
-lados: GitHub, sesiones en la nube en ramas `claude/*`, y esta máquina.
+lados: GitHub, sesiones en la nube en ramas `claude/*`, y esta máquina. Un
+sitio atrasado se ve perfecto en local; simplemente le falta la mitad.
 
-**Primer paso de toda sesión, antes de leer o editar nada:**
+El hook de inicio hace `git fetch` y muestra el estado. Según lo que diga:
 
-```bash
-git fetch --quiet origin && git status -sb | head -3
-```
-
-- Si dice `behind N`, **decírselo a C y no editar todavía**. Acordar si se
-  sincroniza primero. Nunca hacer `pull` por cuenta propia: casi siempre hay
-  cambios sin confirmar que se perderían.
-- Si dice `ahead N`, hay trabajo aquí que el remoto no tiene. Avisarlo antes
-  de que se quede olvidado.
-- Servir el sitio en local y verlo bien **no demuestra** que sea la versión
-  actual. Un sitio atrasado se ve perfecto; simplemente le falta la mitad.
-
+- **Solo `behind N`:** actualizar con `git merge --ff-only @{u}` antes de leer
+  o editar nada, sin preguntar. Es seguro: si fuera a pisar un cambio local
+  sin guardar, git se niega y no toca nada.
+- **Si git se niega, o dice `ahead N` y `behind N` a la vez:** decírselo a C
+  y no editar todavía.
+- **Solo `ahead N`:** hay trabajo aquí que el remoto no tiene. Mencionarlo una
+  vez.
 
 ## 2. Reglas generales
 
 - Responder en el chat en español.
-- El idioma del contenido de un entregable no se asume. Si no está definido en la tabla de arriba, preguntar a C antes de redactar. Si un entregable nuevo va en un idioma distinto al del resto del sitio, avisarlo antes de construir.
+- El idioma del contenido de un entregable no se asume. Si no está definido en la tabla de arriba, preguntar a C antes de redactar. Si una petición choca con el idioma del sitio existente, preguntar antes de escribir una sola línea.
 - No usar guiones largos pareados como paréntesis. Usar comas, paréntesis o reestructurar.
 - Moneda siempre con dos decimales y con separador de millares cuando toque:
   `$90.00`, `$1,300.00`. Nunca `$90` ni `$1300.00`.
-- Comprobar que la copia local está al día antes de editar. Ver **1.2**.
 - No borrar ni sobrescribir archivos sin que se pida. Cambios grandes van en una rama de git.
 - Las notas internas (dudas, pendientes, cosas a verificar) van en el chat, nunca dentro del sitio ni de los entregables.
 - No inventar datos del negocio (precios, horarios, teléfonos, direcciones). Si falta un dato, preguntar o dejarlo marcado en el chat.
@@ -94,14 +89,13 @@ Dominios ya habilitados en este proyecto:
 
 ## 3. El ciclo de trabajo
 
-Toda tarea sigue estas cinco fases, en orden.
+Toda tarea que cambie el sitio sigue estas cinco fases, en orden. Una pregunta, una revisión o un informe no necesitan capturas ni lista de cotejo.
 
 ### Fase 1 · Entender y planificar
 
-1. Leer este archivo y los archivos relevantes del proyecto.
-2. Si la petición es ambigua, hacer las preguntas necesarias **antes** de construir (una sola ronda, concreta).
-3. Escribir un plan corto: qué se va a cambiar, en qué archivos y cómo se sabrá que quedó bien (criterios de aceptación).
-4. Si hay referencias de diseño (capturas, enlaces, textos dictados), anotarlas como el estándar contra el cual se compara el resultado.
+- Si la petición es ambigua, hacer las preguntas necesarias **antes** de construir (una sola ronda, concreta).
+- Dejar claro cómo se sabrá que quedó bien (criterios de aceptación).
+- Si hay referencias de diseño (capturas, enlaces, textos dictados), son el estándar contra el cual se compara el resultado.
 
 ### Fase 2 · Construir
 
@@ -114,7 +108,7 @@ Toda tarea sigue estas cinco fases, en orden.
 Esta es la fase clave. Claude no da el trabajo por terminado sin haberlo **visto**.
 
 1. Servir el sitio localmente (por ejemplo `python3 -m http.server 8000`).
-2. Tomar capturas de pantalla completas con Playwright (o el navegador disponible) en al menos estos anchos:
+2. Tomar capturas de pantalla completas con el navegador disponible (el navegador integrado, Chrome headless o Playwright, según la máquina) en al menos estos anchos:
    - Móvil: 390 px
    - Tableta: 768 px
    - Escritorio: 1440 px
@@ -180,17 +174,16 @@ No hacer commit ni publicar sin autorización de C.
 
 ## 5. Mejora continua
 
-Cuando C corrija algo, agregar aquí la regla correspondiente para que el error no se repita.
+Cuando C corrija algo, agregar aquí la regla si vale más allá de ese caso: si habría ayudado en la mayoría de las sesiones, no solo en la que la escribió. Un arreglo puntual se queda en el código.
 
 ### Reglas aprendidas
 
-- El idioma del contenido lo decide C, no este archivo. Al detectar que una petición choca con el idioma del sitio existente, preguntar antes de escribir una sola línea.
 - Antes de opinar o rediseñar algo que depende de un recurso externo, comprobar si se puede cargar de verdad. Si no, pedir el dominio y esperar, en vez de trabajar sobre un simulacro.
 - Medir un espaciado no basta para darlo por bueno. En un teléfono, dos bloques que ocupan todo el ancho necesitan mucha más separación que los mismos elementos en escritorio, aunque el número de píxeles sea idéntico. Mirar la captura de móvil preguntándose si parecen dos piezas o una sola.
 - Si C dice que un arreglo publicado no le funciona, comprobar primero qué está sirviendo el dominio de verdad, antes de tocar código.
 - Aclarar un fondo de video obliga a revisar todo el texto blanco que va encima. Un velo oscuro fijo al viewport no distingue el titular de las tarjetas, así que el velo se queda ligero y cada texto blanco lleva su propio respaldo (una franja degradada, una pastilla o un panel). Medir el contraste contra el fotograma más claro del video, no contra el color promedio.
 - Un borde de 1 px sobre fondo propio blanco es invisible sobre fondo claro y se convierte en una línea blanca sobre fondo oscuro. Al reutilizar una tarjeta en una página con otro fondo, revisar sus bordes.
-- Los números de teléfono no se parten: `white-space:nowrap` en el enlace, o el subrayado queda cortado a mitad del número. La regla va **una sola vez** y por selector de atributo (`a[href^="tel:"]`), no pegada a la sección de turno. La primera vez la puse solo en la página de tours y el mismo fallo siguió vivo en servicios durante días.
+- Los números de teléfono no se parten: `white-space:nowrap` en el enlace, o el subrayado queda cortado a mitad del número. La regla va **una sola vez** y por selector de atributo (`a[href^="tel:"]`), no pegada a la sección de turno, o el fallo sigue vivo en las otras páginas.
 - Un arreglo que vale para un tipo de elemento se escribe una vez para todos. Antes de dar por cerrado un arreglo puntual, buscar en todo el proyecto los demás sitios donde aparece lo mismo (`grep`) y decidir si la regla debe ser global. Dos mecanismos distintos para lo mismo acaban sumándose o contradiciéndose, como pasó con los anclajes bajo la barra fija.
 - El repositorio es público y el historial de git no se olvida. Un documento
   de contexto con márgenes o tarifas del aliado no se sube "para que la
@@ -198,16 +191,13 @@ Cuando C corrija algo, agregar aquí la regla correspondiente para que el error 
   aunque después se borre el archivo. Si una sesión necesita ese contexto, se
   adjunta en el chat. Si hace falta dejar algo en el repositorio, se sube solo
   la parte publicable: el texto aprobado y las reglas de qué no se puede
-  ofrecer, nunca los números de costo. El 23 de septiembre de 2026 un plan de
-  lanzamiento daba por hecho que el contexto ya estaba en `contexto/`; no
-  estaba, y no debía estar.
-- **Una reseña se publica verbatim o no se publica.** Hasta el 24 de
-  septiembre de 2026 el sitio tenía tres testimonios firmados con el nombre
-  real de tres clientes de TripAdvisor, pero el texto estaba reescrito: sonaba
-  mejor y no era lo que esa persona escribió. Poner palabras en boca de alguien
+  ofrecer, nunca los números de costo. No dar por hecho que un contexto
+  privado está en `contexto/`: no está, y no debe estar.
+- **Una reseña se publica verbatim o no se publica.** Un testimonio firmado
+  con el nombre real de un cliente no se reescribe, aunque suene mejor: poner
+  palabras en boca de alguien
   con su nombre y su foto de perfil detrás no es redactar, es inventar una
   cita. Si una reseña es muy larga se recorta por frases completas, quitando
   del principio o del final, nunca cosiendo trozos ni cambiando palabras. Lo
   mismo vale para cualquier cosa atribuida a una persona con nombre.
-- Al buscar texto visible, **no limitar el `grep` por extensión**. Parte del copy del sitio no está en los `.html`: el botón de "View all tours" y el mensaje para lectores de pantalla los escribe `tours.js` al vuelo, y en una limpieza de vocabulario se quedaron sin cambiar porque solo miré los HTML. Comprobar el resultado en el navegador, no en el código.
-- Trabajar sin comprobar la sincronía cuesta la tarea entera. El 22 de septiembre de 2026 rediseñé las tarjetas de recorrido sobre una copia local que estaba 49 commits atrás: faltaban `tours.html`, `services.html`, `tours.json`, el `script.js` reescrito y ~1,600 líneas de `styles.css`. El resultado se veía bien en el navegador, porque un sitio atrasado se ve perfecto, y lo notó C antes que yo. El `git fetch` de la regla 1.2 no es burocracia, es lo primero.
+- Al buscar texto visible, **no limitar el `grep` por extensión**. Parte del copy del sitio no está en los `.html`: el botón de "View all tours" y el mensaje para lectores de pantalla los escribe `tours.js` al vuelo. Comprobar el resultado en el navegador, no en el código.
