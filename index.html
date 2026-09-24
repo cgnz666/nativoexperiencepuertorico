@@ -18,9 +18,9 @@ content="Discover Puerto Rico through authentic cultural trips and adventures cu
 href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
 rel="stylesheet">
 
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=20260923b">
-<link rel="apple-touch-icon" href="assets/favicon-180.png?v=20260923b">
-<link rel="stylesheet" href="styles.css?v=20260923b">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=20260924a">
+<link rel="apple-touch-icon" href="assets/favicon-180.png?v=20260924a">
+<link rel="stylesheet" href="styles.css?v=20260924a">
 
 </head>
 
@@ -805,7 +805,20 @@ a connection.
 
         </div>
 
-        <div class="review-grid">
+        <div class="review-carousel" data-review-carousel>
+
+          <button
+            class="review-arrow review-arrow-prev"
+            type="button"
+            aria-label="Previous reviews">
+            <span aria-hidden="true">&#8249;</span>
+          </button>
+
+          <div
+            class="review-track"
+            tabindex="0"
+            role="group"
+            aria-label="Guest reviews. Scroll sideways to read more.">
 
             <article class="review-card">
 
@@ -858,6 +871,17 @@ a connection.
                 <span>Tripadvisor • Spain</span>
 
             </article>
+
+          </div>
+
+          <button
+            class="review-arrow review-arrow-next"
+            type="button"
+            aria-label="Next reviews">
+            <span aria-hidden="true">&#8250;</span>
+          </button>
+
+          <div class="review-dots"></div>
 
         </div>
 
@@ -1115,7 +1139,7 @@ async>
 
 </script>
 
-<script src="script.js?v=20260923b"></script>
+<script src="script.js?v=20260924a"></script>
 
 </body>
 

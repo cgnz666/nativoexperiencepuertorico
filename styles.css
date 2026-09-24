@@ -2397,15 +2397,197 @@ REVIEWS
 
 
 /* ==========================================
-REVIEWS — GRID
+REVIEWS — CARRUSEL
+
+Una tira que se desplaza de lado en vez de apilar
+las tarjetas. En móvil se ve una tarjeta con la
+siguiente asomando, que es la señal de que hay más.
+Si todas caben a la vez, las flechas y los puntos
+se esconden solos desde script.js.
 ========================================== */
 
-.review-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:28px;
+.review-carousel{
+  position:relative;
 
   margin-top:30px;
+}
+
+.review-track{
+  display:flex;
+  gap:28px;
+
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+
+  /* Sitio para que el levantón del hover y la sombra
+     de la tarjeta no queden cortados por el recorte
+     del desplazamiento. */
+  padding:16px 6px 24px;
+  scroll-padding-left:6px;
+
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+
+.review-track::-webkit-scrollbar{
+  display:none;
+}
+
+.review-track > .review-card{
+  flex:0 0 calc((100% - 68px) / 3);
+  min-width:0;
+
+  scroll-snap-align:start;
+
+  /* Las citas no miden lo mismo. Sin esto, el nombre de cada
+     tarjeta queda a una altura distinta y la fila se ve torcida. */
+  display:flex;
+  flex-direction:column;
+}
+
+.review-track > .review-card h4{
+  margin-top:auto;
+}
+
+.review-track:focus-visible{
+  outline:3px solid var(--primary);
+  outline-offset:4px;
+  border-radius:26px;
+}
+
+
+/* ==========================================
+REVIEWS — FLECHAS
+
+Solo en pantallas con ratón. En táctil sobra:
+se arrastra con el dedo.
+========================================== */
+
+.review-arrow{
+  position:absolute;
+  top:50%;
+  z-index:3;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:48px;
+  height:48px;
+
+  padding:0;
+
+  /* Los puntos van debajo, así que el centro del marco cae
+     más abajo que el centro de la tira. Se sube a mano. */
+  margin-top:-13px;
+
+  color:var(--primary);
+  background:#ffffff;
+  border:1px solid rgba(20,145,143,.22);
+  border-radius:50%;
+
+  font-size:1.9rem;
+  line-height:1;
+
+  transform:translateY(-50%);
+  cursor:pointer;
+
+  box-shadow:0 12px 30px rgba(7,49,62,.18);
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    box-shadow .25s ease,
+    opacity .25s ease;
+}
+
+.review-arrow span{
+  /* La comilla angular se sienta alta dentro de su caja */
+  margin-top:-4px;
+}
+
+.review-arrow-prev{
+  left:-24px;
+}
+
+.review-arrow-next{
+  right:-24px;
+}
+
+.review-arrow:hover{
+  color:#ffffff;
+  background:var(--primary);
+
+  box-shadow:0 14px 32px rgba(20,145,143,.3);
+}
+
+.review-arrow[hidden],
+.review-dots[hidden]{
+  display:none;
+}
+
+
+/* ==========================================
+REVIEWS — PUNTOS
+
+Mismo lenguaje que los puntos de las tarjetas de
+tour, en color sobre fondo claro.
+========================================== */
+
+.review-dots{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:2px;
+
+  margin-top:14px;
+}
+
+/* El botón mide 24 px para que se pueda dar con el dedo.
+   El punto que se ve es el ::before, mucho más pequeño. */
+.review-dot{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  min-width:24px;
+  height:24px;
+
+  padding:0 5px;
+  border:0;
+
+  background:none;
+  cursor:pointer;
+}
+
+.review-dot::before{
+  content:"";
+
+  display:block;
+
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+  background:rgba(20,145,143,.3);
+
+  transition:
+    width .3s ease,
+    background-color .3s ease;
+}
+
+.review-dot.is-active::before{
+  width:26px;
+  border-radius:999px;
+  background:var(--primary);
+}
+
+.review-dot:focus-visible{
+  outline:3px solid var(--primary);
+  outline-offset:2px;
+  border-radius:999px;
 }
 
 
@@ -2569,11 +2751,22 @@ REVIEWS — TABLET / MOBILE
     padding:65px 0;
   }
 
-  .review-grid{
-    grid-template-columns:1fr;
-    gap:22px;
-
+  .review-carousel{
     margin-top:28px;
+  }
+
+  .review-track{
+    gap:18px;
+    padding-bottom:20px;
+  }
+
+  /* Dos por pantalla en tableta */
+  .review-track > .review-card{
+    flex:0 0 calc((100% - 30px) / 2);
+  }
+
+  .review-arrow{
+    display:none;
   }
 
   .review-card{
@@ -2582,6 +2775,32 @@ REVIEWS — TABLET / MOBILE
 
   .reviews-button{
     margin-top:34px;
+  }
+
+}
+
+
+/* ==========================================
+REVIEWS — MÓVIL
+
+Una tarjeta por pantalla, con la siguiente asomando
+por el borde. Así la sección mide una tarjeta de
+alto en vez de tres apiladas.
+========================================== */
+
+@media (max-width:640px){
+
+  .review-track > .review-card{
+    flex:0 0 86%;
+  }
+
+  .review-card{
+    padding:26px;
+  }
+
+  .review-card p{
+    font-size:.98rem;
+    line-height:1.72;
   }
 
 }
