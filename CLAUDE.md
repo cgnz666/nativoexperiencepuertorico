@@ -201,5 +201,13 @@ Cuando C corrija algo, agregar aquí la regla correspondiente para que el error 
   ofrecer, nunca los números de costo. El 23 de septiembre de 2026 un plan de
   lanzamiento daba por hecho que el contexto ya estaba en `contexto/`; no
   estaba, y no debía estar.
+- **Una reseña se publica verbatim o no se publica.** Hasta el 24 de
+  septiembre de 2026 el sitio tenía tres testimonios firmados con el nombre
+  real de tres clientes de TripAdvisor, pero el texto estaba reescrito: sonaba
+  mejor y no era lo que esa persona escribió. Poner palabras en boca de alguien
+  con su nombre y su foto de perfil detrás no es redactar, es inventar una
+  cita. Si una reseña es muy larga se recorta por frases completas, quitando
+  del principio o del final, nunca cosiendo trozos ni cambiando palabras. Lo
+  mismo vale para cualquier cosa atribuida a una persona con nombre.
 - Al buscar texto visible, **no limitar el `grep` por extensión**. Parte del copy del sitio no está en los `.html`: el botón de "View all tours" y el mensaje para lectores de pantalla los escribe `tours.js` al vuelo, y en una limpieza de vocabulario se quedaron sin cambiar porque solo miré los HTML. Comprobar el resultado en el navegador, no en el código.
 - Trabajar sin comprobar la sincronía cuesta la tarea entera. El 22 de septiembre de 2026 rediseñé las tarjetas de recorrido sobre una copia local que estaba 49 commits atrás: faltaban `tours.html`, `services.html`, `tours.json`, el `script.js` reescrito y ~1,600 líneas de `styles.css`. El resultado se veía bien en el navegador, porque un sitio atrasado se ve perfecto, y lo notó C antes que yo. El `git fetch` de la regla 1.2 no es burocracia, es lo primero.
