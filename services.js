@@ -78,7 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
     ".svc-item-media .svc-fig",
     ".svc-steps li",
     ".svc-note-fold",
-    ".svc-inquire-inner > *"
+    ".cierre-texto > *",
+    ".cierre-dibujo"
   ];
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

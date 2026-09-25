@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-label="The front of a two-story rental house with a balcony, shuttered doors and windows, bougainvillea climbing the wall and potted plants by the door." style="color: var(--il-line, #09a7c3)">
+<g style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: miter; stroke-linecap: round; stroke-miterlimit: 10">
+<path d="M0 150 C60 120 110 130 150 108 C200 82 250 100 300 90 C360 78 420 100 480 92"></path>
+<rect x="60" y="110" width="360" height="330" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="48" y="96" width="384" height="16" style="fill: var(--il-shade, #d6e9e9)"></rect>
+<path d="M60 250 H420"></path>
+<rect x="160" y="128" width="60" height="102" style="fill: var(--il-shade, #d6e9e9)"></rect>
+<rect x="260" y="128" width="60" height="102" style="fill: var(--il-shade, #d6e9e9)"></rect>
+<path d="M160 142 H220 M160 154 H220 M160 166 H220 M160 178 H220 M160 190 H220 M160 202 H220 M160 214 H220 M190 128 V230 M260 142 H320 M260 154 H320 M260 166 H320 M260 178 H320 M260 190 H320 M260 202 H320 M260 214 H320 M290 128 V230"></path>
+<path d="M120 196 H360 M130 196 V230 M146 196 V230 M162 196 V230 M178 196 V230 M194 196 V230 M210 196 V230 M226 196 V230 M242 196 V230 M258 196 V230 M274 196 V230 M290 196 V230 M306 196 V230 M322 196 V230 M338 196 V230 M354 196 V230"></path>
+<rect x="112" y="230" width="256" height="10" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M130 240 L140 252 M350 240 L340 252"></path>
+<rect x="96" y="312" width="72" height="78" style="fill: var(--il-shade, #d6e9e9)"></rect>
+<rect x="312" y="312" width="72" height="78" style="fill: var(--il-shade, #d6e9e9)"></rect>
+<path d="M96 324 H168 M96 336 H168 M96 348 H168 M96 360 H168 M96 372 H168 M132 312 V390 M312 324 H384 M312 336 H384 M312 348 H384 M312 360 H384 M312 372 H384 M348 312 V390"></path>
+<rect x="90" y="390" width="84" height="8" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="306" y="390" width="84" height="8" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M206 440 V346 A34 34 0 0 1 274 346 V440 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M240 312 V440 M216 360 H232 V420 H216 Z M248 360 H264 V420 H248 Z"></path>
+<circle cx="234" cy="392" r="2.5"></circle>
+<rect x="284" y="332" width="18" height="14" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="190" y="440" width="100" height="10" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="178" y="450" width="124" height="10" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M0 460 H480 M0 476 H480"></path>
+<path d="M168 460 L172 430 H196 L200 460 Z M280 460 L284 430 H308 L312 460 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M184 430 C176 412 170 404 162 400 M184 430 C186 412 192 402 200 396 M184 430 C182 416 184 406 186 398 M296 430 C288 412 282 404 274 400 M296 430 C298 412 304 402 312 396 M296 430 C294 416 296 406 298 398"></path>
+<path d="M36 460 C44 400 30 340 52 280 C66 240 60 200 86 170 C108 146 140 150 160 176"></path>
+<path d="M52 280 C70 270 84 262 96 250 M58 330 C70 322 80 314 86 300"></path>
+<g style="fill: var(--il-shade, #d6e9e9)">
+<path d="M84 168 L94 160 L98 172 L88 178 Z M100 158 L112 154 L112 166 L102 168 Z M118 160 L128 164 L122 174 L114 170 Z M136 164 L146 172 L136 178 L130 170 Z M72 190 L82 186 L84 198 L74 200 Z M62 214 L72 208 L76 220 L66 224 Z M56 244 L66 240 L68 252 L58 254 Z M84 244 L96 244 L92 256 L82 254 Z M44 296 L54 290 L58 302 L48 306 Z M64 312 L74 308 L76 320 L66 322 Z M40 344 L50 340 L52 352 L42 354 Z M150 180 L160 184 L156 194 L146 190 Z M92 262 L102 262 L100 274 L90 272 Z"></path>
+</g>
+<path d="M440 460 C436 420 446 380 438 340 M454 460 C456 424 468 392 462 360"></path>
+<path d="M438 340 C424 330 422 318 430 310 C440 318 442 328 438 340 Z M462 360 C476 350 480 338 474 330 C464 336 460 348 462 360 Z M440 390 C426 384 422 372 428 364 C438 370 442 380 440 390 Z" style="fill: var(--il-fill, #ffffff)"></path>
+</g>
+</svg>

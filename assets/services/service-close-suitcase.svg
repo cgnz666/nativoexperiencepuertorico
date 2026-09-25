@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-label="A packed suitcase with a luggage tag and a sun hat resting on the floor, ready to arrive." style="color: var(--il-line, #09a7c3)">
+<g style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: miter; stroke-linecap: round; stroke-miterlimit: 10">
+<path d="M0 60 H480 M0 120 H480 M0 180 H480 M0 240 H480 M0 300 H480 M60 0 V360 M150 0 V360 M240 0 V360 M330 0 V360 M420 0 V360"></path>
+<rect x="-2" y="360" width="484" height="122" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M0 400 H480 M0 446 H480"></path>
+<path d="M120 404 H320 L336 414 H104 Z" style="fill: var(--il-shade, #d6e9e9); stroke: none"></path>
+<path d="M200 170 V96 H260 V170 M212 170 V108 H248 V170"></path>
+<rect x="140" y="170" width="180" height="230" rx="16" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M190 176 V394 M270 176 V394"></path>
+<rect x="140" y="236" width="180" height="16" style="fill: var(--il-shade, #d6e9e9)"></rect>
+<rect x="212" y="186" width="36" height="12" rx="3" style="fill: var(--il-fill, #ffffff)"></rect>
+<circle cx="164" cy="404" r="8" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="296" cy="404" r="8" style="fill: var(--il-fill, #ffffff)"></circle>
+<path d="M254 104 C274 110 286 126 290 144"></path>
+<path d="M282 142 L306 136 L316 176 L292 182 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<circle cx="294" cy="150" r="3"></circle>
+<path d="M296 160 L308 157 M298 168 L310 165"></path>
+<ellipse cx="380" cy="406" rx="76" ry="18" style="fill: var(--il-fill, #ffffff)"></ellipse>
+<path d="M340 404 C340 370 356 352 380 352 C404 352 420 370 420 404 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M342 392 C360 398 400 398 418 392 L419 402 C400 408 360 408 341 402 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M420 398 C432 404 440 414 436 424"></path>
+<path d="M60 400 L64 330 H96 L100 400 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M80 330 C70 300 56 290 44 286 C50 300 60 312 80 330 Z M80 330 C88 296 102 282 116 278 C112 296 100 314 80 330 Z M80 330 C78 300 82 280 90 266 C96 284 92 308 80 330 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+</g>
+</svg>

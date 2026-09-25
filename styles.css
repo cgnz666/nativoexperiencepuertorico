@@ -2959,57 +2959,60 @@ alto en vez de tres apiladas.
 
 
 /* ==========================================
-CONTACT · LET'S PLAN
+CIERRE · LET'S PLAN
 
-Sigue el cierre de la página de servicios: azul
-oscuro liso, titular compacto en negrita, botones
-rectangulares y los datos de contacto en filas
-separadas por líneas finas, como la carta.
+El final del home y el de servicios son la misma
+pieza: la invitación sobre azul oscuro, con dos
+ilustraciones de la carta en blanco. En servicios
+va en espejo (.cierre-espejo). Cada dato de
+contacto sale aquí una sola vez; el pie ya no los
+repite.
 ========================================== */
 
-.contact-section{
+/* Márgenes propios, 20 px en el teléfono y 80 px en
+   escritorio, compartidos con el pie para que los dos
+   bordes caigan en la misma línea. */
+
+.cierre-wrap{
+  max-width:1440px;
+
+  margin:0 auto;
+  padding:0 20px;
+}
+
+
+/* position:relative para pasar por encima del hero fijo
+   (ver LÁMINAS) */
+
+.cierre{
   position:relative;
 
-  padding:88px 0;
+  padding:56px 0 48px;
 
   color:#ffffff;
 
   background:var(--ocean);
+
+  /* Colores de las ilustraciones en línea: blanco sobre azul */
+  --il-line:#ffffff;
+  --il-fill:#032833;
+  --il-shade:#173943;
+  --il-bg:#032833;
+  --il-halo:rgba(255,255,255,.07);
 }
 
 
-.contact-grid{
-  display:grid;
-  grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);
-  align-items:center;
+/* Una columna de rejilla no baja de su contenido mínimo salvo
+   que se le diga, y aquí el contenido mínimo es la palabra más
+   larga del titular. Con la letra del sistema muy agrandada,
+   esa palabra empujaba la sección fuera de la pantalla. */
 
-  gap:80px;
-}
-
-
-/* Misma historia que en el pie: una columna de rejilla no baja
-   de su contenido mínimo salvo que se le diga, y aquí el
-   contenido mínimo es la palabra más larga del titular. Con la
-   letra del sistema muy agrandada, esa palabra empujaba la
-   sección fuera de la pantalla. */
-
-.contact-grid > *{
+.cierre-grid > *{
   min-width:0;
 }
 
-.contact-section h2{
-  overflow-wrap:break-word;
-}
 
-
-/* ==========================================
-CONTACT — HEADING
-========================================== */
-
-/* El rótulo es el mismo título de sección de servicios: letra
-   pequeña muy espaciada con una línea corta debajo */
-
-.contact-section .eyebrow{
+.cierre .eyebrow{
   display:block;
 
   color:var(--primary);
@@ -3021,7 +3024,7 @@ CONTACT — HEADING
   text-transform:uppercase;
 }
 
-.contact-section .eyebrow::after{
+.cierre .eyebrow::after{
   content:"";
 
   display:block;
@@ -3035,49 +3038,52 @@ CONTACT — HEADING
 }
 
 
-.contact-section h2{
-  max-width:620px;
-
-  margin:28px 0 0;
+.cierre h2{
+  margin:24px 0 0;
 
   color:#ffffff;
 
-  font-size:48px;
+  font-size:44px;
   font-weight:700;
-  line-height:1.1;
+  line-height:1.02;
+  letter-spacing:-.015em;
+
+  overflow-wrap:break-word;
 }
 
 
-.contact-section p{
-  max-width:56ch;
+.cierre p{
+  max-width:48ch;
 
   margin:18px 0 0;
 
   color:rgba(255,255,255,.86);
 
-  font-size:16px;
+  font-size:17px;
   line-height:1.6;
 }
 
 
 /* ==========================================
-CONTACT — ACTION BUTTONS
+CIERRE — BOTONES
 ========================================== */
 
-.contact-buttons{
+.cierre-botones{
   display:flex;
-  flex-wrap:wrap;
+  flex-direction:column;
 
-  gap:16px;
+  gap:12px;
 
   margin-top:32px;
 }
 
 
-.contact-buttons .button{
+.cierre-boton{
   display:inline-flex;
   align-items:center;
   justify-content:center;
+
+  gap:10px;
 
   height:52px;
 
@@ -3097,18 +3103,24 @@ CONTACT — ACTION BUTTONS
     color .2s ease;
 }
 
+.cierre-boton svg{
+  flex-shrink:0;
+
+  width:20px;
+  height:20px;
+}
+
 
 /* WhatsApp: el botón blanco */
 
-.contact-buttons .button-primary,
-.contact-buttons .button-primary:link,
-.contact-buttons .button-primary:visited{
+.cierre-boton-blanco,
+.cierre-boton-blanco:link,
+.cierre-boton-blanco:visited{
   color:var(--ocean);
   background:#ffffff;
 }
 
-
-.contact-buttons .button-primary:hover{
+.cierre-boton-blanco:hover{
   color:var(--ocean);
   background:var(--sand);
 }
@@ -3116,376 +3128,388 @@ CONTACT — ACTION BUTTONS
 
 /* Correo: solo el contorno */
 
-.contact-buttons .button-secondary,
-.contact-buttons .button-secondary:link,
-.contact-buttons .button-secondary:visited{
+.cierre-boton-contorno,
+.cierre-boton-contorno:link,
+.cierre-boton-contorno:visited{
   color:#ffffff;
   background:transparent;
 }
 
-
-.contact-buttons .button-secondary:hover{
+.cierre-boton-contorno:hover{
   color:var(--ocean);
   background:#ffffff;
 }
 
 
 /* ==========================================
-CONTACT — FILAS DE DATOS
+CIERRE — LISTA DE CONTACTO
+
+Más pequeña y más apagada que los botones, a
+propósito: acompaña, no compite. En el teléfono
+un dato por línea; en escritorio los dos
+primeros comparten la primera línea.
 ========================================== */
 
-/* Cada dato es una fila de 64px con su icono de trazo, entre
-   una línea teal arriba y abajo y líneas finas en medio. Los
-   que llevan a algún sitio terminan en una flecha.
+.cierre-datos{
+  display:flex;
+  flex-direction:column;
 
-   Antes eran emoji dentro de una lista. Un emoji se dibuja
-   distinto en cada teléfono, queda borroso al ampliarlo y el
-   lector de pantalla lo lee en voz alta ("chincheta"), así que
-   son iconos de trazo y el emoji desaparece del texto.
+  margin:28px 0 0;
+  padding:12px 0 0;
 
-   La fila entera es el enlace, no solo las letras: en un
-   teléfono eso es la diferencia entre acertar y no acertar. */
-
-.contact-pills{
-  margin:0;
-  padding:0;
-
-  border-top:1.5px solid var(--primary);
-  border-bottom:1.5px solid var(--primary);
+  border-top:1px solid rgba(255,255,255,.16);
 
   list-style:none;
 }
 
-.contact-pills li + li{
-  border-top:1px solid rgba(255,255,255,.16);
-}
 
-
-.contact-pill{
-  display:flex;
+.cierre-datos a,
+.cierre-dato{
+  display:inline-flex;
   align-items:center;
 
-  gap:16px;
+  gap:10px;
 
-  min-height:64px;
+  min-height:40px;
 
-  padding:10px 4px;
+  color:rgba(255,255,255,.78);
 
-  color:#ffffff;
-
-  font-size:16px;
-  font-weight:600;
+  font-size:14px;
+  font-weight:500;
   line-height:1.4;
   text-decoration:none;
-
-  transition:background-color .2s ease;
 }
 
+.cierre-datos a:link,
+.cierre-datos a:visited{
+  color:rgba(255,255,255,.78);
+}
 
-.contact-pill:link,
-.contact-pill:visited{
+/* La línea mide 40 px, pero el enlace llega a los 44 px de
+   toque: crece 2 px arriba y abajo sin mover nada */
+
+.cierre-datos a{
+  min-height:44px;
+
+  margin-block:-2px;
+}
+
+.cierre-datos a span{
+  text-decoration:underline;
+  text-decoration-color:rgba(255,255,255,.35);
+  text-underline-offset:4px;
+}
+
+.cierre-datos a:hover{
   color:#ffffff;
 }
 
-
-a.contact-pill:hover{
-  background:rgba(255,255,255,.06);
+.cierre-datos a:hover span{
+  text-decoration-color:currentColor;
 }
 
-
-/* Flecha de las filas que son enlace */
-
-a.contact-pill::after{
-  content:"";
-
+.cierre-datos svg{
   flex-shrink:0;
 
-  width:8px;
-  height:8px;
-
-  margin:0 6px 0 auto;
-
-  border-top:1.5px solid var(--primary);
-  border-right:1.5px solid var(--primary);
-
-  transform:rotate(45deg);
-
-  transition:transform .2s ease;
-}
-
-a.contact-pill:hover::after{
-  transform:translateX(4px) rotate(45deg);
-}
-
-
-.contact-pill-icon{
-  display:flex;
-
-  flex:0 0 28px;
+  width:18px;
+  height:18px;
 
   color:var(--primary);
 }
 
 
-.contact-pill-icon svg{
-  width:28px;
-  height:28px;
-
-  stroke-width:1.5;
-}
-
-
-.contact-pill-text{
-  min-width:0;
-
-  overflow-wrap:anywhere;
-}
-
-
 /* ==========================================
-CONTACT — TABLET
+CIERRE — ILUSTRACIONES
+
+Van en línea, no con <img>, para que tomen los
+colores oscuros de las variables --il-*. La
+pequeña lleva fondo propio para tapar la esquina
+de la grande.
 ========================================== */
 
-@media (max-width:900px){
+.cierre-dibujos{
+  position:relative;
 
-  .contact-grid{
-    grid-template-columns:1fr;
+  width:100%;
+  max-width:350px;
+  height:300px;
 
-    gap:48px;
-  }
-
-  .contact-ways{
-    max-width:680px;
-  }
-
+  margin-top:36px;
 }
 
 
-/* ==========================================
-CONTACT — MOBILE
-========================================== */
+.cierre-dibujo{
+  position:absolute;
 
-@media (max-width:560px){
+  border:1px solid rgba(255,255,255,.22);
 
-  .contact-section{
-    padding:56px 0;
-  }
+  background:var(--ocean);
+}
 
-  .contact-section h2{
-    margin-top:24px;
+.cierre-dibujo svg{
+  display:block;
 
-    font-size:30px;
-    line-height:1.15;
-  }
+  width:100%;
+  height:100%;
+}
 
-  .contact-section p{
-    margin-top:14px;
-  }
 
-  .contact-buttons{
-    flex-direction:column;
+.cierre-dibujo-grande{
+  top:0;
+  left:0;
 
-    gap:12px;
+  width:250px;
+  height:250px;
+}
 
-    margin-top:24px;
-  }
+.cierre-dibujo-chico{
+  right:0;
+  bottom:0;
 
-  .contact-buttons .button{
-    width:100%;
+  width:150px;
+  height:150px;
+}
+
+
+/* Desde tableta los botones van en fila: apilados a lo ancho
+   quedaban dos barras de más de 700 px */
+
+@media (min-width:600px){
+
+  .cierre-botones{
+    flex-direction:row;
+    flex-wrap:wrap;
   }
 
 }
 
 
 /* ==========================================
-FOOTER
+CIERRE — ESCRITORIO · 900px o más
 ========================================== */
+
+@media (min-width:900px){
+
+  .cierre-wrap{
+    padding:0 80px;
+  }
+
+  .cierre{
+    padding:112px 0 104px;
+  }
+
+  .cierre-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+    align-items:center;
+
+    gap:64px;
+  }
+
+  .cierre h2{
+    font-size:84px;
+  }
+
+  .cierre p{
+    font-size:19px;
+  }
+
+  /* "Call us" y la estrella en la primera línea; Instagram y
+     la ubicación, cada uno en la suya */
+
+  .cierre-datos{
+    flex-direction:row;
+    flex-wrap:wrap;
+
+    column-gap:20px;
+  }
+
+  .cierre-datos li:nth-child(n+3){
+    flex-basis:100%;
+  }
+
+  /* La columna se estrecha entre 900 y 1440 px: las
+     ilustraciones se escalan con ella y no se salen */
+
+  .cierre-dibujos{
+    max-width:none;
+    height:auto;
+
+    aspect-ratio:1;
+
+    margin-top:0;
+  }
+
+  .cierre-dibujo-grande{
+    width:min(420px,81%);
+    height:auto;
+
+    aspect-ratio:1;
+  }
+
+  .cierre-dibujo-chico{
+    width:min(220px,42.5%);
+    height:auto;
+
+    aspect-ratio:1;
+  }
+
+
+  /* Servicios: en espejo. Ilustraciones a la izquierda y
+     texto alineado a la derecha. */
+
+  .cierre-espejo .cierre-grid{
+    grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  }
+
+  .cierre-espejo .cierre-dibujos{
+    order:-1;
+  }
+
+  .cierre-espejo .cierre-texto{
+    text-align:right;
+  }
+
+  .cierre-espejo .eyebrow::after,
+  .cierre-espejo p{
+    margin-left:auto;
+  }
+
+  .cierre-espejo .cierre-botones,
+  .cierre-espejo .cierre-datos{
+    justify-content:flex-end;
+  }
+
+  .cierre-espejo .cierre-datos li:nth-child(n+3){
+    text-align:right;
+  }
+
+  .cierre-espejo .cierre-dibujo-grande{
+    left:auto;
+    right:0;
+  }
+
+  .cierre-espejo .cierre-dibujo-chico{
+    right:auto;
+    left:0;
+  }
+
+}
+
 
 /* ==========================================
 PIE DE PÁGINA
 
-Sigue la misma idea que la sección de contacto:
-iconos de trazo dentro de un círculo, líneas
-finas para separar y una franja abajo que cierra
-la página.
+Una franja baja y discreta: logo, frase y
+navegación en una fila. La línea teal de arriba
+marca dónde termina Let's Plan.
 ========================================== */
 
-footer{
+footer.pie{
+  color:rgba(255,255,255,.78);
+
   background:#01161d;
+  border-top:3px solid var(--primary);
 
-  padding:80px 0 0;
-
-  color:#ffffff;
+  font-size:14px;
 }
 
 
-.footer-inner{
-  display:grid;
+.pie-fila{
+  display:flex;
+  flex-direction:column;
 
-  gap:56px;
+  gap:22px;
+
+  padding:36px 0 24px;
 }
 
 
-.footer-grid{
-  display:grid;
-  grid-template-columns:1.5fr 1fr 1fr;
+.pie-marca{
+  display:flex;
+  align-items:center;
 
-  gap:50px;
+  gap:16px;
 }
 
+.pie-logo{
+  display:block;
 
-/* Una columna de rejilla no encoge por debajo de su contenido a
-   menos que se le diga. Sin esto, una palabra como "Tripadvisor"
-   marca el ancho mínimo de su columna, y con la letra del sistema
-   agrandada las tres columnas suman más que la pantalla: el pie
-   se salía y aparecía scroll horizontal. */
-
-.footer-grid > *{
-  min-width:0;
+  width:120px;
+  height:auto;
 }
 
-
-/* La marca */
-
-.footer-logo{
-  width:180px;
-
-  margin-bottom:22px;
-}
-
-
-.footer-marca p{
-  max-width:34ch;
+.pie-marca p{
+  max-width:22ch;
 
   margin:0;
 
-  color:rgba(255,255,255,.78);
-
-  font-size:1rem;
-  line-height:1.7;
+  line-height:1.5;
 }
 
 
-/* Los encabezados de columna, con el mismo aire que los
-   antetítulos del resto del sitio */
+.pie-nav{
+  display:flex;
+  flex-wrap:wrap;
 
-.footer-col h4{
-  margin:0 0 22px;
+  gap:0 24px;
 
-  color:#7fe0e8;
-
-  font-size:.78rem;
-  font-weight:800;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-}
-
-
-.footer-col ul{
   margin:0;
   padding:0;
 
   list-style:none;
 }
 
-
-/* Una línea fina entre enlace y enlace, como en las plantillas.
-   Va arriba de cada uno menos del primero, así no queda un filo
-   suelto al final de la lista. */
-
-.footer-col li + li{
-  border-top:1px solid rgba(255,255,255,.12);
-}
-
-
-.footer-col a{
-  display:flex;
+.pie-nav a,
+.pie-nav a:link,
+.pie-nav a:visited{
+  display:inline-flex;
   align-items:center;
 
-  gap:12px;
+  min-height:44px;
 
-  padding:13px 0;
+  color:#ffffff;
 
-  color:rgba(255,255,255,.82);
-
-  font-size:1rem;
+  font-weight:600;
   text-decoration:none;
 
-  overflow-wrap:break-word;
+  transition:color .2s ease;
+}
 
-  transition:
-    color .25s ease,
-    transform .25s ease;
+.pie-nav a:hover{
+  color:var(--primary);
 }
 
 
-.footer-col a:link,
-.footer-col a:visited{
-  color:rgba(255,255,255,.82);
-}
-
-
-.footer-col a:hover{
-  color:#ffffff;
-
-  transform:translateX(4px);
-}
-
-
-/* El círculo del icono, el mismo de las píldoras de contacto
-   pero más pequeño, que aquí acompaña y no manda */
-
-.footer-social-icon{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  flex:0 0 34px;
-
-  width:34px;
-  height:34px;
-
-  background:rgba(255,255,255,.10);
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:50%;
-
-  color:#7fe0e8;
-
-  transition:
-    background-color .25s ease,
-    border-color .25s ease;
-}
-
-
-.footer-social:hover .footer-social-icon{
-  background:var(--primary);
-  border-color:var(--primary);
-
-  color:#ffffff;
-}
-
-
-.footer-social-icon svg{
-  width:16px;
-  height:16px;
-}
-
-
-/* La franja de abajo cierra la página */
-
-.footer-base{
-  padding:26px 0 30px;
+.pie-base{
+  padding:16px 0 20px;
 
   border-top:1px solid rgba(255,255,255,.12);
 }
 
-
-.footer-base p{
+.pie-base p{
   margin:0;
 
-  color:rgba(255,255,255,.62);
+  color:rgba(255,255,255,.6);
 
-  font-size:.88rem;
+  font-size:13px;
+}
+
+
+@media (min-width:900px){
+
+  .pie-fila{
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:32px 0 20px;
+  }
+
+  .pie-logo{
+    width:132px;
+  }
+
 }
 
 
@@ -3609,28 +3633,6 @@ RESPONSIVE — GENERAL WEBSITE MOBILE
 
   .insta-photo img{
     height:260px;
-  }
-
-  .contact-buttons{
-    flex-direction:column;
-  }
-
-  .contact-buttons .button{
-    width:100%;
-  }
-
-  /* Tres columnas en un teléfono dejaban los enlaces pegados al
-     borde. La marca pasa a ocupar el ancho completo y las dos
-     listas se reparten debajo. */
-
-  .footer-grid{
-    grid-template-columns:1fr 1fr;
-
-    gap:34px 26px;
-  }
-
-  .footer-grid > :first-child{
-    grid-column:1 / -1;
   }
 
 }
@@ -4396,10 +4398,9 @@ o navega sin ratón.
 
 .hero :focus-visible,
 .island-story :focus-visible,
-.contact-section :focus-visible,
+.cierre :focus-visible,
 footer :focus-visible,
-.tours-page :focus-visible,
-.svc-inquire :focus-visible{
+.tours-page :focus-visible{
   outline-color:#ffffff;
 }
 

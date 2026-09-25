@@ -855,89 +855,15 @@ HOW IT WORKS Y GOOD TO KNOW · CELULAR
 
 
 /* ==========================================
-CIERRE
-========================================== */
-
-.svc-inquire{
-
-  padding:56px 0;
-
-  background:var(--ocean);
-  color:#ffffff;
-
-}
-
-.svc-inquire-inner{
-
-  display:flex;
-  flex-direction:column;
-  gap:24px;
-
-}
-
-.svc-inquire h2{
-
-  font-size:30px;
-  font-weight:700;
-  line-height:1.15;
-
-}
-
-.svc-inquire p{
-
-  max-width:56ch;
-
-  margin-top:14px;
-
-  color:rgba(255,255,255,.86);
-
-  font-size:16px;
-  line-height:1.6;
-
-}
-
-.svc-inquire-actions{
-
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-
-}
-
-.svc-inquire .svc-inquire-meta{
-
-  margin:0;
-
-  color:rgba(255,255,255,.72);
-
-  font-size:14px;
-
-}
-
-.svc-inquire-meta a{
-
-  color:#ffffff;
-
-  border-bottom:1px solid rgba(255,255,255,.4);
-
-}
-
-.svc-inquire-meta a:hover{
-  border-color:#ffffff;
-}
-
-
-/* ==========================================
 TABLETA · 600px o más
 
-Los botones del hero y del cierre van en fila, y la
+Los botones del hero van en fila, y la
 ilustración de la tarjeta no pasa de 480px.
 ========================================== */
 
 @media (min-width:600px){
 
-  .svc-hero-actions,
-  .svc-inquire-actions{
+  .svc-hero-actions{
     flex-direction:row;
     flex-wrap:wrap;
     gap:16px;
@@ -1630,35 +1556,6 @@ ESCRITORIO · 1024px o más
 
   .svc-note-fold p{
     margin:10px 0 0;
-  }
-
-
-  /* CIERRE */
-
-  .svc-inquire{
-    padding:88px 0;
-  }
-
-  .svc-inquire-inner{
-
-    display:grid;
-    grid-template-columns:minmax(0,1fr) auto;
-    align-items:start;
-    column-gap:40px;
-
-  }
-
-  .svc-inquire h2{
-
-    max-width:620px;
-
-    font-size:48px;
-    line-height:1.1;
-
-  }
-
-  .svc-inquire-meta{
-    grid-column:1 / -1;
   }
 
 }
