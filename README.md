@@ -15,15 +15,18 @@ Files:
 - assets/
 
 Tour catalogue (`tours.html`):
-The cards are built from `tours.json`, which a scheduled GitHub Action
+The tour windows are built from `tours.json`, which a scheduled GitHub Action
 refreshes four times a day from the Bokun product list 110434. To add or
 remove a tour from the website, change that product list in Bokun. No code
 change is needed. The Action can also be run by hand from the Actions tab.
+The route, route line and tag of each tour, and the order of the first ten,
+live in `CURADURIA` and `ORDEN` at the top of `tours.js`: a new tour shows
+without a route until it gets an entry there.
 
-Ocean background:
-- assets/ocean-loop.mp4 / .webm
-- assets/ocean-poster.jpg (first frame, shown while the video loads and
-  when the visitor asks for reduced motion)
+Route map:
+- assets/tours/mapa-relieve.jpg (desktop, flat)
+- assets/tours/mapa-relieve-movil.jpg (phone, at an angle)
+The route lines and labels in `tours.html` are drawn for these exact images.
 
 Upload these exact asset filenames:
 - assets/logo.png
