@@ -1396,20 +1396,35 @@ ESCRITORIO · 1024px o más
     margin-top:8px;
   }
 
-  /* Imágenes: la alterna va alineada abajo con la principal y el
-     par queda centrado en la fila. Con la lista completa de lo que
-     incluye, la fila es más alta que las imágenes; pegadas a los
-     bordes dejaban un hueco grande entre las dos. */
+  /* Imágenes en collage: la principal arriba, contra el borde
+     exterior, y la alterna abajo, hacia el texto, en diagonal.
+
+     La celda mide lo que mide el texto de al lado (con la lista
+     completa de lo que incluye, bastante más que las imágenes).
+     container-type:size hace que la celda no empuje la fila y deja
+     medir su alto real con cqh: las ilustraciones crecen con la fila
+     y el hueco se reparte, en vez de quedar todo debajo. */
 
   .svc-item-media{
 
-    display:grid;
-    grid-template-columns:minmax(0,396fr) minmax(0,216fr);
-    align-content:center;
-    align-items:end;
-    gap:24px;
+    --svc-pad-x:48px;
+    --svc-pad-y:56px;
 
-    padding:56px max(48px,calc(50% - 318px));
+    /* Espacio útil dentro de la celda */
+    --svc-w:calc(100cqw - 2 * var(--svc-pad-x));
+    --svc-h:calc(100cqh - 2 * var(--svc-pad-y));
+
+    /* Principal: casi todo el ancho, sin pasar de 520px ni del 62%
+       del alto. Alterna: lo que quede abajo, sin tocarla. Las dos se
+       cruzan a lo ancho, pero nunca a lo alto. */
+    --svc-main:min(90 * var(--svc-w) / 100, 62 * var(--svc-h) / 100, 520px);
+    --svc-alt:min(60 * var(--svc-w) / 100, var(--svc-h) - var(--svc-main) - 24px);
+
+    position:relative;
+
+    container-type:size;
+
+    min-height:560px;
 
     background:var(--sand);
 
@@ -1420,24 +1435,80 @@ ESCRITORIO · 1024px o más
   }
 
   .svc-item-media .svc-fig{
+
+    position:absolute;
+
+    width:var(--svc-alt);
     max-width:none;
+
   }
 
-  /* 05: la piscina y, al lado, la terraza y los tragos */
+  .svc-item-media > .svc-fig:first-child{
+
+    top:var(--svc-pad-y);
+    right:var(--svc-pad-x);
+
+    width:var(--svc-main);
+
+  }
+
+  .svc-item-media > .svc-fig:nth-child(2){
+    bottom:var(--svc-pad-y);
+    left:var(--svc-pad-x);
+  }
+
+  /* 02 y 04 tienen las imágenes a la izquierda: el collage se
+     refleja para que la principal siga en el borde exterior */
+
+  .svc-item:nth-child(even) .svc-item-media > .svc-fig:first-child{
+    right:auto;
+    left:var(--svc-pad-x);
+  }
+
+  .svc-item:nth-child(even) .svc-item-media > .svc-fig:nth-child(2){
+    left:auto;
+    right:var(--svc-pad-x);
+  }
+
+  /* 05: tres escalones. La piscina arriba afuera, la terraza al
+     centro hacia el texto y los tragos abajo afuera. Los topes de
+     alto (34% y 28%) garantizan que no se toquen. */
 
   .svc-item-bar .svc-item-media{
-
-    grid-template-columns:minmax(0,396fr) minmax(0,186fr);
-
-    padding-inline:max(48px,calc(50% - 303px));
-
+    --svc-main:min(80 * var(--svc-w) / 100, 34 * var(--svc-h) / 100, 520px);
+    --svc-alt:min(56 * var(--svc-w) / 100, 28 * var(--svc-h) / 100);
   }
 
   .svc-item-media > .svc-fig-stack{
+    display:contents;
+  }
 
-    display:flex;
-    flex-direction:column;
-    gap:24px;
+  .svc-fig-stack > .svc-fig:first-child{
+    top:calc(50% - var(--svc-alt) / 2);
+    left:var(--svc-pad-x);
+  }
+
+  .svc-fig-stack > .svc-fig:last-child{
+    bottom:var(--svc-pad-y);
+    right:var(--svc-pad-x);
+  }
+
+
+  /* Entre 1024 y 1279px la columna de texto 5/12 queda tan
+     estrecha que la fila se estira y las imágenes se pierden en
+     ella. Mitad y mitad la acorta. */
+
+  @media (max-width:1279px){
+
+    .svc-item,
+    .svc-item:nth-child(even){
+      grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    }
+
+    .svc-item-media{
+      --svc-pad-x:32px;
+      --svc-pad-y:48px;
+    }
 
   }
 
