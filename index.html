@@ -24,7 +24,10 @@ rel="stylesheet">
 
 </head>
 
-<body>
+<!-- El ancla #home va en el body y no en el hero: el hero es
+     sticky, y al estar pegado arriba el navegador lo da por
+     visible y el logo no subía al principio de la página. -->
+<body id="home">
 
 <a class="salto-al-contenido" href="#contenido">Skip to main content</a>
 
@@ -76,7 +79,7 @@ rel="stylesheet">
 
 <main id="contenido">
 
-<section class="hero lamina" id="home">
+<section class="hero lamina">
 
     <video class="hero-video" autoplay muted loop playsinline>
         <source src="assets/hero-video.mp4" type="video/mp4">
