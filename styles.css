@@ -72,7 +72,7 @@ font-family:'Manrope',sans-serif;
 
 color:var(--text);
 
-background:white;
+background:var(--sand);
 
 line-height:1.6;
 
@@ -938,23 +938,7 @@ SHARED CONTINUOUS BACKGROUND
   isolation:isolate;
   overflow:hidden;
 
-  background:
-    radial-gradient(
-      circle at 12% 18%,
-      rgba(91,220,215,.18),
-      transparent 34%
-    ),
-    radial-gradient(
-      circle at 88% 76%,
-      rgba(15,168,196,.13),
-      transparent 38%
-    ),
-    linear-gradient(
-      180deg,
-      #eaf7f8 0%,
-      #dff3f5 48%,
-      #eaf7f8 100%
-    );
+  background:var(--sand);
 }
 
 
@@ -1032,23 +1016,11 @@ FEATURED — TOUR CARD
   min-width:0;
   overflow:hidden;
 
-  background:#ffffff;
-  border:1px solid rgba(7,49,62,.08);
-  border-radius:28px;
-
-  box-shadow:
-    0 16px 44px rgba(6,42,54,.10);
-
-  transition:
-    transform .35s ease,
-    box-shadow .35s ease;
-}
-
-.featured-tour-card:hover{
-  transform:translateY(-8px);
-
-  box-shadow:
-    0 26px 60px rgba(6,42,54,.17);
+  /* Como la carta de servicios: sin caja blanca ni sombra,
+     solo la línea oscura alrededor sobre el fondo arena */
+  background:transparent;
+  border:1.5px solid var(--primary-dark);
+  border-radius:0;
 }
 
 
@@ -1147,7 +1119,7 @@ FEATURED — PHOTO LABEL
   color:#ffffff;
   background:rgba(1,38,48,.52);
   border:1px solid rgba(255,255,255,.32);
-  border-radius:999px;
+  border-radius:0;
 
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
@@ -1287,13 +1259,7 @@ FEATURED — CARD BUTTON
   text-decoration:none;
   white-space:nowrap;
 
-  box-shadow:
-    0 10px 24px rgba(20,145,143,.20);
-
-  transition:
-    transform .25s ease,
-    background-color .25s ease,
-    box-shadow .25s ease;
+  transition:background-color .25s ease;
 }
 
 .featured-tour-card .card-button:link,
@@ -1304,10 +1270,6 @@ FEATURED — CARD BUTTON
 .featured-tour-card .card-button:hover{
   color:#ffffff;
   background:var(--boton-hover);
-  transform:translateY(-2px);
-
-  box-shadow:
-    0 15px 30px rgba(20,145,143,.28);
 }
 
 
@@ -1399,9 +1361,6 @@ FEATURED — MOBILE
     gap:22px;
   }
 
-  .featured-tour-card{
-    border-radius:22px;
-  }
 
   .tour-card-gallery{
     height:285px;
@@ -2036,7 +1995,7 @@ ABOUT
   height:520px;
 
   background:#06333c;
-  border-radius:30px;
+  border-radius:0;
 
   box-shadow:
     0 28px 65px rgba(0,0,0,.34);
@@ -2051,7 +2010,7 @@ ABOUT
   object-fit:cover;
   object-position:center;
 
-  border-radius:30px;
+  border-radius:0;
 }
 
 
@@ -2236,12 +2195,8 @@ ISLAND STORY — MOBILE
 
   .about-media{
     height:340px;
-    border-radius:22px;
   }
 
-  .about-video{
-    border-radius:22px;
-  }
 
   .about-copy h2{
     font-size:2.55rem;
@@ -2533,7 +2488,7 @@ REVIEWS
 .reviews-section{
   position:relative;
   padding:80px 0;
-  background:#eaf7f8;
+  background:var(--sand);
 }
 
 
@@ -2561,9 +2516,9 @@ se esconden solos desde script.js.
   scroll-snap-type:x mandatory;
   scroll-behavior:smooth;
 
-  /* Sitio para que el levantón del hover y la sombra
-     de la tarjeta no queden cortados por el recorte
-     del desplazamiento. */
+  /* Sitio para que la línea de la tarjeta y el contorno
+     de foco no queden cortados por el recorte del
+     desplazamiento. */
   padding:16px 6px 24px;
   scroll-padding-left:6px;
 
@@ -2605,7 +2560,7 @@ se esconden solos desde script.js.
 .review-track:focus-visible{
   outline:3px solid var(--primary);
   outline-offset:4px;
-  border-radius:26px;
+  border-radius:0;
 }
 
 
@@ -2634,9 +2589,9 @@ se arrastra con el dedo.
      más abajo que el centro de la tira. Se sube a mano. */
   margin-top:-13px;
 
-  color:var(--primary);
-  background:#ffffff;
-  border:1px solid rgba(20,145,143,.22);
+  color:var(--primary-dark);
+  background:var(--sand);
+  border:1.5px solid var(--primary-dark);
   border-radius:0;
 
   font-size:1.9rem;
@@ -2645,12 +2600,9 @@ se arrastra con el dedo.
   transform:translateY(-50%);
   cursor:pointer;
 
-  box-shadow:0 12px 30px rgba(7,49,62,.18);
-
   transition:
     background .25s ease,
     color .25s ease,
-    box-shadow .25s ease,
     opacity .25s ease;
 }
 
@@ -2669,9 +2621,7 @@ se arrastra con el dedo.
 
 .review-arrow:hover{
   color:#ffffff;
-  background:var(--primary);
-
-  box-shadow:0 14px 32px rgba(20,145,143,.3);
+  background:var(--primary-dark);
 }
 
 .review-arrow[hidden],
@@ -2753,24 +2703,10 @@ REVIEWS — CARDS
 
   padding:34px;
 
-  background:#ffffff;
-  border:1px solid rgba(20,145,143,.18);
-  border-top:6px solid var(--primary);
-  border-radius:26px;
-
-  box-shadow:
-    0 18px 45px rgba(0,0,0,.08);
-
-  transition:
-    transform .3s ease,
-    box-shadow .3s ease;
-}
-
-.review-card:hover{
-  transform:translateY(-8px);
-
-  box-shadow:
-    0 28px 60px rgba(20,145,143,.18);
+  /* Misma línea oscura que las tarjetas de tours */
+  background:transparent;
+  border:1.5px solid var(--primary-dark);
+  border-radius:0;
 }
 
 .review-card::before{
@@ -2860,20 +2796,15 @@ REVIEWS — BUTTON
 
   color:#ffffff;
   background:var(--boton);
-  border:2px solid var(--primary);
+  border:2px solid var(--boton);
   border-radius:0;
 
   font-weight:800;
   text-decoration:none;
 
-  box-shadow:
-    0 10px 30px rgba(20,145,143,.22);
-
   transition:
-    transform .3s ease,
     background .3s ease,
-    border-color .3s ease,
-    box-shadow .3s ease;
+    border-color .3s ease;
 }
 
 .reviews-button .button:link,
@@ -2885,11 +2816,6 @@ REVIEWS — BUTTON
   color:#ffffff;
   background:var(--boton-hover);
   border-color:var(--primary-dark);
-
-  transform:translateY(-3px);
-
-  box-shadow:
-    0 18px 40px rgba(20,145,143,.32);
 }
 
 
@@ -3770,69 +3696,6 @@ PANTALLAS GRANDES — 1800px o más
       );
   }
 
-  /* 4 · TOURS: agua clara con brillo al centro */
-
-  .tour-sections-background{
-    background:
-      radial-gradient(circle at 6% 14%, rgba(91,220,215,.26), transparent 26%),
-      radial-gradient(circle at 94% 30%, rgba(15,168,196,.18), transparent 28%),
-      radial-gradient(circle at 4% 62%, rgba(15,168,196,.16), transparent 26%),
-      radial-gradient(circle at 96% 82%, rgba(91,220,215,.22), transparent 28%),
-      radial-gradient(ellipse 58% 42% at 50% 50%, rgba(255,255,255,.42), transparent 72%),
-      linear-gradient(180deg, #eaf7f8 0%, #dcf1f4 48%, #eaf7f8 100%);
-  }
-
-  /* 5 · TEXTURA DE OLAS
-
-     ::before  capa suave en toda la sección
-     ::after   capa más marcada, solo en los costados,
-               fuera del ancho del contenido            */
-
-  .tour-sections-background::before,
-  .tour-sections-background::after,
-  .reviews-section::before,
-  .reviews-section::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    z-index:-1;
-    pointer-events:none;
-
-    background:url("assets/textura-olas.svg") repeat left top / 640px auto;
-  }
-
-  .tour-sections-background::after,
-  .reviews-section::after{
-    -webkit-mask-image:
-      linear-gradient(
-        90deg,
-        #000 0,
-        #000 calc(50% - 900px),
-        transparent calc(50% - 720px),
-        transparent calc(50% + 720px),
-        #000 calc(50% + 900px),
-        #000 100%
-      );
-    mask-image:
-      linear-gradient(
-        90deg,
-        #000 0,
-        #000 calc(50% - 900px),
-        transparent calc(50% - 720px),
-        transparent calc(50% + 720px),
-        #000 calc(50% + 900px),
-        #000 100%
-      );
-  }
-
-  .tour-sections-background::before{
-    opacity:.20;
-  }
-
-  .tour-sections-background::after{
-    opacity:.40;
-  }
-
   /* 6 · SELVA: viñeta en los bordes y tortuga más grande */
 
   .island-story::before{
@@ -3853,29 +3716,6 @@ PANTALLAS GRANDES — 1800px o más
     height:1200px;
     opacity:.055;
   }
-
-  /* 7 · RESEÑAS: continuidad con la sección de tours */
-
-  .reviews-section{
-    isolation:isolate;
-    overflow:hidden;
-
-    background:
-      radial-gradient(circle at 8% 30%, rgba(91,220,215,.20), transparent 28%),
-      radial-gradient(circle at 92% 70%, rgba(15,168,196,.14), transparent 30%),
-      #eaf7f8;
-  }
-
-  .reviews-section::before{
-    opacity:.16;
-  }
-
-  .reviews-section::after{
-    opacity:.34;
-  }
-
-  /* 8 · CONTACTO: azul liso, como el cierre de servicios. Sin
-     olas ni degradados. */
 
 }
 
@@ -3932,13 +3772,6 @@ PANTALLAS MUY GRANDES — 2400px o más
     top:-86px;
   }
 
-  .tour-sections-background::before,
-  .tour-sections-background::after,
-  .reviews-section::before,
-  .reviews-section::after{
-    background-size:800px auto;
-  }
-
   .story-section::before{
     width:1400px;
     height:1400px;
@@ -3968,13 +3801,6 @@ PANTALLAS 4K — 3200px o más
 
   .hero{
     max-height:1440px;
-  }
-
-  .tour-sections-background::before,
-  .tour-sections-background::after,
-  .reviews-section::before,
-  .reviews-section::after{
-    background-size:980px auto;
   }
 
 }
@@ -4308,11 +4134,8 @@ PORTADA — BOTÓN HACIA EL CATÁLOGO COMPLETO
   font-size:1.02rem;
   font-weight:800;
 
-  box-shadow:0 18px 38px rgba(9,167,195,.28);
-
   transition:
     background .25s ease,
-    transform .25s ease,
     gap .25s ease;
 }
 
@@ -4325,8 +4148,6 @@ PORTADA — BOTÓN HACIA EL CATÁLOGO COMPLETO
   gap:16px;
 
   background:var(--boton-hover);
-
-  transform:translateY(-2px);
 }
 
 
