@@ -513,7 +513,7 @@ HERO — BUTTONS
   padding:0 28px;
   box-sizing:border-box;
 
-  border-radius:999px;
+  border-radius:0;
 
   font-size:.94rem;
   font-weight:800;
@@ -1260,7 +1260,7 @@ FEATURED — CARD BUTTON
   color:#ffffff;
   background:var(--boton);
   border:0;
-  border-radius:999px;
+  border-radius:0;
 
   cursor:pointer;
 
@@ -2056,7 +2056,7 @@ ABOUT
   color:#ffffff;
   background:var(--boton);
   border:0;
-  border-radius:999px;
+  border-radius:0;
 
   font:inherit;
   font-size:.92rem;
@@ -2485,7 +2485,7 @@ se arrastra con el dedo.
   color:var(--primary);
   background:#ffffff;
   border:1px solid rgba(20,145,143,.22);
-  border-radius:50%;
+  border-radius:0;
 
   font-size:1.9rem;
   line-height:1;
@@ -2709,7 +2709,7 @@ REVIEWS — BUTTON
   color:#ffffff;
   background:var(--boton);
   border:2px solid var(--primary);
-  border-radius:999px;
+  border-radius:0;
 
   font-weight:800;
   text-decoration:none;
@@ -2807,36 +2807,31 @@ alto en vez de tres apiladas.
 
 
 /* ==========================================
-CONTACT
+CONTACT · LET'S PLAN
+
+Sigue el cierre de la página de servicios: azul
+oscuro liso, titular compacto en negrita, botones
+rectangulares y los datos de contacto en filas
+separadas por líneas finas, como la carta.
 ========================================== */
 
 .contact-section{
   position:relative;
 
-  padding:110px 0;
+  padding:88px 0;
 
   color:#ffffff;
 
-  background:
-    radial-gradient(
-      circle at 10% 10%,
-      rgba(24,193,203,.12),
-      transparent 34%
-    ),
-    linear-gradient(
-      135deg,
-      var(--ocean),
-      var(--ocean2)
-    );
+  background:var(--ocean);
 }
 
 
 .contact-grid{
   display:grid;
-  grid-template-columns:1.2fr .8fr;
+  grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);
   align-items:center;
 
-  gap:60px;
+  gap:80px;
 }
 
 
@@ -2859,40 +2854,57 @@ CONTACT
 CONTACT — HEADING
 ========================================== */
 
+/* El rótulo es el mismo título de sección de servicios: letra
+   pequeña muy espaciada con una línea corta debajo */
+
 .contact-section .eyebrow{
   display:block;
 
-  color:#5edce0;
+  color:var(--primary);
 
-  font-size:.82rem;
+  font-size:13px;
   font-weight:800;
-  letter-spacing:2px;
-  line-height:1;
+  letter-spacing:.3em;
+  line-height:1.4;
   text-transform:uppercase;
+}
+
+.contact-section .eyebrow::after{
+  content:"";
+
+  display:block;
+
+  width:40px;
+  height:1.5px;
+
+  margin-top:12px;
+
+  background:var(--primary);
 }
 
 
 .contact-section h2{
-  max-width:720px;
+  max-width:620px;
 
-  margin:20px 0;
+  margin:28px 0 0;
 
   color:#ffffff;
 
-  font-size:clamp(2.6rem,5vw,4.4rem);
-  line-height:1.25;
+  font-size:48px;
+  font-weight:700;
+  line-height:1.1;
 }
 
 
 .contact-section p{
-  max-width:650px;
+  max-width:56ch;
 
-  margin:0;
+  margin:18px 0 0;
 
-  color:rgba(255,255,255,.88);
+  color:rgba(255,255,255,.86);
 
-  font-size:1.1rem;
-  line-height:1.75;
+  font-size:16px;
+  line-height:1.6;
 }
 
 
@@ -2902,12 +2914,11 @@ CONTACT — ACTION BUTTONS
 
 .contact-buttons{
   display:flex;
-  align-items:center;
   flex-wrap:wrap;
 
   gap:16px;
 
-  margin-top:40px;
+  margin-top:32px;
 }
 
 
@@ -2916,114 +2927,85 @@ CONTACT — ACTION BUTTONS
   align-items:center;
   justify-content:center;
 
-  min-width:190px;
-  min-height:54px;
+  height:52px;
 
-  padding:14px 28px;
+  padding:0 28px;
 
-  border-radius:999px;
+  border:1.5px solid #ffffff;
+  border-radius:0;
 
-  font-size:.96rem;
-  font-weight:800;
+  font-size:16px;
+  font-weight:700;
   line-height:1;
-  text-align:center;
   text-decoration:none;
   white-space:nowrap;
 
   transition:
-    transform .25s ease,
-    background-color .25s ease,
-    border-color .25s ease,
-    color .25s ease,
-    box-shadow .25s ease;
+    background-color .2s ease,
+    color .2s ease;
 }
 
 
-/* WhatsApp button */
+/* WhatsApp: el botón blanco */
 
-.contact-buttons .button-primary{
-  color:#ffffff;
-  background:var(--boton);
-  border:2px solid var(--primary);
-
-  box-shadow:
-    0 12px 30px rgba(20,145,143,.28);
-}
-
-
+.contact-buttons .button-primary,
 .contact-buttons .button-primary:link,
 .contact-buttons .button-primary:visited{
-  color:#ffffff;
+  color:var(--ocean);
+  background:#ffffff;
 }
 
 
 .contact-buttons .button-primary:hover{
-  color:#ffffff;
-  background:var(--boton-hover);
-  border-color:var(--primary-dark);
-
-  transform:translateY(-3px);
-
-  box-shadow:
-    0 18px 40px rgba(20,145,143,.36);
+  color:var(--ocean);
+  background:var(--sand);
 }
 
 
-/* Email button */
+/* Correo: solo el contorno */
 
-.contact-buttons .button-secondary{
-  color:#ffffff;
-  background:rgba(255,255,255,.07);
-
-  border:2px solid rgba(255,255,255,.78);
-
-  box-shadow:
-    0 10px 26px rgba(0,0,0,.12);
-}
-
-
+.contact-buttons .button-secondary,
 .contact-buttons .button-secondary:link,
 .contact-buttons .button-secondary:visited{
   color:#ffffff;
+  background:transparent;
 }
 
 
 .contact-buttons .button-secondary:hover{
   color:var(--ocean);
   background:#ffffff;
-  border-color:#ffffff;
-
-  transform:translateY(-3px);
-
-  box-shadow:
-    0 18px 40px rgba(0,0,0,.2);
 }
 
 
 /* ==========================================
-CONTACT — QUICK INFORMATION CARD
+CONTACT — FILAS DE DATOS
 ========================================== */
 
-/* Cada dato va en su propia cápsula, con el icono en un
-   círculo a la izquierda.
+/* Cada dato es una fila de 64px con su icono de trazo, entre
+   una línea teal arriba y abajo y líneas finas en medio. Los
+   que llevan a algún sitio terminan en una flecha.
 
    Antes eran emoji dentro de una lista. Un emoji se dibuja
    distinto en cada teléfono, queda borroso al ampliarlo y el
    lector de pantalla lo lee en voz alta ("chincheta"), así que
-   ahora son iconos de trazo y el emoji desaparece del texto.
+   son iconos de trazo y el emoji desaparece del texto.
 
-   La cápsula entera es el enlace, no solo las letras: en un
+   La fila entera es el enlace, no solo las letras: en un
    teléfono eso es la diferencia entre acertar y no acertar. */
 
 .contact-pills{
-  display:grid;
-
-  gap:12px;
-
   margin:0;
   padding:0;
 
+  border-top:1.5px solid var(--primary);
+  border-bottom:1.5px solid var(--primary);
+
   list-style:none;
+}
+
+.contact-pills li + li{
+  border-top:1px solid rgba(255,255,255,.16);
 }
 
 
@@ -3033,27 +3015,18 @@ CONTACT — QUICK INFORMATION CARD
 
   gap:16px;
 
-  min-height:60px;
+  min-height:64px;
 
-  padding:10px 22px 10px 10px;
-
-  background:rgba(255,255,255,.09);
-  border:1px solid rgba(255,255,255,.16);
-  border-radius:999px;
-
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
+  padding:10px 4px;
 
   color:#ffffff;
 
-  font-size:1rem;
+  font-size:16px;
+  font-weight:600;
   line-height:1.4;
   text-decoration:none;
 
-  transition:
-    background-color .25s ease,
-    border-color .25s ease,
-    transform .25s ease;
+  transition:background-color .2s ease;
 }
 
 
@@ -3064,35 +3037,49 @@ CONTACT — QUICK INFORMATION CARD
 
 
 a.contact-pill:hover{
-  background:rgba(255,255,255,.16);
-  border-color:rgba(255,255,255,.34);
-
-  transform:translateX(4px);
+  background:rgba(255,255,255,.06);
 }
 
 
-/* El círculo del icono */
+/* Flecha de las filas que son enlace */
+
+a.contact-pill::after{
+  content:"";
+
+  flex-shrink:0;
+
+  width:8px;
+  height:8px;
+
+  margin:0 6px 0 auto;
+
+  border-top:1.5px solid var(--primary);
+  border-right:1.5px solid var(--primary);
+
+  transform:rotate(45deg);
+
+  transition:transform .2s ease;
+}
+
+a.contact-pill:hover::after{
+  transform:translateX(4px) rotate(45deg);
+}
+
 
 .contact-pill-icon{
   display:flex;
-  align-items:center;
-  justify-content:center;
 
-  flex:0 0 44px;
+  flex:0 0 28px;
 
-  width:44px;
-  height:44px;
-
-  background:var(--primary);
-  border-radius:50%;
-
-  color:#ffffff;
+  color:var(--primary);
 }
 
 
 .contact-pill-icon svg{
-  width:21px;
-  height:21px;
+  width:28px;
+  height:28px;
+
+  stroke-width:1.5;
 }
 
 
@@ -3108,10 +3095,6 @@ CONTACT — TABLET
 ========================================== */
 
 @media (max-width:900px){
-
-  .contact-section{
-    padding:90px 0;
-  }
 
   .contact-grid{
     grid-template-columns:1fr;
@@ -3133,33 +3116,30 @@ CONTACT — MOBILE
 @media (max-width:560px){
 
   .contact-section{
-    padding:76px 0;
+    padding:56px 0;
   }
 
   .contact-section h2{
-    font-size:2.65rem;
+    margin-top:24px;
+
+    font-size:30px;
+    line-height:1.15;
   }
 
   .contact-section p{
-    font-size:1rem;
-    line-height:1.68;
+    margin-top:14px;
   }
 
   .contact-buttons{
     flex-direction:column;
-    align-items:stretch;
 
-    margin-top:32px;
+    gap:12px;
+
+    margin-top:24px;
   }
 
   .contact-buttons .button{
     width:100%;
-  }
-
-  .contact-pill{
-    padding:9px 18px 9px 9px;
-
-    font-size:.97rem;
   }
 
 }
@@ -3651,9 +3631,7 @@ PANTALLAS GRANDES — 1800px o más
   .tour-sections-background::before,
   .tour-sections-background::after,
   .reviews-section::before,
-  .reviews-section::after,
-  .contact-section::before,
-  .contact-section::after{
+  .reviews-section::after{
     content:"";
     position:absolute;
     inset:0;
@@ -3664,8 +3642,7 @@ PANTALLAS GRANDES — 1800px o más
   }
 
   .tour-sections-background::after,
-  .reviews-section::after,
-  .contact-section::after{
+  .reviews-section::after{
     -webkit-mask-image:
       linear-gradient(
         90deg,
@@ -3737,35 +3714,8 @@ PANTALLAS GRANDES — 1800px o más
     opacity:.34;
   }
 
-  /* 8 · CONTACTO: agua profunda, olas en tono claro */
-
-  .contact-section{
-    isolation:isolate;
-    overflow:hidden;
-
-    background:
-      radial-gradient(circle at 8% 12%, rgba(24,193,203,.16), transparent 30%),
-      radial-gradient(circle at 92% 88%, rgba(24,193,203,.12), transparent 32%),
-      linear-gradient(135deg, var(--ocean), var(--ocean2));
-  }
-
-  .contact-section h2{
-    max-width:900px;
-  }
-
-  .contact-section p{
-    max-width:780px;
-  }
-
-  .contact-section::before{
-    background-image:url("assets/textura-olas-clara.svg");
-    opacity:.07;
-  }
-
-  .contact-section::after{
-    background-image:url("assets/textura-olas-clara.svg");
-    opacity:.14;
-  }
+  /* 8 · CONTACTO: azul liso, como el cierre de servicios. Sin
+     olas ni degradados. */
 
 }
 
@@ -3825,9 +3775,7 @@ PANTALLAS MUY GRANDES — 2400px o más
   .tour-sections-background::before,
   .tour-sections-background::after,
   .reviews-section::before,
-  .reviews-section::after,
-  .contact-section::before,
-  .contact-section::after{
+  .reviews-section::after{
     background-size:800px auto;
   }
 
@@ -3858,10 +3806,6 @@ PANTALLAS 4K — 3200px o más
     max-width:1200px;
   }
 
-  .contact-section h2{
-    max-width:1040px;
-  }
-
   .hero{
     max-height:1440px;
   }
@@ -3869,9 +3813,7 @@ PANTALLAS 4K — 3200px o más
   .tour-sections-background::before,
   .tour-sections-background::after,
   .reviews-section::before,
-  .reviews-section::after,
-  .contact-section::before,
-  .contact-section::after{
+  .reviews-section::after{
     background-size:980px auto;
   }
 
@@ -4198,7 +4140,7 @@ PORTADA — BOTÓN HACIA EL CATÁLOGO COMPLETO
 
   padding:0 40px;
 
-  border-radius:999px;
+  border-radius:0;
 
   background:var(--boton);
   color:#ffffff;
