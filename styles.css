@@ -3571,6 +3571,13 @@ no se reescalan.
   font-size:16px;
 }
 
+/* Cada línea se puede tocar: debajo lleva una franja
+   invisible de 30 unidades para que el dedo acierte */
+
+.tours-mapa .rt{
+  cursor:pointer;
+}
+
 /* Al elegir una ruta, las demás se apagan */
 
 .tours-mapa .rt{
@@ -3835,22 +3842,33 @@ lleva el título y baja para mostrar la reserva.
 }
 
 /* El resplandor es la foto en miniatura (12 x 9 px) estirada:
-   el navegador ya la difumina al ampliarla, y la máscara funde
-   los bordes. Antes era un filter:blur grande, y al subir por
-   la página algunos navegadores lo recortaban en rectángulos. */
+   el navegador ya la difumina al ampliarla. Tiene la forma de
+   la ventana (mismas esquinas, un poco más grande) y los bordes
+   se funden con dos degradados cruzados, uno de lado a lado y
+   otro de arriba abajo. Antes era un filter:blur grande, y al
+   subir por la página algunos navegadores lo recortaban en
+   rectángulos. */
 
 .ventana-resplandor{
   position:absolute;
-  inset:-6% -10% -12%;
+  inset:-5% -7% -7%;
   z-index:0;
+
+  border-radius:30% / 25%;
 
   background:var(--foto-mini, none) center / 100% 100% no-repeat #09a7c3;
 
   filter:saturate(1.8) brightness(1.25);
   opacity:.7;
 
-  -webkit-mask-image:radial-gradient(closest-side, #000 55%, transparent 100%);
-  mask-image:radial-gradient(closest-side, #000 55%, transparent 100%);
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0, #000 16%, #000 84%, transparent 100%),
+    linear-gradient(180deg, transparent 0, #000 13%, #000 87%, transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:
+    linear-gradient(90deg, transparent 0, #000 16%, #000 84%, transparent 100%),
+    linear-gradient(180deg, transparent 0, #000 13%, #000 87%, transparent 100%);
+  mask-composite:intersect;
 
   transition:opacity .4s ease;
 }

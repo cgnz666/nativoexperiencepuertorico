@@ -357,10 +357,25 @@ document.addEventListener("DOMContentLoaded", function () {
         return false;
       }
 
+      /* No solo el título: también los pueblos por los que pasa
+         (los saca de Bókun la tarea que escribe tours.json), la
+         ruta del mapa y su frase. Así "Arecibo" encuentra el tour
+         de Rincón aunque su título no lo nombre. */
+      const datos = datosDe(tour);
+      const ruta = RUTAS[datos.ruta];
+
       return (
         !busqueda ||
         sinAcentos(
-          [tour.title, tour.excerpt, tour.duration].join(" ")
+          [
+            tour.title,
+            tour.excerpt,
+            tour.duration,
+            (tour.places || []).join(" "),
+            ruta ? ruta.nombre : "",
+            datos.frase,
+            datos.etiqueta
+          ].join(" ")
         ).includes(busqueda)
       );
     });
@@ -453,6 +468,38 @@ document.addEventListener("DOMContentLoaded", function () {
       pintar();
     });
   });
+
+
+  /* Tocar una línea del mapa (o su rótulo) es lo mismo que
+     pulsar su botón. Si la enciende, además baja al catálogo,
+     que es donde están los tours de esa ruta. */
+
+  const mapa = document.querySelector(".tours-mapa");
+  const catalogo = document.querySelector("#catalog");
+
+  if (mapa) {
+    mapa.addEventListener("click", function (evento) {
+      const linea = evento.target.closest("[data-line]");
+
+      if (!linea) {
+        return;
+      }
+
+      const botonDeRuta = botonesDeRuta.find(
+        (otro) => otro.dataset.ruta === linea.dataset.line
+      );
+
+      if (!botonDeRuta) {
+        return;
+      }
+
+      botonDeRuta.click();
+
+      if (rutaElegida && catalogo) {
+        catalogo.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  }
 
 
   /* ==========================================

@@ -55,6 +55,84 @@ function fotosDe(producto) {
     .filter(Boolean);
 }
 
+/* ==========================================
+LUGARES POR LOS QUE PASA CADA TOUR
+
+El buscador de la página encuentra un tour por los
+pueblos de su ruta aunque el título no los nombre.
+Aquí se sacan de lo que el propio Bókun dice del
+tour: título, resumen, descripción completa, paradas
+y ubicación. Solo se guardan nombres de esta lista,
+para no inventar nada ni colar texto suelto.
+========================================== */
+
+// LUGARES-INICIO
+const LUGARES = [
+  // Los 78 municipios, menos Florida: se confunde con el estado
+  "Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Añasco",
+  "Arecibo", "Arroyo", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo",
+  "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba",
+  "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado",
+  "Fajardo", "Guánica", "Guayama", "Guayanilla", "Guaynabo", "Gurabo",
+  "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz",
+  "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza",
+  "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis",
+  "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce",
+  "Quebradillas", "Rincón", "Río Grande", "Sabana Grande", "Salinas",
+  "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel",
+  "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta",
+  "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco",
+  // Sitios que la gente busca por su nombre
+  "Old San Juan", "La Perla", "Piñones", "Guavate", "El Yunque", "Condado",
+  "Santurce", "Isla Verde", "Guajataca", "Toro Negro", "Coamo Hot Springs"
+];
+
+/* Otras formas de escribir el mismo lugar que aparecen en Bókun */
+const VARIANTES = {
+  "Quebradillas": ["quebradilla"],
+  "Old San Juan": ["viejo san juan"]
+};
+
+const plano = (texto) =>
+  String(texto || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&[a-z#0-9]+;/g, " ")
+    .replace(/[^a-z0-9]+/g, " ");
+
+function lugaresDe(producto) {
+  const paradas = (producto.places || []).map((p) =>
+    typeof p === "string" ? p : p?.title
+  );
+
+  const texto =
+    " " +
+    plano(
+      [
+        producto.title,
+        producto.excerpt,
+        producto.summary,
+        producto.description,
+        ...paradas,
+        producto.googlePlace?.name,
+        producto.locationCode?.country === "PR" ? producto.locationCode?.name : ""
+      ].join(" ")
+    ) +
+    " ";
+
+  /* "La Perla del Sur" es Ponce, no el barrio de San Juan */
+  const limpio = texto.replace(/ la perla del sur /g, " ponce ");
+
+  return LUGARES.filter((lugar) =>
+    [plano(lugar), ...(VARIANTES[lugar] || [])].some((forma) =>
+      limpio.includes(" " + forma.trim() + " ")
+    )
+  );
+}
+// LUGARES-FIN
+
 /* Bókun podría mandar un número como texto. Si no es un
    número utilizable, mejor nulo que reventar la página. */
 function numero(valor) {
@@ -77,6 +155,7 @@ function limpiar(producto) {
     reviews: numero(ta.numReviews),
     reviewUrl: direccionSegura(ta.url),
     photos: fotosDe(producto),
+    places: lugaresDe(producto),
     bookingUrl: enlaceDeReserva(producto.id)
   };
 }
