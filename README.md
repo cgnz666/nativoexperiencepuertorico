@@ -31,14 +31,10 @@ Upload these exact asset filenames:
 - assets/hero-poster.jpg
 - assets/about.jpg
 
-Private services page photos (`services.html`):
-Each service uses a pair of files, WebP first with a JPG fallback.
-To change a photo, replace both files keeping the same names and a
-portrait 4:5 crop, around 1100 x 1375 px:
-- assets/service-catering.webp / .jpg
-- assets/service-forest-yoga.webp / .jpg
-- assets/service-massage.webp / .jpg
-- assets/service-concierge.webp / .jpg
+Private services page illustrations (`services.html`):
+Line illustrations and icons live in `assets/services/` as SVG.
+Scenes are 480 x 480, icons 24 x 24, in the site teal on sand.
+To change one, replace the file keeping the same name.
 
 Bókun:
 - Booking channel UUID: 53a6da0f-77c9-4ae5-84a4-155de87c7fe0
