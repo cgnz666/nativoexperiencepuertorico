@@ -200,4 +200,5 @@ Cuando C corrija algo, agregar aquí la regla si vale más allá de ese caso: si
   cita. Si una reseña es muy larga se recorta por frases completas, quitando
   del principio o del final, nunca cosiendo trozos ni cambiando palabras. Lo
   mismo vale para cualquier cosa atribuida a una persona con nombre.
+- **Nada de capas `position:fixed` a pantalla completa para fondos.** Safari 26 tiñe su barra superior con el color de los elementos fijos que tiene debajo, y la franja se queda tapando la cabecera al volver arriba. Un fondo que se queda quieto va en una capa `sticky` dentro de su sección (ver `.island-story::after`), y esa sección lleva `overflow:clip`, no `hidden`, o el sticky deja de pegarse.
 - Al buscar texto visible, **no limitar el `grep` por extensión**. Parte del copy del sitio no está en los `.html`: el botón de "View all tours" y el mensaje para lectores de pantalla los escribe `tours.js` al vuelo. Comprobar el resultado en el navegador, no en el código.

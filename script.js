@@ -301,12 +301,35 @@ function iniciarCarruselDeResenas() {
 
     indice = destino > tope ? 0 : destino < 0 ? tope : destino;
 
+    /* "instant" y no "auto": la pista lleva scroll-behavior:smooth
+       en CSS, y con "auto" se deslizaría igual */
     pista.scrollTo({
       left: indice * paso(),
-      behavior: menosMovimiento.matches ? "auto" : "smooth"
+      behavior: menosMovimiento.matches ? "instant" : "smooth"
     });
 
     pintarPuntos();
+  }
+
+  /* Al llegar al final, la tira no rebobina cruzando todas las
+     reseñas: se apaga, salta a la primera y vuelve a aparecer. */
+  function volverAlPrincipio() {
+    pista.classList.add("is-rebobinando");
+
+    window.setTimeout(function () {
+      indice = 0;
+      pista.scrollTo({ left: 0, behavior: "instant" });
+      pintarPuntos();
+      pista.classList.remove("is-rebobinando");
+    }, 450);
+  }
+
+  function avanzarSolo() {
+    if (indice + 1 > ultimoIndice()) {
+      volverAlPrincipio();
+    } else {
+      ir(indice + 1);
+    }
   }
 
   function pintarPuntos() {
@@ -371,9 +394,7 @@ function iniciarCarruselDeResenas() {
       return;
     }
 
-    temporizador = window.setInterval(function () {
-      ir(indice + 1);
-    }, 5200);
+    temporizador = window.setInterval(avanzarSolo, 6000);
   }
 
   function parar() {
@@ -397,6 +418,18 @@ function iniciarCarruselDeResenas() {
   marco.addEventListener("focusin", parar);
   marco.addEventListener("focusout", arrancar);
   pista.addEventListener("pointerdown", parar);
+
+  /* Con el dedo no hay mouseleave que lo vuelva a arrancar: antes,
+     tocar una tarjeta en el celular lo paraba para siempre. Al
+     soltar, retoma. Con ratón no, porque el cursor sigue encima. */
+  function retomarTrasTocar(evento) {
+    if (evento.pointerType !== "mouse") {
+      arrancar();
+    }
+  }
+
+  pista.addEventListener("pointerup", retomarTrasTocar);
+  pista.addEventListener("pointercancel", retomarTrasTocar);
 
   /* Si el visitante arrastra a mano, el punto activo tiene que
      seguirle. Se espera a que el desplazamiento se asiente. */
@@ -464,3 +497,118 @@ function iniciarCarruselDeResenas() {
 document.addEventListener("DOMContentLoaded", function () {
   iniciarCarruselDeResenas();
 });
+
+
+/* ==========================================
+LÁMINAS: SECCIONES CON FONDO QUE SE QUEDAN QUIETAS
+
+El hero y el bloque de la selva se quedan fijos y la
+sección siguiente les pasa por encima, como el hero de
+servicios. Muchas son más altas que la pantalla: si se
+fijaran arriba desde el principio, la siguiente taparía
+su parte de abajo antes de verla. Por eso cada una se
+fija cuando su borde de abajo toca el de la pantalla
+(top negativo), y las que caben, bajo la cabecera.
+
+Ese top depende del alto de la sección y de la pantalla,
+así que lo calcula JS. Sin JS no hay clase "laminas" y
+todo se desplaza normal.
+========================================== */
+
+(function () {
+  const laminas = document.querySelectorAll(".lamina");
+  const cabecera = document.querySelector(".site-header");
+
+  if (!laminas.length) {
+    return;
+  }
+
+  function ajustar() {
+    const alto = cabecera ? cabecera.offsetHeight : 0;
+
+    laminas.forEach(function (lamina) {
+      const top = Math.min(alto, window.innerHeight - lamina.offsetHeight);
+      lamina.style.setProperty("--lamina-top", top + "px");
+    });
+  }
+
+  ajustar();
+  document.documentElement.classList.add("laminas");
+
+  window.addEventListener("resize", ajustar);
+  window.addEventListener("load", ajustar);
+
+  // Las fotos y las fuentes que llegan tarde cambian el alto
+  if ("ResizeObserver" in window) {
+    const observador = new ResizeObserver(ajustar);
+    laminas.forEach(function (lamina) {
+      observador.observe(lamina);
+    });
+  }
+})();
+
+
+/* ==========================================
+APARICIONES Y VIDEO DE ABOUT
+
+Las piezas con data-aparece reciben is-visible la
+primera vez que entran en pantalla (la tortuga que se
+arma, el marco del video). La clase animar en <html>
+activa esas transiciones en CSS; sin IntersectionObserver
+o con "reducir movimiento" no se pone y todo se ve quieto.
+
+El video de About no lleva autoplay: se reproduce solo
+mientras se ve y se pausa al salir, para no gastar datos
+ni batería. Con "reducir movimiento" se queda en su
+imagen fija.
+========================================== */
+
+(function () {
+  const menosMovimiento = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+  const piezas = document.querySelectorAll("[data-aparece]");
+  const video = document.querySelector(".about-video");
+
+  if (!("IntersectionObserver" in window)) {
+    if (video && !menosMovimiento) {
+      video.play().catch(function () {});
+    }
+    return;
+  }
+
+  if (!menosMovimiento && piezas.length) {
+    document.documentElement.classList.add("animar");
+
+    const alEntrar = new IntersectionObserver(
+      function (entradas) {
+        entradas.forEach(function (entrada) {
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add("is-visible");
+            alEntrar.unobserve(entrada.target);
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    piezas.forEach(function (pieza) {
+      alEntrar.observe(pieza);
+    });
+  }
+
+  if (video && !menosMovimiento) {
+    new IntersectionObserver(
+      function (entradas) {
+        entradas.forEach(function (entrada) {
+          if (entrada.isIntersecting) {
+            video.play().catch(function () {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.15 }
+    ).observe(video);
+  }
+})();

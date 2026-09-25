@@ -347,6 +347,21 @@ HERO — MAIN LAYOUT
 
 
 /* ==========================================
+LÁMINAS
+
+Una sección con clase "lamina" se queda quieta y la
+siguiente le pasa por encima. El top lo pone script.js
+(ver allí por qué). Las secciones que la tapan necesitan
+position:relative y fondo propio.
+========================================== */
+
+.laminas .lamina{
+  position:sticky;
+  top:var(--lamina-top,var(--alto-cabecera));
+}
+
+
+/* ==========================================
 HERO — BACKGROUND VIDEO
 ========================================== */
 
@@ -1885,26 +1900,60 @@ LISTADO DE TOURS — MÓVIL
 ISLAND STORY
 ========================================== */
 
+/* La selva se queda quieta y el contenido sube por encima,
+   como una ventana. background-attachment:fixed haría lo mismo,
+   pero el iPhone lo ignora.
+
+   Tampoco sirve una capa position:fixed: Safari 26 tiñe su barra
+   de arriba con el color de los elementos fijos que tiene debajo,
+   y al volver al principio de la página la franja oscura se
+   quedaba tapando la cabecera.
+
+   Por eso la foto va en una capa sticky (::after) del alto de la
+   pantalla, pegada abajo y sin ocupar sitio (margen negativo):
+   mientras el bloque cruza la pantalla, la capa se queda quieta;
+   al entrar y al salir, viaja con el borde del bloque. overflow
+   va en clip y no en hidden, porque hidden convertiría el bloque
+   en contenedor de scroll y la capa dejaría de pegarse. */
+
 .island-story{
   position:relative;
-  overflow:hidden;
+  overflow:clip;
   isolation:isolate;
+
+  background-color:var(--ocean);
+}
+
+.island-story::after{
+  content:"";
+
+  position:sticky;
+  bottom:0;
+  z-index:-1;
+
+  display:block;
+
+  height:100vh;
+  height:100lvh;
+
+  margin-top:-100vh;
+  margin-top:-100lvh;
+
+  pointer-events:none;
 
   background-image:
     linear-gradient(rgba(5,28,34,.55), rgba(5,28,34,.55)),
-    url("assets/island-story-bg.png");
+    url("assets/island-story-bg.jpg");
 
-  background-repeat:
-    no-repeat,
-    repeat-y;
+  background-image:
+    linear-gradient(rgba(5,28,34,.55), rgba(5,28,34,.55)),
+    image-set(
+      url("assets/island-story-bg.webp") type("image/webp"),
+      url("assets/island-story-bg.jpg") type("image/jpeg")
+    );
 
-  background-position:
-    center center,
-    center top;
-
-  background-size:
-    cover,
-    100% auto;
+  background-position:center;
+  background-size:cover;
 }
 
 .island-story::before{
@@ -2005,6 +2054,26 @@ ABOUT
   border-radius:30px;
 }
 
+
+/* Entrada del video: el marco se abre de 96% a 100% con un
+   fundido, una sola vez. Mismo sistema que la tortuga. */
+
+.animar .about-media{
+  opacity:0;
+
+  transform:scale(.96);
+
+  transition:
+    opacity .8s ease,
+    transform 1s cubic-bezier(.2,.7,.2,1);
+}
+
+.animar .about-media.is-visible{
+  opacity:1;
+
+  transform:none;
+}
+
 .about-copy{
   max-width:620px;
 }
@@ -2096,9 +2165,6 @@ ISLAND STORY — TABLET
 
 @media (max-width:900px){
 
-  .island-story{
-    background-position:center top;
-  }
 
   .island-story::before{
     background:
@@ -2140,10 +2206,6 @@ ISLAND STORY — MOBILE
 
 @media (max-width:560px){
 
-  .island-story{
-    background-size:auto 100%;
-    background-position:center top;
-  }
 
   .island-story .container{
     width:min(calc(100% - 36px),1200px);
@@ -2315,6 +2377,85 @@ LOGO STORY
 
 
 /* ==========================================
+LOGO STORY — LA TORTUGA SE ARMA Y NADA
+
+Al llegar a la sección, los siete cuadrados del
+caparazón aparecen uno a uno, se dibuja el contorno
+y al final entran los detalles y las burbujas. Luego
+la tortuga flota despacio, sin parar. Es lo único
+que se mueve en esta sección.
+
+Las clases animar e is-visible las pone script.js:
+sin JS, o con "reducir movimiento", la tortuga está
+completa y quieta desde el principio.
+========================================== */
+
+.story-tortuga{
+  height:auto;
+
+  color:var(--primary);
+
+  overflow:visible;
+}
+
+.animar .story-tortuga .cuadro{
+  opacity:0;
+
+  transform:scale(.4) rotate(-10deg);
+  transform-box:fill-box;
+  transform-origin:center;
+
+  transition:
+    opacity .5s ease,
+    transform .7s cubic-bezier(.2,.7,.2,1);
+  transition-delay:calc(var(--i) * 110ms);
+}
+
+.animar .story-tortuga .contorno{
+  stroke-dasharray:1;
+  stroke-dashoffset:1;
+
+  transition:stroke-dashoffset 1.6s ease .6s;
+}
+
+.animar .story-tortuga .detalle{
+  opacity:0;
+
+  transition:opacity .9s ease 1.6s;
+}
+
+.animar .story-tortuga.is-visible .cuadro{
+  opacity:1;
+  transform:none;
+}
+
+.animar .story-tortuga.is-visible .contorno{
+  stroke-dashoffset:0;
+}
+
+.animar .story-tortuga.is-visible .detalle{
+  opacity:1;
+}
+
+.animar .story-tortuga.is-visible{
+  animation:tortuga-nada 9s ease-in-out 2.6s infinite;
+}
+
+@keyframes tortuga-nada{
+
+  0%,
+  100%{
+    transform:translateY(0) rotate(0);
+  }
+
+  50%{
+    transform:translateY(-12px) rotate(1.5deg);
+  }
+
+}
+
+
+/* ==========================================
 LOGO STORY — TABLET
 ========================================== */
 
@@ -2428,6 +2569,17 @@ se esconden solos desde script.js.
 
   scrollbar-width:none;
   -ms-overflow-style:none;
+}
+
+/* script.js la apaga un momento para volver a la primera
+   reseña sin cruzar todas */
+
+.review-track{
+  transition:opacity .4s ease;
+}
+
+.review-track.is-rebobinando{
+  opacity:0;
 }
 
 .review-track::-webkit-scrollbar{
@@ -3482,25 +3634,6 @@ RESPONSIVE — GENERAL WEBSITE MOBILE
   }
 
 }
-
-/* ==========================================
-FONDOS — IMAGEN OPTIMIZADA (TODAS LAS PANTALLAS)
-Selva en WebP/JPG: misma imagen, mucho más liviana
-========================================== */
-
-.island-story{
-  background-image:
-    linear-gradient(rgba(5,28,34,.55), rgba(5,28,34,.55)),
-    url("assets/island-story-bg.jpg");
-
-  background-image:
-    linear-gradient(rgba(5,28,34,.55), rgba(5,28,34,.55)),
-    image-set(
-      url("assets/island-story-bg.webp") type("image/webp"),
-      url("assets/island-story-bg.jpg") type("image/jpeg")
-    );
-}
-
 
 /* ==========================================
 PANTALLAS GRANDES — 1800px o más
