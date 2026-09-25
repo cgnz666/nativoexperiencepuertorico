@@ -243,12 +243,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 /* ==========================================
-CARRUSEL DE RESEÑAS
+CARRUSEL DE RESEÑAS · CINTA
 
-La tira se mueve sola, pero el desplazamiento lo hace
-el navegador: la tarjeta se puede arrastrar con el dedo
-igual que si no hubiera JavaScript. Si todas las reseñas
-caben a la vez, las flechas y los puntos se esconden.
+La tira corre sola, despacio y sin parar, como una
+cinta transportadora. Detrás de las reseñas va una
+copia de todas (oculta a lectores de pantalla y al
+teclado); al terminar la primera vuelta, el scroll
+salta hacia atrás exactamente una vuelta y el salto
+no se ve, porque la copia es idéntica.
+
+El desplazamiento sigue siendo el del navegador: la
+tira se arrastra con el dedo. Al leer (ratón encima,
+foco, dedo) se para, y retoma al soltar. Con
+"reducir movimiento" no corre sola.
 ========================================== */
 
 function iniciarCarruselDeResenas() {
@@ -259,7 +266,6 @@ function iniciarCarruselDeResenas() {
   }
 
   const pista = marco.querySelector(".review-track");
-  const cajaDePuntos = marco.querySelector(".review-dots");
   const anterior = marco.querySelector(".review-arrow-prev");
   const siguiente = marco.querySelector(".review-arrow-next");
   const tarjetas = Array.from(pista.querySelectorAll(".review-card"));
@@ -272,226 +278,193 @@ function iniciarCarruselDeResenas() {
     "(prefers-reduced-motion: reduce)"
   );
 
-  let temporizador = null;
-  let puntos = [];
-  let indice = 0;
+  /* Píxeles por segundo: lo bastante lento para leer al paso */
+  const VELOCIDAD = 32;
 
-  /* El paso es de tarjeta a tarjeta, hueco incluido. Se mide
-     del DOM en vez de calcularlo, porque el ancho cambia con
-     la pantalla y con el tamaño de letra del sistema. */
+  tarjetas.forEach(function (tarjeta) {
+    const copia = tarjeta.cloneNode(true);
+
+    copia.setAttribute("aria-hidden", "true");
+    copia.inert = true;
+    pista.appendChild(copia);
+  });
+
+  let posicion = 0;
+  let ultimoCuadro = null;
+  let cuadro = null;
+  let enPantalla = true;
+  let pausas = 0;
+  let pausaDeFlecha = null;
+
+  /* Una vuelta es la distancia de la primera reseña a su copia.
+     Se mide del DOM, porque el ancho cambia con la pantalla y
+     con el tamaño de letra del sistema. */
+  function vuelta() {
+    return pista.children[tarjetas.length].offsetLeft - tarjetas[0].offsetLeft;
+  }
+
   function paso() {
     return tarjetas[1].offsetLeft - tarjetas[0].offsetLeft;
   }
 
-  function ultimoIndice() {
-    const salto = paso();
+  function envolver(valor) {
+    const largo = vuelta();
 
-    if (salto <= 0) {
-      return 0;
+    if (largo <= 0) {
+      return valor;
     }
 
-    /* Cuántas tarjetas se ven enteras ahora mismo */
-    const caben = Math.max(1, Math.round(pista.clientWidth / salto));
-
-    return Math.max(0, tarjetas.length - caben);
+    return ((valor % largo) + largo) % largo;
   }
 
-  function ir(destino) {
-    const tope = ultimoIndice();
+  function mover(ahora) {
+    /* Si otra cosa movió la tira (una flecha, la rueda), la
+       cinta sigue desde ahí en vez de devolverla a su sitio */
+    if (Math.abs(pista.scrollLeft - posicion) > 2) {
+      posicion = pista.scrollLeft;
+    }
 
-    indice = destino > tope ? 0 : destino < 0 ? tope : destino;
+    if (ultimoCuadro !== null) {
+      const segundos = Math.min((ahora - ultimoCuadro) / 1000, 0.1);
 
-    /* "instant" y no "auto": la pista lleva scroll-behavior:smooth
-       en CSS, y con "auto" se deslizaría igual */
-    pista.scrollTo({
-      left: indice * paso(),
+      posicion = envolver(posicion + VELOCIDAD * segundos);
+      pista.scrollLeft = posicion;
+    }
+
+    ultimoCuadro = ahora;
+    cuadro = window.requestAnimationFrame(mover);
+  }
+
+  function corre() {
+    return (
+      !menosMovimiento.matches &&
+      enPantalla &&
+      !document.hidden &&
+      pausas === 0 &&
+      pausaDeFlecha === null
+    );
+  }
+
+  function actualizar() {
+    if (corre()) {
+      if (cuadro === null) {
+        posicion = pista.scrollLeft;
+        ultimoCuadro = null;
+        cuadro = window.requestAnimationFrame(mover);
+      }
+    } else if (cuadro !== null) {
+      window.cancelAnimationFrame(cuadro);
+      cuadro = null;
+    }
+  }
+
+  /* Cada motivo para pararse suma uno y resta uno al acabar,
+     así el ratón encima y el foco no se pisan entre sí. */
+  function pausar() {
+    pausas += 1;
+    actualizar();
+  }
+
+  function soltar() {
+    pausas = Math.max(0, pausas - 1);
+    actualizar();
+  }
+
+  /* Las flechas mueven una reseña con un deslizamiento suave y
+     la cinta retoma cuando termina. Hacia atrás desde el
+     principio, se salta antes una vuelta hacia delante para
+     que haya reseñas a la izquierda. */
+  function mover1(sentido) {
+    window.clearTimeout(pausaDeFlecha);
+    pausaDeFlecha = 0;
+    actualizar();
+
+    if (sentido < 0 && pista.scrollLeft < paso()) {
+      pista.scrollLeft += vuelta();
+    }
+
+    pista.scrollBy({
+      left: sentido * paso(),
       behavior: menosMovimiento.matches ? "instant" : "smooth"
     });
 
-    pintarPuntos();
-  }
-
-  /* Al llegar al final, la tira no rebobina cruzando todas las
-     reseñas: se apaga, salta a la primera y vuelve a aparecer. */
-  function volverAlPrincipio() {
-    pista.classList.add("is-rebobinando");
-
-    window.setTimeout(function () {
-      indice = 0;
-      pista.scrollTo({ left: 0, behavior: "instant" });
-      pintarPuntos();
-      pista.classList.remove("is-rebobinando");
-    }, 450);
-  }
-
-  function avanzarSolo() {
-    if (indice + 1 > ultimoIndice()) {
-      volverAlPrincipio();
-    } else {
-      ir(indice + 1);
-    }
-  }
-
-  function pintarPuntos() {
-    puntos.forEach(function (punto, numero) {
-      const activo = numero === indice;
-
-      punto.classList.toggle("is-active", activo);
-      punto.setAttribute("aria-current", activo ? "true" : "false");
-    });
-  }
-
-  /* Los puntos se rehacen al cambiar el ancho, porque el
-     número de posiciones alcanzables depende de cuántas
-     tarjetas caben. */
-  function armarPuntos() {
-    const tope = ultimoIndice();
-
-    cajaDePuntos.textContent = "";
-    puntos = [];
-
-    if (tope === 0) {
-      cajaDePuntos.hidden = true;
-      anterior.hidden = true;
-      siguiente.hidden = true;
-      return;
-    }
-
-    cajaDePuntos.hidden = false;
-    anterior.hidden = false;
-    siguiente.hidden = false;
-
-    for (let numero = 0; numero <= tope; numero++) {
-      const punto = document.createElement("button");
-
-      punto.type = "button";
-      punto.className = "review-dot";
-      punto.setAttribute(
-        "aria-label",
-        "Show review " + (numero + 1) + " of " + (tope + 1)
-      );
-
-      punto.addEventListener("click", function () {
-        ir(numero);
-        arrancar();
-      });
-
-      cajaDePuntos.appendChild(punto);
-      puntos.push(punto);
-    }
-
-    if (indice > tope) {
-      indice = 0;
-    }
-
-    pintarPuntos();
-  }
-
-  function arrancar() {
-    parar();
-
-    if (menosMovimiento.matches || ultimoIndice() === 0) {
-      return;
-    }
-
-    temporizador = window.setInterval(avanzarSolo, 6000);
-  }
-
-  function parar() {
-    window.clearInterval(temporizador);
-    temporizador = null;
+    pausaDeFlecha = window.setTimeout(function () {
+      pausaDeFlecha = null;
+      actualizar();
+    }, 1600);
   }
 
   anterior.addEventListener("click", function () {
-    ir(indice - 1);
-    arrancar();
+    mover1(-1);
   });
 
   siguiente.addEventListener("click", function () {
-    ir(indice + 1);
-    arrancar();
+    mover1(1);
   });
 
-  /* Mientras se lee o se arrastra, la tira no se mueve sola */
-  marco.addEventListener("mouseenter", parar);
-  marco.addEventListener("mouseleave", arrancar);
-  marco.addEventListener("focusin", parar);
-  marco.addEventListener("focusout", arrancar);
-  pista.addEventListener("pointerdown", parar);
+  marco.addEventListener("mouseenter", pausar);
+  marco.addEventListener("mouseleave", soltar);
+  marco.addEventListener("focusin", pausar);
+  marco.addEventListener("focusout", soltar);
 
-  /* Con el dedo no hay mouseleave que lo vuelva a arrancar: antes,
-     tocar una tarjeta en el celular lo paraba para siempre. Al
-     soltar, retoma. Con ratón no, porque el cursor sigue encima. */
+  /* Con el dedo no hay mouseleave: al soltar, la cinta espera
+     un momento antes de retomar, para acabar la frase. */
+  pista.addEventListener("pointerdown", function (evento) {
+    if (evento.pointerType !== "mouse") {
+      pausar();
+    }
+  });
+
   function retomarTrasTocar(evento) {
     if (evento.pointerType !== "mouse") {
-      arrancar();
+      window.setTimeout(soltar, 2500);
     }
   }
 
   pista.addEventListener("pointerup", retomarTrasTocar);
   pista.addEventListener("pointercancel", retomarTrasTocar);
 
-  /* Si el visitante arrastra a mano, el punto activo tiene que
-     seguirle. Se espera a que el desplazamiento se asiente. */
-  let reposo = null;
-
+  /* Si el visitante arrastra más allá de la primera vuelta, la
+     tira salta atrás una vuelta para que nunca se acabe. */
   pista.addEventListener("scroll", function () {
-    window.clearTimeout(reposo);
+    const largo = vuelta();
 
-    reposo = window.setTimeout(function () {
-      const salto = paso();
-
-      if (salto > 0) {
-        indice = Math.min(
-          Math.round(pista.scrollLeft / salto),
-          ultimoIndice()
-        );
-
-        pintarPuntos();
-      }
-    }, 120);
-  });
-
-  /* Fuera de pantalla o con la pestaña escondida no tiene
-     sentido gastar el temporizador. */
-  document.addEventListener("visibilitychange", function () {
-    if (document.hidden) {
-      parar();
-    } else {
-      arrancar();
+    /* Mientras corre una flecha no se toca: la flecha hacia
+       atrás parte justo de más allá de la vuelta */
+    if (
+      cuadro === null &&
+      pausaDeFlecha === null &&
+      largo > 0 &&
+      pista.scrollLeft >= largo
+    ) {
+      pista.scrollLeft -= largo;
     }
   });
+
+  document.addEventListener("visibilitychange", actualizar);
 
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(
       function (entradas) {
         entradas.forEach(function (entrada) {
-          if (entrada.isIntersecting) {
-            arrancar();
-          } else {
-            parar();
-          }
+          enPantalla = entrada.isIntersecting;
         });
+
+        actualizar();
       },
       { threshold: 0.2 }
     ).observe(marco);
   }
 
-  let reajuste = null;
-
+  /* Al cambiar el ancho cambia la vuelta: se reencaja la posición */
   window.addEventListener("resize", function () {
-    window.clearTimeout(reajuste);
-
-    reajuste = window.setTimeout(function () {
-      armarPuntos();
-      ir(indice);
-    }, 180);
+    posicion = envolver(pista.scrollLeft);
+    pista.scrollLeft = posicion;
   });
 
-  menosMovimiento.addEventListener("change", arrancar);
+  menosMovimiento.addEventListener("change", actualizar);
 
-  armarPuntos();
-  arrancar();
+  actualizar();
 }
 
 document.addEventListener("DOMContentLoaded", function () {

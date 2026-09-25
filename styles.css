@@ -2014,23 +2014,27 @@ ABOUT
 }
 
 
-/* Entrada del video: el marco se abre de 96% a 100% con un
-   fundido, una sola vez. Mismo sistema que la tortuga. */
+/* Entrada del video: llega desde la izquierda, 56 px, mientras
+   aparece y se enfoca, con una frenada larga al final. Una sola
+   vez. Mismo sistema que la tortuga. */
 
 .animar .about-media{
   opacity:0;
 
-  transform:scale(.96);
+  transform:translateX(-56px);
+  filter:blur(10px);
 
   transition:
-    opacity .8s ease,
-    transform 1s cubic-bezier(.2,.7,.2,1);
+    opacity 1.1s ease,
+    transform 1.4s cubic-bezier(.16,1,.3,1),
+    filter 1.2s ease;
 }
 
 .animar .about-media.is-visible{
   opacity:1;
 
   transform:none;
+  filter:none;
 }
 
 .about-copy{
@@ -2513,28 +2517,18 @@ se esconden solos desde script.js.
   gap:28px;
 
   overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  scroll-behavior:smooth;
+
+  /* La cinta la mueve script.js cuadro a cuadro: sin imán
+     (scroll-snap) ni deslizamiento suave, que la frenarían */
+  scroll-behavior:auto;
 
   /* Sitio para que la línea de la tarjeta y el contorno
      de foco no queden cortados por el recorte del
      desplazamiento. */
   padding:16px 6px 24px;
-  scroll-padding-left:6px;
 
   scrollbar-width:none;
   -ms-overflow-style:none;
-}
-
-/* script.js la apaga un momento para volver a la primera
-   reseña sin cruzar todas */
-
-.review-track{
-  transition:opacity .4s ease;
-}
-
-.review-track.is-rebobinando{
-  opacity:0;
 }
 
 .review-track::-webkit-scrollbar{
@@ -2544,8 +2538,6 @@ se esconden solos desde script.js.
 .review-track > .review-card{
   flex:0 0 calc((100% - 68px) / 3);
   min-width:0;
-
-  scroll-snap-align:start;
 
   /* Las citas no miden lo mismo. Sin esto, el nombre de cada
      tarjeta queda a una altura distinta y la fila se ve torcida. */
@@ -2585,9 +2577,9 @@ se arrastra con el dedo.
 
   padding:0;
 
-  /* Los puntos van debajo, así que el centro del marco cae
-     más abajo que el centro de la tira. Se sube a mano. */
-  margin-top:-13px;
+  /* La tira lleva más relleno abajo (24 px) que arriba
+     (16 px): se sube 4 px para quedar a media tarjeta */
+  margin-top:-4px;
 
   color:var(--primary-dark);
   background:var(--sand);
@@ -2624,10 +2616,6 @@ se arrastra con el dedo.
   background:var(--primary-dark);
 }
 
-.review-arrow[hidden],
-.review-dots[hidden]{
-  display:none;
-}
 
 
 /* ==========================================
@@ -2636,62 +2624,6 @@ REVIEWS — PUNTOS
 Mismo lenguaje que los puntos de las tarjetas de
 tour, en color sobre fondo claro.
 ========================================== */
-
-.review-dots{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  gap:2px;
-
-  margin-top:14px;
-}
-
-/* El botón mide 24 px para que se pueda dar con el dedo.
-   El punto que se ve es el ::before, mucho más pequeño. */
-.review-dot{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  min-width:24px;
-  height:24px;
-
-  padding:0 5px;
-  border:0;
-
-  background:none;
-  cursor:pointer;
-}
-
-.review-dot::before{
-  content:"";
-
-  display:block;
-
-  width:8px;
-  height:8px;
-
-  border-radius:50%;
-  background:rgba(20,145,143,.3);
-
-  transition:
-    width .3s ease,
-    background-color .3s ease;
-}
-
-.review-dot.is-active::before{
-  width:26px;
-  border-radius:999px;
-  background:var(--primary);
-}
-
-.review-dot:focus-visible{
-  outline:3px solid var(--primary);
-  outline-offset:2px;
-  border-radius:999px;
-}
-
 
 /* ==========================================
 REVIEWS — CARDS
@@ -3468,9 +3400,7 @@ footer.pie{
 ANIMATIONS
 ========================================== */
 
-.tour-card,
 .private-card,
-.review-card,
 .insta-photo{
 
 transition:
@@ -3479,9 +3409,7 @@ box-shadow .35s ease;
 
 }
 
-.tour-card:hover,
 .private-card:hover,
-.review-card:hover,
 .insta-photo:hover{
 
 transform:translateY(-8px);
