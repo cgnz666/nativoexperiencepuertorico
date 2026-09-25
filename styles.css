@@ -3834,45 +3834,54 @@ lleva el título y baja para mostrar la reserva.
   aspect-ratio:260 / 320;
 }
 
+/* El resplandor es la foto en miniatura (12 x 9 px) estirada:
+   el navegador ya la difumina al ampliarla, y la máscara funde
+   los bordes. Antes era un filter:blur grande, y al subir por
+   la página algunos navegadores lo recortaban en rectángulos. */
+
 .ventana-resplandor{
   position:absolute;
-  inset:4% 6% 0;
+  inset:-6% -10% -12%;
   z-index:0;
 
-  border-radius:40% / 30%;
+  background:var(--foto-mini, none) center / 100% 100% no-repeat #09a7c3;
 
-  background:var(--foto) center / cover #09a7c3;
+  filter:saturate(1.8) brightness(1.25);
+  opacity:.7;
 
-  filter:blur(34px) saturate(1.7) brightness(1.15);
-  opacity:.5;
-  transform:translateY(5%);
+  -webkit-mask-image:radial-gradient(closest-side, #000 55%, transparent 100%);
+  mask-image:radial-gradient(closest-side, #000 55%, transparent 100%);
 
   transition:opacity .4s ease;
 }
+
+/* El marco es del mismo material que la pared: fino, del tono
+   del fondo y sin sombra que lo despegue, como moldeado en el
+   fuselaje. Solo un brillo arriba y una sombra abajo le dan la
+   curva. */
 
 .ventana-marco{
   position:relative;
   z-index:1;
 
   height:100%;
-  padding:6%;
+  padding:3%;
 
   border-radius:27% / 22%;
 
   background:
-    radial-gradient(110% 80% at 72% 108%, rgba(9,167,195,.38), transparent 58%),
-    linear-gradient(160deg, #1a4f5c 0%, #0b2f39 42%, #041820 100%);
+    radial-gradient(110% 80% at 72% 108%, rgba(9,167,195,.22), transparent 58%),
+    linear-gradient(160deg, #0c3440 0%, #05232d 45%, #021a22 100%);
 
   box-shadow:
-    inset 0 1.5px 0 rgba(255,255,255,.22),
-    inset 0 -3px 8px rgba(0,0,0,.55),
-    inset 0 0 0 1px rgba(255,255,255,.07),
-    0 28px 60px rgba(0,0,0,.55);
+    inset 0 1.5px 0 rgba(255,255,255,.14),
+    inset 0 -2px 6px rgba(0,0,0,.5),
+    0 0 0 1px rgba(255,255,255,.05);
 }
 
 .ventana-aro{
   height:100%;
-  padding:3.4%;
+  padding:2.2%;
 
   border-radius:25% / 20%;
 
@@ -4289,7 +4298,7 @@ salen en las otras plataformas.
   }
 
   .ventana-tour:hover .ventana-resplandor{
-    opacity:.75;
+    opacity:.95;
   }
 
 }

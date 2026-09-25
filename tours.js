@@ -175,6 +175,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const datosDe = (tour) => CURADURIA[String(tour.id)] || {};
 
+  /* La foto en miniatura para el resplandor: Bókun la sirve al
+     tamaño que se le pida, y a 12 x 9 pesa unos cientos de bytes */
+  const miniatura = (foto) =>
+    foto ? String(foto).replace(/([?&])w=\d+&h=\d+/, "$1w=12&h=9") : "";
+
   function ordenar(lista) {
     const primeros = ORDEN.map((id) =>
       lista.find((tour) => String(tour.id) === id)
@@ -278,7 +283,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <article
         class="ventana-tour"
         data-line="${escapar(datos.ruta || "")}"
-        style="--foto:url('${escapar(fotos[0] || "")}')">
+        style="--foto-mini:url('${escapar(miniatura(fotos[0]))}')">
 
         <div class="ventana">
 
