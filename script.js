@@ -567,7 +567,10 @@ imagen fija.
   const menosMovimiento = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
-  const piezas = document.querySelectorAll("[data-aparece]");
+  // El cierre (Let's Plan) sube escalonado en el home y en servicios
+  const piezas = document.querySelectorAll(
+    "[data-aparece], .cierre-texto > *, .cierre-dibujo"
+  );
   const video = document.querySelector(".about-video");
 
   if (!("IntersectionObserver" in window)) {
@@ -593,6 +596,12 @@ imagen fija.
     );
 
     piezas.forEach(function (pieza) {
+      // Escalonado entre hermanos, sin pasar de cinco pasos
+      const hermanos = Array.prototype.indexOf.call(
+        pieza.parentElement.children,
+        pieza
+      );
+      pieza.style.setProperty("--aparece-i", Math.min(hermanos, 4));
       alEntrar.observe(pieza);
     });
   }

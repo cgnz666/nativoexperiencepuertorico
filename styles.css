@@ -3271,6 +3271,31 @@ de la grande.
 }
 
 
+/* Aparición al llegar a pantalla (la clase la pone script.js):
+   el texto y las ilustraciones suben escalonados. Es la misma
+   entrada que el resto de la carta de servicios. */
+
+.animar .cierre-texto > *,
+.animar .cierre-dibujo{
+  opacity:0;
+
+  transform:translateY(18px);
+
+  transition:
+    opacity .6s ease,
+    transform .6s cubic-bezier(.2,.7,.2,1);
+
+  transition-delay:calc(var(--aparece-i,0) * 80ms);
+}
+
+.animar .cierre-texto > .is-visible,
+.animar .cierre-dibujo.is-visible{
+  opacity:1;
+
+  transform:none;
+}
+
+
 /* Desde tableta los botones van en fila: apilados a lo ancho
    quedaban dos barras de más de 700 px */
 
