@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-label="A bar set up on a villa terrace at dusk, with a shaker, jigger, strainer, glasses, a bowl of limes and herbs, and an ice cooler beside it." style="color: var(--il-line, #09a7c3)">
+<g style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: miter; stroke-linecap: round; stroke-miterlimit: 10">
+<circle cx="380" cy="190" r="96" style="fill: var(--il-halo, rgba(9,167,195,0.12)); stroke: none"></circle>
+<path d="M0 190 H480"></path>
+<path d="M0 170 L44 162 L96 170 L136 184 L150 190"></path>
+<path d="M358 190 A22 22 0 0 1 402 190"></path>
+<path d="M300 204 H340 M392 204 H460 M200 214 H250 M360 216 H400"></path>
+<path d="M0 36 H480 M0 50 H480 M60 36 V50 M150 36 V50 M240 36 V50 M330 36 V50 M420 36 V50"></path>
+<path d="M52 232 V318 M84 232 V318 M116 232 V318 M148 232 V318 M180 232 V318 M212 232 V318 M244 232 V318 M276 232 V318 M308 232 V318 M340 232 V318 M372 232 V318 M404 232 V318 M436 232 V318 M468 232 V318"></path>
+<path d="M0 300 H480 M0 318 H480"></path>
+<rect x="-2" y="224" width="484" height="8" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="20" y="50" width="16" height="268" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M0 340 H480 M0 372 H480 M0 424 H480"></path>
+<path d="M28 318 L-240 480 M108 318 L-60 480 M187 318 L120 480 M267 318 L300 480 M346 318 L480 480 M425 318 L660 480"></path>
+<path d="M84 432 L396 432 L420 452 L70 452 Z" style="fill: var(--il-shade, #d6e9e9); stroke: none"></path>
+<path d="M104 282 L376 282 L392 300 L88 300 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<rect x="88" y="300" width="304" height="132" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="84" y="298" width="312" height="6" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="100" y="314" width="280" height="106"></rect>
+<path d="M156 314 V420 M212 314 V420 M268 314 V420 M324 314 V420"></path>
+<path d="M116 296 L120 240 L144 240 L148 296 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M121 240 L125 224 L139 224 L143 240" style="fill: var(--il-fill, #ffffff)"></path>
+<rect x="128" y="212" width="8" height="12" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M119 256 H145"></path>
+<path d="M158 244 L180 244 L173 268 L165 268 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M165 268 L173 268 L180 296 L158 296 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M230 276 L234 254"></path>
+<path d="M234 254 L246 248 L242 262 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M232 266 L220 258 L224 272 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<circle cx="204" cy="274" r="8" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="204" cy="274" r="4"></circle>
+<circle cx="220" cy="271" r="8" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="220" cy="271" r="4"></circle>
+<path d="M192 278 H240 L234 296 H198 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M250 266 L252 296 H274 L276 266 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<rect x="256" y="280" width="10" height="10" style="fill: var(--il-shade, #d6e9e9)"></rect>
+<rect x="262" y="274" width="9" height="9"></rect>
+<path d="M284 266 L286 296 H308 L310 266 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<rect x="291" y="280" width="10" height="10" style="fill: var(--il-shade, #d6e9e9)"></rect>
+<circle cx="308" cy="264" r="7" style="fill: var(--il-fill, #ffffff)"></circle>
+<path d="M303 264 H313"></path>
+<path d="M320 230 L322 296 H342 L344 230 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M338 230 L346 210"></path>
+<rect x="326" y="252" width="10" height="10" style="fill: var(--il-shade, #d6e9e9)"></rect>
+<rect x="328" y="268" width="10" height="10" style="fill: var(--il-shade, #d6e9e9)"></rect>
+<ellipse cx="360" cy="292" rx="12" ry="4" style="fill: var(--il-fill, #ffffff)"></ellipse>
+<path d="M372 291 L382 288"></path>
+<path d="M404 452 L460 452 L476 462 L396 462 Z" style="fill: var(--il-shade, #d6e9e9); stroke: none"></path>
+<path d="M460 388 L470 376 V440 L460 452 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M404 388 L414 376 L470 376 L460 388 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<rect x="404" y="388" width="56" height="64" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M404 400 H460 M424 382 H446"></path>
+<rect x="428" y="406" width="8" height="8"></rect>
+</g>
+</svg>

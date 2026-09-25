@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-label="A plush massage table under an open beach cabana with tied-back curtains, dressed with a soft sheet, a pillow and a folded throw, with a stack of towels beside it and the waves beyond." style="color: var(--il-line, #09a7c3)">
+<g style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: miter; stroke-linecap: round; stroke-miterlimit: 10">
+<path d="M0 150 H480"></path>
+<path d="M40 170 H120 M280 166 H380 M160 186 H230 M400 190 H460"></path>
+<path d="M0 222 Q60 212 120 222 T240 222 T360 222 T480 222"></path>
+<path d="M0 240 Q60 232 120 240 T240 240 T360 240 T480 240"></path>
+<path d="M0 270 H480"></path>
+<path d="M60 286 L66 280 L72 286 M200 280 L206 274 L212 280 M420 284 L426 278 L432 284"></path>
+<path d="M0 310 H480"></path>
+<path d="M60 310 L-131 480 M120 310 L-8 480 M180 310 L116 480 M240 310 V480 M300 310 L364 480 M360 310 L487 480 M420 310 L611 480"></path>
+<path d="M0 40 L60 60 L110 58 L150 80"></path>
+<circle cx="40" cy="40" r="16" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="74" cy="78" r="18" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="106" cy="38" r="15" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="146" cy="98" r="16" style="fill: var(--il-fill, #ffffff)"></circle>
+<path d="M40 40 L30 30 M74 78 L62 92 M106 38 L116 26 M146 98 L158 110"></path>
+<path d="M480 20 L420 50 L380 44"></path>
+<circle cx="444" cy="32" r="16" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="410" cy="68" r="18" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="374" cy="30" r="14" style="fill: var(--il-fill, #ffffff)"></circle>
+<path d="M444 32 L456 22 M410 68 L398 80 M374 30 L364 20"></path>
+<rect x="92" y="80" width="8" height="222" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="380" y="80" width="8" height="222" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M60 468 H430 L450 480 H40 Z" style="fill: var(--il-shade, #d6e9e9); stroke: none"></path>
+<rect x="84" y="370" width="14" height="96" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="382" y="370" width="14" height="96" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M98 440 H382"></path>
+<path d="M104 298 H376 Q392 298 400 308 L422 334 Q428 342 414 342 H66 Q52 342 58 334 L80 308 Q88 298 104 298 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M66 342 H414 Q430 342 430 356 V362 Q430 376 414 376 H66 Q50 376 50 362 V356 Q50 342 66 342 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M54 358 Q240 368 426 358"></path>
+<path d="M50 366 Q60 388 76 376 Q92 392 110 378 Q128 394 146 380 Q164 394 182 380 Q200 394 218 380 Q236 394 254 380 Q272 394 290 380 L290 372 H50 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M76 376 L80 368 M110 378 L112 370 M146 380 L148 372 M182 380 L184 372 M218 380 L220 372 M254 380 L256 372"></path>
+<path d="M290 298 H376 Q392 298 400 308 L422 334 Q428 342 414 342 H310 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M310 342 H414 Q430 342 430 356 V392 Q418 402 406 390 Q394 402 380 390 Q366 402 352 390 Q338 402 324 392 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M290 298 C296 314 304 330 310 342 M340 346 C342 364 342 378 340 392 M372 346 C374 364 374 378 372 390 M404 346 C406 364 406 378 404 390"></path>
+<path d="M300 306 H380 M308 318 H396 M316 330 H410"></path>
+<path d="M100 304 C130 296 180 294 214 300 C226 312 228 328 218 336 C178 344 116 344 84 336 C78 324 86 312 100 304 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M88 332 C124 338 178 338 214 332 C208 338 178 344 116 344 C100 342 88 338 88 332 Z" style="fill: var(--il-shade, #d6e9e9); stroke: none"></path>
+<path d="M110 316 C140 322 180 322 206 316"></path>
+<path d="M100 304 L94 300 M214 300 L220 296 M84 336 L78 340 M218 336 L224 340"></path>
+<rect x="18" y="60" width="12" height="340" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="450" y="60" width="12" height="340" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M10 60 H470 V72 H10 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M10 72 Q40 92 70 72 Q100 92 130 72 Q160 92 190 72 Q220 92 250 72 Q280 92 310 72 Q340 92 370 72 Q400 92 430 72 Q450 88 470 72" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M30 72 C70 80 76 170 50 250 C40 290 56 340 34 400 H30 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M44 110 C52 160 50 210 42 250 M40 280 C46 320 44 360 36 396"></path>
+<path d="M30 250 C40 246 50 248 56 254"></path>
+<path d="M450 72 C410 80 404 170 430 250 C440 290 424 340 446 400 H450 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M436 110 C428 160 430 210 438 250 M440 280 C434 320 436 360 444 396"></path>
+<path d="M450 250 C440 246 430 248 424 254"></path>
+<rect x="-4" y="420" width="64" height="18" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="-2" y="402" width="60" height="18" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="0" y="384" width="56" height="18" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M-4 432 H60 M-2 414 H58"></path>
+</g>
+</svg>

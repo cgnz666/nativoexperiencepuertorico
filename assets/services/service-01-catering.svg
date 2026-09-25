@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-label="A villa kitchen with Puerto Rican cooking underway: a caldero of rice with pigeon peas steaming on the stove, tostones frying in a pan, green plantains on a cutting board and a wooden pilón with garlic, with a window to the mountains." style="color: var(--il-line, #09a7c3)">
+<g style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: miter; stroke-linecap: round; stroke-miterlimit: 10">
+<path d="M0 40 H230 M0 80 H230 M0 120 H230 M0 160 H230 M0 200 H230 M0 240 H230 M40 0 V262 M80 0 V262 M120 0 V262 M160 0 V262 M200 0 V262"></path>
+<rect x="240" y="10" width="244" height="150" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M240 136 L276 108 L300 120 L344 80 L384 110 L420 92 L484 118"></path>
+<path d="M321 10 V160 M402 10 V160 M240 60 H484 M240 110 H484"></path>
+<rect x="232" y="160" width="252" height="10" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="-2" y="262" width="484" height="188" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="-2" y="448" width="484" height="34" style="fill: var(--il-shade, #d6e9e9)"></rect>
+<path d="M246 272 H472 L480 312 H238 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M318 214 C308 196 326 184 316 166 M354 206 C344 186 364 176 352 156 C344 142 356 132 350 120 M392 214 C382 196 400 184 390 166"></path>
+<path d="M286 238 H296 V254 H290 M434 238 H424 V254 H430"></path>
+<path d="M296 232 H424 L416 290 C400 300 320 300 304 290 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M298 246 H422"></path>
+<ellipse cx="360" cy="232" rx="64" ry="13" style="fill: var(--il-fill, #ffffff)"></ellipse>
+<path d="M300 232 C310 218 330 212 360 212 C390 212 410 218 420 232 C400 240 320 240 300 232 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<circle cx="326" cy="226" r="3.5" style="fill: var(--il-shade, #d6e9e9)"></circle>
+<circle cx="342" cy="219" r="3.5" style="fill: var(--il-shade, #d6e9e9)"></circle>
+<circle cx="362" cy="224" r="3.5" style="fill: var(--il-shade, #d6e9e9)"></circle>
+<circle cx="380" cy="218" r="3.5" style="fill: var(--il-shade, #d6e9e9)"></circle>
+<circle cx="396" cy="227" r="3.5" style="fill: var(--il-shade, #d6e9e9)"></circle>
+<circle cx="352" cy="230" r="3.5" style="fill: var(--il-shade, #d6e9e9)"></circle>
+<circle cx="372" cy="232" r="3.5" style="fill: var(--il-shade, #d6e9e9)"></circle>
+<path d="M334 230 L338 228 M352 222 L356 222 M388 224 L392 226 M318 232 L322 232 M404 232 L408 230 M366 216 L370 216"></path>
+<path d="M358 212 C354 204 360 200 366 204 C364 208 362 210 358 212 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M468 170 C478 176 480 230 468 250 C458 246 454 190 468 170 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M470 210 H478"></path>
+<path d="M404 346 L474 330 L476 340 L406 356 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<ellipse cx="324" cy="352" rx="92" ry="32" style="fill: var(--il-fill, #ffffff)"></ellipse>
+<ellipse cx="324" cy="350" rx="80" ry="25" style="fill: var(--il-shade, #d6e9e9)"></ellipse>
+<path d="M264 346 C272 334 292 332 302 342 C298 354 272 356 264 346 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M270 346 C276 340 290 338 296 344"></path>
+<path d="M308 336 C316 324 338 322 346 332 C342 344 316 346 308 336 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M314 336 C320 330 334 328 340 334"></path>
+<path d="M350 348 C358 336 378 334 388 344 C384 356 358 358 350 348 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M356 348 C362 342 376 340 382 346"></path>
+<path d="M298 362 C306 352 326 350 334 360 C330 370 306 372 298 362 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M304 362 C310 356 322 354 328 360"></path>
+<circle cx="258" cy="360" r="2"></circle>
+<circle cx="346" cy="366" r="2"></circle>
+<circle cx="386" cy="360" r="1.5"></circle>
+<circle cx="296" cy="332" r="1.5"></circle>
+<path d="M280 316 L284 310 M330 312 L332 306 M372 318 L376 312"></path>
+<path d="M64 262 H132 L124 316 C112 324 84 324 72 316 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<ellipse cx="98" cy="262" rx="34" ry="8" style="fill: var(--il-fill, #ffffff)"></ellipse>
+<ellipse cx="98" cy="262" rx="26" ry="5" style="fill: var(--il-shade, #d6e9e9)"></ellipse>
+<rect x="80" y="318" width="36" height="10" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M76 280 H128 M74 296 H126"></path>
+<path d="M104 262 L144 206 C148 200 156 204 152 210 L112 264"></path>
+<path d="M150 312 C146 300 156 294 162 302 C162 310 158 314 150 312 Z M166 318 C162 306 172 300 178 308 C178 316 174 320 166 318 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M20 340 H220 L232 408 H8 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M8 408 V416 H232 V408"></path>
+<path d="M36 382 C70 352 140 346 196 360 C150 358 90 368 42 392 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M196 360 L208 356 M36 382 L28 388"></path>
+<path d="M48 370 C84 344 150 340 200 352 C150 350 94 358 52 378 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M200 352 L212 348 M48 370 L40 374"></path>
+<ellipse cx="160" cy="392" rx="12" ry="6" style="fill: var(--il-fill, #ffffff)"></ellipse>
+<ellipse cx="184" cy="396" rx="12" ry="6" style="fill: var(--il-fill, #ffffff)"></ellipse>
+<ellipse cx="136" cy="396" rx="12" ry="6" style="fill: var(--il-fill, #ffffff)"></ellipse>
+<ellipse cx="160" cy="392" rx="5" ry="2.5"></ellipse>
+<ellipse cx="184" cy="396" rx="5" ry="2.5"></ellipse>
+<ellipse cx="136" cy="396" rx="5" ry="2.5"></ellipse>
+<ellipse cx="96" cy="430" rx="44" ry="12" style="fill: var(--il-fill, #ffffff)"></ellipse>
+<ellipse cx="96" cy="428" rx="30" ry="7" style="fill: var(--il-shade, #d6e9e9)"></ellipse>
+<path d="M80 426 C84 420 92 420 94 426 M100 428 C104 422 112 422 114 428"></path>
+</g>
+</svg>

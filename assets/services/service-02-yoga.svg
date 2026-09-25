@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-label="A wide view of an open-air wooden yoga pavilion with four mats laid out in a forest clearing, a river winding past, rainforest canopy and mountain peaks behind." style="color: var(--il-line, #09a7c3)">
+<g style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: miter; stroke-linecap: round; stroke-miterlimit: 10">
+<path d="M0 150 C40 120 70 90 110 100 C140 108 150 66 190 58 C230 50 250 90 290 96 C330 102 350 76 390 88 C430 100 450 118 480 116 V220 H0 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M150 110 C170 104 184 96 196 84 M330 104 C346 98 360 94 376 96"></path>
+<path d="M0 238 Q20 206 50 222 Q70 196 100 218 Q130 194 160 220 Q190 200 220 224 Q250 202 280 222 Q310 196 340 218 Q370 200 400 224 Q430 202 460 220 Q474 210 480 216 V262 H0 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M40 240 V262 M120 236 V262 M210 240 V262 M300 236 V262 M390 240 V262 M450 236 V262"></path>
+<path d="M0 262 H480"></path>
+<path d="M340 262 C300 300 400 320 380 370 C360 420 250 430 200 480 H300 C330 450 410 424 424 372 C438 320 350 300 380 262 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M362 290 C372 296 380 300 390 302 M372 340 C382 344 392 346 402 346 M330 420 C344 414 356 410 370 404 M290 456 C304 448 316 444 330 440"></path>
+<path d="M430 380 C434 310 426 250 436 196 M444 380 C448 310 442 250 452 192 M458 382 C460 320 458 270 468 214"></path>
+<path d="M436 220 C420 210 410 214 406 224 C418 228 428 226 436 220 Z M452 210 C468 198 480 202 482 212 C470 218 460 216 452 210 Z M458 250 C444 242 434 248 434 256 C446 260 454 256 458 250 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M20 392 H320 L300 404 H40 Z" style="fill: var(--il-shade, #d6e9e9); stroke: none"></path>
+<rect x="70" y="196" width="8" height="106" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="254" y="196" width="8" height="106" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M72 298 H260 L304 370 H28 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M58 322 H274 M44 346 H290"></path>
+<path d="M28 370 H304 V382 H28 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M40 382 V396 M166 382 V396 M292 382 V396"></path>
+<path d="M130 382 H200 L208 396 H122 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M92 304 H148 L144 330 H80 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M97 308 H143 L140 326 H86 Z"></path>
+<path d="M184 304 H240 L252 330 H188 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M189 308 H235 L245 326 H192 Z"></path>
+<path d="M70 336 H140 L134 364 H54 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M75 340 H135 L130 360 H60 Z"></path>
+<path d="M192 336 H262 L278 364 H198 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M197 340 H257 L271 360 H202 Z"></path>
+<rect x="28" y="190" width="10" height="182" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="294" y="190" width="10" height="182" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M14 196 H318 L256 150 H76 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M76 150 L166 124 L256 150" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M14 196 V204 H318 V196"></path>
+<path d="M60 176 H272 M40 186 H292"></path>
+<path d="M0 290 C8 280 16 280 22 290 M20 290 C28 276 36 278 40 290 M276 292 C282 282 290 282 294 292 M430 288 C436 278 444 278 448 288 M448 288 C454 280 460 280 464 288"></path>
+<path d="M-20 480 C0 420 50 390 110 396 C80 420 40 450 20 480 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M-10 470 C20 432 60 408 110 396"></path>
+<path d="M500 480 C480 420 430 400 380 410 C410 426 440 452 460 480 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M490 470 C460 440 420 418 380 410"></path>
+<path d="M130 480 C128 464 132 452 140 444 M150 480 C152 466 148 456 140 448 M170 480 C168 466 174 456 182 450 M100 480 C98 470 102 462 108 456"></path>
+</g>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-label="Rolled towels stacked beside a bottle of massage oil and a sea grape leaf on a low wooden table, with the sea behind the terrace railing." style="color: var(--il-line, #09a7c3)">
+<g style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: miter; stroke-linecap: round; stroke-miterlimit: 10">
+<path d="M0 150 H480 M40 168 H130 M300 164 H400 M170 184 H240"></path>
+<path d="M30 218 V330 M90 218 V330 M150 218 V330 M210 218 V330 M270 218 V330 M330 218 V330 M390 218 V330 M450 218 V330"></path>
+<rect x="-2" y="210" width="484" height="8" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M40 330 H440 L470 370 H10 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<rect x="10" y="370" width="460" height="20" style="fill: var(--il-shade, #d6e9e9)"></rect>
+<path d="M30 390 V480 M450 390 V480 M0 440 H30 M450 440 H480"></path>
+<circle cx="130" cy="296" r="34" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="130" cy="296" r="20"></circle>
+<circle cx="130" cy="296" r="8" style="fill: var(--il-shade, #d6e9e9)"></circle>
+<circle cx="198" cy="296" r="34" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="198" cy="296" r="20"></circle>
+<circle cx="198" cy="296" r="8" style="fill: var(--il-shade, #d6e9e9)"></circle>
+<circle cx="266" cy="296" r="34" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="266" cy="296" r="20"></circle>
+<circle cx="266" cy="296" r="8" style="fill: var(--il-shade, #d6e9e9)"></circle>
+<circle cx="164" cy="238" r="34" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="164" cy="238" r="20"></circle>
+<circle cx="164" cy="238" r="8" style="fill: var(--il-shade, #d6e9e9)"></circle>
+<circle cx="232" cy="238" r="34" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="232" cy="238" r="20"></circle>
+<circle cx="232" cy="238" r="8" style="fill: var(--il-shade, #d6e9e9)"></circle>
+<path d="M330 330 V230 L340 214 H364 L374 230 V330 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<rect x="338" y="262" width="28" height="40" style="fill: var(--il-shade, #d6e9e9)"></rect>
+<rect x="346" y="196" width="12" height="18" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M352 196 V186 H376"></path>
+<circle cx="414" cy="336" r="24" style="fill: var(--il-fill, #ffffff)"></circle>
+<path d="M414 360 L414 312 M414 340 L400 326 M414 340 L428 326 M414 324 L404 316 M414 324 L424 316"></path>
+</g>
+</svg>

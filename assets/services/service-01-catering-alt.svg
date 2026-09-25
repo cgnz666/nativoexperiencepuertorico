@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-label="A sizzling skillet of glazed chicken with cherry tomatoes, herbs and lemon, steam rising, next to a steaming bowl of rice on a wooden table." style="color: var(--il-line, #09a7c3)">
+<g style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: miter; stroke-linecap: round; stroke-miterlimit: 10">
+<path d="M0 40 H480 M0 80 H480 M0 120 H480"></path>
+<rect x="-2" y="140" width="484" height="342" style="fill: var(--il-fill, #ffffff)"></rect>
+<path d="M0 200 H480 M0 270 H480 M0 350 H480 M0 440 H480"></path>
+<path d="M150 214 C138 196 158 184 148 166 C140 150 156 140 150 124"></path>
+<path d="M210 204 C198 184 220 172 208 152 C198 136 216 124 208 106"></path>
+<path d="M270 214 C258 196 278 184 268 166 C260 150 276 140 270 124"></path>
+<path d="M36 356 L-12 388 L-4 402 L46 372 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<ellipse cx="206" cy="320" rx="176" ry="96" style="fill: var(--il-shade, #d6e9e9)"></ellipse>
+<ellipse cx="206" cy="316" rx="156" ry="80" style="fill: var(--il-fill, #ffffff)"></ellipse>
+<ellipse cx="206" cy="320" rx="146" ry="72" style="fill: var(--il-shade, #d6e9e9)"></ellipse>
+<path d="M92 300 C120 290 150 296 170 292 M260 360 C280 356 300 362 320 356"></path>
+<path d="M112 300 C108 272 132 256 164 258 C196 260 206 280 200 300 C194 318 170 324 146 322 C124 320 114 312 112 300 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M118 306 C130 320 176 324 196 304 C194 318 170 324 146 322 C128 320 118 314 118 306 Z" style="fill: var(--il-shade, #d6e9e9); stroke: none"></path>
+<path d="M132 276 L152 296 M152 270 L174 292 M174 268 L192 286"></path>
+<path d="M130 266 C140 260 152 258 162 260"></path>
+<path d="M214 280 C212 254 236 240 266 242 C296 244 304 264 298 282 C292 298 270 304 248 302 C226 300 216 294 214 280 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M220 288 C236 302 276 304 294 286 C290 298 270 304 248 302 C230 300 220 296 220 288 Z" style="fill: var(--il-shade, #d6e9e9); stroke: none"></path>
+<path d="M234 260 L254 280 M254 254 L276 276 M276 252 L292 268"></path>
+<path d="M232 250 C244 244 256 242 266 244"></path>
+<path d="M170 350 C168 326 192 314 222 316 C252 318 260 336 254 352 C248 366 226 372 204 370 C184 368 172 362 170 350 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M176 356 C192 370 232 372 250 354 C246 366 226 372 204 370 C188 368 176 364 176 356 Z" style="fill: var(--il-shade, #d6e9e9); stroke: none"></path>
+<path d="M190 330 L210 350 M210 324 L232 346 M232 322 L248 338"></path>
+<path d="M188 322 C198 318 210 316 220 318"></path>
+<circle cx="112" cy="342" r="14" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="112" cy="342" r="8"></circle>
+<circle cx="110" cy="340" r="1.5"></circle>
+<circle cx="115" cy="344" r="1.5"></circle>
+<circle cx="296" cy="330" r="14" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="296" cy="330" r="8"></circle>
+<circle cx="294" cy="328" r="1.5"></circle>
+<circle cx="299" cy="332" r="1.5"></circle>
+<circle cx="206" cy="266" r="12" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="206" cy="266" r="6"></circle>
+<path d="M300 296 C314 276 340 276 346 300 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M306 296 C316 284 334 284 340 296 M323 283 V296 M312 288 L318 296 M334 288 L328 296"></path>
+<path d="M84 318 C88 306 100 304 104 312 C98 318 90 320 84 318 Z M150 346 C156 334 168 336 170 344 C162 350 156 350 150 346 Z M270 318 C276 306 288 308 290 316 C282 322 276 322 270 318 Z M236 372 C240 360 252 360 256 368 C248 374 242 374 236 372 Z M318 350 C324 338 336 340 338 348 C330 354 324 354 318 350 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M96 260 L100 256 M320 262 L324 258 M180 380 L184 376 M270 222 L274 218"></path>
+<path d="M366 236 H476 C472 290 452 300 421 302 C390 300 370 290 366 236 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M370 256 H472"></path>
+<path d="M368 236 C372 204 396 192 421 192 C446 192 470 204 474 236 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M392 214 L398 212 M410 206 L416 206 M432 210 L438 212 M400 226 L406 226 M424 222 L430 224 M448 222 L454 226 M416 230 L422 230"></path>
+<path d="M416 194 C412 184 420 178 424 186 C422 190 420 194 416 194 Z M426 194 C432 182 440 186 436 194 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M400 180 C392 164 408 154 400 138 C394 126 404 116 400 104"></path>
+<path d="M440 178 C432 162 448 152 440 136 C434 124 444 114 440 102"></path>
+<ellipse cx="421" cy="304" rx="40" ry="6" style="fill: var(--il-shade, #d6e9e9); stroke: none"></ellipse>
+</g>
+</svg>

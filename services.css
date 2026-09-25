@@ -2,61 +2,64 @@
 NATIVO · PRIVATE SERVICES
 Hoja de estilos de services.html
 
-Se apoya en styles.css: usa las mismas variables
-de marca, la misma tipografía y el mismo header
-y footer. Aquí solo va lo propio de esta página.
+La página se lee como una carta: fondo de arena,
+retícula de líneas teal, ilustraciones lineales y
+esquinas rectas. Se apoya en styles.css (variables,
+tipografía, cabecera y pie); aquí solo va lo propio
+de esta página. El --radius global no se toca.
+
+Móvil primero. El escritorio empieza en 1024px.
 ========================================== */
 
 .services-page{
 
-  --svc-sand:#efe6d9;
-  --svc-clay:#8a5636;
-  --svc-hairline:rgba(3,40,51,.14);
+  /* Línea gruesa de la retícula y línea fina interna */
+  --svc-line:var(--primary-dark);
+  --svc-hair:rgba(20,52,59,.16);
+
+  /* Margen lateral: 20px en el celular, 80px a 1440px */
+  --svc-gutter:clamp(20px,5.5vw,80px);
 
   background:var(--sand);
 
 }
 
+.svc-wrap{
+  width:min(1280px,calc(100% - 2 * var(--svc-gutter)));
+  margin-inline:auto;
+}
+
 
 /* ==========================================
-PIEZAS COMPARTIDAS DE LA PÁGINA
+PIEZAS COMPARTIDAS
 ========================================== */
 
-.svc-eyebrow{
+.svc-section-title{
 
-  display:inline-block;
+  margin:0 0 18px;
 
-  color:#056a7e;
+  color:var(--svc-line);
 
-  font-size:.78rem;
+  font-size:13px;
   font-weight:800;
-  letter-spacing:.24em;
+  letter-spacing:.3em;
+  line-height:1.4;
   text-transform:uppercase;
 
 }
 
-.svc-eyebrow-light{
-  color:#7fe0e8;
-}
+.svc-section-title::after{
 
-.svc-head{
+  content:"";
 
-  max-width:760px;
+  display:block;
 
-  margin:0 0 60px;
+  width:40px;
+  height:1.5px;
 
-}
+  margin-top:12px;
 
-.svc-head h2{
-
-  margin-top:16px;
-
-  color:var(--ocean);
-
-  font-size:clamp(2.1rem,4vw,3.4rem);
-  font-weight:300;
-  line-height:1.06;
-  letter-spacing:-.02em;
+  background:var(--svc-line);
 
 }
 
@@ -66,865 +69,817 @@ PIEZAS COMPARTIDAS DE LA PÁGINA
   align-items:center;
   justify-content:center;
 
-  min-width:186px;
-  height:54px;
+  height:52px;
 
-  padding:0 32px;
+  padding:0 28px;
 
-  border-radius:999px;
+  border:1.5px solid #ffffff;
 
-  font-size:1rem;
-  font-weight:800;
-  letter-spacing:.01em;
+  font-size:16px;
+  font-weight:700;
 
-  transition:
-    transform .25s ease,
-    background .25s ease,
-    color .25s ease,
-    box-shadow .25s ease;
+  transition:background .2s ease,color .2s ease;
 
 }
 
-.svc-button-primary{
+.svc-button-light,
+.svc-button-light:link,
+.svc-button-light:visited{
 
-  background:var(--boton);
-  color:#ffffff;
-
-  box-shadow:0 16px 34px rgba(6,123,146,.30);
-
-}
-
-.svc-button-primary:link,
-.svc-button-primary:visited{
-  color:#ffffff;
-}
-
-.svc-button-primary:hover{
-
-  background:var(--boton-hover);
-
-  transform:translateY(-2px);
+  background:#ffffff;
+  color:var(--ocean);
 
 }
 
-.svc-button-ghost{
-
-  border:2px solid rgba(255,255,255,.55);
-
-  color:#ffffff;
-
+.svc-button-light:hover{
+  background:var(--sand);
 }
 
+.svc-button-ghost,
 .svc-button-ghost:link,
 .svc-button-ghost:visited{
+
+  background:transparent;
   color:#ffffff;
+
 }
 
 .svc-button-ghost:hover{
 
-  background:rgba(255,255,255,.12);
+  background:#ffffff;
+  color:var(--ocean);
 
-  transform:translateY(-2px);
+}
+
+.svc-hero :focus-visible{
+  outline-color:#ffffff;
+}
+
+/* Viñeta cuadrada de las etiquetas y de las listas */
+
+.svc-tags li::before,
+.svc-list li::before{
+
+  content:"";
+
+  flex-shrink:0;
+
+  width:6px;
+  height:6px;
+
+  background:var(--primary);
 
 }
 
 
 /* ==========================================
-HERO
+HERO FIJO
+
+Queda pegado bajo la cabecera y la hoja de arena le
+pasa por encima. Ningún ancestro puede llevar
+overflow:hidden, o el sticky deja de funcionar.
+
+El alto nunca pasa de la pantalla visible: si fuera
+más alto, los botones quedarían debajo del borde y
+la hoja los taparía antes de verlos (celular en
+horizontal).
 ========================================== */
 
 .svc-hero{
 
-  position:relative;
-  isolation:isolate;
-  overflow:hidden;
+  position:sticky;
+  top:var(--alto-cabecera);
+  z-index:0;
 
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
 
-  min-height:min(88vh,860px);
+  min-height:min(560px,calc(100vh - var(--alto-cabecera)));
+  min-height:min(560px,calc(100svh - var(--alto-cabecera)));
 
-  margin-top:73px;
-  padding:150px 0 0;
+  margin-top:var(--alto-cabecera);
+  padding:56px 0 48px;
 
   color:#ffffff;
 
   background-color:var(--ocean);
 
-  background-image:url("assets/island-story-bg.jpg");
+  background-image:
+    linear-gradient(rgba(5,28,34,.55),rgba(5,28,34,.55)),
+    url("assets/island-story-bg.jpg");
 
   background-image:
+    linear-gradient(rgba(5,28,34,.55),rgba(5,28,34,.55)),
     image-set(
       url("assets/island-story-bg.webp") type("image/webp"),
       url("assets/island-story-bg.jpg") type("image/jpeg")
     );
 
-  background-repeat:no-repeat;
-  background-position:center 20%;
+  background-position:center;
   background-size:cover;
-
-}
-
-.svc-hero-overlay{
-
-  position:absolute;
-  inset:0;
-  z-index:-1;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(2,20,26,.72) 0%,
-      rgba(2,20,26,.58) 42%,
-      rgba(2,20,26,.88) 100%
-    );
 
 }
 
 .svc-hero-inner{
 
-  position:relative;
-
-  padding-bottom:70px;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
 
 }
 
 .svc-hero h1{
 
-  max-width:15ch;
+  max-width:760px;
 
-  margin:22px 0 0;
+  font-size:42px;
 
-  font-size:clamp(2.7rem,6.2vw,5.4rem);
-  font-weight:300;
-  line-height:1.02;
-  letter-spacing:-.025em;
-
-  text-shadow:0 4px 30px rgba(0,0,0,.35);
-
-}
-
-.svc-hero-accent{
-
-  display:block;
-
-  color:#e8d7c0;
-
-}
-
-.svc-hero-lead{
-
-  max-width:52ch;
-
-  margin:28px 0 0;
-
-  color:rgba(255,255,255,.88);
-
-  font-size:1.13rem;
-  line-height:1.75;
-
-  text-shadow:0 2px 16px rgba(0,0,0,.35);
+  /* Que no quede "you." solo en la segunda línea */
+  text-wrap:balance;
+  font-weight:700;
+  line-height:1.08;
+  letter-spacing:-.01em;
 
 }
 
 .svc-hero-actions{
 
   display:flex;
-  flex-wrap:wrap;
-  gap:14px;
+  flex-direction:column;
+  gap:12px;
 
-  margin-top:38px;
+}
+
+.svc-sheet{
+
+  position:relative;
+  z-index:1;
+
+  background:var(--sand);
 
 }
 
 
-/* Índice de servicios al pie del hero */
+/* ==========================================
+CARTA RESUMIDA · CELULAR
 
-.svc-hero-index{
+Cinco filas de 64px que caben en una pantalla. La
+escena, el subtítulo y el botón son del escritorio.
+========================================== */
 
-  position:relative;
+.svc-carta{
+  padding-top:36px;
+}
 
-  width:min(1180px,92%);
+.svc-carta-list{
 
-  margin:0 auto;
-  padding:0;
+  margin:0 calc(-1 * var(--svc-gutter));
 
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
+  border-top:1.5px solid var(--svc-line);
+  border-bottom:1.5px solid var(--svc-line);
 
   list-style:none;
 
-  border-top:1px solid rgba(255,255,255,.22);
-
 }
 
-.svc-hero-index li + li{
-  border-left:1px solid rgba(255,255,255,.22);
+.svc-carta-list li + li{
+  border-top:1px solid var(--svc-hair);
 }
 
-.svc-hero-index a{
+.svc-carta-scene,
+.svc-carta-sub,
+.svc-carta-action{
+  display:none;
+}
+
+.svc-carta-link{
 
   display:flex;
-  flex-direction:column;
-  gap:8px;
+  align-items:center;
+  gap:16px;
 
-  height:100%;
+  height:64px;
 
-  padding:26px 22px 30px;
+  padding:0 var(--svc-gutter);
 
-  transition:background .25s ease;
-
-}
-
-.svc-hero-index li:first-child a{
-  padding-left:0;
-}
-
-.svc-hero-index a:hover{
-  background:rgba(255,255,255,.07);
-}
-
-.svc-index-number{
-
-  color:#7fe0e8;
-
-  font-size:.76rem;
-  font-weight:800;
-  letter-spacing:.24em;
+  color:var(--text);
 
 }
 
-.svc-index-label{
+.svc-carta-link:visited{
+  color:var(--text);
+}
 
-  color:rgba(255,255,255,.94);
+/* Flecha de la fila */
 
-  font-size:1.02rem;
+.svc-carta-link::after{
+
+  content:"";
+
+  flex-shrink:0;
+
+  width:8px;
+  height:8px;
+
+  margin-right:4px;
+
+  border-top:1.5px solid var(--svc-line);
+  border-right:1.5px solid var(--svc-line);
+
+  transform:rotate(45deg);
+
+}
+
+.svc-carta-icon{
+
+  display:block;
+  flex-shrink:0;
+
+}
+
+.svc-carta-number{
+
+  width:22px;
+
+  color:var(--svc-line);
+
+  font-size:13px;
+  font-weight:700;
+
+}
+
+.svc-carta-name{
+
+  flex-grow:1;
+
+  font-size:16px;
   font-weight:600;
 
 }
 
 
 /* ==========================================
-INTRO
+INTRODUCCIÓN
 ========================================== */
 
 .svc-intro{
-
-  padding:104px 0 72px;
-
-  background:var(--sand);
-
+  padding:44px 0 48px;
 }
 
 .svc-intro-grid{
 
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:60px;
-
-  align-items:start;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
 
 }
 
-.svc-quote{
+.svc-intro h2{
 
-  margin:0;
+  color:var(--text);
 
-  color:var(--ocean);
-
-  font-size:clamp(1.7rem,3vw,2.6rem);
-  font-weight:300;
-  line-height:1.25;
-  letter-spacing:-.015em;
+  font-size:26px;
+  font-weight:700;
+  line-height:1.2;
 
 }
 
-.svc-intro-copy{
+.svc-intro p{
 
-  padding-top:10px;
+  color:var(--muted);
 
-  border-top:1px solid var(--svc-hairline);
-
-}
-
-.svc-intro-copy p{
-
-  margin-top:20px;
-
-  color:#52636a;
-
-  font-size:1.05rem;
-  line-height:1.8;
+  font-size:16px;
+  line-height:1.6;
 
 }
 
 
 /* ==========================================
-FILAS DE SERVICIO
+SERVICIOS · CELULAR
+
+Una tarjeta por servicio que cabe en una pantalla
+antes de abrir "See what's included". La columna de
+texto se deshace para que la ilustración pueda ir
+entre el título y las etiquetas.
 ========================================== */
 
-.svc-row{
-
-  padding:96px 0;
-
-  background:var(--sand);
-
+.svc-menu{
+  margin:0 calc(-1 * var(--svc-gutter));
 }
 
-.svc-row-alt{
-  background:#ffffff;
-}
-
-.svc-row-grid{
-
-  display:grid;
-  grid-template-columns:.92fr 1.08fr;
-  gap:70px;
-
-  align-items:center;
-
-}
-
-.svc-row-alt .svc-row-grid{
-  grid-template-columns:1.08fr .92fr;
-}
-
-.svc-row-alt .svc-figure{
-  order:2;
-}
-
-.svc-figure{
-
-  margin:0;
-
-}
-
-.svc-figure img{
-
-  width:100%;
-  height:auto;
-
-  border-radius:8px;
-
-  box-shadow:0 30px 60px rgba(3,40,51,.16);
-
-}
-
-.svc-figure figcaption{
+.svc-item{
 
   display:flex;
-  align-items:center;
-  gap:12px;
+  flex-direction:column;
+  gap:18px;
 
-  margin-top:18px;
+  padding:28px var(--svc-gutter) 32px;
 
-  color:#55666c;
-
-  font-size:.74rem;
-  font-weight:700;
-  letter-spacing:.2em;
-  text-transform:uppercase;
+  border-top:1.5px solid var(--svc-line);
 
 }
 
-.svc-figure figcaption::before{
+/* La 05 lleva los paquetes de más: con menos aire entre
+   piezas sigue cabiendo en una pantalla */
 
-  content:"";
+.svc-item-bar{
 
-  width:28px;
-  height:1px;
+  gap:12px;
 
-  background:var(--svc-clay);
+  padding-bottom:24px;
+
+}
+
+.svc-item-copy{
+  display:contents;
+}
+
+.svc-item-head{ order:1; }
+.svc-item-media{ order:2; }
+.svc-tags{ order:3; }
+.svc-paquetes{ order:4; }
+.svc-cta{ order:5; }
+.svc-included{ order:6; }
+
+.svc-item-head{
+
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
 
 }
 
 .svc-number{
 
-  display:block;
+  color:var(--svc-line);
 
-  color:var(--svc-clay);
-
-  font-size:.8rem;
-  font-weight:800;
-  letter-spacing:.26em;
-
-}
-
-.svc-row-copy h2{
-
-  margin:16px 0 0;
-
-  color:var(--ocean);
-
-  font-size:clamp(2rem,3.4vw,3.1rem);
+  font-size:44px;
   font-weight:300;
-  line-height:1.08;
-  letter-spacing:-.02em;
+  line-height:1;
 
 }
 
-.svc-row-lead{
-
-  max-width:52ch;
-
-  margin:22px 0 0;
-
-  color:#52636a;
-
-  font-size:1.08rem;
-  line-height:1.8;
-
+.svc-item-head > div{
+  padding-top:4px;
 }
 
-/* ==========================================
-BARRA MÓVIL · LOS TRES PAQUETES
-
-Quien compra esto decide rápido y desde el celular. Los tres
-paquetes tienen que verse enteros de un vistazo, así que van
-en filas compactas y no en tarjetas: nombre y hasta cuántos
-invitados a la izquierda, precio a la derecha, y la fila
-entera es el enlace.
-========================================== */
-
-.bar-gancho{
-  margin:20px 0 0;
-
-  color:var(--boton-hover, #045a6b);
-
-  font-size:1.14rem;
-  font-weight:700;
-  line-height:1.5;
-}
-
-
-.bar-paquetes{
-  display:grid;
-
-  gap:10px;
-
-  max-width:52ch;
-
-  margin:24px 0 0;
-  padding:0;
-
-  list-style:none;
-}
-
-
-.bar-paquete{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  gap:16px;
-
-  min-height:68px;
-
-  padding:14px 20px;
-
-  background:#ffffff;
-  border:1px solid rgba(6,123,146,.22);
-  border-radius:16px;
-
-  color:var(--text, #14343b);
-
-  text-decoration:none;
-
-  transition:
-    border-color .25s ease,
-    box-shadow .25s ease,
-    transform .25s ease;
-}
-
-
-.bar-paquete:link,
-.bar-paquete:visited{
-  color:var(--text, #14343b);
-}
-
-
-.bar-paquete:hover{
-  border-color:var(--boton, #067b92);
-
-  transform:translateX(4px);
-
-  box-shadow:0 10px 26px rgba(6,42,54,.10);
-}
-
-
-.bar-paquete-nombre{
-  display:flex;
-  flex-direction:column;
-  gap:3px;
-
-  min-width:0;
-
-  font-size:1.02rem;
-  font-weight:700;
-  line-height:1.3;
-}
-
-
-.bar-paquete-hasta{
-  color:#5d6e75;
-
-  font-size:.88rem;
-  font-weight:500;
-}
-
-
-.bar-paquete-precio{
-  flex:0 0 auto;
-
-  color:var(--boton-hover, #045a6b);
-
-  font-size:1.22rem;
-  font-weight:800;
-  white-space:nowrap;
-}
-
-
-/* El precio y las condiciones de la barra móvil.
-
-   Es el único servicio con precio publicado, porque es el único
-   con tarifa cerrada. Va destacado pero sin gritar, entre el
-   párrafo de entrada y la lista de lo que incluye. */
-
-.svc-price{
-  display:inline-block;
-
-  margin:22px 0 0;
-  padding:10px 18px;
-
-  background:rgba(6,123,146,.08);
-  border:1px solid rgba(6,123,146,.22);
-  border-radius:999px;
-
-  color:var(--boton-hover, #045a6b);
-
-  font-size:1rem;
-  line-height:1.5;
-}
-
-.svc-price strong{
-  font-weight:800;
-}
-
-
-/* Lo que no incluye y las condiciones. Van en gris, más pequeñas
-   que el párrafo de entrada, para que se lean como letra chica
-   honesta y no compitan con la lista de lo que sí incluye. */
-
-.svc-note{
-  max-width:52ch;
-
-  margin:18px 0 0;
-
-  color:#5d6e75;
-
-  font-size:.96rem;
-  line-height:1.72;
-}
-
-.svc-note strong{
-  color:#37474d;
-  font-weight:700;
-}
-
-
-.svc-list{
-
-  margin:32px 0 0;
-  padding:0;
-
-  list-style:none;
-
-  border-top:1px solid var(--svc-hairline);
-
-}
-
-.svc-list li{
-
-  position:relative;
-
-  padding:13px 0 13px 26px;
-
-  border-bottom:1px solid var(--svc-hairline);
+.svc-item-head h3{
 
   color:var(--text);
 
-  font-size:.98rem;
-  line-height:1.55;
+  font-size:17px;
+  font-weight:800;
+  letter-spacing:.16em;
+  line-height:1.3;
+  text-transform:uppercase;
 
 }
 
-.svc-list li::before{
+.svc-item-sub{
 
-  content:"";
+  margin-top:6px;
 
-  position:absolute;
-  top:21px;
-  left:2px;
+  color:var(--muted);
 
-  width:7px;
-  height:7px;
-
-  border-radius:50%;
-
-  background:var(--primary);
+  font-size:15px;
+  line-height:1.4;
 
 }
+
+.svc-lead-open{
+  display:none;
+}
+
+/* Ilustraciones: en el celular, una sola por servicio */
+
+.svc-item-media > :not(.svc-fig-mobile){
+  display:none;
+}
+
+.svc-fig{
+
+  display:block;
+
+  width:100%;
+  max-width:480px;
+  height:auto;
+  aspect-ratio:1;
+
+  border:1px solid var(--svc-hair);
+
+  background:var(--sand);
+
+}
+
+/* Etiquetas */
 
 .svc-tags{
 
   display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-
-  margin:26px 0 0;
-  padding:0;
+  flex-direction:column;
+  gap:8px;
 
   list-style:none;
+
+  font-size:15px;
+  line-height:1.4;
 
 }
 
 .svc-tags li{
 
-  padding:8px 16px;
-
-  border-radius:999px;
-
-  background:var(--svc-sand);
-
-  color:#5c5346;
-
-  font-size:.74rem;
-  font-weight:700;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-
-}
-
-.svc-cta{
-
-  display:inline-flex;
+  display:flex;
   align-items:center;
   gap:10px;
 
-  margin-top:32px;
-  padding-bottom:6px;
-
-  border-bottom:1px solid var(--primary);
-
-  color:var(--primary-dark);
-
-  font-size:1rem;
-  font-weight:700;
-
-  transition:gap .25s ease,color .25s ease;
-
 }
 
+/* Botón */
+
+.svc-cta,
 .svc-cta:link,
 .svc-cta:visited{
-  color:var(--primary-dark);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  height:52px;
+
+  background:var(--boton);
+  color:#ffffff;
+
+  font-size:16px;
+  font-weight:700;
+
+  transition:background .2s ease;
+
 }
 
 .svc-cta:hover{
-
-  gap:16px;
-
-  color:var(--primary);
-
+  background:var(--boton-hover);
 }
 
 
 /* ==========================================
-PROCESO
+PLEGABLES
+
+"See what's included" y Good to know. En escritorio
+services.js los abre y los deja fijos.
 ========================================== */
 
-.svc-process{
+.svc-fold summary{
 
-  padding:104px 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
 
-  background:var(--svc-sand);
-
-}
-
-.svc-steps{
-
-  margin:0;
-  padding:0;
-
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:0;
+  cursor:pointer;
 
   list-style:none;
 
 }
 
-.svc-steps li{
+.svc-fold summary::-webkit-details-marker{
+  display:none;
+}
 
-  padding:30px 28px 10px 0;
+.svc-fold summary::after{
 
-  border-top:1px solid rgba(3,40,51,.18);
+  content:"+";
+
+  color:var(--svc-line);
+
+  font-size:22px;
+  font-weight:300;
+  line-height:1;
 
 }
 
-.svc-steps li + li{
+.svc-fold[open] summary::after{
+  content:"\2212";
+}
 
-  padding-left:28px;
+.svc-included{
+  border-top:1px solid var(--svc-hair);
+}
 
-  border-left:1px solid rgba(3,40,51,.12);
+.svc-included summary{
+
+  min-height:48px;
+
+  color:var(--svc-line);
+
+  font-size:15px;
+  font-weight:700;
+
+}
+
+.svc-fold-body{
+
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+
+  padding-bottom:8px;
+
+  font-size:15px;
+  line-height:1.6;
+
+}
+
+.svc-included-title{
+  display:none;
+}
+
+.svc-list{
+
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+
+  color:var(--muted);
+
+  list-style:none;
+
+}
+
+.svc-list li{
+
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+
+}
+
+/* La viñeta cuadrada se centra con la primera línea */
+
+.svc-list li::before{
+  transform:translateY(-3px);
+}
+
+.svc-note{
+
+  color:var(--muted);
+
+  font-size:14px;
+  line-height:1.6;
+
+}
+
+.svc-note strong{
+
+  color:var(--text);
+
+  font-weight:700;
+
+}
+
+.svc-note a{
+
+  color:var(--svc-line);
+
+  text-decoration:underline;
+  text-underline-offset:3px;
+
+}
+
+.svc-note a:hover{
+  color:var(--boton-hover);
+}
+
+
+/* ==========================================
+LOS TRES PAQUETES DE LA BARRA
+
+Cada columna entera es el enlace de reserva de su
+paquete. El precio va en un rectángulo sólido al pie,
+a la misma altura en las tres.
+========================================== */
+
+/* Las tres columnas miden lo mismo: el aire va en column-gap y la
+   línea fina se dibuja a mitad del hueco */
+
+.svc-paquetes{
+
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  column-gap:20px;
+
+  border-top:1.5px solid var(--svc-line);
+  border-bottom:1.5px solid var(--svc-line);
+
+  list-style:none;
+
+}
+
+.svc-paquetes li{
+
+  position:relative;
+
+  display:flex;
+
+  padding:14px 0;
+
+}
+
+.svc-paquetes li + li::before{
+
+  content:"";
+
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:-10px;
+
+  border-left:1px solid var(--svc-hair);
+
+}
+
+.svc-paquete,
+.svc-paquete:visited{
+
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+
+  width:100%;
+
+  color:var(--text);
+
+}
+
+.svc-paquete-nombre{
+
+  min-height:2.6em;
+
+  font-size:14px;
+  font-weight:700;
+  line-height:1.3;
+
+}
+
+.svc-paquete-hasta{
+
+  color:var(--muted);
+
+  font-size:13px;
+
+}
+
+/* El rectángulo puede ser más bajo que 44px: la zona que se toca
+   es la columna entera, no solo el precio */
+
+.svc-paquete-precio{
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  min-height:38px;
+
+  margin-top:auto;
+
+  background:var(--boton);
+  color:#ffffff;
+
+  font-size:15px;
+  font-weight:800;
+
+  transition:background .2s ease;
+
+}
+
+.svc-paquete:hover .svc-paquete-precio{
+  background:var(--boton-hover);
+}
+
+
+/* ==========================================
+HOW IT WORKS Y GOOD TO KNOW · CELULAR
+========================================== */
+
+.svc-block{
+
+  padding:40px 0;
+
+  border-top:1.5px solid var(--svc-line);
+
+}
+
+.svc-block-notes{
+  padding-bottom:48px;
+}
+
+.svc-steps{
+  list-style:none;
+}
+
+.svc-steps li{
+
+  display:flex;
+  align-items:center;
+  gap:16px;
+
+  height:64px;
+
+  border-top:1px solid var(--svc-hair);
+
+}
+
+.svc-steps li:last-child{
+  border-bottom:1px solid var(--svc-hair);
+}
+
+.svc-steps img{
+
+  display:block;
+  flex-shrink:0;
+
+  width:32px;
+  height:32px;
 
 }
 
 .svc-step-number{
 
-  display:block;
+  width:14px;
 
-  color:var(--svc-clay);
+  color:var(--svc-line);
 
-  font-size:.78rem;
-  font-weight:800;
-  letter-spacing:.26em;
+  font-size:13px;
+  font-weight:700;
 
 }
 
-.svc-steps h3{
+.svc-step-name{
 
-  margin:14px 0 10px;
-
-  color:var(--ocean);
-
-  font-size:1.28rem;
+  font-size:17px;
   font-weight:600;
-  line-height:1.25;
 
 }
 
-.svc-steps p{
+.svc-note-fold{
+  border-top:1px solid var(--svc-hair);
+}
 
-  color:#5c5346;
+.svc-note-fold:last-child{
+  border-bottom:1px solid var(--svc-hair);
+}
 
-  font-size:.98rem;
-  line-height:1.72;
+.svc-note-fold summary{
+  min-height:56px;
+}
+
+.svc-note-fold h3{
+
+  color:var(--text);
+
+  font-size:17px;
+  font-weight:600;
+
+}
+
+.svc-note-fold p{
+
+  margin:0 0 16px;
+
+  color:var(--muted);
+
+  font-size:15px;
+  line-height:1.6;
 
 }
 
 
 /* ==========================================
-BUENO SABER
-========================================== */
-
-.svc-notes{
-
-  padding:104px 0;
-
-  background:#ffffff;
-
-}
-
-.svc-notes-grid{
-
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:38px;
-
-}
-
-.svc-notes-grid h3{
-
-  padding-top:20px;
-
-  border-top:1px solid var(--svc-hairline);
-
-  color:var(--ocean);
-
-  font-size:1.14rem;
-  font-weight:600;
-
-}
-
-.svc-notes-grid p{
-
-  margin-top:12px;
-
-  color:#52636a;
-
-  font-size:.98rem;
-  line-height:1.72;
-
-}
-
-
-/* ==========================================
-INVITACIÓN FINAL
+CIERRE
 ========================================== */
 
 .svc-inquire{
 
-  position:relative;
-  isolation:isolate;
-  overflow:hidden;
+  padding:56px 0;
 
-  padding:120px 0;
-
+  background:var(--ocean);
   color:#ffffff;
-
-  background:
-    radial-gradient(
-      circle at 18% 22%,
-      rgba(9,167,195,.28),
-      transparent 42%
-    ),
-    linear-gradient(
-      160deg,
-      var(--ocean) 0%,
-      var(--ocean2) 100%
-    );
-
-}
-
-.svc-inquire::before{
-
-  content:"";
-
-  position:absolute;
-  inset:0;
-  z-index:-1;
-
-  background-image:url("assets/textura-olas.svg");
-  background-repeat:repeat;
-  background-size:520px auto;
-
-  opacity:.12;
 
 }
 
 .svc-inquire-inner{
 
-  position:relative;
-
-}
-
-.svc-inquire h2,
-.svc-inquire-inner > .svc-eyebrow{
-
-  max-width:16ch;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
 
 }
 
 .svc-inquire h2{
 
-  margin:20px 0 0;
-
-  font-size:clamp(2.2rem,4.4vw,3.6rem);
-  font-weight:300;
-  line-height:1.06;
-  letter-spacing:-.02em;
+  font-size:30px;
+  font-weight:700;
+  line-height:1.15;
 
 }
 
@@ -932,304 +887,837 @@ INVITACIÓN FINAL
 
   max-width:56ch;
 
-  margin:22px 0 0;
+  margin-top:14px;
 
   color:rgba(255,255,255,.86);
 
-  font-size:1.08rem;
-  line-height:1.78;
+  font-size:16px;
+  line-height:1.6;
 
 }
 
 .svc-inquire-actions{
 
   display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-
-  margin-top:38px;
+  flex-direction:column;
+  gap:12px;
 
 }
 
-.svc-inquire-meta{
+.svc-inquire .svc-inquire-meta{
 
-  margin-top:34px;
+  margin:0;
 
-  color:rgba(255,255,255,.62);
+  color:rgba(255,255,255,.72);
 
-  font-size:.92rem;
+  font-size:14px;
 
 }
 
 .svc-inquire-meta a{
 
-  border-bottom:1px solid rgba(255,255,255,.3);
+  color:#ffffff;
 
-  transition:color .25s ease,border-color .25s ease;
+  border-bottom:1px solid rgba(255,255,255,.4);
 
 }
 
 .svc-inquire-meta a:hover{
-
-  color:#7fe0e8;
-
-  border-color:#7fe0e8;
-
+  border-color:#ffffff;
 }
 
 
 /* ==========================================
-APARICIÓN SUAVE AL HACER SCROLL
+TABLETA · 600px o más
+
+Los botones del hero y del cierre van en fila, y la
+ilustración de la tarjeta no pasa de 480px.
 ========================================== */
 
-.svc-reveal{
+@media (min-width:600px){
 
-  opacity:0;
+  .svc-hero-actions,
+  .svc-inquire-actions{
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:16px;
+  }
 
-  transform:translateY(26px);
+  .svc-cta,
+  .svc-paquetes{
+    max-width:480px;
+  }
 
-  transition:
-    opacity .7s ease,
-    transform .7s ease;
+  /* La tarjeta es una columna de 480px: centrada, para que en
+     tableta no quede un tercio vacío a la derecha. Las líneas de
+     arriba siguen de borde a borde. */
 
-}
-
-.svc-reveal.is-visible{
-
-  opacity:1;
-
-  transform:none;
-
-}
-
-@media (prefers-reduced-motion:reduce){
-
-  .svc-reveal{
-    opacity:1;
-    transform:none;
-    transition:none;
+  .svc-item{
+    padding-inline:max(var(--svc-gutter),calc((100% - 480px) / 2));
   }
 
 }
 
 
 /* ==========================================
-TABLETA
+ESCRITORIO · 1024px o más
 ========================================== */
 
-@media (max-width:1000px){
+@media (min-width:1024px){
+
+  /* HERO */
 
   .svc-hero{
-    min-height:0;
-    padding:120px 0 0;
+
+    min-height:min(640px,calc(100vh - var(--alto-cabecera)));
+    min-height:min(640px,calc(100svh - var(--alto-cabecera)));
+
+    padding:104px 0 96px;
+
   }
 
   .svc-hero-inner{
-    padding-bottom:56px;
-  }
-
-  .svc-hero-index{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .svc-hero-index li:nth-child(n+3){
-    border-top:1px solid rgba(255,255,255,.22);
-  }
-
-  .svc-hero-index li:nth-child(odd){
-    border-left:0;
-  }
-
-  .svc-hero-index li:nth-child(odd) a{
-    padding-left:0;
-  }
-
-  /* Con un número impar de servicios, el último se queda solo y
-     deja medio renglón vacío con la línea colgando. Que ocupe las
-     dos columnas. La condición se cumple sola: si algún día hay
-     un número par, esta regla no se aplica. */
-
-  .svc-hero-index li:last-child:nth-child(odd){
-    grid-column:1 / -1;
-  }
-
-  .svc-intro-grid,
-  .svc-row-grid,
-  .svc-row-alt .svc-row-grid{
-    grid-template-columns:1fr;
-    gap:40px;
-  }
-
-  .svc-row-alt .svc-figure{
-    order:0;
-  }
-
-  .svc-figure img{
-    max-height:520px;
-    object-fit:cover;
-  }
-
-  .svc-steps,
-  .svc-notes-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .svc-steps li{
-    padding:26px 24px 18px 0;
-  }
-
-  .svc-steps li:nth-child(3),
-  .svc-steps li:nth-child(4){
-    border-top:1px solid rgba(3,40,51,.18);
-  }
-
-  .svc-steps li:nth-child(3){
-    padding-left:0;
-    border-left:0;
-  }
-
-}
-
-
-/* ==========================================
-MÓVIL
-========================================== */
-
-@media (max-width:560px){
-
-  .svc-hero{
-    margin-top:69px;
-    padding:96px 0 0;
-
-    background-position:center center;
-  }
-
-  .svc-hero-inner{
-    padding-bottom:44px;
+    gap:36px;
   }
 
   .svc-hero h1{
-    font-size:2.5rem;
+
+    font-size:72px;
+    line-height:1.04;
+    letter-spacing:-.015em;
+
   }
 
-  .svc-hero-lead{
-    font-size:1.02rem;
+
+  /* CARTA RESUMIDA: cinco franjas. La 01, 03 y 05 llevan
+     la escena arriba; la 02 y la 04, abajo. */
+
+  .svc-carta{
+    padding-top:64px;
   }
 
-  .svc-hero-actions .svc-button{
-    width:100%;
+  .svc-carta .svc-section-title{
+    margin-bottom:24px;
   }
 
-  .svc-hero-index{
-    grid-template-columns:1fr;
+  .svc-carta-list{
+
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:1.5px;
+
+    margin:0;
+
+    border:1.5px solid var(--svc-line);
+
+    background:var(--svc-line);
+
   }
 
-  .svc-hero-index li + li{
-    border-left:0;
-    border-top:1px solid rgba(255,255,255,.22);
+  .svc-carta-list li + li{
+    border-top:0;
   }
 
-  .svc-hero-index a{
-    flex-direction:row;
+  .svc-carta-list li{
+
+    display:flex;
+    flex-direction:column;
     align-items:center;
-    gap:16px;
+    gap:28px;
 
-    padding:16px 2px;
+    min-height:560px;
+
+    padding:28px 20px;
+
+    background:var(--sand);
+
+    text-align:center;
+
   }
 
-  .svc-intro,
-  .svc-row,
-  .svc-process,
-  .svc-notes{
-    padding:64px 0;
+  .svc-carta-scene{
+
+    display:block;
+
+    width:100%;
+    max-width:216px;
+
+    border:1px solid var(--svc-hair);
+
   }
 
-  .svc-intro-copy p,
-  .svc-row-lead{
-    font-size:1rem;
+  .svc-carta-scene img{
+
+    display:block;
+
+    width:100%;
+    height:auto;
+
   }
 
-  .svc-figure img{
-    max-height:420px;
+  .svc-carta-list li:nth-child(odd) .svc-carta-link{
+    margin-top:auto;
   }
 
-  .svc-head{
-    margin-bottom:38px;
+  .svc-carta-list li:nth-child(even) .svc-carta-scene{
+    order:3;
+    margin-top:auto;
   }
 
-  .svc-steps,
-  .svc-notes-grid{
-    grid-template-columns:1fr;
-    gap:0;
+  .svc-carta-link{
+
+    flex-direction:column;
+    gap:8px;
+
+    height:auto;
+
+    padding:0;
+
+  }
+
+  .svc-carta-link::after,
+  .svc-carta-icon{
+    display:none;
+  }
+
+  .svc-carta-number{
+    width:auto;
+  }
+
+  .svc-carta-name{
+
+    font-size:15px;
+    font-weight:800;
+    letter-spacing:.16em;
+    line-height:1.35;
+    text-transform:uppercase;
+
+  }
+
+  .svc-carta-sub{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:14px;
+
+  }
+
+  .svc-carta-link:hover .svc-carta-name{
+    color:var(--svc-line);
+  }
+
+  /* El botón va pegado al texto, 28px por encima del borde
+     o de la escena */
+
+  .svc-carta-action,
+  .svc-carta-action:link,
+  .svc-carta-action:visited{
+
+    display:flex;
+    align-items:center;
+
+    min-height:44px;
+
+    margin-top:-12px;
+    padding:0 clamp(10px,1.1vw,16px);
+
+    background:var(--boton);
+    color:#ffffff;
+
+    /* A 1024px la franja deja unos 140px: sin esto el botón se
+       parte en dos líneas y deja de alinear con los demás */
+    font-size:clamp(14px,1.05vw,15px);
+    white-space:nowrap;
+    font-weight:700;
+
+    transition:background .2s ease;
+
+  }
+
+  .svc-carta-action:hover{
+    background:var(--boton-hover);
+  }
+
+
+  /* INTRODUCCIÓN */
+
+  .svc-intro{
+    padding:72px 0;
+  }
+
+  .svc-intro-grid{
+
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:80px;
+
+  }
+
+  .svc-intro h2{
+    font-size:36px;
+  }
+
+  .svc-intro p{
+
+    font-size:18px;
+    line-height:1.65;
+
+  }
+
+
+  /* SERVICIOS: una fila por servicio, texto 5 y
+     imágenes 7, con los lados alternados */
+
+  .svc-menu{
+
+    display:flex;
+    flex-direction:column;
+    gap:1.5px;
+
+    margin:0;
+
+    border:1.5px solid var(--svc-line);
+
+    background:var(--svc-line);
+
+  }
+
+  .svc-item{
+
+    display:grid;
+    grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+    gap:1.5px;
+
+    padding:0;
+
+    border-top:0;
+
+    background:var(--svc-line);
+
+    scroll-margin-top:24px;
+
+  }
+
+  .svc-item:nth-child(even){
+    grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+  }
+
+  .svc-item:nth-child(even) .svc-item-media{
+    order:-1;
+  }
+
+  .svc-item-copy{
+
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+
+    padding:56px clamp(32px,3.6vw,52px);
+
+    background:var(--sand);
+
+  }
+
+  .svc-item-copy > *{
+    order:0;
+  }
+
+  .svc-item-copy > .svc-cta{
+    order:1;
+  }
+
+  .svc-item-head{
+
+    position:relative;
+
+    gap:22px;
+
+    padding-bottom:23.5px;
+
+  }
+
+  /* Línea corta bajo el título */
+
+  .svc-item-head::after{
+
+    content:"";
+
+    position:absolute;
+    left:0;
+    bottom:0;
+
+    width:48px;
+    height:1.5px;
+
+    background:var(--svc-line);
+
+  }
+
+  .svc-number{
+
+    font-size:clamp(56px,5vw,72px);
+    line-height:.9;
+
+  }
+
+  .svc-item-head h3{
+
+    font-size:24px;
+    line-height:1.25;
+
+  }
+
+  .svc-item-sub{
+
+    margin-top:8px;
+
+    font-size:18px;
+
+  }
+
+  .svc-lead-open{
+
+    display:block;
+
+    color:var(--text);
+
+    font-size:19px;
+    line-height:1.65;
+
+  }
+
+  .svc-tags{
+
+    gap:10px;
+
+    font-size:17px;
+
+  }
+
+  .svc-tags li::before{
+
+    width:7px;
+    height:7px;
+
+  }
+
+  .svc-cta,
+  .svc-cta:link,
+  .svc-cta:visited{
+
+    align-self:flex-start;
+
+    height:54px;
+
+    padding:0 32px;
+
+    font-size:17px;
+
+  }
+
+  .svc-paquetes{
+    max-width:none;
+  }
+
+  .svc-paquetes{
+    column-gap:28px;
+  }
+
+  .svc-paquetes li{
+    padding:18px 0;
+  }
+
+  .svc-paquetes li + li::before{
+    left:-14px;
+  }
+
+  .svc-paquete-nombre{
+    font-size:16px;
+  }
+
+  .svc-paquete-hasta{
+    font-size:15px;
+  }
+
+  .svc-paquete-precio{
+
+    min-height:44px;
+
+    font-size:17px;
+
+  }
+
+  /* "What's included" abierto y sin botón */
+
+  .svc-included{
+    padding-top:6px;
+  }
+
+  .svc-folds .svc-included summary{
+    display:none;
+  }
+
+  .svc-included .svc-lead{
+    display:none;
+  }
+
+  .svc-included .svc-fold-body{
+
+    gap:8px;
+
+    padding-bottom:0;
+
+    font-size:16px;
+
+  }
+
+  .svc-included-title{
+
+    display:block;
+
+    padding-top:6px;
+
+    color:var(--svc-line);
+
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+
+  }
+
+  .svc-note{
+    font-size:15px;
+  }
+
+  .svc-note:first-of-type{
+    margin-top:8px;
+  }
+
+  /* Imágenes: la alterna va alineada abajo con la principal y el
+     par queda centrado en la fila. Con la lista completa de lo que
+     incluye, la fila es más alta que las imágenes; pegadas a los
+     bordes dejaban un hueco grande entre las dos. */
+
+  .svc-item-media{
+
+    display:grid;
+    grid-template-columns:minmax(0,396fr) minmax(0,216fr);
+    align-content:center;
+    align-items:end;
+    gap:24px;
+
+    padding:56px max(48px,calc(50% - 318px));
+
+    background:var(--sand);
+
+  }
+
+  .svc-item-media > :not(.svc-fig-mobile){
+    display:block;
+  }
+
+  .svc-item-media .svc-fig{
+    max-width:none;
+  }
+
+  /* 05: la piscina y, al lado, la terraza y los tragos */
+
+  .svc-item-bar .svc-item-media{
+
+    grid-template-columns:minmax(0,396fr) minmax(0,186fr);
+
+    padding-inline:max(48px,calc(50% - 303px));
+
+  }
+
+  .svc-item-media > .svc-fig-stack{
+
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+
+  }
+
+
+  /* HOW IT WORKS */
+
+  .svc-block{
+
+    padding:96px 0 0;
+
+    border-top:0;
+
+  }
+
+  .svc-block-notes{
+    padding:96px 0;
+  }
+
+  .svc-block .svc-section-title{
+    margin-bottom:24px;
+  }
+
+  .svc-steps{
+
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+
+    border-top:1.5px solid var(--svc-line);
+    border-bottom:1.5px solid var(--svc-line);
+
   }
 
   .svc-steps li,
-  .svc-steps li + li{
-    padding:24px 0 8px;
+  .svc-steps li:last-child{
 
-    border-left:0;
+    flex-direction:column;
+    align-items:flex-start;
+
+    height:auto;
+
+    padding:32px 24px;
+
+    border-top:0;
+    border-bottom:0;
+
+  }
+
+  .svc-steps li:first-child{
+    padding-left:0;
   }
 
   .svc-steps li + li{
-    border-top:1px solid rgba(3,40,51,.18);
+    border-left:1px solid var(--svc-hair);
   }
 
-  .svc-notes-grid article + article{
-    margin-top:28px;
+  .svc-steps img{
+
+    width:40px;
+    height:40px;
+
   }
+
+  .svc-step-name{
+    font-size:20px;
+  }
+
+
+  /* GOOD TO KNOW: cuatro columnas abiertas */
+
+  .svc-notes{
+
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+
+    border-top:1.5px solid var(--svc-line);
+
+  }
+
+  .svc-note-fold,
+  .svc-note-fold:last-child{
+
+    padding:28px 24px 0;
+
+    border-top:0;
+    border-bottom:0;
+
+  }
+
+  .svc-note-fold:first-child{
+    padding-left:0;
+  }
+
+  .svc-note-fold:last-child{
+    padding-right:0;
+  }
+
+  .svc-note-fold + .svc-note-fold{
+    border-left:1px solid var(--svc-hair);
+  }
+
+  .svc-folds .svc-note-fold summary{
+
+    min-height:0;
+
+    cursor:default;
+
+  }
+
+  .svc-folds .svc-note-fold summary::after{
+    display:none;
+  }
+
+  .svc-note-fold h3{
+
+    font-size:18px;
+    font-weight:700;
+
+  }
+
+  .svc-note-fold p{
+    margin:10px 0 0;
+  }
+
+
+  /* CIERRE */
 
   .svc-inquire{
-    padding:80px 0;
+    padding:88px 0;
   }
 
-  .svc-inquire-actions .svc-button{
-    width:100%;
+  .svc-inquire-inner{
+
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:start;
+    column-gap:40px;
+
+  }
+
+  .svc-inquire h2{
+
+    max-width:620px;
+
+    font-size:48px;
+    line-height:1.1;
+
   }
 
   .svc-inquire-meta{
-    line-height:2;
+    grid-column:1 / -1;
   }
 
 }
 
 
 /* ==========================================
-PANTALLAS GRANDES
+MOVIMIENTO
+
+Todo es suave y corto: la página es una carta, no un
+anuncio. Nada se mueve si el visitante pidió menos
+movimiento en su sistema.
 ========================================== */
 
-@media (min-width:1800px){
+@media (prefers-reduced-motion:no-preference){
 
-  .svc-hero{
-    margin-top:85px;
-    padding-top:180px;
+  /* Entrada del hero al cargar */
+
+  .svc-hero-inner > *{
+    animation:svc-rise .8s cubic-bezier(.2,.7,.2,1) both;
   }
 
-  .svc-hero-index{
-    width:min(1480px,92%);
+  .svc-hero-actions{
+    animation-delay:.15s;
   }
 
-  .svc-row{
-    padding:120px 0;
+  /* El texto del hero se apaga mientras la hoja le pasa
+     por encima. Solo en navegadores que animan con el
+     scroll; en los demás se queda quieto. */
+
+  @supports (animation-timeline:scroll()){
+
+    .svc-hero-inner{
+      animation:svc-hero-out linear both;
+      animation-timeline:scroll(root);
+      animation-range:0 70vh;
+    }
+
   }
 
-  .svc-row-grid{
-    gap:90px;
+  /* Aparición al hacer scroll (la clase la pone services.js) */
+
+  .svc-anim .svc-reveal{
+
+    opacity:0;
+
+    transform:translateY(18px);
+
+    transition:
+      opacity .6s ease,
+      transform .6s cubic-bezier(.2,.7,.2,1);
+
+    transition-delay:calc(var(--svc-i,0) * 80ms);
+
+  }
+
+  .svc-anim .svc-reveal.is-visible{
+
+    opacity:1;
+
+    transform:none;
+
+  }
+
+  /* El contenido de un plegable entra con un fundido */
+
+  .svc-fold[open] > :not(summary){
+    animation:svc-fade .35s ease both;
+  }
+
+  /* Flecha de la carta en el celular */
+
+  .svc-carta-link::after{
+    transition:transform .2s ease;
+  }
+
+  .svc-carta-link:hover::after,
+  .svc-carta-link:active::after{
+    transform:translateX(4px) rotate(45deg);
+  }
+
+  /* Escena de la carta en escritorio: crece un poco dentro
+     de su marco */
+
+  .svc-carta-scene{
+    overflow:hidden;
+  }
+
+  .svc-carta-scene img{
+    transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+
+  .svc-carta-list li:hover .svc-carta-scene img{
+    transform:scale(1.05);
   }
 
 }
 
+@keyframes svc-rise{
 
-/* ==========================================
-PANTALLAS MUY GRANDES
+  from{
+    opacity:0;
+    transform:translateY(24px);
+  }
 
-La barra superior crece a 92px en styles.css
-========================================== */
+  to{
+    opacity:1;
+    transform:none;
+  }
 
-@media (min-width:2400px){
+}
 
-  .svc-hero{
-    margin-top:93px;
-    padding-top:200px;
+@keyframes svc-hero-out{
+
+  to{
+    opacity:0;
+    transform:translateY(-32px);
+  }
+
+}
+
+@keyframes svc-fade{
+
+  from{
+    opacity:0;
+    transform:translateY(-4px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
   }
 
 }

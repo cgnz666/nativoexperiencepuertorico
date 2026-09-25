@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-label="A terrace table seen from above with a phone showing a chat, a folded map of Puerto Rico and a steaming cup of coffee with a few coffee beans." style="color: var(--il-line, #09a7c3)">
+<g style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: miter; stroke-linecap: round; stroke-miterlimit: 10">
+<path d="M36 60 H444 L476 452 H4 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M29 140 H451 M22 220 H458 M15 300 H465 M8 380 H472"></path>
+<rect x="92" y="150" width="104" height="196" style="fill: var(--il-fill, #ffffff)"></rect>
+<rect x="102" y="166" width="84" height="160"></rect>
+<path d="M132 158 H156"></path>
+<rect x="110" y="178" width="48" height="14" style="fill: var(--il-shade, #d6e9e9)"></rect>
+<rect x="128" y="200" width="50" height="14"></rect>
+<rect x="110" y="222" width="40" height="14" style="fill: var(--il-shade, #d6e9e9)"></rect>
+<rect x="128" y="244" width="44" height="14"></rect>
+<path d="M244 128 L300 120 L352 132 L408 122 L412 262 L356 270 L302 258 L248 268 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M300 120 L302 258 M352 132 L356 270"></path>
+<path d="M259.9 176.4 L264.3 176.8 L271.5 177.1 L282.3 178.3 L293.2 178.7 L304.0 178.3 L314.8 178.7 L324.2 179.0 L332.9 179.8 L337.9 180.2 L343.7 182.1 L350.9 182.8 L358.1 185.9 L363.9 186.3 L370.4 186.6 L371.1 192.7 L369.7 196.5 L363.9 200.3 L361.7 205.6 L358.1 211.0 L354.5 215.5 L347.3 217.0 L339.4 218.2 L332.9 219.3 L323.5 219.7 L314.8 218.9 L306.1 217.0 L299.7 217.8 L293.2 217.0 L285.9 216.3 L278.7 218.9 L270.1 217.8 L264.3 219.3 L257.8 220.8 L256.3 216.3 L258.5 211.0 L257.8 205.6 L259.9 199.6 L257.8 194.2 L252.0 187.8 L254.9 186.6 L258.5 183.6 L259.9 180.6 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M374.0 207.9 L379.8 205.6 L387.0 204.1 L395.7 205.6 L394.2 207.9 L383.4 208.7 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M391.3 192.7 L395.7 190.4 L398.6 192.0 L395.0 193.5 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M262 372 C258 362 266 356 274 360 C276 370 270 376 262 372 Z M288 386 C286 376 294 372 300 376 C302 386 296 390 288 386 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M264 370 C268 366 270 362 272 360 M290 384 C294 380 296 378 298 376"></path>
+<circle cx="370" cy="360" r="50" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="370" cy="360" r="42"></circle>
+<path d="M398 350 C424 344 430 376 400 372" style="fill: var(--il-fill, #ffffff)"></path>
+<circle cx="370" cy="360" r="30" style="fill: var(--il-fill, #ffffff)"></circle>
+<circle cx="370" cy="360" r="24" style="fill: var(--il-shade, #d6e9e9)"></circle>
+<path d="M370 374 C352 362 356 348 366 350 C368 352 370 354 370 356 C370 354 372 352 374 350 C384 348 388 362 370 374 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M322 392 L346 380 M318 396 C314 400 316 404 322 402 L326 396"></path>
+<path d="M352 318 C344 306 356 298 350 286 C346 278 352 270 350 262 M372 316 C364 302 378 294 370 280 C366 272 372 264 370 256 M392 318 C384 306 396 298 390 286 C386 278 392 270 390 262"></path>
+</g>
+</svg>
