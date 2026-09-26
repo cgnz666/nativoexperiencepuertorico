@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const hero = document.querySelector("[data-tours-hero]");
-  const botonesDeRuta = Array.from(document.querySelectorAll("[data-ruta]"));
+  const botonesDeRuta = Array.from(document.querySelectorAll(".tours-ruta[data-ruta]"));
   const buscador = document.querySelector("[data-tours-search]");
   const contador = document.querySelector("[data-tours-count]");
   const vacio = document.querySelector("[data-tours-empty]");
@@ -31,6 +31,14 @@ document.addEventListener("DOMContentLoaded", function () {
   let tours = [];
   let desplegado = false;
   let rutaElegida = null;
+  let habiaFiltro = false;
+
+  const textoDeVacio = vacio ? vacio.innerHTML : "";
+
+  const suave = () =>
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "auto"
+      : "smooth";
 
 
   /* ==========================================
@@ -176,9 +184,166 @@ document.addEventListener("DOMContentLoaded", function () {
   const datosDe = (tour) => CURADURIA[String(tour.id)] || {};
 
   /* La foto en miniatura para el resplandor: Bókun la sirve al
-     tamaño que se le pida, y a 12 x 9 pesa unos cientos de bytes */
+     tamaño que se le pida, y a 8 x 6 pesa unos cientos de bytes */
   const miniatura = (foto) =>
-    foto ? String(foto).replace(/([?&])w=\d+&h=\d+/, "$1w=12&h=9") : "";
+    foto ? String(foto).replace(/([?&])w=\d+&h=\d+/, "$1w=8&h=6") : "";
+
+
+  /* ==========================================
+  EL COLOR DEL RESPLANDOR
+
+  Se lee la miniatura en un lienzo de 8 x 6 y se saca
+  el tono de la mitad izquierda, de la derecha y de
+  toda la foto. Cada píxel pesa según lo saturado que
+  es: un promedio simple sale casi siempre gris pardo,
+  y así manda el color que de verdad destaca (el cielo
+  del atardecer, el mural). Luego se avivan un poco
+  para que se lean como luz y no como mancha. Bókun permite
+  leer sus fotos desde otra web (CORS); si algo falla,
+  el resplandor se queda en teal.
+  ========================================== */
+
+  const TEAL = [9, 167, 195];
+
+  /* Los colores ya calculados, por foto: al buscar o filtrar se
+     repintan las ventanas y no hace falta volver a leerlas */
+  const coloresPorFoto = new Map();
+
+  function aviva([r, g, b]) {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h = 0;
+    let s = 0;
+    let l = (max + min) / 2;
+
+    if (max !== min) {
+      const d = max - min;
+
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      h =
+        max === r
+          ? (g - b) / d + (g < b ? 6 : 0)
+          : max === g
+            ? (b - r) / d + 2
+            : (r - g) / d + 4;
+      h /= 6;
+    }
+
+    /* Una foto casi gris no tiene color que derramar: sin esto
+       el blanco o el gris salían rosados, porque su matiz es 0 */
+    if (s < 0.12) {
+      return TEAL.join(" ");
+    }
+
+    /* Más color para que cada ventana tenga el suyo. Los verdes
+       se topan más bajo: saturados enseguida se ven neón */
+    const verde = h > 0.14 && h < 0.45;
+
+    s = Math.min(verde ? 0.42 : 0.85, s * 1.5 + 0.1);
+    l = verde ? Math.min(0.48, Math.max(0.42, l)) : Math.min(0.6, Math.max(0.5, l));
+
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+    const canal = (t) => {
+      t = (t + 1) % 1;
+      if (t < 1 / 6) return p + (q - p) * 6 * t;
+      if (t < 1 / 2) return q;
+      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+      return p;
+    };
+
+    /* Un toque (8 %) de teal de la marca: las ventanas siguen
+       siendo de la misma familia sin perder su color */
+    return [canal(h + 1 / 3), canal(h), canal(h - 1 / 3)]
+      .map((v, i) => Math.round(v * 255 * 0.92 + TEAL[i] * 0.08))
+      .join(" ");
+  }
+
+  function ponerColores(ventana, colores) {
+    Object.keys(colores).forEach(function (lado) {
+      ventana.style.setProperty("--brillo-" + lado, colores[lado]);
+    });
+  }
+
+  function colorear(ventana) {
+    const url = ventana.dataset.mini;
+
+    if (!url) {
+      return;
+    }
+
+    if (coloresPorFoto.has(url)) {
+      ponerColores(ventana, coloresPorFoto.get(url));
+      return;
+    }
+
+    const foto = new Image();
+
+    foto.crossOrigin = "anonymous";
+
+    foto.addEventListener("load", function () {
+      try {
+        const lienzo = document.createElement("canvas");
+        lienzo.width = 8;
+        lienzo.height = 6;
+
+        const pincel = lienzo.getContext("2d");
+        pincel.drawImage(foto, 0, 0, 8, 6);
+
+        const px = pincel.getImageData(0, 0, 8, 6).data;
+        const lados = { izq: [], der: [], medio: [] };
+
+        for (let i = 0; i < px.length; i += 4) {
+          const x = (i / 4) % 8;
+          const max = Math.max(px[i], px[i + 1], px[i + 2]) / 255;
+          const min = Math.min(px[i], px[i + 1], px[i + 2]) / 255;
+          const luz = (max + min) / 2;
+          const saturacion =
+            max === min ? 0 : (max - min) / (1 - Math.abs(2 * luz - 1));
+
+          /* Vivo es saturado y de luz media: lo casi negro o casi
+             blanco apenas cuenta */
+          const pixel = {
+            rgb: [px[i], px[i + 1], px[i + 2]],
+            viveza: saturacion * (luz > 0.08 && luz < 0.92 ? 1 : 0.1)
+          };
+
+          lados[x < 4 ? "izq" : "der"].push(pixel);
+          lados.medio.push(pixel);
+        }
+
+        /* Los cuatro píxeles más vivos de cada lado, promediados:
+           suelen ser del mismo color. Mezclar todos anulaba los
+           colores opuestos y dejaba un gris */
+        const colores = {};
+
+        Object.keys(lados).forEach(function (lado) {
+          const vivos = lados[lado]
+            .sort((a, b) => b.viveza - a.viveza)
+            .slice(0, 4);
+
+          const media = [0, 1, 2].map(
+            (canal) =>
+              vivos.reduce((total, pixel) => total + pixel.rgb[canal], 0) /
+              vivos.length
+          );
+
+          colores[lado] = aviva(media);
+        });
+
+        coloresPorFoto.set(url, colores);
+        ponerColores(ventana, colores);
+      } catch (error) {
+        /* Sin permiso para leer la foto: se queda el teal */
+      }
+    });
+
+    foto.src = url;
+  }
 
   function ordenar(lista) {
     const primeros = ORDEN.map((id) =>
@@ -196,6 +361,16 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ==========================================
   UNA VENTANA
   ========================================== */
+
+  function estiloDeBrillo(url) {
+    const colores = coloresPorFoto.get(url);
+
+    return colores
+      ? ` style="${Object.keys(colores)
+          .map((lado) => `--brillo-${lado}:${colores[lado]}`)
+          .join(";")}"`
+      : "";
+  }
 
   function ventanaDe(tour, indice) {
     const datos = datosDe(tour);
@@ -283,7 +458,9 @@ document.addEventListener("DOMContentLoaded", function () {
       <article
         class="ventana-tour"
         data-line="${escapar(datos.ruta || "")}"
-        style="--foto-mini:url('${escapar(miniatura(fotos[0]))}')">
+        data-mini="${escapar(miniatura(fotos[0]))}"${estiloDeBrillo(
+          miniatura(fotos[0])
+        )}>
 
         <div class="ventana">
 
@@ -350,7 +527,13 @@ document.addEventListener("DOMContentLoaded", function () {
   ========================================== */
 
   function pintar() {
-    const busqueda = sinAcentos(buscador ? buscador.value.trim() : "");
+    const busqueda = sinAcentos(buscador ? buscador.value : "")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    /* Cada palabra tiene que aparecer, en cualquier orden:
+       "rincon ponce" encuentra lo mismo que "ponce rincon" */
+    const palabras = busqueda ? busqueda.split(" ") : [];
 
     const encontrados = tours.filter((tour) => {
       if (rutaElegida && datosDe(tour).ruta !== rutaElegida) {
@@ -364,20 +547,19 @@ document.addEventListener("DOMContentLoaded", function () {
       const datos = datosDe(tour);
       const ruta = RUTAS[datos.ruta];
 
-      return (
-        !busqueda ||
-        sinAcentos(
-          [
-            tour.title,
-            tour.excerpt,
-            tour.duration,
-            (tour.places || []).join(" "),
-            ruta ? ruta.nombre : "",
-            datos.frase,
-            datos.etiqueta
-          ].join(" ")
-        ).includes(busqueda)
+      const texto = sinAcentos(
+        [
+          tour.title,
+          tour.excerpt,
+          tour.duration,
+          (tour.places || []).join(" "),
+          ruta ? ruta.nombre : "",
+          datos.frase,
+          datos.etiqueta
+        ].join(" ")
       );
+
+      return palabras.every((palabra) => texto.includes(palabra));
     });
 
     /* Al buscar o al elegir una ruta se muestran todos los
@@ -402,6 +584,8 @@ document.addEventListener("DOMContentLoaded", function () {
       window.iniciarCarruseles(rejilla);
     }
 
+    rejilla.querySelectorAll(".ventana-tour").forEach(colorear);
+
     /* El cargador de Bókun activa los botones nuevos
        por su cuenta, pero si expone su función la
        llamamos para no depender de su temporizador. */
@@ -417,11 +601,26 @@ document.addEventListener("DOMContentLoaded", function () {
         ? `${encontrados.length} ${
             encontrados.length === 1 ? "tour" : "tours"
           } found`
-        : "";
+        : habiaFiltro
+          ? `Showing all ${tours.length} tours`
+          : "";
     }
 
+    habiaFiltro = filtrando;
+
+    /* Con una ruta elegida, el aviso de "prueba con Ponce" podía
+       contradecirse (Ponce no está en Coffee Hills): se dice qué
+       ruta está filtrando y se ofrece quitarla */
     if (vacio) {
       vacio.hidden = encontrados.length > 0;
+
+      if (!vacio.hidden) {
+        vacio.innerHTML = rutaElegida
+          ? `Nothing on the ${escapar(
+              RUTAS[rutaElegida].nombre
+            )} route matches that search. <button type="button" class="tours-quitar-ruta">Search all routes</button>`
+          : textoDeVacio;
+      }
     }
 
     if (zonaDeBoton) {
@@ -459,9 +658,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (hero) {
         if (rutaElegida) {
-          hero.dataset.ruta = rutaElegida;
+          hero.dataset.rutaActiva = rutaElegida;
         } else {
-          delete hero.dataset.ruta;
+          delete hero.dataset.rutaActiva;
         }
       }
 
@@ -470,24 +669,108 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  /* Tocar una línea del mapa (o su rótulo) es lo mismo que
-     pulsar su botón. Si la enciende, además baja al catálogo,
-     que es donde están los tours de esa ruta. */
+  /* Tocar el mapa es lo mismo que pulsar el botón de la ruta
+     más cercana al dedo. Varias líneas salen juntas de San
+     Juan, así que no vale "lo que haya debajo": se mide la
+     distancia real a cada línea y gana la más cercana, hasta
+     26 px en pantalla. Un rótulo elige su ruta, y el punto y
+     el rótulo de San Juan eligen Old San Juan. Si la ruta se
+     enciende, además baja al catálogo. */
 
   const mapa = document.querySelector(".tours-mapa");
   const catalogo = document.querySelector("#catalog");
 
-  if (mapa) {
-    mapa.addEventListener("click", function (evento) {
-      const linea = evento.target.closest("[data-line]");
+  function distanciaA(trazo, x, y) {
+    if (trazo.tagName === "rect") {
+      const a = trazo.x.baseVal.value;
+      const b = trazo.y.baseVal.value;
+      const ancho = trazo.width.baseVal.value;
+      const alto = trazo.height.baseVal.value;
+      const dx = Math.max(a - x, 0, x - (a + ancho));
+      const dy = Math.max(b - y, 0, y - (b + alto));
 
-      if (!linea) {
-        return;
+      return Math.hypot(dx, dy);
+    }
+
+    if (trazo.tagName === "circle") {
+      const cx = trazo.cx.baseVal.value;
+      const cy = trazo.cy.baseVal.value;
+
+      return Math.max(0, Math.hypot(x - cx, y - cy) - trazo.r.baseVal.value);
+    }
+
+    const largo = trazo.getTotalLength();
+    let menor = Infinity;
+
+    for (let recorrido = 0; recorrido <= largo; recorrido += 4) {
+      const punto = trazo.getPointAtLength(recorrido);
+
+      menor = Math.min(menor, Math.hypot(x - punto.x, y - punto.y));
+    }
+
+    return menor;
+  }
+
+  function rutaTocada(svg, evento) {
+    const rotulo = evento.target.closest("text");
+
+    if (rotulo) {
+      const grupo = rotulo.closest("[data-line]");
+
+      if (grupo) {
+        return grupo.dataset.line;
       }
 
-      const botonDeRuta = botonesDeRuta.find(
-        (otro) => otro.dataset.ruta === linea.dataset.line
-      );
+      if (rotulo.classList.contains("hub")) {
+        return "sj";
+      }
+    }
+
+    const matriz = svg.getScreenCTM();
+
+    if (!matriz) {
+      return null;
+    }
+
+    const punto = new DOMPoint(evento.clientX, evento.clientY).matrixTransform(
+      matriz.inverse()
+    );
+    const tope = 26 / matriz.a;
+
+    let mejor = null;
+    let menor = Infinity;
+
+    svg
+      .querySelectorAll(
+        ".rt[data-line] path, .rt[data-line] rect, .rt[data-line] circle"
+      )
+      .forEach(function (trazo) {
+        const distancia = distanciaA(trazo, punto.x, punto.y);
+
+        if (distancia < menor) {
+          menor = distancia;
+          mejor = trazo.closest("[data-line]").dataset.line;
+        }
+      });
+
+    /* El punto de San Juan es de todas: se lo queda Old San Juan */
+    svg.querySelectorAll("circle:not(.rt circle)").forEach(function (centro) {
+      if (distanciaA(centro, punto.x, punto.y) <= Math.min(menor, tope)) {
+        mejor = "sj";
+        menor = 0;
+      }
+    });
+
+    return menor <= tope ? mejor : null;
+  }
+
+  if (mapa) {
+    mapa.addEventListener("click", function (evento) {
+      const svg = evento.target.closest("svg");
+      const ruta = svg && rutaTocada(svg, evento);
+
+      const botonDeRuta =
+        ruta && botonesDeRuta.find((otro) => otro.dataset.ruta === ruta);
 
       if (!botonDeRuta) {
         return;
@@ -496,7 +779,7 @@ document.addEventListener("DOMContentLoaded", function () {
       botonDeRuta.click();
 
       if (rutaElegida && catalogo) {
-        catalogo.scrollIntoView({ behavior: "smooth", block: "start" });
+        catalogo.scrollIntoView({ behavior: suave(), block: "start" });
       }
     });
   }
@@ -508,6 +791,22 @@ document.addEventListener("DOMContentLoaded", function () {
   Con ratón baja sola (CSS). Con el dedo, el tirador
   la sube y la baja.
   ========================================== */
+
+  if (vacio) {
+    vacio.addEventListener("click", function (evento) {
+      if (!evento.target.closest(".tours-quitar-ruta") || !rutaElegida) {
+        return;
+      }
+
+      const activo = botonesDeRuta.find(
+        (otro) => otro.dataset.ruta === rutaElegida
+      );
+
+      if (activo) {
+        activo.click();
+      }
+    });
+  }
 
   rejilla.addEventListener("click", function (evento) {
     const tirador = evento.target.closest(".ventana-tirador");
@@ -565,20 +864,25 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (boton) {
-    boton.addEventListener("click", function () {
+    boton.addEventListener("click", function (evento) {
       desplegado = true;
       pintar();
 
-      /* El botón que se acaba de pulsar queda oculto, así que el
-         foco se va con él. Se lleva al tirador de la primera
-         ventana nueva, para no dejar sin sitio a quien navega
-         con teclado. */
       const primeraNueva = rejilla.querySelectorAll(".ventana-tour")[AL_PRINCIPIO];
 
-      if (primeraNueva) {
-        primeraNueva.querySelector(".ventana-tirador").focus({ preventScroll: true });
-        primeraNueva.scrollIntoView({ block: "center", behavior: "smooth" });
+      if (!primeraNueva) {
+        return;
       }
+
+      /* El botón que se acaba de pulsar queda oculto, así que con
+         teclado el foco se va con él: se lleva al tirador de la
+         primera ventana nueva. Con ratón o dedo no (detail > 0),
+         porque el foco abriría esa cortina sin que nadie la toque. */
+      if (evento.detail === 0) {
+        primeraNueva.querySelector(".ventana-tirador").focus({ preventScroll: true });
+      }
+
+      primeraNueva.scrollIntoView({ block: "center", behavior: suave() });
     });
   }
 });

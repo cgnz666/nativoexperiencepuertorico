@@ -244,9 +244,7 @@
       ],
       "places": [
         "Arecibo",
-        "Dorado",
         "Isabela",
-        "Ponce",
         "Quebradillas",
         "Rincón",
         "San Juan",
@@ -459,8 +457,7 @@
         "https://imgcdn.bokun.tools/32df3282-c2fb-4093-be04-c4c8f8e706d5.jpeg?w=800&h=600&mode=crop"
       ],
       "places": [
-        "Caguas",
-        "San Juan"
+        "Caguas"
       ],
       "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1263497?partialView=1"
     },

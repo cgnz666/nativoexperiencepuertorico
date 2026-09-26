@@ -102,6 +102,22 @@ const plano = (texto) =>
     .replace(/&[a-z#0-9]+;/g, " ")
     .replace(/[^a-z0-9]+/g, " ");
 
+/* Las frases sobre dónde recogen o dónde se alojan los
+   huéspedes nombran pueblos que no son de la ruta ("ideal for
+   guests staying in Dorado, Arecibo, Ponce..."): se quitan
+   antes de buscar */
+const sinFrasesDeRecogida = (texto) =>
+  String(texto || "")
+    .replace(/<[^>]+>/g, " ")
+    .split(/(?<=[.!?])\s+/)
+    .filter(
+      (frase) =>
+        !/\b(staying (in|at)|pick[\s-]?ups? (from|at|in)|drop[\s-]?offs? (at|in)|dropped off at|(hotel|accommodation) in)\b/i.test(
+          frase
+        )
+    )
+    .join(" ");
+
 function lugaresDe(producto) {
   const paradas = (producto.places || []).map((p) =>
     typeof p === "string" ? p : p?.title
@@ -113,8 +129,8 @@ function lugaresDe(producto) {
       [
         producto.title,
         producto.excerpt,
-        producto.summary,
-        producto.description,
+        sinFrasesDeRecogida(producto.summary),
+        sinFrasesDeRecogida(producto.description),
         ...paradas,
         producto.googlePlace?.name,
         producto.locationCode?.country === "PR" ? producto.locationCode?.name : ""

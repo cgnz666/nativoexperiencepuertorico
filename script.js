@@ -149,7 +149,9 @@ function iniciarCarruseles(raiz) {
       window.clearInterval(temporizador);
     }
 
-    const tarjeta = galeria.closest(".tour-card");
+    /* En tours la galería vive dentro de una ventana, no de una
+       tarjeta: con el ratón encima, las fotos también se paran */
+    const tarjeta = galeria.closest(".tour-card, .ventana-tour");
 
     if (tarjeta) {
       tarjeta.addEventListener("mouseenter", pausar);

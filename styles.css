@@ -3571,10 +3571,10 @@ no se reescalan.
   font-size:16px;
 }
 
-/* Cada línea se puede tocar: debajo lleva una franja
-   invisible de 30 unidades para que el dedo acierte */
+/* El mapa se puede tocar: tours.js busca la línea más cercana
+   al dedo (ver "RUTAS: EL MAPA FILTRA EL CATÁLOGO") */
 
-.tours-mapa .rt{
+.tours-mapa svg{
   cursor:pointer;
 }
 
@@ -3584,17 +3584,17 @@ no se reescalan.
   transition:opacity .25s ease;
 }
 
-.tours-hero[data-ruta] .tours-mapa .rt{
+.tours-hero[data-ruta-activa] .tours-mapa .rt{
   opacity:.15;
 }
 
-.tours-hero[data-ruta="south"] .rt[data-line="south"],
-.tours-hero[data-ruta="west"] .rt[data-line="west"],
-.tours-hero[data-ruta="inland"] .rt[data-line="inland"],
-.tours-hero[data-ruta="coffee"] .rt[data-line="coffee"],
-.tours-hero[data-ruta="east"] .rt[data-line="east"],
-.tours-hero[data-ruta="sj"] .rt[data-line="sj"],
-.tours-hero[data-ruta="island"] .rt[data-line="island"]{
+.tours-hero[data-ruta-activa="south"] .rt[data-line="south"],
+.tours-hero[data-ruta-activa="west"] .rt[data-line="west"],
+.tours-hero[data-ruta-activa="inland"] .rt[data-line="inland"],
+.tours-hero[data-ruta-activa="coffee"] .rt[data-line="coffee"],
+.tours-hero[data-ruta-activa="east"] .rt[data-line="east"],
+.tours-hero[data-ruta-activa="sj"] .rt[data-line="sj"],
+.tours-hero[data-ruta-activa="island"] .rt[data-line="island"]{
   opacity:1;
 }
 
@@ -3775,6 +3775,27 @@ PÁGINA DE TOURS — CATÁLOGO
   text-align:center;
 }
 
+/* "Search all routes" dentro del aviso de vacío: se lee como
+   enlace, pero es un botón que quita el filtro de ruta */
+
+.tours-quitar-ruta{
+  min-height:44px;
+  padding:0;
+
+  color:#ffffff;
+  background:none;
+  border:0;
+  border-bottom:1px solid rgba(255,255,255,.6);
+
+  font:700 1rem 'Manrope',system-ui,sans-serif;
+
+  cursor:pointer;
+}
+
+.tours-quitar-ruta:hover{
+  border-bottom-color:#ffffff;
+}
+
 .tours-error a{
   color:#ffffff;
 
@@ -3788,6 +3809,16 @@ PÁGINA DE TOURS — CATÁLOGO
   justify-content:center;
 
   margin-top:48px;
+}
+
+/* Un display propio pisa el atributo hidden: sin esto el botón
+   y los avisos se quedaban a la vista aunque el script los
+   escondiera */
+
+.tours-more[hidden],
+.tours-empty[hidden],
+.tours-error[hidden]{
+  display:none;
 }
 
 .tours-more button{
@@ -3841,34 +3872,26 @@ lleva el título y baja para mostrar la reserva.
   aspect-ratio:260 / 320;
 }
 
-/* El resplandor es la foto en miniatura (12 x 9 px) estirada:
-   el navegador ya la difumina al ampliarla. Tiene la forma de
-   la ventana (mismas esquinas, un poco más grande) y los bordes
-   se funden con dos degradados cruzados, uno de lado a lado y
-   otro de arriba abajo. Antes era un filter:blur grande, y al
-   subir por la página algunos navegadores lo recortaban en
-   rectángulos. */
+/* El resplandor es luz que la foto derrama sobre la pared:
+   una sombra muy difuminada con la misma forma que el marco.
+   Los tres colores los calcula tours.js leyendo la foto en
+   miniatura (izquierda, derecha y promedio); mientras llegan,
+   queda en teal. No usa filter:blur, que algunos navegadores
+   recortaban en rectángulos al subir por la página. */
 
 .ventana-resplandor{
   position:absolute;
-  inset:-5% -7% -7%;
+  inset:0;
   z-index:0;
 
-  border-radius:30% / 25%;
+  border-radius:27% / 22%;
 
-  background:var(--foto-mini, none) center / 100% 100% no-repeat #09a7c3;
+  box-shadow:
+    -22px 14px 80px 4px rgb(var(--brillo-izq, 9 167 195) / .5),
+    22px 14px 80px 4px rgb(var(--brillo-der, 9 167 195) / .5),
+    0 24px 90px 0 rgb(var(--brillo-medio, 9 167 195) / .22);
 
-  filter:saturate(1.8) brightness(1.25);
-  opacity:.7;
-
-  -webkit-mask-image:
-    linear-gradient(90deg, transparent 0, #000 16%, #000 84%, transparent 100%),
-    linear-gradient(180deg, transparent 0, #000 13%, #000 87%, transparent 100%);
-  -webkit-mask-composite:source-in;
-  mask-image:
-    linear-gradient(90deg, transparent 0, #000 16%, #000 84%, transparent 100%),
-    linear-gradient(180deg, transparent 0, #000 13%, #000 87%, transparent 100%);
-  mask-composite:intersect;
+  opacity:.8;
 
   transition:opacity .4s ease;
 }
@@ -4033,6 +4056,7 @@ salen en las otras plataformas.
   justify-content:flex-end;
 
   min-height:30%;
+  max-height:100%;
   padding:24px 12% 24px;
 
   background:linear-gradient(180deg, #0f3d49 0%, #0a3039 70%, #082832 100%);
@@ -4194,6 +4218,13 @@ salen en las otras plataformas.
 
   font-size:15px;
   line-height:1.5;
+
+  /* El resumen de Bókun puede ser largo: tres renglones como
+     mucho, para que la cortina bajada quepa en la pantalla */
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3;
+  overflow:hidden;
 }
 
 .ventana-tour .card-button{
@@ -4279,12 +4310,12 @@ salen en las otras plataformas.
 @media (hover:hover){
 
   .ventana-tour:hover .ventana-cortina,
-  .ventana-tour:focus-within .ventana-cortina{
+  .ventana-tour:has(:focus-visible) .ventana-cortina{
     min-height:80%;
   }
 
   .ventana-tour:hover .ventana-linea,
-  .ventana-tour:focus-within .ventana-linea{
+  .ventana-tour:has(:focus-visible) .ventana-linea{
     max-height:40px;
     margin-bottom:12px;
 
@@ -4295,14 +4326,14 @@ salen en las otras plataformas.
   }
 
   .ventana-tour:hover .ventana-titulo,
-  .ventana-tour:focus-within .ventana-titulo{
+  .ventana-tour:has(:focus-visible) .ventana-titulo{
     margin-bottom:10px;
 
     text-align:left;
   }
 
   .ventana-tour:hover .ventana-detalle,
-  .ventana-tour:focus-within .ventana-detalle{
+  .ventana-tour:has(:focus-visible) .ventana-detalle{
     max-height:420px;
     margin-bottom:16px;
     padding-bottom:16px;
@@ -4316,7 +4347,7 @@ salen en las otras plataformas.
   }
 
   .ventana-tour:hover .ventana-resplandor{
-    opacity:.95;
+    opacity:1;
   }
 
 }
@@ -4375,12 +4406,6 @@ PÁGINA DE TOURS — ESCRITORIO · 900px o más
     display:none;
   }
 
-  .tours-rutas{
-    flex-wrap:wrap;
-
-    overflow:visible;
-  }
-
   .tours-catalogo{
     padding:88px 0 104px;
   }
@@ -4425,8 +4450,47 @@ PÁGINA DE TOURS — ESCRITORIO · 900px o más
 
 }
 
+/* Desde tableta los botones de ruta se reparten en renglones:
+   en una sola fila deslizable quedaba uno cortado a 768 px */
+
+@media (min-width:600px){
+
+  .tours-rutas{
+    flex-wrap:wrap;
+
+    overflow:visible;
+  }
+
+}
+
 /* En el celular el precio baja a su renglón y pierde el punto,
    para que ningún renglón empiece con un punto suelto */
+
+/* En los teléfonos más estrechos la pantalla baja de 360 px de
+   alto: letra un punto más chica y menos relleno, o la cortina
+   bajada con un título largo se salía por abajo */
+
+@media (max-width:400px){
+
+  .ventana-cortina{
+    padding:18px 10% 20px;
+  }
+
+  .ventana-titulo{
+    font-size:16px;
+  }
+
+  .ventana-frase{
+    font-size:14px;
+
+    -webkit-line-clamp:2;
+  }
+
+  .ventana-datos{
+    font-size:12px;
+  }
+
+}
 
 @media (max-width:899px){
 
