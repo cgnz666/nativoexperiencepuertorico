@@ -46,7 +46,7 @@
 <ellipse cx="98" cy="262" rx="26" ry="5" style="fill: var(--il-shade, #d6e9e9)"></ellipse>
 <rect x="80" y="318" width="36" height="10" style="fill: var(--il-fill, #ffffff)"></rect>
 <path d="M76 280 H128 M74 296 H126"></path>
-<path d="M104 262 L144 206 C148 200 156 204 152 210 L112 264"></path>
+<path d="M104 262 L144 206 C148 200 156 204 152 210 L112 264 Z" style="fill: var(--il-fill, #ffffff)"></path>
 <path d="M150 312 C146 300 156 294 162 302 C162 310 158 314 150 312 Z M166 318 C162 306 172 300 178 308 C178 316 174 320 166 318 Z" style="fill: var(--il-fill, #ffffff)"></path>
 <path d="M20 340 H220 L232 408 H8 Z" style="fill: var(--il-fill, #ffffff)"></path>
 <path d="M8 408 V416 H232 V408"></path>

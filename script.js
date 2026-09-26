@@ -21,6 +21,67 @@ if (menuButton && navigation) {
 
 
 /* ==========================================
+LLEGAR A UNA SECCIÓN DESDE OTRA PÁGINA
+
+Al abrir index.html#about desde tours o servicios,
+el navegador animaba el viaje (scroll-behavior:
+smooth) mientras aún cargaban fuentes, fotos y el
+video del hero. Si algo cambiaba de alto a medio
+camino, o el navegador cortaba la animación, la
+visita se quedaba arriba y había que pulsar About
+otra vez. Aquí se salta directo a la sección, sin
+animación, y se repite cuando termina de cargar,
+salvo que la persona ya se haya movido por su cuenta.
+Los enlaces dentro de la misma página siguen suaves.
+========================================== */
+
+(function () {
+  const id = decodeURIComponent(window.location.hash.slice(1));
+  const destino = id && document.getElementById(id);
+
+  if (!destino) {
+    return;
+  }
+
+  let seMovio = false;
+
+  ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (tipo) {
+    window.addEventListener(
+      tipo,
+      function () {
+        seMovio = true;
+      },
+      { once: true, passive: true }
+    );
+  });
+
+  function saltar() {
+    if (seMovio) {
+      return;
+    }
+
+    const raiz = document.documentElement;
+    const antes = raiz.style.scrollBehavior;
+
+    raiz.style.scrollBehavior = "auto";
+    destino.scrollIntoView({ block: "start", behavior: "auto" });
+    raiz.style.scrollBehavior = antes;
+  }
+
+  saltar();
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(saltar);
+  }
+
+  window.addEventListener("load", function () {
+    saltar();
+    window.setTimeout(saltar, 400);
+  });
+})();
+
+
+/* ==========================================
 CARRUSELES DE LAS TARJETAS
 
 Lo usan las tarjetas destacadas del HTML y también

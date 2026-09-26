@@ -36,6 +36,7 @@
 <path d="M300 306 H380 M308 318 H396 M316 330 H410"></path>
 <path d="M100 304 C130 296 180 294 214 300 C226 312 228 328 218 336 C178 344 116 344 84 336 C78 324 86 312 100 304 Z" style="fill: var(--il-fill, #ffffff)"></path>
 <path d="M88 332 C124 338 178 338 214 332 C208 338 178 344 116 344 C100 342 88 338 88 332 Z" style="fill: var(--il-shade, #d6e9e9); stroke: none"></path>
+<path d="M100 304 C130 296 180 294 214 300 C226 312 228 328 218 336 C178 344 116 344 84 336 C78 324 86 312 100 304 Z"></path>
 <path d="M110 316 C140 322 180 322 206 316"></path>
 <path d="M100 304 L94 300 M214 300 L220 296 M84 336 L78 340 M218 336 L224 340"></path>
 <rect x="18" y="60" width="12" height="340" style="fill: var(--il-fill, #ffffff)"></rect>
