@@ -1,0 +1,4942 @@
+:root{
+
+--primary:#09a7c3;
+--primary-dark:#067b92;
+
+/* Fondo de los botones. El turquesa de marca con texto blanco
+   encima da 2.87:1 y el mínimo legible es 4.5:1. Estos dos dan
+   4.93:1 y 7.14:1, y apenas cambian el color de la marca. */
+--boton:#067b92;
+--boton-hover:#045a6b;
+
+--ocean:#032833;
+--ocean2:#021d26;
+
+--sand:#f7f4ef;
+
+--white:#ffffff;
+
+--text:#14343b;
+
+/* Oscurecido: el gris anterior daba 3.81:1 sobre el
+   turquesa claro de las secciones, por debajo del mínimo */
+--muted:#55666c;
+
+--shadow:0 20px 60px rgba(0,0,0,.14);
+
+--radius:24px;
+
+/* Alto real de la barra: los 72 px del contenido más el píxel
+   del borde de abajo. Se usa para frenar el desplazamiento de
+   los enlaces con almohadilla, que si no acaban por debajo de
+   la barra fija. */
+--alto-cabecera:73px;
+
+}
+
+
+/* Un enlace a #home o a #about llevaba el navegador a poner la
+   sección pegada al borde de arriba, y ahí es donde vive la
+   cabecera fija: los primeros 73 px de la sección quedaban
+   tapados. En la portada eso cortaba el logo de la tortuga y
+   dejaba asomando una franja clara de la sección siguiente.
+   Con esto el navegador frena justo esos 73 px antes. */
+
+html{
+  scroll-padding-top:var(--alto-cabecera);
+}
+
+
+/* Un número de teléfono partido en dos renglones, con el subrayado
+   cortado a la mitad, se lee fatal. Va aquí y no en cada sitio
+   donde aparezca uno: la primera vez lo arreglé solo en la página
+   de tours y se quedó roto en servicios. */
+
+a[href^="tel:"]{
+  white-space:nowrap;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+/* Sin scroll-behavior:smooth: el deslizamiento de los enlaces
+   internos lo hace script.js (ver "IR A UNA SECCIÓN") */
+
+body{
+
+font-family:'Manrope',sans-serif;
+
+color:var(--text);
+
+background:var(--sand);
+
+line-height:1.6;
+
+overflow-x:hidden;
+
+}
+
+img{
+display:block;
+max-width:100%;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+
+width:min(1180px,92%);
+
+margin:auto;
+
+}
+
+
+/* ==========================================
+HEADER / NAVIGATION BAR
+========================================== */
+
+.site-header{
+  position:fixed;
+  top:0;
+  left:0;
+
+  width:100%;
+  z-index:1000;
+
+  background:rgba(234,247,248,.96);
+
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+
+  border-bottom:1px solid rgba(7,61,73,.08);
+
+  box-shadow:
+    0 10px 30px rgba(7,61,73,.07);
+}
+
+.nav-wrap{
+  height:72px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:30px;
+}
+
+
+/* El menú va anclado al centro de la barra, no a lo que tenga
+   al lado.
+
+   Repartido con el flex, su sitio dependía del ancho del botón
+   de la derecha, y la página de tours ni siquiera lleva botón.
+   Entre la portada y tours los enlaces saltaban más de 400 px,
+   y entre la portada y servicios otros 15, porque "Book Now" y
+   "Plan Your Stay" no miden lo mismo. Al pasar de una página a
+   otra el menú parecía brincar.
+
+   Solo de 701 px en adelante: por debajo, .primary-nav es el
+   panel desplegable y se ancla a la cabecera, no a este
+   contenedor. */
+
+@media (min-width:701px){
+
+  .nav-wrap{
+    position:relative;
+  }
+
+  .primary-nav{
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+  }
+
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+
+  flex:0 0 170px;
+
+  width:170px;
+  height:72px;
+
+  overflow:visible;
+}
+
+.nav-island-logo{
+  display:block;
+
+  width:54px;
+  height:auto;
+  max-width:none;
+
+  object-fit:contain;
+
+  transform:scale(2.4);
+  transform-origin:left center;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  flex:1;
+
+  gap:34px;
+
+  margin:0;
+  padding:0;
+
+  list-style:none;
+}
+
+.nav-links li{
+  flex-shrink:0;
+}
+
+.nav-links a{
+  position:relative;
+
+  display:block;
+
+  color:var(--ocean);
+
+  font-weight:700;
+  text-decoration:none;
+  white-space:nowrap;
+
+  transition:
+    color .25s ease,
+    transform .25s ease;
+}
+
+.nav-links a:link,
+.nav-links a:visited{
+  color:var(--ocean);
+}
+
+.nav-links a::after{
+  content:"";
+
+  position:absolute;
+  left:50%;
+  bottom:-8px;
+
+  width:0;
+  height:2px;
+
+  background:var(--primary);
+
+  border-radius:999px;
+
+  transform:translateX(-50%);
+
+  transition:
+    width .25s ease;
+}
+
+.nav-links a:hover{
+  color:var(--primary);
+
+  transform:translateY(-1px);
+}
+
+.nav-links a:hover::after{
+  width:100%;
+}
+
+/* ==========================================
+NAVIGATION BAR — LAPTOPS / HALF-SCREEN WINDOWS
+========================================== */
+
+@media (max-width:1100px){
+
+  .nav-wrap{
+    gap:18px;
+  }
+
+  .brand{
+    flex:0 0 150px;
+
+    width:150px;
+  }
+
+  .nav-island-logo{
+    width:54px;
+
+    transform:scale(2.4);
+  }
+
+  .nav-links{
+    gap:20px;
+  }
+
+  .nav-links a{
+    font-size:.92rem;
+  }
+
+}
+
+
+/* ==========================================
+NAVIGATION BAR — SMALL LAPTOPS
+========================================== */
+
+@media (max-width:900px){
+
+  .nav-wrap{
+    gap:14px;
+  }
+
+  .brand{
+    flex:0 0 138px;
+
+    width:138px;
+  }
+
+  .nav-island-logo{
+    width:54px;
+
+    transform:scale(2.4);
+  }
+
+  .nav-links{
+    gap:14px;
+  }
+
+  .nav-links a{
+    font-size:.84rem;
+  }
+
+}
+
+
+/* ==========================================
+HERO — MAIN LAYOUT
+========================================== */
+
+.hero{
+  position:relative;
+  width:100%;
+
+  height:calc(100vh - 72px);
+  height:calc(100svh - 72px);
+  min-height:720px;
+  max-height:940px;
+
+  margin-top:72px;
+  overflow:hidden;
+
+  color:#ffffff;
+  background:var(--ocean);
+}
+
+
+/* ==========================================
+LÁMINAS
+
+Una sección con clase "lamina" se queda quieta y la
+siguiente le pasa por encima. El top lo pone script.js
+(ver allí por qué). Las secciones que la tapan necesitan
+position:relative y fondo propio.
+========================================== */
+
+.laminas .lamina{
+  position:sticky;
+  top:var(--lamina-top,var(--alto-cabecera));
+}
+
+
+/* ==========================================
+HERO — BACKGROUND VIDEO
+========================================== */
+
+.hero-video{
+  position:absolute;
+  inset:0;
+
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+
+  object-fit:cover;
+  object-position:center;
+}
+
+
+/* ==========================================
+HERO — VIDEO OVERLAY
+========================================== */
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(1,20,27,.08) 0%,
+      rgba(1,20,27,.17) 48%,
+      rgba(1,20,27,.38) 100%
+    );
+}
+
+
+/* ==========================================
+HERO — CONTENT CONTAINER
+========================================== */
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+
+  width:min(1100px,94%);
+  height:100%;
+  margin:0 auto;
+  padding:20px 0 56px;
+  box-sizing:border-box;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  transform:translateY(-28px);
+}
+
+
+/* ==========================================
+HERO — LOGO CONTAINER
+========================================== */
+
+.hero-logo-wrapper{
+  position:relative;
+
+  width:min(650px,90vw);
+  height:415px;
+  flex:0 0 415px;
+
+  margin:0 auto;
+  overflow:visible;
+}
+
+
+/* ==========================================
+HERO — LOGO IMAGES
+========================================== */
+
+.hero-logo{
+  position:absolute;
+  top:-62px;
+  left:50%;
+
+  display:block;
+  width:110%;
+  height:auto;
+  max-width:none;
+
+  object-fit:contain;
+  transform:translateX(-50%);
+
+  transition:opacity .35s ease;
+
+  filter:drop-shadow(
+    0 18px 36px rgba(0,0,0,.30)
+  );
+}
+
+.hero-logo-white{
+  opacity:1;
+}
+
+.hero-logo-teal{
+  opacity:0;
+}
+
+.hero-logo-wrapper:hover .hero-logo-white{
+  opacity:0;
+}
+
+.hero-logo-wrapper:hover .hero-logo-teal{
+  opacity:1;
+}
+
+
+/* ==========================================
+HERO — SUBTITLE
+========================================== */
+
+.hero-subtitle{
+  width:min(820px,90%);
+  max-width:820px;
+
+  margin:6px auto 0;
+
+  color:#ffffff;
+
+  font-size:clamp(1.18rem,1.1vw,1.34rem);
+  font-weight:500;
+  line-height:1.55;
+  letter-spacing:.15px;
+}
+
+
+/* ==========================================
+HERO — BUTTON ROW
+========================================== */
+
+.hero-cta-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:24px;
+
+  margin-top:28px;
+  margin-bottom:0;
+}
+
+
+/* ==========================================
+HERO — BUTTONS
+========================================== */
+
+.hero-cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-width:190px;
+  height:52px;
+  padding:0 28px;
+  box-sizing:border-box;
+
+  border-radius:0;
+
+  font-size:.94rem;
+  font-weight:800;
+  line-height:1;
+  letter-spacing:.15px;
+  text-align:center;
+  text-decoration:none;
+  white-space:nowrap;
+
+  transition:
+    transform .22s ease,
+    background-color .22s ease,
+    color .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease;
+}
+
+.hero-cta:hover{
+  transform:translateY(-3px);
+}
+
+.hero-cta-primary{
+  color:var(--ocean);
+  background:#ffffff;
+
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.18);
+}
+
+.hero-cta-primary:link,
+.hero-cta-primary:visited{
+  color:var(--ocean);
+}
+
+.hero-cta-primary:hover{
+  color:var(--ocean);
+  background:#f5f5f5;
+}
+
+.hero-cta-secondary{
+  color:#ffffff;
+  background:rgba(255,255,255,.05);
+
+  border:2px solid rgba(255,255,255,.92);
+
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+}
+
+.hero-cta-secondary:link,
+.hero-cta-secondary:visited{
+  color:#ffffff;
+}
+
+.hero-cta-secondary:hover{
+  color:#ffffff;
+  background:rgba(255,255,255,.14);
+}
+
+
+/* ==========================================
+HERO — LARGE / HIGH-RESOLUTION SCREENS
+========================================== */
+
+@media (min-width:1600px){
+
+  .hero{
+    min-height:780px;
+    max-height:980px;
+  }
+
+  .hero-inner{
+    width:min(1320px,92%);
+    padding:24px 0 64px;
+
+    transform:translateY(-32px);
+  }
+
+  .hero-logo-wrapper{
+    width:min(740px,46vw);
+    height:455px;
+    flex-basis:455px;
+  }
+
+  .hero-logo{
+    top:-70px;
+    width:112%;
+  }
+
+  .hero-subtitle{
+    width:min(900px,88%);
+    max-width:900px;
+
+    margin-top:10px;
+
+    font-size:1.34rem;
+  }
+
+  .hero-cta-row{
+    margin-top:32px;
+    gap:28px;
+  }
+
+  .hero-cta{
+    min-width:205px;
+    height:54px;
+    padding:0 32px;
+
+    font-size:.98rem;
+  }
+
+}
+
+
+/* ==========================================
+HERO — LAPTOPS / HALF-SCREEN WINDOWS
+========================================== */
+
+@media (max-width:1100px){
+
+  .hero{
+    height:calc(100vh - 72px);
+    height:calc(100svh - 72px);
+
+    min-height:690px;
+    max-height:820px;
+  }
+
+  .hero-inner{
+    width:96%;
+    padding:16px 0 52px;
+
+    transform:translateY(-24px);
+  }
+
+  .hero-logo-wrapper{
+    width:min(620px,90vw);
+    height:385px;
+    flex-basis:385px;
+  }
+
+  .hero-logo{
+    top:-52px;
+    width:110%;
+  }
+
+  .hero-subtitle{
+    width:min(760px,90%);
+
+    margin-top:6px;
+
+    font-size:1.18rem;
+    line-height:1.5;
+  }
+
+  .hero-cta-row{
+    margin-top:26px;
+    gap:26px;
+  }
+
+  .hero-cta{
+    min-width:184px;
+    height:50px;
+    padding:0 24px;
+  }
+
+}
+
+
+/* ==========================================
+HERO — SMALL LAPTOPS / TABLETS
+========================================== */
+
+@media (max-width:800px){
+
+  .hero{
+    height:660px;
+    min-height:660px;
+    max-height:none;
+  }
+
+  .hero-inner{
+    width:96%;
+    padding:12px 0 46px;
+
+    transform:translateY(-18px);
+  }
+
+  .hero-logo-wrapper{
+    width:min(570px,92vw);
+    height:355px;
+    flex-basis:355px;
+  }
+
+  .hero-logo{
+    top:-38px;
+    width:108%;
+  }
+
+  .hero-subtitle{
+    width:90%;
+
+    margin-top:6px;
+
+    font-size:1.1rem;
+    line-height:1.5;
+  }
+
+  .hero-cta-row{
+    margin-top:24px;
+    gap:18px;
+  }
+
+  .hero-cta{
+    min-width:168px;
+    height:48px;
+    padding:0 20px;
+
+    font-size:.88rem;
+  }
+
+}
+
+
+/* ==========================================
+HERO — MOBILE
+========================================== */
+
+@media (max-width:560px){
+
+  :root{
+    --alto-cabecera:69px;
+  }
+
+  .hero{
+    height:620px;
+    min-height:620px;
+    max-height:none;
+
+    margin-top:68px;
+  }
+
+  .hero-inner{
+    width:97%;
+    padding:10px 0 34px;
+
+    transform:translateY(-12px);
+  }
+
+  .hero-logo-wrapper{
+    width:96vw;
+    height:315px;
+    flex-basis:315px;
+  }
+
+  .hero-logo{
+    top:-18px;
+    width:108%;
+  }
+
+  .hero-subtitle{
+    width:92%;
+
+    margin-top:4px;
+
+    font-size:1rem;
+    line-height:1.45;
+  }
+
+  .hero-cta-row{
+    width:100%;
+
+    margin-top:20px;
+    gap:12px;
+
+    flex-wrap:nowrap;
+  }
+
+  .hero-cta{
+    width:44%;
+    min-width:0;
+    height:46px;
+    padding:0 10px;
+
+    font-size:.78rem;
+  }
+
+}
+
+
+/* ==========================================
+HERO — VERY SMALL MOBILE
+========================================== */
+
+@media (max-width:390px){
+
+  .hero{
+    height:650px;
+    min-height:650px;
+  }
+
+  .hero-inner{
+    padding-bottom:32px;
+
+    transform:translateY(-8px);
+  }
+
+  .hero-logo-wrapper{
+    height:300px;
+    flex-basis:300px;
+  }
+
+  .hero-subtitle{
+    font-size:.96rem;
+  }
+
+  .hero-cta-row{
+    flex-direction:column;
+
+    margin-top:20px;
+    gap:12px;
+  }
+
+  .hero-cta{
+    width:min(280px,88%);
+
+    font-size:.84rem;
+  }
+
+}
+
+
+/* ==========================================
+SECTION HEADINGS
+========================================== */
+
+section{
+
+padding:110px 0;
+
+}
+
+.section-title{
+
+max-width:760px;
+
+margin:0 auto 70px;
+
+text-align:center;
+
+}
+
+.section-title span{
+
+display:inline-block;
+
+margin-bottom:14px;
+
+font-size:.82rem;
+
+font-weight:800;
+
+letter-spacing:.22em;
+
+text-transform:uppercase;
+
+/* El turquesa de marca en texto pequeño sobre fondo
+   claro se queda en 2.6:1. Este llega a 5.7:1. */
+color:#056a7e;
+
+}
+
+.section-title h2{
+
+font-size:clamp(2.5rem,5vw,4.4rem);
+
+line-height:1.05;
+
+margin-bottom:18px;
+
+color:var(--ocean);
+
+}
+
+.section-title p{
+
+font-size:1.15rem;
+
+color:var(--muted);
+
+max-width:700px;
+
+margin:auto;
+
+}
+
+
+
+
+/* ==========================================
+FEATURED TOURS + PRODUCT LIST
+SHARED CONTINUOUS BACKGROUND
+========================================== */
+
+.tour-sections-background{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+
+  background:var(--sand);
+}
+
+
+/* ==========================================
+FEATURED — MAIN SECTION
+========================================== */
+
+.featured-section{
+  position:relative;
+  padding:110px 0;
+  overflow:hidden;
+  background:transparent;
+}
+
+
+/* ==========================================
+FEATURED — SECTION TITLE
+========================================== */
+
+.featured-section .section-title{
+  width:min(820px,90%);
+  max-width:820px;
+  margin:0 auto 60px;
+  text-align:center;
+}
+
+.featured-section .section-title span{
+  display:block;
+  margin-bottom:12px;
+  color:#056a7e;
+  font-size:.86rem;
+  font-weight:800;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
+}
+
+.featured-section .section-title h2{
+  margin:0;
+  color:var(--ocean);
+  font-size:clamp(2.5rem,5vw,4.4rem);
+  line-height:1.04;
+}
+
+.featured-section .section-title p{
+  max-width:620px;
+  margin:20px auto 0;
+  color:#52636a;
+  font-size:1.12rem;
+  line-height:1.7;
+}
+
+
+/* ==========================================
+FEATURED — CARD GRID
+========================================== */
+
+.featured-grid{
+  width:min(1320px,92%);
+  margin:0 auto;
+
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:30px;
+}
+
+
+/* ==========================================
+FEATURED — TOUR CARD
+========================================== */
+
+.featured-tour-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  overflow:hidden;
+
+  /* Como la carta de servicios: sin caja blanca ni sombra,
+     solo la línea oscura alrededor sobre el fondo arena */
+  background:transparent;
+  border:1.5px solid var(--primary-dark);
+  border-radius:0;
+}
+
+
+/* ==========================================
+FEATURED — CHANGING IMAGE GALLERY
+========================================== */
+
+.tour-card-gallery{
+  position:relative;
+  width:100%;
+  height:390px;
+  overflow:hidden;
+  background:var(--ocean);
+}
+
+
+/* ==========================================
+FEATURED — CHANGING IMAGES
+========================================== */
+
+.tour-card-slide{
+  position:absolute;
+  inset:0;
+
+  display:block;
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+  object-position:center;
+
+  opacity:0;
+
+  transform:scale(1.04);
+  transition:
+    opacity 1.15s ease,
+    transform 7s ease;
+
+  pointer-events:none;
+}
+
+.tour-card-slide.is-active{
+  opacity:1;
+  transform:scale(1.13);
+}
+
+
+/* Alternate movement for visual variety */
+
+.tour-card-slide:nth-of-type(even){
+  transform-origin:left center;
+}
+
+.tour-card-slide:nth-of-type(odd){
+  transform-origin:right center;
+}
+
+
+/* ==========================================
+FEATURED — IMAGE OVERLAY
+========================================== */
+
+.tour-card-image-overlay{
+  position:absolute;
+  inset:0;
+  z-index:2;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(1,20,27,.04) 25%,
+      rgba(1,20,27,.18) 65%,
+      rgba(1,20,27,.48) 100%
+    );
+
+  pointer-events:none;
+}
+
+
+/* ==========================================
+FEATURED — PHOTO LABEL
+========================================== */
+
+.tour-card-photo-label{
+  position:absolute;
+  top:22px;
+  left:22px;
+  z-index:3;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:9px 15px;
+
+  color:#ffffff;
+  background:rgba(1,38,48,.52);
+  border:1px solid rgba(255,255,255,.32);
+  border-radius:0;
+
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+
+  font-size:.76rem;
+  font-weight:800;
+  letter-spacing:1.2px;
+  line-height:1;
+  text-transform:uppercase;
+}
+
+
+/* ==========================================
+FEATURED — SLIDESHOW DOTS
+========================================== */
+
+.tour-card-dots{
+  position:absolute;
+  right:22px;
+  bottom:20px;
+  z-index:4;
+
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.tour-card-dot{
+  width:7px;
+  height:7px;
+
+  padding:0;
+  border:0;
+  border-radius:50%;
+
+  background:rgba(255,255,255,.48);
+
+  transition:
+    width .3s ease,
+    background-color .3s ease;
+}
+
+.tour-card-dot.is-active{
+  width:24px;
+  border-radius:999px;
+  background:#ffffff;
+}
+
+
+/* ==========================================
+FEATURED — CARD CONTENT
+========================================== */
+
+.featured-tour-card .tour-content{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+
+  padding:30px 32px 32px;
+}
+
+
+/* ==========================================
+FEATURED — CONTENT TAG
+========================================== */
+
+.featured-tour-card .tour-tag{
+  display:block;
+  margin-bottom:12px;
+
+  /* El turquesa de marca en mayúsculas pequeñas sobre
+     blanco se queda en 2.86:1. Este llega a 6.2:1. */
+  color:#056a7e;
+  font-size:.76rem;
+  font-weight:800;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+
+/* ==========================================
+FEATURED — TOUR TITLE
+========================================== */
+
+.featured-tour-card .tour-content h3{
+  margin:0;
+
+  /* El mismo turquesa oscuro de los titulares de sección,
+     en vez del casi negro que se usaba antes */
+  color:#073d49;
+  font-size:clamp(1.55rem,2.2vw,2rem);
+  line-height:1.18;
+
+  /* Sin esto, un título largo deja una palabra sola abajo */
+  text-wrap:balance;
+}
+
+
+/* ==========================================
+FEATURED — DIFFICULTY LEVEL
+Las barras del icono dicen el nivel sin leer; la palabra lo
+confirma y la nota dice por qué, para quien viaja con mayores.
+========================================== */
+
+.featured-tour-card .tour-level{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:4px 10px;
+
+  margin-top:14px;
+
+  color:#073d49;
+  font-size:.92rem;
+  line-height:1.4;
+}
+
+.featured-tour-card .tour-level img{
+  flex:none;
+}
+
+.featured-tour-card .tour-level strong{
+  font-weight:800;
+}
+
+.featured-tour-card .tour-level-note{
+  color:#52636a;
+}
+
+.featured-tour-card .tour-level-note::before{
+  content:"·";
+  margin-right:10px;
+}
+
+
+/* ==========================================
+FEATURED — SPOTLIGHT
+Lo que distingue a cada tour: accesibilidad, cultura,
+viaje saludable o la vibra underground.
+========================================== */
+
+.featured-tour-card .tour-spotlight{
+  display:grid;
+  grid-template-columns:28px 1fr;
+  gap:14px;
+  align-items:start;
+
+  margin-top:18px;
+  padding:16px 18px;
+
+  background:#e6f3f6;
+  border-left:3px solid var(--boton);
+}
+
+.featured-tour-card .tour-spotlight strong{
+  display:block;
+  margin-bottom:4px;
+
+  color:#056a7e;
+  font-size:.76rem;
+  font-weight:800;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+.featured-tour-card .tour-spotlight span{
+  display:block;
+
+  color:#073d49;
+  font-size:.95rem;
+  line-height:1.55;
+}
+
+
+/* ==========================================
+FEATURED — WHAT TO EXPECT
+Plegado en el celular, abierto y fijo en escritorio:
+lo decide script.js (PLEGABLES SEGÚN EL ANCHO).
+========================================== */
+
+.featured-tour-card .tour-fold{
+  margin-bottom:26px;
+
+  border-top:1px solid #c9dfe4;
+}
+
+.featured-tour-card .tour-fold summary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+
+  min-height:48px;
+
+  color:#056a7e;
+  font-size:.92rem;
+  font-weight:800;
+
+  cursor:pointer;
+  list-style:none;
+}
+
+.featured-tour-card .tour-fold summary::-webkit-details-marker{
+  display:none;
+}
+
+.featured-tour-card .tour-fold summary::after{
+  content:"+";
+
+  font-size:22px;
+  font-weight:300;
+  line-height:1;
+}
+
+.featured-tour-card .tour-fold[open] summary::after{
+  content:"\2212";
+}
+
+.tour-expect{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+
+  padding-bottom:4px;
+
+  list-style:none;
+}
+
+.tour-expect li{
+  display:grid;
+  grid-template-columns:24px 1fr;
+  gap:12px;
+  align-items:start;
+
+  color:#52636a;
+  font-size:.93rem;
+  line-height:1.55;
+}
+
+.tour-expect strong{
+  display:block;
+
+  color:#073d49;
+  font-weight:800;
+}
+
+@media (min-width:1024px){
+
+  /* Abierto y fijo: el título se queda, el signo sobra */
+  .svc-folds .featured-tour-card .tour-fold summary{
+    cursor:default;
+  }
+
+  .svc-folds .featured-tour-card .tour-fold summary::after{
+    content:none;
+  }
+
+}
+
+
+/* ==========================================
+FEATURED — TOUR DESCRIPTION
+========================================== */
+
+.featured-tour-card .tour-content p{
+  margin:16px 0 18px;
+
+  color:#52636a;
+  font-size:1rem;
+  line-height:1.68;
+}
+
+
+/* ==========================================
+FEATURED — CARD BUTTON
+========================================== */
+
+.featured-tour-card .card-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  width:fit-content;
+  min-width:176px;
+  min-height:48px;
+  margin-top:auto;
+  padding:12px 22px;
+  box-sizing:border-box;
+
+  color:#ffffff;
+  background:var(--boton);
+  border:0;
+  border-radius:0;
+
+  cursor:pointer;
+
+  font:inherit;
+  font-size:.9rem;
+  font-weight:800;
+  line-height:1;
+  text-align:center;
+  text-decoration:none;
+  white-space:nowrap;
+
+  transition:background-color .25s ease;
+}
+
+.featured-tour-card .card-button:link,
+.featured-tour-card .card-button:visited{
+  color:#ffffff;
+}
+
+.featured-tour-card .card-button:hover{
+  color:#ffffff;
+  background:var(--boton-hover);
+}
+
+
+/* ==========================================
+FEATURED — HOVER IMAGE EFFECT
+========================================== */
+
+.featured-tour-card:hover .tour-card-slide.is-active{
+  transform:scale(1.17);
+}
+
+
+/* ==========================================
+FEATURED — LARGE / HIGH-RESOLUTION SCREENS
+========================================== */
+
+@media (min-width:1600px){
+
+  .featured-section{
+    padding:130px 0;
+  }
+
+  .featured-section .section-title{
+    width:min(900px,88%);
+    max-width:900px;
+    margin-bottom:68px;
+  }
+
+  .featured-grid{
+    width:min(1480px,90%);
+    gap:40px;
+  }
+
+  .tour-card-gallery{
+    height:470px;
+  }
+
+  .featured-tour-card .tour-content{
+    padding:36px 38px 38px;
+  }
+
+}
+
+
+/* ==========================================
+FEATURED — TABLETS
+========================================== */
+
+@media (max-width:900px){
+
+  .featured-grid{
+    width:min(720px,90%);
+    grid-template-columns:1fr;
+    gap:26px;
+  }
+
+  .tour-card-gallery{
+    height:380px;
+  }
+
+}
+
+
+/* ==========================================
+FEATURED — MOBILE
+========================================== */
+
+@media (max-width:560px){
+
+  .featured-section{
+    padding:80px 0;
+  }
+
+  .featured-section .section-title{
+    width:88%;
+    margin-bottom:42px;
+  }
+
+  .featured-section .section-title h2{
+    font-size:2.35rem;
+  }
+
+  .featured-section .section-title p{
+    font-size:1rem;
+  }
+
+  .featured-grid{
+    width:90%;
+    gap:22px;
+  }
+
+
+  .tour-card-gallery{
+    height:285px;
+  }
+
+  .featured-tour-card .tour-content{
+    padding:25px;
+  }
+
+  .featured-tour-card .tour-content h3{
+    font-size:1.55rem;
+  }
+
+  /* En el teléfono la nota no cabe al lado y bajaba con el punto
+     colgando al principio. Va debajo, alineada con el nivel. */
+  .featured-tour-card .tour-level-note{
+    flex-basis:100%;
+    padding-left:34px;
+  }
+
+  .featured-tour-card .tour-level-note::before{
+    content:none;
+  }
+
+  /* El texto del destaque ocupa todo el ancho: al lado del
+     icono quedaba una columna de cuatro palabras */
+  .featured-tour-card .tour-spotlight{
+    align-items:center;
+    row-gap:8px;
+  }
+
+  .featured-tour-card .tour-spotlight > div{
+    display:contents;
+  }
+
+  .featured-tour-card .tour-spotlight strong{
+    margin-bottom:0;
+  }
+
+  .featured-tour-card .tour-spotlight span{
+    grid-column:1 / -1;
+  }
+
+  .featured-tour-card .card-button{
+    width:100%;
+  }
+
+}
+
+
+/* ==========================================
+FEATURED — REDUCED MOTION ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion:reduce){
+
+  .tour-card-slide,
+  .featured-tour-card,
+  .featured-tour-card .card-button{
+    transition:none;
+  }
+
+  .tour-card-slide.is-active{
+    transform:scale(1.04);
+  }
+
+}
+
+
+/* ==========================================
+ISLAND STORY
+========================================== */
+
+/* La selva se queda quieta y el contenido sube por encima,
+   como una ventana. background-attachment:fixed haría lo mismo,
+   pero el iPhone lo ignora.
+
+   Tampoco sirve una capa position:fixed: Safari 26 tiñe su barra
+   de arriba con el color de los elementos fijos que tiene debajo,
+   y al volver al principio de la página la franja oscura se
+   quedaba tapando la cabecera.
+
+   Por eso la foto va en una capa sticky (::after) del alto de la
+   pantalla, pegada abajo y sin ocupar sitio (margen negativo):
+   mientras el bloque cruza la pantalla, la capa se queda quieta;
+   al entrar y al salir, viaja con el borde del bloque. overflow
+   va en clip y no en hidden, porque hidden convertiría el bloque
+   en contenedor de scroll y la capa dejaría de pegarse. */
+
+.island-story{
+  position:relative;
+  overflow:clip;
+  isolation:isolate;
+
+  background-color:var(--ocean);
+}
+
+.island-story::after{
+  content:"";
+
+  position:sticky;
+  bottom:0;
+  z-index:-1;
+
+  display:block;
+
+  height:100vh;
+  height:100lvh;
+
+  margin-top:-100vh;
+  margin-top:-100lvh;
+
+  pointer-events:none;
+
+  background-image:
+    linear-gradient(rgba(5,28,34,.55), rgba(5,28,34,.55)),
+    url("/assets/island-story-bg.jpg");
+
+  background-image:
+    linear-gradient(rgba(5,28,34,.55), rgba(5,28,34,.55)),
+    image-set(
+      url("/assets/island-story-bg.webp") type("image/webp"),
+      url("/assets/island-story-bg.jpg") type("image/jpeg")
+    );
+
+  background-position:center;
+  background-size:cover;
+}
+
+.island-story::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(61,211,205,.10), transparent 34%),
+    radial-gradient(circle at 82% 72%, rgba(61,211,205,.06), transparent 38%);
+}
+
+.island-story > *{
+  position:relative;
+  z-index:1;
+}
+
+/* ==========================================
+ISLAND TIME
+========================================== */
+
+.island-time{
+  display:flex;
+  align-items:center;
+
+  min-height:620px;
+  padding:110px 0 120px;
+
+  background:transparent;
+}
+
+.island-time h2{
+  max-width:720px;
+  margin:0;
+
+  color:#ffffff;
+  font-size:clamp(3rem,5vw,5rem);
+  line-height:1.02;
+
+  text-shadow:
+    0 4px 24px rgba(0,0,0,.36);
+}
+
+.island-time p{
+  max-width:780px;
+  margin:26px 0 0;
+
+  color:rgba(255,255,255,.92);
+  font-size:1.13rem;
+  line-height:1.75;
+
+  text-shadow:
+    0 2px 14px rgba(0,0,0,.32);
+}
+
+
+/* ==========================================
+ABOUT
+========================================== */
+
+.about-section{
+  position:relative;
+  padding:120px 0 135px;
+
+  background:transparent;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  align-items:center;
+  gap:72px;
+}
+
+.about-media{
+  position:relative;
+  overflow:hidden;
+
+  width:100%;
+  height:520px;
+
+  background:#06333c;
+  border-radius:0;
+
+  box-shadow:
+    0 28px 65px rgba(0,0,0,.34);
+}
+
+.about-video{
+  display:block;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+  object-position:center;
+
+  border-radius:0;
+}
+
+
+/* Entrada del video: llega desde la izquierda, 56 px, mientras
+   aparece y se enfoca, con una frenada larga al final. Una sola
+   vez. Mismo sistema que la tortuga. */
+
+.animar .about-media{
+  opacity:0;
+
+  transform:translateX(-56px);
+  filter:blur(10px);
+
+  transition:
+    opacity 1.1s ease,
+    transform 1.4s cubic-bezier(.16,1,.3,1),
+    filter 1.2s ease;
+}
+
+.animar .about-media.is-visible{
+  opacity:1;
+
+  transform:none;
+  filter:none;
+}
+
+.about-copy{
+  max-width:620px;
+}
+
+.about-copy .eyebrow{
+  display:block;
+
+  margin-bottom:18px;
+
+  color:#59dbd7;
+  font-size:.82rem;
+  font-weight:800;
+  letter-spacing:2px;
+  line-height:1.2;
+  text-transform:uppercase;
+}
+
+.about-copy h2{
+  margin:0;
+
+  color:#ffffff;
+  font-size:clamp(2.6rem,4.6vw,4.7rem);
+  line-height:1.05;
+
+  text-shadow:
+    0 4px 24px rgba(0,0,0,.36);
+}
+
+.about-copy p{
+  margin:24px 0 0;
+
+  color:rgba(255,255,255,.9);
+  font-size:1.06rem;
+  line-height:1.78;
+
+  text-shadow:
+    0 2px 14px rgba(0,0,0,.3);
+}
+
+.about-copy .button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-height:50px;
+  margin-top:32px;
+  padding:13px 25px;
+
+  color:#ffffff;
+  background:var(--boton);
+  border:0;
+  border-radius:0;
+
+  font:inherit;
+  font-size:.92rem;
+  font-weight:800;
+  line-height:1;
+  text-align:center;
+  text-decoration:none;
+
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.25);
+
+  transition:
+    transform .25s ease,
+    background-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.about-copy .button:link,
+.about-copy .button:visited{
+  color:#ffffff;
+}
+
+.about-copy .button:hover{
+  color:#ffffff;
+  background:#0b849a;
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 17px 36px rgba(0,0,0,.34);
+}
+
+
+/* ==========================================
+ISLAND STORY — TABLET
+========================================== */
+
+@media (max-width:900px){
+
+
+  .island-story::before{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(2,18,18,.62) 0%,
+        rgba(2,18,18,.72) 100%
+      );
+  }
+
+  .island-time{
+    min-height:560px;
+    padding:95px 0;
+  }
+
+  .about-section{
+    padding:100px 0;
+  }
+
+  .about-grid{
+    grid-template-columns:1fr;
+    gap:48px;
+  }
+
+  .about-media{
+    height:460px;
+  }
+
+  .about-copy{
+    max-width:720px;
+  }
+
+}
+
+
+/* ==========================================
+ISLAND STORY — MOBILE
+========================================== */
+
+@media (max-width:560px){
+
+
+  .island-story .container{
+    width:min(calc(100% - 36px),1200px);
+  }
+
+  .island-time{
+    min-height:520px;
+    padding:80px 0;
+  }
+
+  .island-time h2{
+    font-size:2.7rem;
+  }
+
+  .island-time p{
+    margin-top:21px;
+    font-size:1rem;
+    line-height:1.67;
+  }
+
+  .about-section{
+    padding:82px 0;
+  }
+
+  .about-grid{
+    gap:36px;
+  }
+
+  .about-media{
+    height:340px;
+  }
+
+
+  .about-copy h2{
+    font-size:2.55rem;
+  }
+
+  .about-copy p{
+    margin-top:20px;
+    font-size:1rem;
+    line-height:1.68;
+  }
+
+  .about-copy .button{
+    width:100%;
+    margin-top:28px;
+  }
+
+}
+
+/* ==========================================
+LOGO STORY
+========================================== */
+
+.story-section{
+  position:relative;
+  overflow:hidden;
+
+  padding:120px 0;
+
+  background:transparent;
+}
+
+
+.story-section::before{
+  content:"";
+
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  transform:translate(-50%,-50%);
+
+  width:900px;
+  height:900px;
+
+  background:url("/assets/logo-outline.png") center center no-repeat;
+  background-size:contain;
+
+  opacity:.08;
+
+  filter:brightness(0) invert(1);
+
+  pointer-events:none;
+}
+
+
+.story-grid{
+  position:relative;
+  z-index:2;
+
+  max-width:900px;
+
+  margin:0 auto;
+
+  text-align:center;
+}
+
+
+.story-copy{
+  position:relative;
+  z-index:2;
+}
+
+
+.story-copy .eyebrow{
+  display:block;
+
+  margin-bottom:18px;
+
+  color:#59dbd7;
+  font-size:.82rem;
+  font-weight:800;
+  letter-spacing:2px;
+  line-height:1.2;
+  text-transform:uppercase;
+}
+
+
+.story-copy h2{
+  margin:0;
+
+  color:#ffffff;
+  font-size:clamp(2.6rem,4.6vw,4.7rem);
+  line-height:1.05;
+
+  text-shadow:
+    0 4px 24px rgba(0,0,0,.36);
+}
+
+
+.story-copy p{
+  max-width:820px;
+
+  margin:24px auto 0;
+
+  color:rgba(255,255,255,.90);
+  font-size:1.06rem;
+  line-height:1.78;
+
+  text-shadow:
+    0 2px 14px rgba(0,0,0,.30);
+}
+
+
+.story-art{
+  position:relative;
+  z-index:2;
+
+  display:flex;
+  justify-content:center;
+}
+
+
+.story-logo{
+  display:block;
+
+  width:min(440px,80%);
+
+  margin:70px auto 0;
+
+  opacity:.92;
+}
+
+
+/* ==========================================
+LOGO STORY — LA TORTUGA SE ARMA Y NADA
+
+Al llegar a la sección, los siete cuadrados del
+caparazón aparecen uno a uno, se dibuja el contorno
+y al final entran los detalles y las burbujas. Luego
+la tortuga flota despacio, sin parar. Es lo único
+que se mueve en esta sección.
+
+Las clases animar e is-visible las pone script.js:
+sin JS, o con "reducir movimiento", la tortuga está
+completa y quieta desde el principio.
+========================================== */
+
+.story-tortuga{
+  height:auto;
+
+  color:var(--primary);
+
+  overflow:visible;
+}
+
+.animar .story-tortuga .cuadro{
+  opacity:0;
+
+  transform:scale(.4) rotate(-10deg);
+  transform-box:fill-box;
+  transform-origin:center;
+
+  transition:
+    opacity .5s ease,
+    transform .7s cubic-bezier(.2,.7,.2,1);
+  transition-delay:calc(var(--i) * 110ms);
+}
+
+.animar .story-tortuga .contorno{
+  stroke-dasharray:1;
+  stroke-dashoffset:1;
+
+  transition:stroke-dashoffset 1.6s ease .6s;
+}
+
+.animar .story-tortuga .detalle{
+  opacity:0;
+
+  transition:opacity .9s ease 1.6s;
+}
+
+.animar .story-tortuga.is-visible .cuadro{
+  opacity:1;
+  transform:none;
+}
+
+.animar .story-tortuga.is-visible .contorno{
+  stroke-dashoffset:0;
+}
+
+.animar .story-tortuga.is-visible .detalle{
+  opacity:1;
+}
+
+.animar .story-tortuga.is-visible{
+  animation:tortuga-nada 9s ease-in-out 2.6s infinite;
+}
+
+@keyframes tortuga-nada{
+
+  0%,
+  100%{
+    transform:translateY(0) rotate(0);
+  }
+
+  50%{
+    transform:translateY(-12px) rotate(1.5deg);
+  }
+
+}
+
+
+/* ==========================================
+LOGO STORY — TABLET
+========================================== */
+
+@media (max-width:900px){
+
+  .story-section{
+    padding:100px 0;
+  }
+
+  .story-section::before{
+    width:680px;
+    height:680px;
+  }
+
+  .story-grid{
+    max-width:760px;
+  }
+
+  .story-logo{
+    width:min(400px,78%);
+    margin-top:58px;
+  }
+
+}
+
+
+/* ==========================================
+LOGO STORY — MOBILE
+========================================== */
+
+@media (max-width:560px){
+
+  .story-section{
+    padding:82px 0;
+  }
+
+  .story-section::before{
+    width:420px;
+    height:420px;
+  }
+
+  .story-copy .eyebrow{
+    margin-bottom:16px;
+
+    font-size:.76rem;
+    letter-spacing:1.7px;
+  }
+
+  .story-copy h2{
+    font-size:2.55rem;
+    line-height:1.05;
+  }
+
+  .story-copy p{
+    margin-top:20px;
+
+    font-size:1rem;
+    line-height:1.68;
+  }
+
+  .story-logo{
+    width:min(310px,82%);
+    margin-top:44px;
+  }
+
+}
+
+
+
+
+/* ==========================================
+REVIEWS
+========================================== */
+
+.reviews-section{
+  position:relative;
+  padding:80px 0;
+  background:var(--sand);
+}
+
+
+/* ==========================================
+REVIEWS — CARRUSEL
+
+Una tira que se desplaza de lado en vez de apilar
+las tarjetas. En móvil se ve una tarjeta con la
+siguiente asomando, que es la señal de que hay más.
+Si todas caben a la vez, las flechas y los puntos
+se esconden solos desde script.js.
+========================================== */
+
+.review-carousel{
+  position:relative;
+
+  margin-top:30px;
+}
+
+.review-track{
+  display:flex;
+  gap:28px;
+
+  overflow-x:auto;
+
+  /* La cinta la mueve script.js cuadro a cuadro: sin imán
+     (scroll-snap) ni deslizamiento suave, que la frenarían */
+  scroll-behavior:auto;
+
+  /* Sitio para que la línea de la tarjeta y el contorno
+     de foco no queden cortados por el recorte del
+     desplazamiento. */
+  padding:16px 6px 24px;
+
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+
+.review-track::-webkit-scrollbar{
+  display:none;
+}
+
+.review-track > .review-card{
+  flex:0 0 calc((100% - 68px) / 3);
+  min-width:0;
+
+  /* Las citas no miden lo mismo. Sin esto, el nombre de cada
+     tarjeta queda a una altura distinta y la fila se ve torcida. */
+  display:flex;
+  flex-direction:column;
+}
+
+.review-track > .review-card h4{
+  margin-top:auto;
+}
+
+.review-track:focus-visible{
+  outline:3px solid var(--primary);
+  outline-offset:4px;
+  border-radius:0;
+}
+
+
+/* ==========================================
+REVIEWS — FLECHAS
+
+Solo en pantallas con ratón. En táctil sobra:
+se arrastra con el dedo.
+========================================== */
+
+.review-arrow{
+  position:absolute;
+  top:50%;
+  z-index:3;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:48px;
+  height:48px;
+
+  padding:0;
+
+  /* La tira lleva más relleno abajo (24 px) que arriba
+     (16 px): se sube 4 px para quedar a media tarjeta */
+  margin-top:-4px;
+
+  color:var(--primary-dark);
+  background:var(--sand);
+  border:1.5px solid var(--primary-dark);
+  border-radius:0;
+
+  font-size:1.9rem;
+  line-height:1;
+
+  transform:translateY(-50%);
+  cursor:pointer;
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    opacity .25s ease;
+}
+
+.review-arrow span{
+  /* La comilla angular se sienta alta dentro de su caja */
+  margin-top:-4px;
+}
+
+.review-arrow-prev{
+  left:-24px;
+}
+
+.review-arrow-next{
+  right:-24px;
+}
+
+.review-arrow:hover{
+  color:#ffffff;
+  background:var(--primary-dark);
+}
+
+
+
+/* ==========================================
+REVIEWS — PUNTOS
+
+Mismo lenguaje que los puntos de las tarjetas de
+tour, en color sobre fondo claro.
+========================================== */
+
+/* ==========================================
+REVIEWS — CARDS
+========================================== */
+
+.review-card{
+  position:relative;
+  overflow:hidden;
+
+  padding:34px;
+
+  /* Misma línea oscura que las tarjetas de tours */
+  background:transparent;
+  border:1.5px solid var(--primary-dark);
+  border-radius:0;
+}
+
+.review-card::before{
+  content:"“";
+
+  position:absolute;
+  top:12px;
+  right:22px;
+
+  color:rgba(20,145,143,.08);
+  font-family:Georgia,serif;
+  font-size:5.5rem;
+  line-height:1;
+
+  pointer-events:none;
+}
+
+
+/* ==========================================
+REVIEWS — STARS
+========================================== */
+
+.stars{
+  display:inline-block;
+
+  margin-bottom:24px;
+
+  color:var(--primary);
+  font-size:1.25rem;
+  letter-spacing:5px;
+}
+
+
+/* ==========================================
+REVIEWS — TEXT
+========================================== */
+
+.review-card p{
+  position:relative;
+  z-index:1;
+
+  margin:0 0 26px;
+
+  color:var(--muted);
+  font-size:1.02rem;
+  line-height:1.8;
+}
+
+.review-card h4{
+  position:relative;
+  z-index:1;
+
+  margin:0 0 4px;
+
+  color:var(--ocean);
+  font-size:1.05rem;
+  font-weight:700;
+}
+
+.review-card span{
+  display:block;
+
+  color:#5f7075;
+  font-size:.9rem;
+}
+
+
+/* ==========================================
+REVIEWS — BUTTON
+========================================== */
+
+.reviews-button{
+  display:flex;
+  justify-content:center;
+
+  margin-top:42px;
+}
+
+.reviews-button .button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:10px;
+
+  padding:16px 34px;
+
+  color:#ffffff;
+  background:var(--boton);
+  border:2px solid var(--boton);
+  border-radius:0;
+
+  font-weight:800;
+  text-decoration:none;
+
+  transition:
+    background .3s ease,
+    border-color .3s ease;
+}
+
+.reviews-button .button:link,
+.reviews-button .button:visited{
+  color:#ffffff;
+}
+
+.reviews-button .button:hover{
+  color:#ffffff;
+  background:var(--boton-hover);
+  border-color:var(--primary-dark);
+}
+
+
+/* ==========================================
+REVIEWS — TABLET / MOBILE
+========================================== */
+
+@media (max-width:900px){
+
+  .reviews-section{
+    padding:65px 0;
+  }
+
+  .review-carousel{
+    margin-top:28px;
+  }
+
+  .review-track{
+    gap:18px;
+    padding-bottom:20px;
+  }
+
+  /* Dos por pantalla en tableta */
+  .review-track > .review-card{
+    flex:0 0 calc((100% - 30px) / 2);
+  }
+
+  .review-arrow{
+    display:none;
+  }
+
+  .review-card{
+    padding:30px;
+  }
+
+  .reviews-button{
+    margin-top:34px;
+  }
+
+}
+
+
+/* ==========================================
+REVIEWS — MÓVIL
+
+Una tarjeta por pantalla, con la siguiente asomando
+por el borde. Así la sección mide una tarjeta de
+alto en vez de tres apiladas.
+========================================== */
+
+@media (max-width:640px){
+
+  .review-track > .review-card{
+    flex:0 0 86%;
+  }
+
+  .review-card{
+    padding:26px;
+  }
+
+  .review-card p{
+    font-size:.98rem;
+    line-height:1.72;
+  }
+
+}
+
+
+/* ==========================================
+CIERRE · LET'S PLAN
+
+El final del home y el de servicios son la misma
+pieza: la invitación sobre azul oscuro, con dos
+ilustraciones de la carta en blanco. En servicios
+va en espejo (.cierre-espejo). Cada dato de
+contacto sale aquí una sola vez; el pie ya no los
+repite.
+========================================== */
+
+/* Márgenes propios, 20 px en el teléfono y 80 px en
+   escritorio, compartidos con el pie para que los dos
+   bordes caigan en la misma línea. */
+
+.cierre-wrap{
+  max-width:1440px;
+
+  margin:0 auto;
+  padding:0 20px;
+}
+
+
+/* position:relative para pasar por encima del hero fijo
+   (ver LÁMINAS) */
+
+.cierre{
+  position:relative;
+
+  padding:56px 0 48px;
+
+  color:#ffffff;
+
+  background:var(--ocean);
+
+  /* Colores de las ilustraciones en línea: blanco sobre azul */
+  --il-line:#ffffff;
+  --il-fill:#032833;
+  --il-shade:#173943;
+  --il-bg:#032833;
+  --il-halo:rgba(255,255,255,.07);
+}
+
+
+/* Una columna de rejilla no baja de su contenido mínimo salvo
+   que se le diga, y aquí el contenido mínimo es la palabra más
+   larga del titular. Con la letra del sistema muy agrandada,
+   esa palabra empujaba la sección fuera de la pantalla. */
+
+.cierre-grid > *{
+  min-width:0;
+}
+
+
+.cierre .eyebrow,
+.tours-page .eyebrow{
+  display:block;
+
+  color:var(--primary);
+
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.3em;
+  line-height:1.4;
+  text-transform:uppercase;
+}
+
+.cierre .eyebrow::after,
+.tours-page .eyebrow::after{
+  content:"";
+
+  display:block;
+
+  width:40px;
+  height:1.5px;
+
+  margin-top:12px;
+
+  background:var(--primary);
+}
+
+
+.cierre h2{
+  margin:24px 0 0;
+
+  color:#ffffff;
+
+  font-size:44px;
+  font-weight:700;
+  line-height:1.02;
+  letter-spacing:-.015em;
+
+  overflow-wrap:break-word;
+}
+
+
+.cierre p{
+  max-width:48ch;
+
+  margin:18px 0 0;
+
+  color:rgba(255,255,255,.86);
+
+  font-size:17px;
+  line-height:1.6;
+}
+
+
+/* ==========================================
+CIERRE — BOTONES
+========================================== */
+
+.cierre-botones{
+  display:flex;
+  flex-direction:column;
+
+  gap:12px;
+
+  margin-top:32px;
+}
+
+
+.cierre-boton{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:10px;
+
+  height:52px;
+
+  padding:0 28px;
+
+  border:1.5px solid #ffffff;
+  border-radius:0;
+
+  font-size:16px;
+  font-weight:700;
+  line-height:1;
+  text-decoration:none;
+  white-space:nowrap;
+
+  transition:
+    background-color .2s ease,
+    color .2s ease;
+}
+
+.cierre-boton svg{
+  flex-shrink:0;
+
+  width:20px;
+  height:20px;
+}
+
+
+/* WhatsApp: el botón blanco */
+
+.cierre-boton-blanco,
+.cierre-boton-blanco:link,
+.cierre-boton-blanco:visited{
+  color:var(--ocean);
+  background:#ffffff;
+}
+
+.cierre-boton-blanco:hover{
+  color:var(--ocean);
+  background:var(--sand);
+}
+
+
+/* Correo: solo el contorno */
+
+.cierre-boton-contorno,
+.cierre-boton-contorno:link,
+.cierre-boton-contorno:visited{
+  color:#ffffff;
+  background:transparent;
+}
+
+.cierre-boton-contorno:hover{
+  color:var(--ocean);
+  background:#ffffff;
+}
+
+
+/* ==========================================
+CIERRE — LISTA DE CONTACTO
+
+Más pequeña y más apagada que los botones, a
+propósito: acompaña, no compite. En el teléfono
+un dato por línea; en escritorio los dos
+primeros comparten la primera línea.
+========================================== */
+
+.cierre-datos{
+  display:flex;
+  flex-direction:column;
+
+  margin:28px 0 0;
+  padding:12px 0 0;
+
+  border-top:1px solid rgba(255,255,255,.16);
+
+  list-style:none;
+}
+
+
+.cierre-datos a,
+.cierre-dato{
+  display:inline-flex;
+  align-items:center;
+
+  gap:10px;
+
+  min-height:40px;
+
+  color:rgba(255,255,255,.78);
+
+  font-size:14px;
+  font-weight:500;
+  line-height:1.4;
+  text-decoration:none;
+}
+
+.cierre-datos a:link,
+.cierre-datos a:visited{
+  color:rgba(255,255,255,.78);
+}
+
+/* La línea mide 40 px, pero el enlace llega a los 44 px de
+   toque: crece 2 px arriba y abajo sin mover nada */
+
+.cierre-datos a{
+  min-height:44px;
+
+  margin-block:-2px;
+}
+
+.cierre-datos a span{
+  text-decoration:underline;
+  text-decoration-color:rgba(255,255,255,.35);
+  text-underline-offset:4px;
+}
+
+.cierre-datos a:hover{
+  color:#ffffff;
+}
+
+.cierre-datos a:hover span{
+  text-decoration-color:currentColor;
+}
+
+.cierre-datos svg{
+  flex-shrink:0;
+
+  width:18px;
+  height:18px;
+
+  color:var(--primary);
+}
+
+
+/* ==========================================
+CIERRE — ILUSTRACIONES
+
+Van en línea, no con <img>, para que tomen los
+colores oscuros de las variables --il-*. La
+pequeña lleva fondo propio para tapar la esquina
+de la grande.
+========================================== */
+
+.cierre-dibujos{
+  position:relative;
+
+  width:100%;
+  max-width:350px;
+  height:300px;
+
+  margin-top:36px;
+}
+
+
+.cierre-dibujo{
+  position:absolute;
+
+  border:1px solid rgba(255,255,255,.22);
+
+  background:var(--ocean);
+}
+
+.cierre-dibujo svg{
+  display:block;
+
+  width:100%;
+  height:100%;
+}
+
+
+.cierre-dibujo-grande{
+  top:0;
+  left:0;
+
+  width:250px;
+  height:250px;
+}
+
+.cierre-dibujo-chico{
+  right:0;
+  bottom:0;
+
+  width:150px;
+  height:150px;
+}
+
+
+/* Aparición al llegar a pantalla (la clase la pone script.js):
+   el texto y las ilustraciones suben escalonados. Es la misma
+   entrada que el resto de la carta de servicios. */
+
+.animar .cierre-texto > *,
+.animar .cierre-dibujo{
+  opacity:0;
+
+  transform:translateY(18px);
+
+  transition:
+    opacity .6s ease,
+    transform .6s cubic-bezier(.2,.7,.2,1);
+
+  transition-delay:calc(var(--aparece-i,0) * 80ms);
+}
+
+.animar .cierre-texto > .is-visible,
+.animar .cierre-dibujo.is-visible{
+  opacity:1;
+
+  transform:none;
+}
+
+
+/* Desde tableta los botones van en fila: apilados a lo ancho
+   quedaban dos barras de más de 700 px */
+
+@media (min-width:600px){
+
+  .cierre-botones{
+    flex-direction:row;
+    flex-wrap:wrap;
+  }
+
+}
+
+
+/* ==========================================
+CIERRE — ESCRITORIO · 900px o más
+========================================== */
+
+@media (min-width:900px){
+
+  .cierre-wrap{
+    padding:0 80px;
+  }
+
+  .cierre{
+    padding:112px 0 104px;
+  }
+
+  .cierre-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+    align-items:center;
+
+    gap:64px;
+  }
+
+  .cierre h2{
+    font-size:84px;
+  }
+
+  .cierre p{
+    font-size:19px;
+  }
+
+  /* "Call us" y la estrella en la primera línea; Instagram y
+     la ubicación, cada uno en la suya */
+
+  .cierre-datos{
+    flex-direction:row;
+    flex-wrap:wrap;
+
+    column-gap:20px;
+  }
+
+  .cierre-datos li:nth-child(n+3){
+    flex-basis:100%;
+  }
+
+  /* La columna se estrecha entre 900 y 1440 px: las
+     ilustraciones se escalan con ella y no se salen */
+
+  .cierre-dibujos{
+    max-width:none;
+    height:auto;
+
+    aspect-ratio:1;
+
+    margin-top:0;
+  }
+
+  .cierre-dibujo-grande{
+    width:min(420px,81%);
+    height:auto;
+
+    aspect-ratio:1;
+  }
+
+  .cierre-dibujo-chico{
+    width:min(220px,42.5%);
+    height:auto;
+
+    aspect-ratio:1;
+  }
+
+
+  /* Servicios: en espejo. Ilustraciones a la izquierda y
+     texto alineado a la derecha. */
+
+  .cierre-espejo .cierre-grid{
+    grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  }
+
+  .cierre-espejo .cierre-dibujos{
+    order:-1;
+  }
+
+  .cierre-espejo .cierre-texto{
+    text-align:right;
+  }
+
+  .cierre-espejo .eyebrow::after,
+  .cierre-espejo p{
+    margin-left:auto;
+  }
+
+  .cierre-espejo .cierre-botones,
+  .cierre-espejo .cierre-datos{
+    justify-content:flex-end;
+  }
+
+  .cierre-espejo .cierre-datos li:nth-child(n+3){
+    text-align:right;
+  }
+
+  .cierre-espejo .cierre-dibujo-grande{
+    left:auto;
+    right:0;
+  }
+
+  .cierre-espejo .cierre-dibujo-chico{
+    right:auto;
+    left:0;
+  }
+
+}
+
+
+/* ==========================================
+PIE DE PÁGINA
+
+Una franja baja y discreta: logo, frase y
+navegación en una fila. La línea teal de arriba
+marca dónde termina Let's Plan.
+========================================== */
+
+footer.pie{
+  color:rgba(255,255,255,.78);
+
+  background:#01161d;
+  border-top:3px solid var(--primary);
+
+  font-size:14px;
+}
+
+
+.pie-fila{
+  display:flex;
+  flex-direction:column;
+
+  gap:22px;
+
+  padding:36px 0 24px;
+}
+
+
+.pie-marca{
+  display:flex;
+  align-items:center;
+
+  gap:16px;
+}
+
+.pie-logo{
+  display:block;
+
+  width:120px;
+  height:auto;
+}
+
+.pie-marca p{
+  max-width:22ch;
+
+  margin:0;
+
+  line-height:1.5;
+}
+
+
+.pie-nav{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:0 24px;
+
+  margin:0;
+  padding:0;
+
+  list-style:none;
+}
+
+.pie-nav a,
+.pie-nav a:link,
+.pie-nav a:visited{
+  display:inline-flex;
+  align-items:center;
+
+  min-height:44px;
+
+  color:#ffffff;
+
+  font-weight:600;
+  text-decoration:none;
+
+  transition:color .2s ease;
+}
+
+.pie-nav a:hover{
+  color:var(--primary);
+}
+
+
+.pie-base{
+  padding:16px 0 20px;
+
+  border-top:1px solid rgba(255,255,255,.12);
+}
+
+.pie-base p{
+  margin:0;
+
+  color:rgba(255,255,255,.6);
+
+  font-size:13px;
+}
+
+
+@media (min-width:900px){
+
+  .pie-fila{
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:32px 0 20px;
+  }
+
+  .pie-logo{
+    width:132px;
+  }
+
+}
+
+
+/* ==========================================
+ANIMATIONS
+========================================== */
+
+.private-card,
+.insta-photo{
+
+transition:
+transform .35s ease,
+box-shadow .35s ease;
+
+}
+
+.private-card:hover,
+.insta-photo:hover{
+
+transform:translateY(-8px);
+
+box-shadow:
+0 30px 70px rgba(0,0,0,.16);
+
+}
+
+
+/* ==========================================
+RESPONSIVE — GENERAL WEBSITE MOBILE
+========================================== */
+
+@media (max-width:560px){
+
+  .site-header{
+    position:fixed;
+  }
+
+  .nav-wrap{
+    height:68px;
+  }
+
+  section{
+    padding:80px 0;
+  }
+
+  .section-title{
+    margin-bottom:44px;
+  }
+
+  .section-title h2{
+    font-size:2.2rem;
+  }
+
+  .section-title p{
+    font-size:1rem;
+  }
+
+  .featured-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .tour-card > img{
+    height:235px;
+  }
+
+  .tour-content{
+    padding:23px;
+  }
+
+  .tour-content h3{
+    font-size:1.55rem;
+  }
+
+  .card-button{
+    width:100%;
+  }
+
+  .about-video{
+    height:380px;
+  }
+
+  .about-copy h2,
+  .story-copy h2{
+    color:#ffffff;
+
+    text-shadow:
+      0 4px 24px rgba(0,0,0,.35);
+  }
+
+  .story-copy h2{
+    font-size:2.2rem;
+  }
+
+  .story-copy p{
+    color:rgba(255,255,255,.90);
+    font-size:1.05rem;
+    line-height:1.75;
+
+    text-shadow:
+      0 2px 12px rgba(0,0,0,.30);
+  }
+
+  .story-section::before{
+    width:420px;
+    height:420px;
+  }
+
+  .private-card,
+  .review-card{
+    padding:26px;
+  }
+
+  .instagram-grid{
+    grid-template-columns:1fr;
+  }
+
+  .insta-photo img{
+    height:260px;
+  }
+
+}
+
+/* ==========================================
+PANTALLAS GRANDES — 1800px o más
+
+1. El contenido se ensancha
+2. El texto crece un poco
+3. El agua (textura de olas) llena los costados
+========================================== */
+
+@media (min-width:1800px){
+
+  /* 1 · TEXTO UN POCO MÁS GRANDE */
+
+  html{
+    font-size:17px;
+  }
+
+  /* La barra crece aquí, y con ella el freno de los anclajes */
+
+  :root{
+    --alto-cabecera:85px;
+  }
+
+  /* 2 · CONTENIDO MÁS ANCHO */
+
+  .container{
+    width:min(1480px,92%);
+  }
+
+  /* Barra superior un poco más alta, para que no
+     se vea como una cinta fina en un monitor grande */
+
+  .nav-wrap,
+  .brand{
+    height:84px;
+  }
+
+  .hero{
+    margin-top:85px;
+    height:calc(100vh - 85px);
+    height:calc(100svh - 85px);
+  }
+
+  .featured-section .section-title{
+    width:min(960px,90%);
+    max-width:960px;
+  }
+
+  /* Las tarjetas y el marco de tours usan todo el
+     ancho del contenedor, para que todo quede alineado */
+
+  .featured-grid{
+    width:100%;
+    gap:36px;
+  }
+
+  .tour-card-gallery{
+    height:440px;
+  }
+
+  .hero-inner{
+    width:min(1280px,94%);
+  }
+
+  .hero-logo-wrapper{
+    width:min(780px,80vw);
+    height:500px;
+    flex:0 0 500px;
+  }
+
+  .hero-logo{
+    top:-74px;
+  }
+
+  .island-time h2{
+    max-width:880px;
+  }
+
+  .island-time p{
+    max-width:900px;
+  }
+
+  /* 3 · HERO: viñeta lateral para enfocar el centro
+     y disimular el escalado del video */
+
+  .hero{
+    max-height:1080px;
+  }
+
+  .hero-overlay{
+    background:
+      radial-gradient(
+        ellipse 70% 90% at 50% 45%,
+        rgba(1,20,27,0) 40%,
+        rgba(1,20,27,.42) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(1,20,27,.12) 0%,
+        rgba(1,20,27,.20) 48%,
+        rgba(1,20,27,.45) 100%
+      );
+  }
+
+  /* 6 · SELVA: viñeta en los bordes y tortuga más grande */
+
+  .island-story::before{
+    background:
+      radial-gradient(circle at 20% 15%, rgba(61,211,205,.10), transparent 34%),
+      radial-gradient(circle at 82% 72%, rgba(61,211,205,.06), transparent 38%),
+      linear-gradient(
+        90deg,
+        rgba(2,16,20,.55) 0%,
+        rgba(2,16,20,0) 22%,
+        rgba(2,16,20,0) 78%,
+        rgba(2,16,20,.55) 100%
+      );
+  }
+
+  .story-section::before{
+    width:1200px;
+    height:1200px;
+    opacity:.055;
+  }
+
+}
+
+
+/* ==========================================
+PANTALLAS MUY GRANDES — 2400px o más
+========================================== */
+
+@media (min-width:2400px){
+
+  html{
+    font-size:18px;
+  }
+
+  :root{
+    --alto-cabecera:93px;
+  }
+
+  .container{
+    width:min(1680px,90%);
+  }
+
+  .nav-wrap,
+  .brand{
+    height:92px;
+  }
+
+  .hero{
+    margin-top:93px;
+    height:calc(100vh - 93px);
+    height:calc(100svh - 93px);
+    max-height:1240px;
+  }
+
+  .featured-grid{
+    gap:40px;
+  }
+
+  .tour-card-gallery{
+    height:500px;
+  }
+
+  .hero-inner{
+    width:min(1440px,92%);
+  }
+
+  .hero-logo-wrapper{
+    width:min(900px,70vw);
+    height:575px;
+    flex:0 0 575px;
+  }
+
+  .hero-logo{
+    top:-86px;
+  }
+
+  .story-section::before{
+    width:1400px;
+    height:1400px;
+  }
+
+}
+
+
+/* ==========================================
+PANTALLAS 4K — 3200px o más
+========================================== */
+
+@media (min-width:3200px){
+
+  html{
+    font-size:19px;
+  }
+
+  .container{
+    width:min(1860px,88%);
+  }
+
+  .featured-section .section-title{
+    width:min(1200px,90%);
+    max-width:1200px;
+  }
+
+  .hero{
+    max-height:1440px;
+  }
+
+}
+
+
+/* ==========================================
+MENÚ MÓVIL — BOTÓN HAMBURGUESA
+
+En pantallas pequeñas la barra ocultaba los
+enlaces sin dejar alternativa. Este bloque los
+devuelve dentro de un panel desplegable.
+========================================== */
+
+.menu-toggle{
+
+  display:none;
+
+  width:44px;
+  height:44px;
+
+  padding:0;
+
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+
+  border:0;
+
+  background:transparent;
+
+  cursor:pointer;
+
+}
+
+.menu-toggle span{
+
+  display:block;
+
+  width:24px;
+  height:2px;
+
+  border-radius:999px;
+
+  background:var(--ocean);
+
+  transition:
+    transform .28s ease,
+    opacity .2s ease;
+
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(1){
+  transform:translateY(7px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(2){
+  opacity:0;
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(3){
+  transform:translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width:700px){
+
+  .menu-toggle{
+    display:flex;
+  }
+
+  .primary-nav{
+
+    position:absolute;
+    top:100%;
+    left:0;
+
+    width:100%;
+
+    max-height:min(70vh,420px);
+    overflow-y:auto;
+
+    background:#eaf7f8;
+
+    border-bottom:1px solid rgba(7,61,73,.10);
+
+    box-shadow:0 18px 40px rgba(7,61,73,.12);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(-10px);
+
+    transition:
+      opacity .25s ease,
+      transform .25s ease,
+      visibility .25s ease;
+
+  }
+
+  .primary-nav.open{
+
+    opacity:1;
+    visibility:visible;
+
+    transform:none;
+
+  }
+
+  .primary-nav .nav-links{
+
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+
+    width:min(1180px,92%);
+
+    margin:0 auto;
+    padding:4px 0 16px;
+
+    gap:0;
+
+  }
+
+  .primary-nav .nav-links li{
+    border-top:1px solid rgba(7,61,73,.10);
+  }
+
+  .primary-nav .nav-links a{
+
+    padding:15px 2px;
+
+    font-size:1rem;
+
+  }
+
+  .primary-nav .nav-links a::after{
+    display:none;
+  }
+
+  .primary-nav .nav-links a:hover{
+    transform:none;
+  }
+
+}
+
+
+/* ==========================================
+PÁGINA DE TOURS
+
+Oscura de arriba abajo: un hero con el mapa de
+rutas de la isla y un catálogo donde cada tour es
+una ventana de avión encendida. Los márgenes son
+los del cierre (.cierre-wrap).
+========================================== */
+
+body.tours-page{
+  background:var(--ocean2);
+}
+
+
+/* ==========================================
+PÁGINA DE TOURS — HERO
+========================================== */
+
+.tours-hero{
+  overflow:hidden;
+
+  /* La cabecera es fija: el relleno empieza debajo de ella */
+  padding:calc(var(--alto-cabecera) + 48px) 0 32px;
+
+  color:#ffffff;
+
+  background:var(--ocean);
+}
+
+.tours-hero-texto > *{
+  min-width:0;
+}
+
+.tours-hero h1{
+  margin:22px 0 0;
+
+  color:#ffffff;
+
+  font-size:42px;
+  font-weight:700;
+  line-height:1.02;
+  letter-spacing:-.015em;
+
+  overflow-wrap:break-word;
+}
+
+.tours-hero h1 span{
+  display:block;
+
+  color:var(--primary);
+}
+
+.tours-hero-lead{
+  max-width:52ch;
+
+  margin:16px 0 0;
+
+  color:rgba(255,255,255,.86);
+
+  font-size:17px;
+  line-height:1.6;
+}
+
+/* Distintivo de la empresa: la nota, nunca una cifra de reseñas */
+
+.tours-distintivo,
+.tours-distintivo:link,
+.tours-distintivo:visited{
+  display:inline-flex;
+  align-items:center;
+
+  gap:8px;
+
+  min-height:44px;
+  margin-top:18px;
+
+  color:#ffffff;
+
+  border-bottom:1px solid rgba(255,255,255,.35);
+
+  font-size:15px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.tours-distintivo:hover{
+  border-bottom-color:#ffffff;
+}
+
+.tours-distintivo span{
+  color:var(--primary);
+
+  letter-spacing:.1em;
+}
+
+
+/* ==========================================
+PÁGINA DE TOURS — MAPA DE RUTAS
+
+Dos dibujos: plano en escritorio y en ángulo en el
+celular, para que la isla quepa entera sin deslizar.
+Las coordenadas vienen calculadas para cada relieve:
+no se reescalan.
+========================================== */
+
+.tours-mapa{
+  position:relative;
+
+  margin:8px -20px 0;
+}
+
+.tours-mapa svg{
+  display:block;
+
+  width:100%;
+  height:auto;
+}
+
+.tours-mapa .mapa-plano{
+  display:none;
+}
+
+.tours-mapa .lbl{
+  font:800 15px 'Manrope',system-ui,sans-serif;
+  letter-spacing:.16em;
+
+  fill:#ffffff;
+
+  paint-order:stroke;
+  stroke:#032833;
+  stroke-width:5px;
+}
+
+.tours-mapa .lbl-m{
+  font-size:19px;
+
+  stroke-width:7px;
+}
+
+.tours-mapa .hub{
+  fill:var(--primary);
+}
+
+.tours-mapa .lbl-i{
+  font:700 12px 'Manrope',system-ui,sans-serif;
+  letter-spacing:.2em;
+
+  fill:rgba(255,255,255,.62);
+}
+
+.tours-mapa .lbl-im{
+  font-size:16px;
+}
+
+/* El mapa se puede tocar: tours.js busca la línea más cercana
+   al dedo (ver "RUTAS: EL MAPA FILTRA EL CATÁLOGO") */
+
+.tours-mapa svg{
+  cursor:pointer;
+}
+
+/* Al elegir una ruta, las demás se apagan */
+
+.tours-mapa .rt{
+  transition:opacity .25s ease;
+}
+
+.tours-hero[data-ruta-activa] .tours-mapa .rt{
+  opacity:.15;
+}
+
+.tours-hero[data-ruta-activa="south"] .rt[data-line="south"],
+.tours-hero[data-ruta-activa="west"] .rt[data-line="west"],
+.tours-hero[data-ruta-activa="inland"] .rt[data-line="inland"],
+.tours-hero[data-ruta-activa="coffee"] .rt[data-line="coffee"],
+.tours-hero[data-ruta-activa="east"] .rt[data-line="east"],
+.tours-hero[data-ruta-activa="sj"] .rt[data-line="sj"],
+.tours-hero[data-ruta-activa="island"] .rt[data-line="island"]{
+  opacity:1;
+}
+
+/* San Juan late: es de donde sale todo */
+
+.tours-mapa .pulse{
+  transform-box:fill-box;
+  transform-origin:center;
+
+  animation:mapa-pulso 2.4s ease-out infinite;
+}
+
+@keyframes mapa-pulso{
+  0%{
+    transform:scale(.6);
+    opacity:.8;
+  }
+
+  100%{
+    transform:scale(1.8);
+    opacity:0;
+  }
+}
+
+
+/* ==========================================
+PÁGINA DE TOURS — BOTONES DE RUTA
+========================================== */
+
+.tours-rutas{
+  display:flex;
+
+  gap:8px;
+
+  margin-top:6px;
+  padding:18px 0 4px;
+
+  /* En el celular, una sola fila que se desliza de lado */
+  overflow-x:auto;
+
+  scrollbar-width:none;
+}
+
+.tours-rutas::-webkit-scrollbar{
+  display:none;
+}
+
+.tours-ruta{
+  display:inline-flex;
+  flex-shrink:0;
+  align-items:center;
+
+  gap:10px;
+
+  min-height:44px;
+  padding:0 16px;
+
+  color:#ffffff;
+  background:transparent;
+  border:1.5px solid rgba(255,255,255,.4);
+  border-radius:0;
+
+  font:700 14px 'Manrope',system-ui,sans-serif;
+
+  cursor:pointer;
+
+  transition:
+    background .25s ease,
+    border-color .25s ease;
+}
+
+.tours-ruta:hover,
+.tours-ruta[aria-pressed="true"]{
+  background:rgba(255,255,255,.12);
+  border-color:#ffffff;
+}
+
+.tours-ruta svg{
+  flex-shrink:0;
+}
+
+
+/* ==========================================
+PÁGINA DE TOURS — CATÁLOGO
+========================================== */
+
+.tours-catalogo{
+  overflow:hidden;
+
+  padding:56px 0 72px;
+
+  color:#ffffff;
+
+  background:var(--ocean2);
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.tours-herramientas{
+  display:flex;
+  flex-direction:column;
+
+  gap:18px;
+
+  margin-bottom:20px;
+}
+
+.tours-herramientas h2{
+  margin:0;
+}
+
+.tours-search{
+  display:flex;
+  align-items:center;
+
+  gap:10px;
+
+  height:52px;
+  padding:0 16px;
+
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.28);
+}
+
+.tours-search svg{
+  flex-shrink:0;
+
+  width:20px;
+  height:20px;
+
+  color:var(--primary);
+}
+
+.tours-search input{
+  flex-grow:1;
+
+  min-width:0;
+
+  color:#ffffff;
+  background:transparent;
+  border:0;
+  outline:0;
+
+  font:500 16px 'Manrope',system-ui,sans-serif;
+}
+
+.tours-search input::placeholder{
+  color:rgba(255,255,255,.6);
+}
+
+/* El aspa que Chrome pone dentro de los campos de
+   búsqueda desentona con el resto de la barra */
+
+.tours-search input::-webkit-search-cancel-button{
+  -webkit-appearance:none;
+  appearance:none;
+}
+
+.tours-controles{
+  display:flex;
+  justify-content:flex-end;
+
+  margin-bottom:36px;
+}
+
+.tours-grid{
+  display:grid;
+  grid-template-columns:1fr;
+
+  gap:56px;
+}
+
+.tours-empty,
+.tours-error{
+  color:rgba(255,255,255,.8);
+
+  font-size:1rem;
+  line-height:1.65;
+  text-align:center;
+}
+
+/* "Search all routes" dentro del aviso de vacío: se lee como
+   enlace, pero es un botón que quita el filtro de ruta */
+
+.tours-quitar-ruta{
+  min-height:44px;
+  padding:0;
+
+  color:#ffffff;
+  background:none;
+  border:0;
+  border-bottom:1px solid rgba(255,255,255,.6);
+
+  font:700 1rem 'Manrope',system-ui,sans-serif;
+
+  cursor:pointer;
+}
+
+.tours-quitar-ruta:hover{
+  border-bottom-color:#ffffff;
+}
+
+.tours-error a{
+  color:#ffffff;
+
+  font-weight:700;
+
+  border-bottom:1px solid rgba(255,255,255,.6);
+}
+
+.tours-more{
+  display:flex;
+  justify-content:center;
+
+  margin-top:48px;
+}
+
+/* Un display propio pisa el atributo hidden: sin esto el botón
+   y los avisos se quedaban a la vista aunque el script los
+   escondiera */
+
+.tours-more[hidden],
+.tours-empty[hidden],
+.tours-error[hidden]{
+  display:none;
+}
+
+.tours-more button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-height:52px;
+  padding:0 28px;
+
+  color:#ffffff;
+  background:transparent;
+  border:1.5px solid #ffffff;
+  border-radius:0;
+
+  font:700 16px 'Manrope',system-ui,sans-serif;
+
+  cursor:pointer;
+
+  transition:
+    background .25s ease,
+    color .25s ease;
+}
+
+.tours-more button:hover{
+  color:var(--ocean);
+  background:#ffffff;
+}
+
+
+/* ==========================================
+PÁGINA DE TOURS — LA VENTANA
+
+Capas, de atrás hacia delante: el resplandor hecho
+con la propia foto, el marco con volumen, el aro
+encendido y la pantalla con la foto, las líneas de
+pantalla y la línea de datos. La cortina de arriba
+lleva el título y baja para mostrar la reserva.
+========================================== */
+
+.ventana-tour{
+  width:100%;
+  max-width:440px;
+
+  margin:0 auto;
+}
+
+.ventana{
+  position:relative;
+
+  aspect-ratio:260 / 320;
+}
+
+/* El resplandor es luz que la foto derrama sobre la pared:
+   una sombra muy difuminada con la misma forma que el marco.
+   Los tres colores los calcula tours.js leyendo la foto en
+   miniatura (izquierda, derecha y promedio); mientras llegan,
+   queda en teal. No usa filter:blur, que algunos navegadores
+   recortaban en rectángulos al subir por la página. */
+
+.ventana-resplandor{
+  position:absolute;
+  inset:0;
+  z-index:0;
+
+  border-radius:27% / 22%;
+
+  box-shadow:
+    -22px 14px 80px 4px rgb(var(--brillo-izq, 9 167 195) / .5),
+    22px 14px 80px 4px rgb(var(--brillo-der, 9 167 195) / .5),
+    0 24px 90px 0 rgb(var(--brillo-medio, 9 167 195) / .22);
+
+  opacity:.8;
+
+  transition:opacity .4s ease;
+}
+
+/* El marco es del mismo material que la pared: fino, del tono
+   del fondo y sin sombra que lo despegue, como moldeado en el
+   fuselaje. Solo un brillo arriba y una sombra abajo le dan la
+   curva. */
+
+.ventana-marco{
+  position:relative;
+  z-index:1;
+
+  height:100%;
+  padding:3%;
+
+  border-radius:27% / 22%;
+
+  background:
+    radial-gradient(110% 80% at 72% 108%, rgba(9,167,195,.22), transparent 58%),
+    linear-gradient(160deg, #0c3440 0%, #05232d 45%, #021a22 100%);
+
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.14),
+    inset 0 -2px 6px rgba(0,0,0,.5),
+    0 0 0 1px rgba(255,255,255,.05);
+}
+
+.ventana-aro{
+  height:100%;
+  padding:2.2%;
+
+  border-radius:25% / 20%;
+
+  background:linear-gradient(205deg, #0b2d37, #01121a);
+
+  box-shadow:
+    inset 0 0 0 1.5px rgba(9,167,195,.7),
+    inset 0 0 26px rgba(9,167,195,.45),
+    0 0 22px rgba(9,167,195,.28),
+    inset 0 3px 6px rgba(0,0,0,.6);
+}
+
+.ventana-pantalla{
+  position:relative;
+
+  height:100%;
+  overflow:hidden;
+
+  border-radius:23% / 18.5%;
+
+  background:var(--ocean);
+
+  box-shadow:
+    0 0 0 1.5px rgba(170,240,255,.55),
+    0 0 14px rgba(9,167,195,.5);
+}
+
+/* Las fotos pasan como el paisaje por la ventana: es el mismo
+   carrusel del home (.tour-card-slide), sin sus puntos */
+
+.ventana-pantalla .tour-card-slide{
+  filter:saturate(1.08) contrast(1.05);
+}
+
+.ventana-pantalla .tour-card-dots{
+  display:none;
+}
+
+.ventana-crt{
+  position:absolute;
+  inset:0;
+  z-index:2;
+
+  border-radius:inherit;
+
+  pointer-events:none;
+
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.14) 0 1px, transparent 1px 3px),
+    linear-gradient(128deg, transparent 30%, rgba(255,255,255,.13) 40%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(2,22,29,.7) 100%);
+
+  box-shadow:inset 0 0 44px rgba(9,167,195,.38);
+}
+
+/* Línea de datos, en letra de máquina */
+
+.ventana-hud{
+  position:absolute;
+  right:13%;
+  bottom:8%;
+  left:13%;
+  z-index:3;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:10px;
+
+  color:#9ff3ff;
+
+  font:700 10px 'JetBrains Mono',ui-monospace,monospace;
+  letter-spacing:.12em;
+  white-space:nowrap;
+
+  text-shadow:
+    0 0 8px rgba(9,167,195,.95),
+    0 0 2px rgba(0,0,0,.8);
+}
+
+.ventana-hud span:first-child{
+  display:flex;
+  align-items:center;
+
+  gap:7px;
+}
+
+.ventana-hud span + span{
+  flex-shrink:0;
+}
+
+.ventana-hud b{
+  display:inline-block;
+
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  box-shadow:0 0 8px currentColor;
+}
+
+@media (max-width:420px){
+
+  .ventana-hud span + span{
+    display:none;
+  }
+
+}
+
+
+/* ==========================================
+PÁGINA DE TOURS — LA CORTINA
+
+Subida, muestra el título y los datos. Bajada,
+también la ruta, la frase y la reserva. Crece con
+el título: los títulos van completos, tal como
+salen en las otras plataformas.
+========================================== */
+
+.ventana-cortina{
+  position:absolute;
+  top:0;
+  right:0;
+  left:0;
+  z-index:4;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+
+  min-height:30%;
+  max-height:100%;
+  padding:24px 12% 24px;
+
+  background:linear-gradient(180deg, #0f3d49 0%, #0a3039 70%, #082832 100%);
+
+  box-shadow:
+    0 6px 14px rgba(0,0,0,.45),
+    inset 0 -1px 0 rgba(170,240,255,.35);
+
+  transition:min-height .6s cubic-bezier(.2,.7,.2,1);
+}
+
+/* Pliegues de la persiana */
+
+.ventana-cortina::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  pointer-events:none;
+
+  background:repeating-linear-gradient(180deg, transparent 0 33px, rgba(255,255,255,.05) 33px 34px);
+}
+
+/* Tirador encendido */
+
+.ventana-cortina::after{
+  content:"";
+
+  position:absolute;
+  bottom:-5px;
+  left:37%;
+
+  width:26%;
+  height:9px;
+
+  border-radius:3px;
+
+  background:linear-gradient(180deg, #5fe0f5, #09a7c3);
+
+  box-shadow:
+    0 0 14px rgba(9,167,195,.9),
+    0 0 3px rgba(255,255,255,.6);
+}
+
+.ventana-titulo{
+  position:relative;
+
+  margin:0 0 6px;
+
+  color:#ffffff;
+
+  font-size:18px;
+  font-weight:800;
+  line-height:1.2;
+  text-align:center;
+  text-wrap:balance;
+
+  text-shadow:0 0 12px rgba(9,167,195,.55);
+}
+
+.ventana-datos{
+  position:relative;
+
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+
+  gap:0 6px;
+
+  color:#ffffff;
+
+  font-size:13px;
+  font-weight:700;
+  text-align:center;
+}
+
+.ventana-datos i{
+  color:var(--primary);
+
+  font-style:normal;
+}
+
+.ventana-datos .nw{
+  white-space:nowrap;
+}
+
+.ventana-etiqueta{
+  font-weight:800;
+}
+
+.ventana-etiqueta.con-nota{
+  color:#5fe0f5;
+
+  text-shadow:0 0 8px rgba(9,167,195,.8);
+}
+
+/* Detalle: plegado y escondido del todo mientras la cortina
+   está subida, para que no la estire y para que el teclado no
+   entre a un botón que no se ve */
+
+.ventana-detalle{
+  position:relative;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:10px;
+
+  max-height:0;
+  overflow:hidden;
+
+  border-bottom:1px solid transparent;
+
+  text-align:left;
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:
+    max-height .6s cubic-bezier(.2,.7,.2,1),
+    opacity .3s ease;
+}
+
+.ventana-linea{
+  position:relative;
+
+  display:flex;
+  align-items:center;
+
+  gap:10px;
+
+  /* Plegada con la cortina subida, como el detalle */
+  max-height:0;
+  overflow:hidden;
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:
+    max-height .6s cubic-bezier(.2,.7,.2,1),
+    opacity .3s ease;
+
+  color:#9ff3ff;
+
+  font:700 10px 'JetBrains Mono',ui-monospace,monospace;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.ventana-linea svg{
+  width:26px;
+}
+
+.ventana-frase{
+  margin:0;
+
+  color:rgba(255,255,255,.82);
+
+  font-size:15px;
+  line-height:1.5;
+
+  /* El resumen de Bókun puede ser largo: tres renglones como
+     mucho, para que la cortina bajada quepa en la pantalla */
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3;
+  overflow:hidden;
+}
+
+.ventana-tour .card-button{
+  align-self:flex-start;
+
+  min-width:0;
+  min-height:44px;
+  margin:4px 0 0;
+  padding:0 20px;
+
+  color:var(--ocean);
+  background:#ffffff;
+  border:0;
+  border-radius:0;
+
+  font:700 14px 'Manrope',system-ui,sans-serif;
+
+  box-shadow:0 0 18px rgba(9,167,195,.45);
+
+  cursor:pointer;
+
+  transition:background .25s ease;
+}
+
+.ventana-tour .card-button:hover{
+  color:var(--ocean);
+  background:var(--sand);
+}
+
+/* El tirador: toda la franja de abajo de la cortina */
+
+.ventana-tirador{
+  position:absolute;
+  right:0;
+  bottom:-6px;
+  left:0;
+  z-index:5;
+
+  height:44px;
+
+  background:transparent;
+  border:0;
+
+  cursor:pointer;
+}
+
+/* Bajada: con el dedo, al tocar el tirador; con ratón, al pasar
+   por encima o al llegar con el teclado */
+
+.ventana-tour.abierta .ventana-cortina{
+  min-height:80%;
+}
+
+.ventana-tour.abierta .ventana-linea{
+  max-height:40px;
+  margin-bottom:12px;
+
+  opacity:1;
+  visibility:visible;
+
+  transition-delay:0s, .15s;
+}
+
+.ventana-tour.abierta .ventana-titulo{
+  margin-bottom:10px;
+
+  text-align:left;
+}
+
+.ventana-tour.abierta .ventana-detalle{
+  max-height:420px;
+  margin-bottom:16px;
+  padding-bottom:16px;
+
+  border-bottom-color:rgba(170,240,255,.22);
+
+  opacity:1;
+  visibility:visible;
+
+  transition-delay:0s, .15s;
+}
+
+@media (hover:hover){
+
+  .ventana-tour:hover .ventana-cortina,
+  .ventana-tour:has(:focus-visible) .ventana-cortina{
+    min-height:80%;
+  }
+
+  .ventana-tour:hover .ventana-linea,
+  .ventana-tour:has(:focus-visible) .ventana-linea{
+    max-height:40px;
+    margin-bottom:12px;
+
+    opacity:1;
+    visibility:visible;
+
+    transition-delay:0s, .15s;
+  }
+
+  .ventana-tour:hover .ventana-titulo,
+  .ventana-tour:has(:focus-visible) .ventana-titulo{
+    margin-bottom:10px;
+
+    text-align:left;
+  }
+
+  .ventana-tour:hover .ventana-detalle,
+  .ventana-tour:has(:focus-visible) .ventana-detalle{
+    max-height:420px;
+    margin-bottom:16px;
+    padding-bottom:16px;
+
+    border-bottom-color:rgba(170,240,255,.22);
+
+    opacity:1;
+    visibility:visible;
+
+    transition-delay:0s, .15s;
+  }
+
+  .ventana-tour:hover .ventana-resplandor{
+    opacity:1;
+  }
+
+}
+
+@media (prefers-reduced-motion:reduce){
+
+  .tours-mapa .pulse{
+    animation:none;
+  }
+
+  .ventana-cortina,
+  .ventana-linea,
+  .ventana-detalle,
+  .ventana-resplandor{
+    transition:none;
+  }
+
+}
+
+
+/* ==========================================
+PÁGINA DE TOURS — ESCRITORIO · 900px o más
+========================================== */
+
+@media (min-width:900px){
+
+  .tours-hero{
+    padding:calc(var(--alto-cabecera) + 88px) 0 48px;
+  }
+
+  .tours-hero-texto{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    align-items:end;
+
+    gap:64px;
+  }
+
+  .tours-hero h1{
+    font-size:84px;
+  }
+
+  .tours-hero-lead{
+    font-size:19px;
+  }
+
+  .tours-mapa{
+    margin:40px 0 0;
+  }
+
+  .tours-mapa .mapa-plano{
+    display:block;
+  }
+
+  .tours-mapa .mapa-angulo{
+    display:none;
+  }
+
+  .tours-catalogo{
+    padding:88px 0 104px;
+  }
+
+  .tours-herramientas{
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:24px;
+  }
+
+  .tours-search{
+    width:420px;
+  }
+
+  .tours-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+    gap:72px 96px;
+  }
+
+  .ventana-tour{
+    max-width:500px;
+  }
+
+  .ventana-hud{
+    font-size:11px;
+  }
+
+  .ventana-titulo{
+    font-size:21px;
+  }
+
+  .ventana-datos{
+    font-size:14px;
+  }
+
+  .ventana-frase{
+    font-size:16px;
+  }
+
+}
+
+/* Desde tableta los botones de ruta se reparten en renglones:
+   en una sola fila deslizable quedaba uno cortado a 768 px */
+
+@media (min-width:600px){
+
+  .tours-rutas{
+    flex-wrap:wrap;
+
+    overflow:visible;
+  }
+
+}
+
+/* En el celular el precio baja a su renglón y pierde el punto,
+   para que ningún renglón empiece con un punto suelto */
+
+/* En los teléfonos más estrechos la pantalla baja de 360 px de
+   alto: letra un punto más chica y menos relleno, o la cortina
+   bajada con un título largo se salía por abajo */
+
+@media (max-width:400px){
+
+  .ventana-cortina{
+    padding:18px 10% 20px;
+  }
+
+  .ventana-titulo{
+    font-size:16px;
+  }
+
+  .ventana-frase{
+    font-size:14px;
+
+    -webkit-line-clamp:2;
+  }
+
+  .ventana-datos{
+    font-size:12px;
+  }
+
+}
+
+@media (max-width:899px){
+
+  .ventana-datos .nw:last-child{
+    flex-basis:100%;
+  }
+
+  .ventana-datos .nw:last-child i{
+    display:none;
+  }
+
+}
+
+
+/* ==========================================
+PORTADA — BOTÓN HACIA EL CATÁLOGO COMPLETO
+========================================== */
+
+.featured-more{
+  display:flex;
+  justify-content:center;
+
+  margin-top:52px;
+}
+
+.featured-more a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  height:58px;
+
+  padding:0 40px;
+
+  border-radius:0;
+
+  background:var(--boton);
+  color:#ffffff;
+
+  font-size:1.02rem;
+  font-weight:800;
+
+  transition:
+    background .25s ease,
+    gap .25s ease;
+}
+
+.featured-more a:link,
+.featured-more a:visited{
+  color:#ffffff;
+}
+
+.featured-more a:hover{
+  gap:16px;
+
+  background:var(--boton-hover);
+}
+
+
+@media (max-width:560px){
+
+  .featured-more{
+    margin-top:36px;
+  }
+
+  .featured-more a{
+    width:100%;
+  }
+
+}
+
+
+/* ==========================================
+ACCESIBILIDAD
+
+Dos cosas que cambian mucho para quien ve poco
+o navega sin ratón.
+========================================== */
+
+/* Texto que solo existe para los lectores de pantalla */
+
+.solo-lectores{
+  position:absolute;
+
+  width:1px;
+  height:1px;
+
+  margin:-1px;
+  padding:0;
+
+  overflow:hidden;
+
+  clip-path:inset(50%);
+  white-space:nowrap;
+
+  border:0;
+}
+
+/* 1 · Salto al contenido. Invisible hasta que el
+   tabulador lo alcanza. Sin esto hay que recorrer
+   todo el menú en cada página. */
+
+.salto-al-contenido{
+  position:absolute;
+  top:-100px;
+  left:16px;
+  z-index:2000;
+
+  padding:14px 22px;
+
+  background:var(--ocean);
+  color:#ffffff;
+
+  font-size:1rem;
+  font-weight:700;
+
+  border-radius:0 0 12px 12px;
+
+  transition:top .18s ease;
+}
+
+.salto-al-contenido:link,
+.salto-al-contenido:visited{
+  color:#ffffff;
+}
+
+.salto-al-contenido:focus{
+  top:0;
+}
+
+
+/* 2 · Un indicador de foco propio, grueso y separado
+   del elemento, en lugar del contorno de 1px del
+   navegador. Solo aparece al navegar con teclado. */
+
+:focus-visible{
+  outline:3px solid var(--ocean);
+  outline-offset:3px;
+
+  border-radius:4px;
+}
+
+/* Sobre fondos oscuros el contorno oscuro no se vería */
+
+.hero :focus-visible,
+.island-story :focus-visible,
+.cierre :focus-visible,
+footer :focus-visible,
+.tours-page :focus-visible{
+  outline-color:#ffffff;
+}
+
+/* El campo de búsqueda anulaba el contorno y lo
+   sustituía por un halo demasiado tenue */
+
+.tours-search input:focus-visible{
+  outline:3px solid #ffffff;
+  outline-offset:2px;
+}
+
+
+/* ==========================================
+ACCESIBILIDAD · PARAR LAS FOTOS QUE ROTAN
+========================================== */
+
+.pausar-fotos{
+  align-self:center;
+
+  padding:6px 4px;
+
+  background:transparent;
+  border:0;
+  border-bottom:1px solid currentColor;
+
+  color:#55666c;
+
+  font-family:inherit;
+  font-size:.78rem;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:color .25s ease;
+}
+
+.pausar-fotos:hover{
+  color:var(--boton);
+}
+
+.featured-controles{
+  display:flex;
+  justify-content:center;
+
+  margin-top:26px;
+}
+
+.tours-page .pausar-fotos{
+  min-height:44px;
+  padding:0 16px;
+
+  background:transparent;
+  border:1.5px solid rgba(255,255,255,.4);
+  border-radius:0;
+
+  color:#ffffff;
+
+  transition:
+    background .25s ease,
+    border-color .25s ease;
+}
+
+.tours-page .pausar-fotos:hover{
+  background:rgba(255,255,255,.12);
+  border-color:#ffffff;
+  color:#ffffff;
+}
+
+
+/* ==========================================
+RESERVAR HABLANDO CON ALGUIEN
+
+Para quien el calendario del widget no es la vía
+más cómoda, y para quien prefiere que se lo
+resuelvan por voz.
+========================================== */
+
+.reserva-por-voz{
+  width:min(720px,100%);
+
+  /* Va después del botón de ver todas: quien llegó al final
+     de la lista sin decidirse es justo quien agradece hablar
+     con alguien. Con margen generoso, para que en el teléfono
+     no parezca un segundo botón pegado al primero. */
+  margin:72px auto 0;
+
+  color:rgba(255,255,255,.8);
+
+  font-size:1rem;
+  line-height:1.65;
+  text-align:center;
+  text-wrap:balance;
+}
+
+.reserva-por-voz a{
+  color:#ffffff;
+
+  font-weight:700;
+
+  border-bottom:1px solid rgba(255,255,255,.6);
+}
+
+.reserva-por-voz a:hover{
+  border-bottom-color:#ffffff;
+}
