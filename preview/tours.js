@@ -166,15 +166,6 @@ document.addEventListener("DOMContentLoaded", function () {
       maximumFractionDigits: 2
     });
 
-  /* "6 hours and 30 minutes" → "6 h 30 min" */
-  const duracionCorta = (texto) =>
-    String(texto || "")
-      .replace(/\s*\band\b\s*/gi, " ")
-      .replace(/\bhours?\b/gi, "h")
-      .replace(/\bminutes?\b/gi, "min")
-      .replace(/\s+/g, " ")
-      .trim();
-
   const sinAcentos = (texto) =>
     String(texto || "")
       .toLowerCase()
@@ -435,13 +426,9 @@ document.addEventListener("DOMContentLoaded", function () {
         : `<span class="ventana-etiqueta">${escapar(datos.etiqueta)}</span>`
       : "";
 
-    const piezas = [];
-
-    if (tour.duration) {
-      piezas.push(escapar(duracionCorta(tour.duration)));
-    }
-
-    piezas.push(`From ${precio(tour.price)}`);
+    /* Sin duración: las horas cambian según el grupo y el día,
+       así que no se publican (ver CLAUDE.md) */
+    const piezas = [`From ${precio(tour.price)}`];
 
     const datosEnLinea =
       etiqueta +
@@ -551,7 +538,6 @@ document.addEventListener("DOMContentLoaded", function () {
         [
           tour.title,
           tour.excerpt,
-          tour.duration,
           (tour.places || []).join(" "),
           ruta ? ruta.nombre : "",
           datos.frase,
