@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tours, referencia de diseño</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#09a7c3;--primary-dark:#067b92;--boton:#067b92;--boton-hover:#045a6b;--ocean:#032833;--ocean2:#021d26;--sand:#f7f4ef;--text:#14343b;--muted:#55666c;--agua:#eaf7f8;--pie:#01161d}
+*{box-sizing:border-box}body{margin:0;font-family:'Manrope',system-ui,sans-serif;color:var(--text);background:var(--sand);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1440px;margin:0 auto;padding:0 20px}@media(min-width:900px){.wrap{padding:0 80px}}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 22px;font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap}
+.btn-teal{background:var(--boton);color:#fff}.btn-teal:hover{background:var(--boton-hover)}
+.eyebrow{display:block;font-size:13px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--primary)}
+.eyebrow::after{content:"";display:block;width:40px;height:1.5px;margin-top:12px;background:currentColor}
+/* hero mapa */
+.hero{background:var(--ocean);color:#fff;padding:48px 0 32px;overflow:hidden}
+.hero h1{margin:22px 0 0;font-size:42px;line-height:1.02;font-weight:700;letter-spacing:-.015em}
+.hero h1 span{color:var(--primary)}
+.hero p.lead{margin:16px 0 0;font-size:17px;line-height:1.6;color:rgba(255,255,255,.86);max-width:52ch}
+.badge{display:inline-flex;align-items:center;gap:8px;margin-top:18px;min-height:44px;color:#fff;font-weight:700;font-size:15px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+.badge .s{color:var(--primary);letter-spacing:.1em}
+.mapbox{margin:28px -20px 0;position:relative}
+.map{display:block;width:100%;height:auto}
+.map .st{font:800 11px 'Manrope',system-ui,sans-serif;letter-spacing:.14em;fill:rgba(255,255,255,.88)}
+.map .ln{transition:opacity .25s}
+.hero[data-active] .map [data-line]{opacity:.18}
+.hero[data-active="south"] .map [data-line="south"],.hero[data-active="inland"] .map [data-line="inland"],.hero[data-active="west"] .map [data-line="west"],.hero[data-active="east"] .map [data-line="east"],.hero[data-active="sj"] .map [data-line="sj"],.hero[data-active="island"] .map [data-line="island"]{opacity:1}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:18px 0 4px;margin-top:6px;scrollbar-width:none}
+.chip{flex-shrink:0;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;border:1.5px solid rgba(255,255,255,.4);background:transparent;color:#fff;font:700 14px 'Manrope',system-ui,sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:rgba(255,255,255,.12);border-color:#fff}
+.vdwrap{margin-top:22px;border-top:1px solid rgba(255,255,255,.16);padding-top:20px}
+.vdwrap h2{margin:0 0 14px;font-size:13px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.vd{list-style:none;margin:0;padding:0;position:relative}
+.vd::before{content:"";position:absolute;left:9px;top:10px;bottom:10px;width:5px;background:var(--c);box-shadow:0 0 12px var(--c)}
+.vd .stop{position:relative;display:flex;gap:18px;padding:0 0 18px}
+.vd .dot{flex-shrink:0;width:23px;height:23px;border-radius:50%;background:var(--ocean);border:4px solid #fff;position:relative;z-index:1}
+.vd b{display:block;font-size:14px;letter-spacing:.14em;text-transform:uppercase;line-height:23px}
+.vd ul{list-style:none;margin:6px 0 0;padding:0;font-size:15px;color:rgba(255,255,255,.82)}
+.vd ul li{min-height:32px;display:flex;align-items:center}
+.vd ul li::before{content:"→";color:var(--primary);margin-right:8px}
+@media(min-width:900px){
+.hero{padding:88px 0 48px}
+.hero .top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:end}
+.hero h1{font-size:84px}
+.hero p.lead{font-size:19px}
+.mapbox{margin:40px 0 0}
+.chips{flex-wrap:wrap;overflow:visible}
+.vdwrap{display:none}
+}
+
+.map .lbl-i{font:700 12px 'Manrope',system-ui,sans-serif;letter-spacing:.2em;fill:rgba(255,255,255,.62)}
+.map .lbl-im{font-size:16px}
+.map .lbl{font:800 15px 'Manrope',system-ui,sans-serif;letter-spacing:.16em;fill:#ffffff;paint-order:stroke;stroke:#032833;stroke-width:5px}
+.map .hub{fill:#09a7c3}
+.map .flow{animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-52}}
+.map .pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.6);opacity:.8}100%{transform:scale(1.8);opacity:0}}
+@media (prefers-reduced-motion:reduce){.map .flow,.map .pulse{animation:none}}
+.hero[data-active] .map .rt{opacity:.15}
+.hero[data-active="south"] .map .rt[data-line="south"],.hero[data-active="inland"] .map .rt[data-line="inland"],.hero[data-active="coffee"] .map .rt[data-line="coffee"],.hero[data-active="west"] .map .rt[data-line="west"],.hero[data-active="east"] .map .rt[data-line="east"],.hero[data-active="sj"] .map .rt[data-line="sj"],.hero[data-active="island"] .map .rt[data-line="island"]{opacity:1}
+.map .rt{transition:opacity .25s}
+@media(max-width:899px){.mapbox{margin:8px -20px 0}.map-d{display:none}.map .lbl-m{font-size:19px;stroke-width:7px}}
+@media(min-width:900px){.map-m{display:none}}
+/* catálogo oscuro, ventanas sólidas con brillo */
+.catalog{background:var(--ocean2);color:#fff;padding:56px 0 72px;border-top:1px solid rgba(255,255,255,.08);overflow:hidden}
+.tools{display:flex;flex-direction:column;gap:18px;margin-bottom:20px}
+.tools h2{margin:0}
+.search{display:flex;align-items:center;gap:10px;height:52px;padding:0 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.28)}
+.search input{border:0;outline:0;font:500 16px 'Manrope',system-ui,sans-serif;flex-grow:1;background:transparent;color:#fff}
+.search input::placeholder{color:rgba(255,255,255,.6)}
+.list{display:grid;grid-template-columns:1fr;gap:56px}
+.card{width:100%;max-width:440px;margin:0 auto}
+.win{position:relative;aspect-ratio:260/320}
+.arc{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:4}
+.arc text{font:800 12px 'Manrope',system-ui,sans-serif;letter-spacing:.22em;fill:#fff;filter:drop-shadow(0 0 5px rgba(9,167,195,.55))}
+/* luz de la foto que se derrama sobre el marco */
+.glow{position:absolute;inset:4% 6% 0;border-radius:40%/30%;background:var(--foto) center/cover #09a7c3;filter:blur(34px) saturate(1.7) brightness(1.15);opacity:.5;transform:translateY(5%);z-index:0}
+/* marco moldeado, grueso y con volumen */
+.bezel{position:relative;z-index:1;height:100%;border-radius:27%/22%;padding:6%;
+background:radial-gradient(110% 80% at 72% 108%,rgba(9,167,195,.38),transparent 58%),linear-gradient(160deg,#1a4f5c 0%,#0b2f39 42%,#041820 100%);
+box-shadow:inset 0 1.5px 0 rgba(255,255,255,.22),inset 0 -3px 8px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.07),0 28px 60px rgba(0,0,0,.55)}
+/* aro interior encendido, como el borde anaranjado de la referencia pero en teal */
+.ring{height:100%;border-radius:25%/20%;padding:3.4%;background:linear-gradient(205deg,#0b2d37,#01121a);
+box-shadow:inset 0 0 0 1.5px rgba(9,167,195,.7),inset 0 0 26px rgba(9,167,195,.45),0 0 22px rgba(9,167,195,.28),inset 0 3px 6px rgba(0,0,0,.6)}
+/* pantalla: foto con líneas de CRT, viñeta y reflejo */
+.screen{position:relative;height:100%;border-radius:23%/18.5%;overflow:hidden;background:#032833;box-shadow:0 0 0 1.5px rgba(170,240,255,.55),0 0 14px rgba(9,167,195,.5)}
+.screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.08) contrast(1.05)}
+.crt{position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:inherit;
+background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px),linear-gradient(128deg,transparent 30%,rgba(255,255,255,.13) 40%,transparent 50%),radial-gradient(ellipse at 50% 50%,transparent 52%,rgba(2,22,29,.7) 100%);
+box-shadow:inset 0 0 44px rgba(9,167,195,.38)}
+.hud{position:absolute;left:13%;right:13%;bottom:8%;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:10px;font:700 10px 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em;color:#9ff3ff;text-shadow:0 0 8px rgba(9,167,195,.95),0 0 2px rgba(0,0,0,.8);white-space:nowrap}
+.hud-l{display:flex;align-items:center;gap:7px}
+.hud span+span{flex-shrink:0}
+@media(max-width:420px){.hud span+span{display:none}}
+.hud-l b{width:8px;height:8px;border-radius:50%;box-shadow:0 0 8px currentColor;display:inline-block}
+/* cortina: pieza sólida con tirador encendido */
+.shade{position:absolute;left:0;right:0;top:0;height:30%;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;padding:0 12% 24px;
+background:linear-gradient(180deg,#0f3d49 0%,#0a3039 70%,#082832 100%);box-shadow:0 6px 14px rgba(0,0,0,.45),inset 0 -1px 0 rgba(170,240,255,.35);transition:height .6s cubic-bezier(.2,.7,.2,1)}
+.shade::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,transparent 0 33px,rgba(255,255,255,.05) 33px 34px);pointer-events:none}
+.shade::after{content:"";position:absolute;left:50%;bottom:-5px;width:26%;height:9px;margin-left:-13%;border-radius:3px;background:linear-gradient(180deg,#5fe0f5,#09a7c3);box-shadow:0 0 14px rgba(9,167,195,.9),0 0 3px rgba(255,255,255,.6)}
+.shade-name{position:relative;margin:0 0 6px;text-align:center;font-size:21px;line-height:1.15;font-weight:800;color:#fff;text-shadow:0 0 12px rgba(9,167,195,.55)}
+.card.open .shade-name{display:none}
+.strip{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:0 6px;font-size:13px;font-weight:700;color:#fff;text-align:center}
+.strip i{font-style:normal;color:var(--primary)}
+.nw{white-space:nowrap}
+@media(max-width:899px){.strip .nw:last-child{flex-basis:100%}.strip .nw:last-child i{display:none}}
+.tag{font-weight:800}.tag.rate{color:#5fe0f5;text-shadow:0 0 8px rgba(9,167,195,.8)}
+.more-info{position:relative;display:flex;flex-direction:column;gap:10px;opacity:0;visibility:hidden;transition:opacity .3s;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(170,240,255,.22)}
+.line-name{display:flex;align-items:center;gap:10px;font:700 10px 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:#9ff3ff}
+.line-name svg{width:26px}
+.card h3{margin:0;font-size:19px;line-height:1.2;font-weight:700;color:#fff}
+.stops{margin:0;font-size:15px;color:rgba(255,255,255,.82)}
+.acts{display:flex;align-items:center;gap:18px;margin-top:4px}
+.btn-white{background:#fff;color:var(--ocean);height:44px;padding:0 20px;font-size:14px;box-shadow:0 0 18px rgba(9,167,195,.45)}.btn-white:hover{background:var(--sand)}
+.pull{position:absolute;left:0;right:0;bottom:-6px;height:44px;background:transparent;border:0;cursor:pointer;z-index:5}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.card.open .shade{height:80%}
+.card.open .more-info{opacity:1;visibility:visible;transition-delay:.15s}
+.card{}
+@media (hover:hover){.card:hover .shade-name,.card:focus-within .shade-name{display:none}.card:hover .shade,.card:focus-within .shade{height:80%}.card:hover .more-info,.card:focus-within .more-info{opacity:1;visibility:visible;transition-delay:.15s}
+.card .glow{transition:opacity .4s}.card:hover .glow{opacity:.75}}
+@media (prefers-reduced-motion:reduce){.shade,.more-info,.glow{transition:none}}
+.more{display:flex;justify-content:center;margin-top:56px}
+.btn-line{border:1.5px solid #fff;color:#fff;background:transparent;font-family:inherit;cursor:pointer}.btn-line:hover{background:#fff;color:var(--ocean)}
+@media(min-width:900px){
+.catalog{padding:88px 0 104px}
+.tools{flex-direction:row;align-items:center;justify-content:space-between;margin-bottom:40px}
+.search{width:420px}
+.list{grid-template-columns:repeat(2,minmax(0,1fr));gap:72px 96px}
+.shade-name{font-size:25px}
+.card{max-width:500px}
+.card h3{font-size:23px}
+.strip{font-size:14px}
+.stops{font-size:16px}
+.hud{font-size:11px}
+}
+.card[hidden]{display:none}
+/* pie */
+.foot{background:var(--pie);color:rgba(255,255,255,.78);font-size:14px;border-top:3px solid var(--primary)}
+.foot .row{display:flex;flex-direction:column;gap:22px;padding:36px 0 24px}
+.foot .brand{display:flex;align-items:center;gap:16px}.foot .brand img{width:120px}
+.foot .brand p{margin:0;max-width:22ch;line-height:1.5}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:0 24px}
+.foot a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;color:#fff;font-weight:600}
+.foot .base{border-top:1px solid rgba(255,255,255,.12);padding:16px 0 20px;font-size:13px;color:rgba(255,255,255,.6)}
+@media(min-width:900px){.foot .row{flex-direction:row;align-items:center;justify-content:space-between}}
+</style></head><body>
+<section class="hero"><div class="wrap">
+<div class="top"><div>
+<span class="eyebrow">Every Tour</span>
+<h1>Adventures <span>we offer.</span></h1>
+</div><div>
+<p class="lead">Pick a route on the map, search by town, or just scroll until something pulls you in.</p>
+<a class="badge" href="https://www.tripadvisor.com/Attraction_Review-g147320-d28063850-Reviews-Nativo_Experiences_Puerto_Rico-San_Juan_Puerto_Rico.html"><span class="s">★★★★★</span> 5.0 on Tripadvisor</a>
+</div></div>
+<div class="mapbox"><svg class="map map-d" viewBox="-160 0 2060 660" role="img" aria-label="Relief map of Puerto Rico with our tour routes drawn as metro lines out of San Juan: south to Ponce, west along the north coast to Rincón, into the central mountains, to the coffee hills, east to Loíza and Piñones, and a loop around the whole island. Vieques, Culebra, Caja de Muerto, Mona, Monito and Desecheo are shown too.">
+<defs><filter id="glow" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<image href="../../assets/tours/mapa-relieve.jpg" x="-160" y="0" width="2060" height="660" preserveAspectRatio="none"/>
+<g class="rt" data-line="island"><path d="M1090 162 L832 162 L827 167 L552 167 L530 145 L281 145 L259 123 L166 123 L45 244 L45 409 L120 484 L125 484 L200 559 L599 559 L611 547 L782 547 L840 489 L1063 489 L1095 457 L1095 391 L1136 350 L1136 208 L1090 162" fill="none" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="2 10" filter="url(#glow)"/></g>
+<g class="rt" data-line="west"><path d="M1090 141 L832 141 L827 146 L552 146 L530 124 L281 124 L259 102 L166 102 L45 223" fill="none" stroke="#ffffff" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" filter="url(#glow)"/><circle cx="45" cy="223" r="9" fill="#032833" stroke="#ffffff" stroke-width="3.5"/><text x="53" y="261" text-anchor="start" class="lbl">RINCÓN & THE WEST</text></g>
+<g class="rt" data-line="inland"><path d="M1090 155 L832 155 L827 160 L552 160 L530 138 L530 297 L540 307 L540 383 L518 405" fill="none" stroke="#eaf7f8" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="14 8" filter="url(#glow)"/><circle cx="518" cy="405" r="9" fill="#032833" stroke="#ffffff" stroke-width="3.5"/><text x="518" y="445" text-anchor="middle" class="lbl">CENTRAL MOUNTAINS</text></g>
+<g class="rt" data-line="coffee"><path d="M1099 148 L1099 290 L1145 336 L1170 336 L1216 382" fill="none" stroke="#d9b98c" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" filter="url(#glow)"/><circle cx="1216" cy="382" r="9" fill="#032833" stroke="#ffffff" stroke-width="3.5"/><text x="1234" y="388" text-anchor="start" class="lbl">COFFEE HILLS</text></g>
+<g class="rt" data-line="south"><path d="M1085 148 L1085 290 L1131 336 L1131 402 L1090 443 L867 443 L835 475 L664 475 L606 533" fill="none" stroke="#09a7c3" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" filter="url(#glow)"/><circle cx="606" cy="533" r="9" fill="#032833" stroke="#ffffff" stroke-width="3.5"/><text x="606" y="573" text-anchor="middle" class="lbl">PONCE & THE SOUTH</text></g>
+<g class="rt" data-line="east"><path d="M1090 148 L1178 148 L1189 159 L1269 159 L1288 178" fill="none" stroke="#ffffff" stroke-width="11" stroke-linejoin="round" stroke-linecap="round" opacity=".7"/><path d="M1090 148 L1178 148 L1189 159 L1269 159 L1288 178" fill="none" stroke="#09a7c3" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" filter="url(#glow)"/><circle cx="1288" cy="178" r="9" fill="#032833" stroke="#ffffff" stroke-width="3.5"/><text x="1302" y="164" text-anchor="start" class="lbl">LOÍZA & PIÑONES</text></g>
+<g class="rt" data-line="sj"><rect x="1050" y="122" width="56" height="34" fill="none" stroke="#09a7c3" stroke-width="3" stroke-dasharray="6 5" filter="url(#glow)"/></g>
+<circle cx="1090" cy="148" r="30" fill="none" stroke="#09a7c3" stroke-width="1.5" opacity=".6" class="pulse"/>
+<circle cx="1090" cy="148" r="12" fill="#032833" stroke="#ffffff" stroke-width="4"/>
+<text x="1090" y="106" text-anchor="middle" class="lbl hub">SAN JUAN · START</text>
+<g class="isles"><text x="1690" y="498" text-anchor="middle" class="lbl-i">VIEQUES</text><text x="1820" y="252" text-anchor="middle" class="lbl-i">CULEBRA</text><text x="690" y="630" text-anchor="end" class="lbl-i" dx="-14">CAJA DE MUERTO</text><text x="-100" y="515" text-anchor="middle" class="lbl-i">MONA</text><text x="-108" y="218" text-anchor="middle" class="lbl-i">DESECHEO</text></g>
+</svg>
+<svg class="map map-m" viewBox="0 0 780 620" role="img" aria-label="Relief map of Puerto Rico seen at an angle, with our tour routes drawn as metro lines out of San Juan: south to Ponce, west to Rincón, into the central mountains, to the coffee hills, east to Loíza and Piñones, and around the whole island.">
+<defs><filter id="glowm" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<image href="../../assets/tours/mapa-relieve-movil.jpg" x="0" y="0" width="780" height="620" preserveAspectRatio="none"/>
+<g class="rt" data-line="island"><path d="M452 209 L367 246 L366 249 L276 289 L265 285 L183 321 L173 317 L142 331 L120 389 L144 443 L180 456 L182 456 L217 469 L348 411 L351 405 L407 380 L417 353 L491 320 L497 305 L487 283 L494 264 L474 217 L452 209" fill="none" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="2 10" filter="url(#glowm)"/></g>
+<g class="rt" data-line="west"><path d="M449 202 L364 239 L363 242 L272 282 L262 278 L180 314 L170 310 L139 324 L117 382" fill="none" stroke="#ffffff" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" filter="url(#glowm)"/><circle cx="117" cy="382" r="10" fill="#032833" stroke="#ffffff" stroke-width="4"/><text x="111" y="424" text-anchor="start" class="lbl lbl-m">RINCÓN & THE WEST</text></g>
+<g class="rt" data-line="inland"><path d="M451 206 L366 244 L365 246 L275 287 L264 283 L287 335 L292 337 L303 362 L299 372" fill="none" stroke="#eaf7f8" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="14 8" filter="url(#glowm)"/><circle cx="299" cy="372" r="10" fill="#032833" stroke="#ffffff" stroke-width="4"/><text x="299" y="350" text-anchor="middle" class="lbl lbl-m">CENTRAL MOUNTAINS</text></g>
+<g class="rt" data-line="coffee"><path d="M453 203 L473 249 L495 258 L504 254 L525 262" fill="none" stroke="#d9b98c" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" filter="url(#glowm)"/><circle cx="525" cy="262" r="10" fill="#032833" stroke="#ffffff" stroke-width="4"/><text x="543" y="270" text-anchor="start" class="lbl lbl-m">COFFEE HILLS</text></g>
+<g class="rt" data-line="south"><path d="M448 205 L469 251 L491 260 L500 281 L493 301 L420 334 L414 349 L357 374 L347 401" fill="none" stroke="#09a7c3" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" filter="url(#glowm)"/><circle cx="347" cy="401" r="10" fill="#032833" stroke="#ffffff" stroke-width="4"/><text x="365" y="411" text-anchor="start" class="lbl lbl-m">PONCE & THE SOUTH</text></g>
+<g class="rt" data-line="east"><path d="M450 204 L479 191 L484 193 L510 181 L519 185" fill="none" stroke="#ffffff" stroke-width="11" stroke-linejoin="round" stroke-linecap="round" opacity=".7"/><path d="M450 204 L479 191 L484 193 L510 181 L519 185" fill="none" stroke="#09a7c3" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" filter="url(#glowm)"/><circle cx="519" cy="185" r="10" fill="#032833" stroke="#ffffff" stroke-width="4"/><text x="519" y="165" text-anchor="middle" class="lbl lbl-m">LOÍZA & PIÑONES</text></g>
+<g class="rt" data-line="sj"><circle cx="450" cy="204" r="22" fill="none" stroke="#09a7c3" stroke-width="3" stroke-dasharray="6 5"/></g>
+<circle cx="450" cy="204" r="32" fill="none" stroke="#09a7c3" stroke-width="1.5" opacity=".6" class="pulse"/>
+<circle cx="450" cy="204" r="13" fill="#032833" stroke="#ffffff" stroke-width="4"/>
+<text x="424" y="198" text-anchor="end" class="lbl lbl-m hub">SAN JUAN · START</text>
+<text x="692" y="195" text-anchor="middle" class="lbl-i lbl-im">VIEQUES</text>
+<text x="708" y="109" text-anchor="middle" class="lbl-i lbl-im">CULEBRA</text>
+<text x="105" y="524" text-anchor="middle" class="lbl-i lbl-im">MONA</text>
+<text x="6" y="358" text-anchor="start" class="lbl-i lbl-im">DESECHEO</text>
+</svg></div>
+<div class="chips" role="group" aria-label="Tour routes"><button class="chip" data-f="south" type="button"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#09a7c3" stroke-width="4" stroke-linecap="round"/></svg>South</button><button class="chip" data-f="west" type="button"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/></svg>West Coast</button><button class="chip" data-f="inland" type="button"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#eaf7f8" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 5"/></svg>Mountains</button><button class="chip" data-f="coffee" type="button"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#d9b98c" stroke-width="4" stroke-linecap="round"/></svg>Coffee Hills</button><button class="chip" data-f="east" type="button"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".7"/><path d="M2 5 H32" stroke="#09a7c3" stroke-width="4" stroke-linecap="round"/></svg>East Coast</button><button class="chip" data-f="sj" type="button"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#09a7c3" stroke-width="4" stroke-linecap="round" stroke-dasharray="5 5"/></svg>Old San Juan</button><button class="chip" data-f="island" type="button"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-dasharray="3 10"/></svg>Around the Island</button></div>
+</div></section>
+<section class="catalog" id="catalog"><div class="wrap">
+<div class="tools"><h2 class="eyebrow">All tours</h2><label class="search"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#067b92" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg><input type="search" placeholder="Search by name, town or interest" aria-label="Search tours"></label></div>
+<div class="list"><article class="card" data-line="sj" style="--foto:url('../../assets/la-perla-overlook.jpg')">
+<div class="win">
+<div class="glow" aria-hidden="true"></div>
+<div class="bezel"><div class="ring"><div class="screen">
+<img src="../../assets/la-perla-overlook.jpg" alt="" loading="lazy">
+<div class="crt" aria-hidden="true"></div>
+<div class="hud" aria-hidden="true"><span class="hud-l"><b style="background:#09a7c3"></b>OLD SAN JUAN</span><span>18.47°N 66.12°W</span></div>
+<div class="shade" id="sh1">
+<div class="more-info">
+<div class="line-name"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#09a7c3" stroke-width="4" stroke-linecap="round" stroke-dasharray="5 5"/></svg><span>Old San Juan</span></div>
+<h3>Old San Juan: La Perla Tour</h3>
+<p class="stops">Walking · Old San Juan</p>
+<div class="acts"><a class="btn btn-white" href="#">Book Now</a></div>
+</div>
+<p class="shade-name">La Perla</p>
+<div class="strip"><span class="tag rate">★ 5.0</span><span class="nw"><i>·</i> 2 h</span><span class="nw"><i>·</i> From $108.00</span></div>
+<button class="pull" type="button" aria-expanded="false" aria-controls="sh1"><span class="sr">Show details for Old San Juan: La Perla Tour</span></button>
+</div>
+</div></div></div>
+</div>
+</article><article class="card" data-line="coffee" style="--foto:url('https://imgcdn.bokun.tools/f48e4a7f-79fc-429b-b20d-457044d358a1.jpg?w=800&h=600&mode=crop')">
+<div class="win">
+<div class="glow" aria-hidden="true"></div>
+<div class="bezel"><div class="ring"><div class="screen">
+<img src="https://imgcdn.bokun.tools/f48e4a7f-79fc-429b-b20d-457044d358a1.jpg?w=800&h=600&mode=crop" alt="" loading="lazy">
+<div class="crt" aria-hidden="true"></div>
+<div class="hud" aria-hidden="true"><span class="hud-l"><b style="background:#d9b98c"></b>COFFEE HILLS</span><span>18.19°N 65.96°W</span></div>
+<div class="shade" id="sh2">
+<div class="more-info">
+<div class="line-name"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#d9b98c" stroke-width="4" stroke-linecap="round"/></svg><span>Coffee Hills</span></div>
+<h3>Coffee Farm Hacienda Muñoz Store and Caguas Tour</h3>
+<p class="stops">San Juan to the coffee hills</p>
+<div class="acts"><a class="btn btn-white" href="#">Book Now</a></div>
+</div>
+<p class="shade-name">Hacienda Muñoz</p>
+<div class="strip"><span class="tag">Coffee & culture</span><span class="nw"><i>·</i> 6 h 30 min</span><span class="nw"><i>·</i> From $150.00</span></div>
+<button class="pull" type="button" aria-expanded="false" aria-controls="sh2"><span class="sr">Show details for Coffee Farm Hacienda Muñoz Store and Caguas Tour</span></button>
+</div>
+</div></div></div>
+</div>
+</article><article class="card" data-line="south" style="--foto:url('../../assets/ponce-plaza.jpg')">
+<div class="win">
+<div class="glow" aria-hidden="true"></div>
+<div class="bezel"><div class="ring"><div class="screen">
+<img src="../../assets/ponce-plaza.jpg" alt="" loading="lazy">
+<div class="crt" aria-hidden="true"></div>
+<div class="hud" aria-hidden="true"><span class="hud-l"><b style="background:#09a7c3"></b>SOUTH</span><span>18.01°N 66.61°W</span></div>
+<div class="shade" id="sh3">
+<div class="more-info">
+<div class="line-name"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#09a7c3" stroke-width="4" stroke-linecap="round"/></svg><span>South</span></div>
+<h3>From San Juan: Full-Day Cultural Road Trip to Ponce</h3>
+<p class="stops">San Juan to the south coast</p>
+<div class="acts"><a class="btn btn-white" href="#">Book Now</a></div>
+</div>
+<p class="shade-name">Ponce Road Trip</p>
+<div class="strip"><span class="tag rate">★ 5.0</span><span class="nw"><i>·</i> 7 h</span><span class="nw"><i>·</i> From $365.00</span></div>
+<button class="pull" type="button" aria-expanded="false" aria-controls="sh3"><span class="sr">Show details for From San Juan: Full-Day Cultural Road Trip to Ponce</span></button>
+</div>
+</div></div></div>
+</div>
+</article><article class="card" data-line="west" style="--foto:url('https://imgcdn.bokun.tools/65bedd84-5306-46d2-9093-312f09e4de33.jpg?w=800&h=600&mode=crop')">
+<div class="win">
+<div class="glow" aria-hidden="true"></div>
+<div class="bezel"><div class="ring"><div class="screen">
+<img src="https://imgcdn.bokun.tools/65bedd84-5306-46d2-9093-312f09e4de33.jpg?w=800&h=600&mode=crop" alt="" loading="lazy">
+<div class="crt" aria-hidden="true"></div>
+<div class="hud" aria-hidden="true"><span class="hud-l"><b style="background:#ffffff"></b>WEST COAST</span><span>18.34°N 67.25°W</span></div>
+<div class="shade" id="sh4">
+<div class="more-info">
+<div class="line-name"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/></svg><span>West Coast</span></div>
+<h3>Rincón Day Tour North Coast Beaches & Waterfalls</h3>
+<p class="stops">Along the north coast to Rincón</p>
+<div class="acts"><a class="btn btn-white" href="#">Book Now</a></div>
+</div>
+<p class="shade-name">Rincón Day Tour</p>
+<div class="strip"><span class="tag rate">★ 5.0</span><span class="nw"><i>·</i> 7 h</span><span class="nw"><i>·</i> From $373.00</span></div>
+<button class="pull" type="button" aria-expanded="false" aria-controls="sh4"><span class="sr">Show details for Rincón Day Tour North Coast Beaches & Waterfalls</span></button>
+</div>
+</div></div></div>
+</div>
+</article><article class="card" data-line="east" style="--foto:url('https://imgcdn.bokun.tools/769a4216-7cfc-443b-942d-e1bc97ca1d4e.jpeg?w=800&h=600&mode=crop')">
+<div class="win">
+<div class="glow" aria-hidden="true"></div>
+<div class="bezel"><div class="ring"><div class="screen">
+<img src="https://imgcdn.bokun.tools/769a4216-7cfc-443b-942d-e1bc97ca1d4e.jpeg?w=800&h=600&mode=crop" alt="" loading="lazy">
+<div class="crt" aria-hidden="true"></div>
+<div class="hud" aria-hidden="true"><span class="hud-l"><b style="background:#09a7c3"></b>EAST COAST</span><span>18.43°N 65.88°W</span></div>
+<div class="shade" id="sh5">
+<div class="more-info">
+<div class="line-name"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".7"/><path d="M2 5 H32" stroke="#09a7c3" stroke-width="4" stroke-linecap="round"/></svg><span>East Coast</span></div>
+<h3>From San Juan: Piñones, Loíza & Puerto Rico’s Coastal Culture</h3>
+<p class="stops">San Juan to the east coast</p>
+<div class="acts"><a class="btn btn-white" href="#">Book Now</a></div>
+</div>
+<p class="shade-name">Piñones & Loíza</p>
+<div class="strip"><span class="tag rate">★ 5.0</span><span class="nw"><i>·</i> 4 h 30 min</span><span class="nw"><i>·</i> From $150.00</span></div>
+<button class="pull" type="button" aria-expanded="false" aria-controls="sh5"><span class="sr">Show details for From San Juan: Piñones, Loíza & Puerto Rico’s Coastal Culture</span></button>
+</div>
+</div></div></div>
+</div>
+</article><article class="card" data-line="inland" style="--foto:url('../../assets/wellness-forest-canopy.jpg')">
+<div class="win">
+<div class="glow" aria-hidden="true"></div>
+<div class="bezel"><div class="ring"><div class="screen">
+<img src="../../assets/wellness-forest-canopy.jpg" alt="" loading="lazy">
+<div class="crt" aria-hidden="true"></div>
+<div class="hud" aria-hidden="true"><span class="hud-l"><b style="background:#eaf7f8"></b>MOUNTAINS</span><span>18.16°N 66.72°W</span></div>
+<div class="shade" id="sh6">
+<div class="more-info">
+<div class="line-name"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#eaf7f8" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 5"/></svg><span>Mountains</span></div>
+<h3>Puerto Rico: Forest Bathing, Yoga, and Hot Springs Retreat</h3>
+<p class="stops">Forest and hot springs</p>
+<div class="acts"><a class="btn btn-white" href="#">Book Now</a></div>
+</div>
+<p class="shade-name">Forest Bathing</p>
+<div class="strip"><span class="tag">Wellness</span><span class="nw"><i>·</i> 5 h 30 min</span><span class="nw"><i>·</i> From $675.00</span></div>
+<button class="pull" type="button" aria-expanded="false" aria-controls="sh6"><span class="sr">Show details for Puerto Rico: Forest Bathing, Yoga, and Hot Springs Retreat</span></button>
+</div>
+</div></div></div>
+</div>
+</article><article class="card" data-line="west" style="--foto:url('https://imgcdn.bokun.tools/e455dfa7-89a8-4d9a-ab49-9eca7759c0e7.jpeg?w=800&h=600&mode=crop')">
+<div class="win">
+<div class="glow" aria-hidden="true"></div>
+<div class="bezel"><div class="ring"><div class="screen">
+<img src="https://imgcdn.bokun.tools/e455dfa7-89a8-4d9a-ab49-9eca7759c0e7.jpeg?w=800&h=600&mode=crop" alt="" loading="lazy">
+<div class="crt" aria-hidden="true"></div>
+<div class="hud" aria-hidden="true"><span class="hud-l"><b style="background:#ffffff"></b>WEST COAST</span><span>18.34°N 67.25°W</span></div>
+<div class="shade" id="sh7">
+<div class="more-info">
+<div class="line-name"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/></svg><span>West Coast</span></div>
+<h3>San Juan: Bad Bunny Origins & Cultural Food Tour</h3>
+<p class="stops">San Juan and the north coast</p>
+<div class="acts"><a class="btn btn-white" href="#">Book Now</a></div>
+</div>
+<p class="shade-name">Bad Bunny Origins</p>
+<div class="strip"><span class="tag">Music & food</span><span class="nw"><i>·</i> 1 h</span><span class="nw"><i>·</i> From $335.00</span></div>
+<button class="pull" type="button" aria-expanded="false" aria-controls="sh7"><span class="sr">Show details for San Juan: Bad Bunny Origins & Cultural Food Tour</span></button>
+</div>
+</div></div></div>
+</div>
+</article><article class="card" data-line="island" style="--foto:url('https://imgcdn.bokun.tools/0c8ecf9f-c337-456f-ac04-3d112b443030.jpeg?w=800&h=600&mode=crop')">
+<div class="win">
+<div class="glow" aria-hidden="true"></div>
+<div class="bezel"><div class="ring"><div class="screen">
+<img src="https://imgcdn.bokun.tools/0c8ecf9f-c337-456f-ac04-3d112b443030.jpeg?w=800&h=600&mode=crop" alt="" loading="lazy">
+<div class="crt" aria-hidden="true"></div>
+<div class="hud" aria-hidden="true"><span class="hud-l"><b style="background:#ffffff"></b>AROUND THE ISLAND</span><span>360° · PR</span></div>
+<div class="shade" id="sh8">
+<div class="more-info">
+<div class="line-name"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-dasharray="3 10"/></svg><span>Around the Island</span></div>
+<h3>San Juan: Caguas, Guavate, Ponce, Rincon & Isabela Day Trip</h3>
+<p class="stops">Around the island in a day</p>
+<div class="acts"><a class="btn btn-white" href="#">Book Now</a></div>
+</div>
+<p class="shade-name">Island Day Trip</p>
+<div class="strip"><span class="tag rate">★ 4.9</span><span class="nw"><i>·</i> 10 h</span><span class="nw"><i>·</i> From $438.00</span></div>
+<button class="pull" type="button" aria-expanded="false" aria-controls="sh8"><span class="sr">Show details for San Juan: Caguas, Guavate, Ponce, Rincon & Isabela Day Trip</span></button>
+</div>
+</div></div></div>
+</div>
+</article><article class="card" data-line="south" style="--foto:url('../../assets/ponce-parque-de-bombas.jpg')">
+<div class="win">
+<div class="glow" aria-hidden="true"></div>
+<div class="bezel"><div class="ring"><div class="screen">
+<img src="../../assets/ponce-parque-de-bombas.jpg" alt="" loading="lazy">
+<div class="crt" aria-hidden="true"></div>
+<div class="hud" aria-hidden="true"><span class="hud-l"><b style="background:#09a7c3"></b>SOUTH</span><span>18.01°N 66.61°W</span></div>
+<div class="shade" id="sh9">
+<div class="more-info">
+<div class="line-name"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#09a7c3" stroke-width="4" stroke-linecap="round"/></svg><span>South</span></div>
+<h3>Guided Walking Tour at Parque de Bomba, Ponce</h3>
+<p class="stops">Walking · Ponce</p>
+<div class="acts"><a class="btn btn-white" href="#">Book Now</a></div>
+</div>
+<p class="shade-name">Parque de Bombas</p>
+<div class="strip"><span class="tag">Walking tour</span><span class="nw"><i>·</i> 2 h 30 min</span><span class="nw"><i>·</i> From $90.00</span></div>
+<button class="pull" type="button" aria-expanded="false" aria-controls="sh9"><span class="sr">Show details for Guided Walking Tour at Parque de Bomba, Ponce</span></button>
+</div>
+</div></div></div>
+</div>
+</article><article class="card" data-line="sj" style="--foto:url('../../assets/smoke-shop-interior.jpg')">
+<div class="win">
+<div class="glow" aria-hidden="true"></div>
+<div class="bezel"><div class="ring"><div class="screen">
+<img src="../../assets/smoke-shop-interior.jpg" alt="" loading="lazy">
+<div class="crt" aria-hidden="true"></div>
+<div class="hud" aria-hidden="true"><span class="hud-l"><b style="background:#09a7c3"></b>OLD SAN JUAN</span><span>18.47°N 66.12°W</span></div>
+<div class="shade" id="sh10">
+<div class="more-info">
+<div class="line-name"><svg width="34" height="10" aria-hidden="true"><path d="M2 5 H32" stroke="#09a7c3" stroke-width="4" stroke-linecap="round" stroke-dasharray="5 5"/></svg><span>Old San Juan</span></div>
+<h3>San Juan: Smoke Shops, Cigars and Island Vibes Experience</h3>
+<p class="stops">Around San Juan</p>
+<div class="acts"><a class="btn btn-white" href="#">Book Now</a></div>
+</div>
+<p class="shade-name">Cigars & Island Vibes</p>
+<div class="strip"><span class="tag">New route</span><span class="nw"><i>·</i> 2 h 30 min</span><span class="nw"><i>·</i> From $117.00</span></div>
+<button class="pull" type="button" aria-expanded="false" aria-controls="sh10"><span class="sr">Show details for San Juan: Smoke Shops, Cigars and Island Vibes Experience</span></button>
+</div>
+</div></div></div>
+</div>
+</article></div>
+<div class="more"><button class="btn btn-line" type="button">View all tours</button></div>
+</div></section>
+<footer class="foot"><div class="wrap"><div class="row"><div class="brand"><img src="../../assets/logo-white.png" alt="Nativo Experience Puerto Rico"><p>Authentic cultural journeys across Puerto Rico.</p></div>
+<nav aria-label="Explore"><ul><li><a href="index.html">Tours</a></li><li><a href="services.html">Services</a></li><li><a href="index.html#about">About</a></li><li><a href="index.html#contact">Contact</a></li></ul></nav></div>
+<div class="base">© 2026 Nativo Experience Puerto Rico</div></div></footer>
+
+<script>
+(function(){var mb=document.querySelector('.mapbox');if(mb&&mb.scrollWidth>mb.clientWidth){mb.scrollLeft=(mb.scrollWidth-mb.clientWidth)*0.62;}})();
+(function(){var hero=document.querySelector('.hero');var chips=document.querySelectorAll('.chip');var cards=document.querySelectorAll('.card');
+chips.forEach(function(c){c.setAttribute('aria-pressed','false');c.addEventListener('click',function(){var on=c.getAttribute('aria-pressed')!=='true';chips.forEach(function(x){x.setAttribute('aria-pressed','false')});
+if(on){c.setAttribute('aria-pressed','true');hero.setAttribute('data-active',c.dataset.f)}else{hero.removeAttribute('data-active')}
+cards.forEach(function(k){k.hidden=on&&k.dataset.line!==c.dataset.f})})});})();
+document.querySelectorAll('.pull').forEach(function(b){b.addEventListener('click',function(){var c=b.closest('.card');var o=c.classList.toggle('open');b.setAttribute('aria-expanded',o)})});
+</script>
+</body></html>
