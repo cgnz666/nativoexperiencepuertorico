@@ -4,6 +4,7 @@ Files:
 - index.html
 - tours.html
 - services.html
+- about.html
 - styles.css
 - services.css
 - script.js
