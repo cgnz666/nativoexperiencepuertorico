@@ -1211,6 +1211,171 @@ FEATURED — TOUR TITLE
   color:#073d49;
   font-size:clamp(1.55rem,2.2vw,2rem);
   line-height:1.18;
+
+  /* Sin esto, un título largo deja una palabra sola abajo */
+  text-wrap:balance;
+}
+
+
+/* ==========================================
+FEATURED — DIFFICULTY LEVEL
+Las barras del icono dicen el nivel sin leer; la palabra lo
+confirma y la nota dice por qué, para quien viaja con mayores.
+========================================== */
+
+.featured-tour-card .tour-level{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:4px 10px;
+
+  margin-top:14px;
+
+  color:#073d49;
+  font-size:.92rem;
+  line-height:1.4;
+}
+
+.featured-tour-card .tour-level img{
+  flex:none;
+}
+
+.featured-tour-card .tour-level strong{
+  font-weight:800;
+}
+
+.featured-tour-card .tour-level-note{
+  color:#52636a;
+}
+
+.featured-tour-card .tour-level-note::before{
+  content:"·";
+  margin-right:10px;
+}
+
+
+/* ==========================================
+FEATURED — SPOTLIGHT
+Lo que distingue a cada tour: accesibilidad, cultura,
+viaje saludable o la vibra underground.
+========================================== */
+
+.featured-tour-card .tour-spotlight{
+  display:grid;
+  grid-template-columns:28px 1fr;
+  gap:14px;
+  align-items:start;
+
+  margin-top:18px;
+  padding:16px 18px;
+
+  background:#e6f3f6;
+  border-left:3px solid var(--boton);
+}
+
+.featured-tour-card .tour-spotlight strong{
+  display:block;
+  margin-bottom:4px;
+
+  color:#056a7e;
+  font-size:.76rem;
+  font-weight:800;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+.featured-tour-card .tour-spotlight span{
+  display:block;
+
+  color:#073d49;
+  font-size:.95rem;
+  line-height:1.55;
+}
+
+
+/* ==========================================
+FEATURED — WHAT TO EXPECT
+Plegado en el celular, abierto y fijo en escritorio:
+lo decide script.js (PLEGABLES SEGÚN EL ANCHO).
+========================================== */
+
+.featured-tour-card .tour-fold{
+  margin-bottom:26px;
+
+  border-top:1px solid #c9dfe4;
+}
+
+.featured-tour-card .tour-fold summary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+
+  min-height:48px;
+
+  color:#056a7e;
+  font-size:.92rem;
+  font-weight:800;
+
+  cursor:pointer;
+  list-style:none;
+}
+
+.featured-tour-card .tour-fold summary::-webkit-details-marker{
+  display:none;
+}
+
+.featured-tour-card .tour-fold summary::after{
+  content:"+";
+
+  font-size:22px;
+  font-weight:300;
+  line-height:1;
+}
+
+.featured-tour-card .tour-fold[open] summary::after{
+  content:"\2212";
+}
+
+.tour-expect{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+
+  padding-bottom:4px;
+
+  list-style:none;
+}
+
+.tour-expect li{
+  display:grid;
+  grid-template-columns:24px 1fr;
+  gap:12px;
+  align-items:start;
+
+  color:#52636a;
+  font-size:.93rem;
+  line-height:1.55;
+}
+
+.tour-expect strong{
+  display:block;
+
+  color:#073d49;
+  font-weight:800;
+}
+
+@media (min-width:1024px){
+
+  /* Abierto y fijo: el título se queda, el signo sobra */
+  .svc-folds .featured-tour-card .tour-fold summary{
+    cursor:default;
+  }
+
+  .svc-folds .featured-tour-card .tour-fold summary::after{
+    content:none;
+  }
+
 }
 
 
@@ -1219,7 +1384,7 @@ FEATURED — TOUR DESCRIPTION
 ========================================== */
 
 .featured-tour-card .tour-content p{
-  margin:16px 0 26px;
+  margin:16px 0 18px;
 
   color:#52636a;
   font-size:1rem;
@@ -1371,6 +1536,36 @@ FEATURED — MOBILE
 
   .featured-tour-card .tour-content h3{
     font-size:1.55rem;
+  }
+
+  /* En el teléfono la nota no cabe al lado y bajaba con el punto
+     colgando al principio. Va debajo, alineada con el nivel. */
+  .featured-tour-card .tour-level-note{
+    flex-basis:100%;
+    padding-left:34px;
+  }
+
+  .featured-tour-card .tour-level-note::before{
+    content:none;
+  }
+
+  /* El texto del destaque ocupa todo el ancho: al lado del
+     icono quedaba una columna de cuatro palabras */
+  .featured-tour-card .tour-spotlight{
+    align-items:center;
+    row-gap:8px;
+  }
+
+  .featured-tour-card .tour-spotlight > div{
+    display:contents;
+  }
+
+  .featured-tour-card .tour-spotlight strong{
+    margin-bottom:0;
+  }
+
+  .featured-tour-card .tour-spotlight span{
+    grid-column:1 / -1;
   }
 
   .featured-tour-card .card-button{

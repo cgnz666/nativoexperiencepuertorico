@@ -701,3 +701,68 @@ imagen fija.
     ).observe(video);
   }
 })();
+
+
+/* ==========================================
+PLEGABLES SEGÚN EL ANCHO
+
+En el celular, "See what's included" y Good to know en
+servicios, y "What to expect" en los tours destacados,
+van plegados. En escritorio van abiertos y
+fijos: el mismo <details> se abre y su <summary> deja de
+responder, para no tener el texto escrito dos veces.
+
+Corre en cuanto se lee el archivo (va al final del body),
+no en DOMContentLoaded, para que el escritorio no pinte
+primero todo cerrado y luego salte. Servicios lo carga
+antes que services.js por lo mismo. La clase svc-folds
+avisa al CSS de que ya puede esconder los <summary>: sin
+JS se quedan visibles y todo se puede abrir a mano.
+========================================== */
+
+(function () {
+  const folds = document.querySelectorAll(".svc-fold, .tour-fold");
+  const desktop = window.matchMedia("(min-width: 1024px)");
+  let wasDesktop = null;
+
+  if (!folds.length) {
+    return;
+  }
+
+  // Solo actúa al cruzar el corte: en el celular, esconder la barra
+  // de direcciones también dispara resize y no debe cerrar nada.
+  function sync() {
+    if (desktop.matches === wasDesktop) {
+      return;
+    }
+
+    wasDesktop = desktop.matches;
+
+    folds.forEach(function (fold) {
+      const summary = fold.querySelector("summary");
+
+      fold.open = desktop.matches;
+
+      if (desktop.matches) {
+        summary.setAttribute("tabindex", "-1");
+      } else {
+        summary.removeAttribute("tabindex");
+      }
+    });
+  }
+
+  folds.forEach(function (fold) {
+    fold.querySelector("summary").addEventListener("click", function (event) {
+      if (desktop.matches) {
+        event.preventDefault();
+      }
+    });
+  });
+
+  sync();
+  document.documentElement.classList.add("svc-folds");
+
+  // resize y no el change de matchMedia: en Safari 13 o anterior,
+  // matchMedia no tiene addEventListener
+  window.addEventListener("resize", sync);
+})();

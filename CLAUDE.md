@@ -209,3 +209,7 @@ Cuando C corrija algo, agregar aquí la regla si vale más allá de ese caso: si
   pide publicar sin la revisión independiente de la Fase 4: C no está para
   encontrar los fallos que la revisión debía encontrar.
 - Al buscar texto visible, **no limitar el `grep` por extensión**. Parte del copy del sitio no está en los `.html`: el botón de "View all tours" y el mensaje para lectores de pantalla los escribe `tours.js` al vuelo. Comprobar el resultado en el navegador, no en el código.
+- **No se publican duraciones de los tours.** Las horas son flexibles y
+  dependen de varias cosas, aunque Bókun traiga una cifra. En tarjetas,
+  desgloses y textos nuevos se habla de cómo empieza el tour (recogida o
+  punto de encuentro) y del ritmo, nunca de cuántas horas dura.
