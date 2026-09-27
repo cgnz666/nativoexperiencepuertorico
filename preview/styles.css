@@ -35,7 +35,7 @@
 }
 
 
-/* Un enlace a #home o a #about llevaba el navegador a poner la
+/* Un enlace a #home o a #contact llevaba el navegador a poner la
    sección pegada al borde de arriba, y ahí es donde vive la
    cabecera fija: los primeros 73 px de la sección quedaban
    tapados. En la portada eso cortaba el logo de la tortuga y
@@ -1683,7 +1683,7 @@ ISLAND TIME
   background:transparent;
 }
 
-.island-time h2{
+.island-time h1{
   max-width:720px;
   margin:0;
 
@@ -1913,12 +1913,15 @@ ISLAND STORY — MOBILE
     width:min(calc(100% - 36px),1200px);
   }
 
+  /* Ahora abre la página de About: sin alto mínimo, que en el
+     celular dejaba un hueco oscuro bajo el texto. Arriba cuenta
+     la cabecera fija. */
   .island-time{
-    min-height:520px;
-    padding:80px 0;
+    min-height:0;
+    padding:128px 0 64px;
   }
 
-  .island-time h2{
+  .island-time h1{
     font-size:2.7rem;
   }
 
@@ -3330,7 +3333,7 @@ PANTALLAS GRANDES — 1800px o más
     top:-74px;
   }
 
-  .island-time h2{
+  .island-time h1{
     max-width:880px;
   }
 
