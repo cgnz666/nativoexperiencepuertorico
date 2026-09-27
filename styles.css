@@ -62,9 +62,8 @@ padding:0;
 box-sizing:border-box;
 }
 
-html{
-scroll-behavior:smooth;
-}
+/* Sin scroll-behavior:smooth: el deslizamiento de los enlaces
+   internos lo hace script.js (ver "IR A UNA SECCIÓN") */
 
 body{
 

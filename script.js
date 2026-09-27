@@ -21,62 +21,106 @@ if (menuButton && navigation) {
 
 
 /* ==========================================
-LLEGAR A UNA SECCIÓN DESDE OTRA PÁGINA
+IR A UNA SECCIÓN
 
-Al abrir index.html#about desde tours o servicios,
-el navegador animaba el viaje (scroll-behavior:
-smooth) mientras aún cargaban fuentes, fotos y el
-video del hero. Si algo cambiaba de alto a medio
-camino, o el navegador cortaba la animación, la
-visita se quedaba arriba y había que pulsar About
-otra vez. Aquí se salta directo a la sección, sin
-animación, y se repite cuando termina de cargar,
-salvo que la persona ya se haya movido por su cuenta.
-Los enlaces dentro de la misma página siguen suaves.
+El sitio ya no usa scroll-behavior:smooth en el CSS:
+con él, el navegador lanzaba animaciones propias al
+cargar una página con #seccion, y un roce del ratón
+o del trackpad las cortaba a medio camino. Ahora:
+
+1 · Al llegar desde otra página (index.html#about),
+    se salta directo a la sección, sin animación, y se
+    vuelve a colocar cuando cargan fuentes y fotos, que
+    empujan el contenido. Un roce pequeño no lo cancela:
+    solo si la persona se desplaza de verdad (más de
+    150 px, dedo o teclado) se la deja donde está.
+
+2 · Los enlaces dentro de la misma página se deslizan
+    suave, pero solo cuando alguien los pulsa. El salto
+    al contenido principal sigue siendo el del navegador,
+    que además mueve el foco.
 ========================================== */
 
 (function () {
+  const menosMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)");
+
   const id = decodeURIComponent(window.location.hash.slice(1));
   const destino = id && document.getElementById(id);
 
-  if (!destino) {
-    return;
+  if (destino) {
+    let desplazado = 0;
+
+    window.addEventListener(
+      "wheel",
+      function (evento) {
+        desplazado += Math.abs(evento.deltaY);
+      },
+      { passive: true }
+    );
+
+    ["touchmove", "keydown"].forEach(function (tipo) {
+      window.addEventListener(
+        tipo,
+        function () {
+          desplazado = Infinity;
+        },
+        { once: true, passive: true }
+      );
+    });
+
+    const colocar = function () {
+      if (desplazado <= 150) {
+        destino.scrollIntoView({ block: "start", behavior: "auto" });
+      }
+    };
+
+    colocar();
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(colocar);
+    }
+
+    window.addEventListener("load", function () {
+      colocar();
+      window.setTimeout(colocar, 400);
+      window.setTimeout(colocar, 1200);
+    });
   }
 
-  let seMovio = false;
+  document.addEventListener("click", function (evento) {
+    const enlace = evento.target.closest("a[href*='#']");
 
-  ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (tipo) {
-    window.addEventListener(
-      tipo,
-      function () {
-        seMovio = true;
-      },
-      { once: true, passive: true }
-    );
-  });
-
-  function saltar() {
-    if (seMovio) {
+    if (
+      !enlace ||
+      enlace.classList.contains("salto-al-contenido") ||
+      evento.defaultPrevented ||
+      evento.button !== 0 ||
+      evento.metaKey ||
+      evento.ctrlKey ||
+      evento.shiftKey ||
+      enlace.pathname !== window.location.pathname
+    ) {
       return;
     }
 
-    const raiz = document.documentElement;
-    const antes = raiz.style.scrollBehavior;
+    const seccion = enlace.hash
+      ? document.getElementById(decodeURIComponent(enlace.hash.slice(1)))
+      : null;
 
-    raiz.style.scrollBehavior = "auto";
-    destino.scrollIntoView({ block: "start", behavior: "auto" });
-    raiz.style.scrollBehavior = antes;
-  }
+    if (!seccion) {
+      return;
+    }
 
-  saltar();
+    evento.preventDefault();
 
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(saltar);
-  }
+    seccion.scrollIntoView({
+      block: "start",
+      behavior: menosMovimiento.matches ? "auto" : "smooth"
+    });
 
-  window.addEventListener("load", function () {
-    saltar();
-    window.setTimeout(saltar, 400);
+    if (window.location.hash !== enlace.hash) {
+      window.history.pushState(null, "", enlace.hash);
+    }
   });
 })();
 
