@@ -16,18 +16,20 @@
 <path d="M20 244 Q34 238 48 244 T76 244 M190 240 Q204 234 218 240 T246 240 M320 248 Q334 242 348 248 T376 248 M90 270 Q104 264 118 270 T146 270 M250 276 Q264 270 278 276 T306 276 M400 268 Q414 262 428 268 T456 268 M30 290 Q44 284 58 290 T86 290"></path>
 <rect x="-2" y="300" width="484" height="182" style="fill: var(--il-fill, #ffffff)"></rect>
 <path d="M80 300 L-141 480 M160 300 L49 480 M320 300 L431 480 M400 300 L622 480"></path>
-<path d="M22 330 L18 226 H66 L62 330 Z" style="fill: var(--il-fill, #ffffff)"></path>
-<path d="M20 250 H64 M21 262 H63"></path>
+<path d="M20.8 262 H63.2 L62 330 H22 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M22 330 L18 226 H66 L62 330 Z"></path>
+<path d="M20.8 262 H63.2"></path>
 <rect x="408" y="250" width="14" height="14" style="fill: var(--il-fill, #ffffff)"></rect>
 <rect x="426" y="244" width="14" height="14" style="fill: var(--il-fill, #ffffff)"></rect>
 <rect x="444" y="252" width="14" height="14" style="fill: var(--il-fill, #ffffff)"></rect>
 <path d="M456 258 L476 232"></path>
-<path d="M400 330 L396 262 H468 L464 330 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M396.8 276 H467.2 L464 330 H400 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
+<path d="M400 330 L396 262 H468 L464 330 Z"></path>
 <path d="M397 276 H467"></path>
 <path d="M140 420 L180 238"></path>
-<path d="M92 440 L86 300 H170 L164 440 Z"></path>
+<path d="M92 440 L86.6 314 H169.4 L164 440 Z"></path>
 <path d="M88 340 H168 L164 440 H92 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
-<path d="M88 308 H168"></path>
+
 <rect x="100" y="352" width="24" height="24" style="fill: var(--il-fill, #ffffff)"></rect>
 <rect x="118" y="366" width="24" height="24" style="fill: var(--il-fill, #ffffff)"></rect>
 <rect x="136" y="348" width="22" height="22" style="fill: var(--il-fill, #ffffff)"></rect>
