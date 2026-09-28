@@ -5,6 +5,7 @@ Files:
 - tours.html
 - services.html
 - about.html
+- contact.html
 - styles.css
 - services.css
 - script.js

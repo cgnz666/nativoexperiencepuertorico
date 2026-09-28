@@ -2602,6 +2602,25 @@ repite.
 }
 
 
+/* En contact.html el Let's Plan es la página entera: baja lo
+   que ocupa la cabecera fija y llena la pantalla */
+
+.cierre-pagina{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+  min-height:100vh;
+  min-height:100svh;
+
+  padding-top:calc(var(--alto-cabecera) + 40px);
+}
+
+.cierre-pagina > .cierre-wrap{
+  width:100%;
+}
+
+
 /* Una columna de rejilla no baja de su contenido mínimo salvo
    que se le diga, y aquí el contenido mínimo es la palabra más
    larga del titular. Con la letra del sistema muy agrandada,
@@ -2640,6 +2659,7 @@ repite.
 }
 
 
+.cierre h1,
 .cierre h2{
   margin:24px 0 0;
 
@@ -2928,6 +2948,10 @@ CIERRE — ESCRITORIO · 900px o más
     padding:112px 0 104px;
   }
 
+  .cierre-pagina{
+    padding-top:calc(var(--alto-cabecera) + 72px);
+  }
+
   .cierre-grid{
     display:grid;
     grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
@@ -2939,6 +2963,7 @@ CIERRE — ESCRITORIO · 900px o más
   /* Crece con la pantalla: fijo en 84 px, entre 900 y 1150 px
      de ancho la columna no daba para "differently?" y el
      titular se partía a mitad de palabra */
+  .cierre h1,
   .cierre h2{
     font-size:clamp(52px,6.2vw,84px);
   }
