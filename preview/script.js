@@ -28,7 +28,7 @@ con él, el navegador lanzaba animaciones propias al
 cargar una página con #seccion, y un roce del ratón
 o del trackpad las cortaba a medio camino. Ahora:
 
-1 · Al llegar desde otra página (index.html#about),
+1 · Al llegar desde otra página (index.html#contact),
     se salta directo a la sección, sin animación, y se
     vuelve a colocar cuando cargan fuentes y fotos, que
     empujan el contenido. Un roce pequeño no lo cancela:
@@ -46,6 +46,13 @@ o del trackpad las cortaba a medio camino. Ahora:
 
   const id = decodeURIComponent(window.location.hash.slice(1));
   const destino = id && document.getElementById(id);
+
+  /* About y la tortuga tienen página propia. Un marcador o un
+     enlace viejo a index.html#about o #story se lleva allí. */
+  if (!destino && (id === "about" || id === "story")) {
+    window.location.replace("about.html" + (id === "story" ? "#story" : ""));
+    return;
+  }
 
   if (destino) {
     let desplazado = 0;
