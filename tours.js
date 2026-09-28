@@ -794,11 +794,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  /* Con el dedo también abre y cierra tocar la foto o el título:
+     buscar la franja del tirador no es evidente. Los botones y
+     enlaces (Book Now) hacen lo suyo, y el texto de la cortina
+     bajada no la cierra. Con ratón solo el tirador, porque la
+     cortina ya baja al pasar por encima. */
+  const soloTactil = window.matchMedia("(hover: none)");
+
   rejilla.addEventListener("click", function (evento) {
-    const tirador = evento.target.closest(".ventana-tirador");
+    let tirador = evento.target.closest(".ventana-tirador");
 
     if (!tirador) {
-      return;
+      const ventana = evento.target.closest(".ventana-tour");
+
+      if (
+        !ventana ||
+        !soloTactil.matches ||
+        evento.target.closest("button, a, .ventana-detalle")
+      ) {
+        return;
+      }
+
+      tirador = ventana.querySelector(".ventana-tirador");
     }
 
     const ventana = tirador.closest(".ventana-tour");
