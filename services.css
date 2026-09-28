@@ -1400,9 +1400,14 @@ ESCRITORIO · 1024px o más
      centro hacia el texto y los tragos abajo afuera. Los topes de
      alto (34% y 28%) garantizan que no se toquen. */
 
+  /* En ventanas medianas la columna queda estrecha y muy alta:
+     con 80 % y 56 % del ancho los dibujos salían chicos y con
+     huecos grandes entre ellos. Ahora usan casi todo el ancho; en
+     pantallas anchas siguen mandando los topes de alto. */
+
   .svc-item-bar .svc-item-media{
-    --svc-main:min(80 * var(--svc-w) / 100, 34 * var(--svc-h) / 100, 520px);
-    --svc-alt:min(56 * var(--svc-w) / 100, 28 * var(--svc-h) / 100);
+    --svc-main:min(var(--svc-w), 34 * var(--svc-h) / 100, 520px);
+    --svc-alt:min(78 * var(--svc-w) / 100, 28 * var(--svc-h) / 100);
   }
 
   .svc-item-media > .svc-fig-stack{
