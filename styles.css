@@ -2936,8 +2936,11 @@ CIERRE — ESCRITORIO · 900px o más
     gap:64px;
   }
 
+  /* Crece con la pantalla: fijo en 84 px, entre 900 y 1150 px
+     de ancho la columna no daba para "differently?" y el
+     titular se partía a mitad de palabra */
   .cierre h2{
-    font-size:84px;
+    font-size:clamp(52px,6.2vw,84px);
   }
 
   .cierre p{

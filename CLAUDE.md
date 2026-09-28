@@ -213,3 +213,10 @@ Cuando C corrija algo, agregar aquí la regla si vale más allá de ese caso: si
   dependen de varias cosas, aunque Bókun traiga una cifra. En tarjetas,
   desgloses y textos nuevos se habla de cómo empieza el tour (recogida o
   punto de encuentro) y del ritmo, nunca de cuántas horas dura.
+- **Una captura sin la fuente de verdad no verifica el texto.** En la nube el
+  proxy bloquea Google Fonts y el navegador pinta con otra letra, más
+  estrecha que Manrope: un titular que se parte a mitad de palabra en la
+  pantalla de C sale perfecto en la captura. Para revisar titulares grandes,
+  bajar Manrope con `curl` y servirla al navegador de pruebas, y recorrer
+  los anchos de 320 a 1920 px buscando palabras partidas, no solo 390, 768
+  y 1440.
