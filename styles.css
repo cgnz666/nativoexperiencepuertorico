@@ -4692,6 +4692,29 @@ PÁGINA DE TOURS — ESCRITORIO · 900px o más
 
 }
 
+/* En el teléfono la persiana subida tapaba media foto: sin alto
+   mínimo, mide lo que su texto, con menos relleno y letra más
+   chica. Bajada (.abierta) sigue llegando al 80 %. */
+
+@media (max-width:599px){
+
+  .ventana-cortina{
+    min-height:0;
+    padding:12px 8% 16px;
+  }
+
+  .ventana-titulo{
+    margin-bottom:3px;
+
+    font-size:15px;
+  }
+
+  .ventana-datos{
+    font-size:11.5px;
+  }
+
+}
+
 @media (max-width:899px){
 
   .ventana-datos .nw:last-child{
