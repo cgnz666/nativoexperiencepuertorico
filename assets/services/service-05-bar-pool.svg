@@ -25,7 +25,7 @@
 <path d="M400 330 L396 262 H468 L464 330 Z" style="fill: var(--il-fill, #ffffff)"></path>
 <path d="M397 276 H467"></path>
 <path d="M140 420 L180 238"></path>
-<path d="M92 440 L86 300 H170 L164 440 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M92 440 L86 300 H170 L164 440 Z"></path>
 <path d="M88 340 H168 L164 440 H92 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
 <path d="M88 308 H168"></path>
 <rect x="100" y="352" width="24" height="24" style="fill: var(--il-fill, #ffffff)"></rect>
@@ -39,7 +39,7 @@
 <rect x="88" y="440" width="80" height="10" style="fill: var(--il-fill, #ffffff)"></rect>
 <path d="M278 372 V430"></path>
 <ellipse cx="278" cy="434" rx="26" ry="6" style="fill: var(--il-fill, #ffffff)"></ellipse>
-<path d="M226 330 H330 L322 350 Q300 372 278 372 Q256 372 234 350 Z" style="fill: var(--il-fill, #ffffff)"></path>
+<path d="M226 330 H330 L322 350 Q300 372 278 372 Q256 372 234 350 Z"></path>
 <path d="M229 338 H327 L322 350 Q300 372 278 372 Q256 372 234 350 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
 <path d="M229 338 Q242 330 256 338 T284 338 T312 338 T327 336 L327 344 H229 Z" style="fill: var(--il-fill, #ffffff)"></path>
 <circle cx="250" cy="340" r="2"></circle>

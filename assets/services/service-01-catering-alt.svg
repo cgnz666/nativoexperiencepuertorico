@@ -37,6 +37,7 @@
 <path d="M306 296 C316 284 334 284 340 296 M323 283 V296 M312 288 L318 296 M334 288 L328 296"></path>
 <path d="M84 318 C88 306 100 304 104 312 C98 318 90 320 84 318 Z M150 346 C156 334 168 336 170 344 C162 350 156 350 150 346 Z M270 318 C276 306 288 308 290 316 C282 322 276 322 270 318 Z M236 372 C240 360 252 360 256 368 C248 374 242 374 236 372 Z M318 350 C324 338 336 340 338 348 C330 354 324 354 318 350 Z" style="fill: var(--il-fill, #ffffff)"></path>
 <path d="M96 260 L100 256 M320 262 L324 258 M180 380 L184 376 M270 222 L274 218"></path>
+<ellipse cx="421" cy="303" rx="44" ry="6" style="fill: var(--il-shade, #d6e9e9); stroke: none"></ellipse>
 <path d="M366 236 H476 C472 290 452 300 421 302 C390 300 370 290 366 236 Z" style="fill: var(--il-fill, #ffffff)"></path>
 <path d="M370 256 H472"></path>
 <path d="M368 236 C372 204 396 192 421 192 C446 192 470 204 474 236 Z" style="fill: var(--il-fill, #ffffff)"></path>
@@ -44,6 +45,6 @@
 <path d="M416 194 C412 184 420 178 424 186 C422 190 420 194 416 194 Z M426 194 C432 182 440 186 436 194 Z" style="fill: var(--il-shade, #d6e9e9)"></path>
 <path d="M400 180 C392 164 408 154 400 138 C394 126 404 116 400 104"></path>
 <path d="M440 178 C432 162 448 152 440 136 C434 124 444 114 440 102"></path>
-<ellipse cx="421" cy="304" rx="40" ry="6" style="fill: var(--il-shade, #d6e9e9); stroke: none"></ellipse>
+
 </g>
 </svg>
