@@ -2651,6 +2651,9 @@ repite.
   letter-spacing:-.015em;
 
   overflow-wrap:break-word;
+
+  /* Sin palabra suelta en la última línea */
+  text-wrap:balance;
 }
 
 
