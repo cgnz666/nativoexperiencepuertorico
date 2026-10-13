@@ -672,22 +672,6 @@ polaroid con letra a mano y gótica en rojo.
 .hw-luz-v{ top:0; bottom:0; left:7%; width:3px; }
 .hw-luz-h{ left:0; right:0; top:34%; height:2px; opacity:.28; }
 
-/* Salpicadura detrás del televisor */
-.hw-splat{
-  position:absolute;
-  z-index:0;
-  pointer-events:none;
-  top:-50px;
-  right:-130px;
-
-  width:clamp(240px,32vw,470px);
-  aspect-ratio:1;
-
-  background:url("assets/halloween/splat.svg") center / contain no-repeat;
-  opacity:.92;
-  transform:rotate(12deg);
-}
-
 .hw-escena{
   position:relative;
   z-index:1;
@@ -1094,11 +1078,6 @@ HERO: sin telarañas planas, con resplandor de horizonte
 
   .hw-luz-v{ left:4%; }
 
-  .hw-splat{
-    top:30vw;
-    right:-70px;
-    width:62vw;
-  }
 
 }
 
