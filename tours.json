@@ -1,7 +1,7 @@
 {
   "updated": "2026-09-27T19:57:22.150Z",
   "source": "Bókun · lista de producto 110434",
-  "count": 19,
+  "count": 20,
   "tours": [
     {
       "id": "1213460",
@@ -517,6 +517,33 @@
         "San Juan"
       ],
       "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1275712?partialView=1"
+    },
+    {
+      "id": "1326391",
+      "title": "Ponce Halloween Night at the Haunted Castillo Serrallés",
+      "excerpt": "Trade the city for the south. Walk historic Ponce at dusk, hear its darkest true stories and local legends, then step into the Haunted Manor at Castillo Serrallés.",
+      "duration": "1 hour",
+      "price": 316.0,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": null,
+      "reviews": null,
+      "reviewUrl": null,
+      "photos": [
+        "https://imgcdn.bokun.tools/62aa69f2-3245-4f01-9aa8-f02aa64b1a22.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/bb613429-7208-4ee8-b735-65fb43cbde61.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/62756bf8-180a-44e0-b28f-1164268f5031.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/2812803a-a248-4d5b-bad5-9c788751bfb3.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/c6a41dbe-cbde-43e6-988e-c70c2ce1b0f4.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/d90ea883-3eb7-4ba1-86e7-24d1d2f741ee.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/04d44c1d-d0cb-4d1d-8f0b-9802a3d43688.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/158baf59-b2a1-424b-8a07-5ff3cd7afa30.jpeg?w=800&h=600&mode=crop"
+      ],
+      "places": [
+        "Juana Díaz",
+        "Ponce"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1326391?partialView=1"
     }
   ]
 }

@@ -126,7 +126,8 @@ document.addEventListener("DOMContentLoaded", function () {
     "1275712": { ruta: "sj", frase: "Around San Juan", etiqueta: "Nightlife" },
     "1261571": { etiqueta: "Beaches" },
     "1262284": { etiqueta: "Music" },
-    "1263497": { etiqueta: "Adventure" }
+    "1263497": { etiqueta: "Adventure" },
+    "1326391": { ruta: "south" }
   };
 
   /* Los diez primeros, en este orden, para que los de Ponce
@@ -172,7 +173,19 @@ document.addEventListener("DOMContentLoaded", function () {
       .normalize("NFD")
       .replace(/[̀-ͯ]/g, "");
 
-  const datosDe = (tour) => CURADURIA[String(tour.id)] || {};
+  /* El tour de Halloween solo lleva etiqueta y primer lugar mientras
+     dura la temporada (la clase la pone el <head>, ver halloween.css) */
+  const TEMPORADA = document.documentElement.classList.contains("halloween");
+
+  const datosDe = (tour) => {
+    const datos = CURADURIA[String(tour.id)] || {};
+    return String(tour.id) === "1326391" && TEMPORADA
+      ? Object.assign({}, datos, {
+          frase: "Ponce at dusk, then the Haunted Manor",
+          etiqueta: "Halloween special"
+        })
+      : datos;
+  };
 
   /* La foto en miniatura para el resplandor: Bókun la sirve al
      tamaño que se le pida, y a 8 x 6 pesa unos cientos de bytes */
@@ -337,12 +350,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function ordenar(lista) {
-    const primeros = ORDEN.map((id) =>
+    const primeros = (TEMPORADA ? ["1326391"] : []).concat(ORDEN).map((id) =>
       lista.find((tour) => String(tour.id) === id)
     ).filter(Boolean);
 
+    /* El recorrido de Halloween es de temporada: fuera de ella no aparece */
     const resto = lista.filter(
-      (tour) => !ORDEN.includes(String(tour.id))
+      (tour) =>
+        !ORDEN.includes(String(tour.id)) &&
+        String(tour.id) !== "1326391"
     );
 
     return primeros.concat(resto);
@@ -444,6 +460,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return `
       <article
         class="ventana-tour"
+        ${String(tour.id) === "1326391" && TEMPORADA ? "data-halloween" : ""}
         data-line="${escapar(datos.ruta || "")}"
         data-mini="${escapar(miniatura(fotos[0]))}"${estiloDeBrillo(
           miniatura(fotos[0])

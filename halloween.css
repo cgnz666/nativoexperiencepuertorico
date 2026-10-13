@@ -1,0 +1,1122 @@
+/* ==========================================
+TEMPORADA DE HALLOWEEN
+
+Todo vive bajo html.halloween. La clase la pone un script
+del <head> solo hasta el 31 de octubre de 2026, así que el
+tema se apaga solo. Para apagarlo antes, quitar esa línea
+de las páginas (o este archivo y sus enlaces).
+
+Paleta de las referencias: carbón, hueso y un naranja
+quemado. El resto del sitio no se toca.
+========================================== */
+
+:root{
+  --hw-carbon:#1d1d1d;
+  --hw-carbon2:#2a2826;
+  --hw-hueso:#dcd5c3;
+  --hw-naranja:#e8603a;
+  --hw-naranja-claro:#ff8a5c;
+  --hw-display:'Anton','Arial Narrow',Impact,sans-serif;
+  --hw-maquina:'Special Elite','Courier New',monospace;
+}
+
+/* Lo de Halloween no existe fuera de temporada */
+.halloween-only{
+  display:none !important;
+}
+
+html.halloween .halloween-only{
+  display:block !important;
+}
+
+html.halloween .halloween-only.hw-inline{
+  display:inline-flex !important;
+}
+
+
+/* ==========================================
+LA SECCIÓN DEL HOME
+========================================== */
+
+.hw-feature{
+  position:relative;
+  isolation:isolate;
+  overflow:clip;
+
+  padding:84px 0 92px;
+
+  background:var(--hw-carbon);
+  color:var(--hw-hueso);
+}
+
+/* Grano de papel */
+.hw-feature::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+
+  opacity:.35;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Puntos de semitono, abajo a la derecha */
+.hw-feature::after{
+  content:"";
+  position:absolute;
+  right:-60px;
+  bottom:-60px;
+  z-index:-1;
+  pointer-events:none;
+
+  width:420px;
+  height:420px;
+
+  background:radial-gradient(circle, var(--hw-naranja) 38%, transparent 42%) 0 0 / 14px 14px;
+  -webkit-mask-image:radial-gradient(circle at 70% 70%, #000 0%, transparent 68%);
+          mask-image:radial-gradient(circle at 70% 70%, #000 0%, transparent 68%);
+  opacity:.9;
+}
+
+.hw-web{
+  position:absolute;
+  z-index:-1;
+  pointer-events:none;
+
+  width:clamp(120px,15vw,210px);
+  aspect-ratio:1;
+
+  background:url("assets/halloween/web.svg") 0 0 / contain no-repeat;
+  opacity:.5;
+}
+
+.hw-web-a{ top:0; left:0; }
+
+.hw-pez{
+  position:absolute;
+  z-index:0;
+  pointer-events:none;
+
+  width:var(--w,120px);
+  aspect-ratio:var(--ar,2);
+
+  background:var(--img) center / contain no-repeat;
+  --dir:1;
+  animation:hw-nada var(--t,14s) ease-in-out infinite;
+}
+
+.hw-pez-hueso{ --img:url("assets/halloween/pez-hueso.svg"); --ar:304 / 130; }
+.hw-pez-inverso{ --dir:-1; }
+
+.hw-pez-a{ --w:96px; --t:15s; top:5%; left:56%; }
+.hw-pez-b{ --w:74px; --t:18s; top:43%; left:40%; animation-delay:-6s; }
+.hw-pez-c{ --w:60px; --t:16s; top:12%; left:72%; animation-delay:-9s; }
+
+@keyframes hw-nada{
+  0%,100%{ transform:translate(0,0) scaleX(var(--dir)) rotate(-1.5deg); }
+  50%{ transform:translate(calc(40px * var(--dir)),-10px) scaleX(var(--dir)) rotate(2deg); }
+}
+
+.hw-kicker{
+  display:inline-block;
+  margin-bottom:18px;
+
+  font-family:var(--hw-maquina);
+  font-size:15px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--hw-naranja-claro);
+  transform:rotate(-2deg);
+}
+
+.hw-titulo{
+  margin:0;
+
+  font-family:var(--hw-display);
+  font-weight:400;
+  font-size:clamp(58px,8.4vw,128px);
+  line-height:.9;
+  letter-spacing:.005em;
+  text-transform:uppercase;
+  color:var(--hw-hueso);
+}
+
+.hw-titulo span{
+  display:block;
+  color:var(--hw-naranja);
+}
+
+.hw-castillo{
+  margin:22px 0 0;
+
+  font-family:var(--hw-maquina);
+  font-size:clamp(18px,2vw,24px);
+  line-height:1.3;
+  color:var(--hw-hueso);
+}
+
+.hw-frase{
+  max-width:34em;
+  margin:20px 0 0;
+
+  font-size:17px;
+  line-height:1.6;
+  color:rgba(220,213,195,.88);
+}
+
+.hw-lista{
+  display:grid;
+  gap:10px;
+
+  max-width:36em;
+  margin:26px 0 0;
+  padding:0;
+
+  list-style:none;
+}
+
+.hw-lista li{
+  position:relative;
+  padding-left:30px;
+
+  font-size:15.5px;
+  line-height:1.5;
+  color:rgba(220,213,195,.9);
+}
+
+.hw-lista li::before{
+  content:"";
+  position:absolute;
+  left:2px;
+  top:.5em;
+
+  width:11px;
+  height:11px;
+
+  background:var(--hw-naranja);
+  transform:rotate(45deg);
+}
+
+.hw-precio{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:18px 26px;
+
+  margin-top:34px;
+}
+
+.hw-precio-dato{
+  font-family:var(--hw-maquina);
+  font-size:20px;
+  color:var(--hw-hueso);
+}
+
+.hw-precio-dato strong{
+  font-family:var(--hw-display);
+  font-weight:400;
+  font-size:42px;
+  letter-spacing:.02em;
+  color:var(--hw-naranja-claro);
+}
+
+/* El botón de reservar: el mismo mecanismo de Bókun, otro color */
+.hw-feature .bokunButton.card-button{
+  width:auto;
+  min-height:52px;
+  padding:0 34px;
+
+  border:0;
+  border-radius:4px;
+
+  background:var(--hw-naranja);
+  color:#1a0f0a;
+
+  font-family:var(--hw-display);
+  font-size:20px;
+  font-weight:400;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+
+  cursor:pointer;
+  transition:background .2s ease, transform .2s ease;
+}
+
+.hw-feature .bokunButton.card-button:hover{
+  background:var(--hw-naranja-claro);
+  transform:translateY(-2px);
+}
+
+.hw-feature .bokunButton.card-button:disabled{
+  opacity:.6;
+}
+
+.hw-feature .bokunButton:focus-visible{
+  outline:3px solid var(--hw-hueso);
+  outline-offset:3px;
+}
+
+
+/* El televisor retro de la referencia */
+.hw-tele{
+  position:relative;
+  justify-self:center;
+
+  width:100%;
+  max-width:540px;
+
+  transform:rotate(3deg);
+}
+
+/* Televisor dibujado como vector: el cuerpo es una imagen y la
+   pantalla (fotos que cambian) se coloca en su hueco */
+.hw-crt{
+  position:relative;
+  aspect-ratio:640 / 570;
+
+  background:url("assets/halloween/crt-naranja.svg") center / 100% 100% no-repeat;
+  filter:drop-shadow(0 28px 36px rgba(0,0,0,.6)) drop-shadow(0 0 60px rgba(232,96,58,.22));
+}
+
+.hw-pantalla,
+.hw-crt-pant{
+  position:absolute;
+  left:8.125%;
+  top:20%;
+  z-index:1;
+
+  width:62.19%;
+  height:59.3%;
+  overflow:hidden;
+
+  border-radius:9.5% / 11.2%;
+  background:#101010;
+}
+
+.hw-pantalla .tour-card-slide{
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+  object-fit:cover;
+
+  opacity:0;
+  filter:grayscale(1) contrast(1.08) brightness(.95);
+  transition:opacity .9s ease;
+}
+
+.hw-pantalla .tour-card-slide.is-active{
+  opacity:1;
+}
+
+/* Líneas de barrido del tubo */
+.hw-pantalla::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.18) 0 1px, transparent 1px 3px),
+    radial-gradient(120% 100% at 50% 50%, transparent 55%, rgba(0,0,0,.55) 100%);
+}
+
+.hw-pantalla .tour-card-dots{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:10px;
+  z-index:3;
+
+  display:flex;
+  justify-content:center;
+  gap:6px;
+}
+
+.hw-tele-nota{
+  position:absolute;
+  top:7%;
+  right:-2%;
+  z-index:2;
+
+  padding:6px 12px;
+
+  font-family:var(--hw-maquina);
+  font-size:14px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+
+  color:var(--hw-naranja-claro);
+  background:var(--hw-carbon);
+  border:2px solid var(--hw-naranja);
+  transform:rotate(6deg);
+}
+
+
+/* ==========================================
+EL AVISO DEL HERO
+========================================== */
+
+.hw-pastilla{
+  align-items:center;
+  gap:10px;
+
+  margin-top:22px;
+  padding:10px 20px 10px 14px;
+
+  border:2px solid var(--hw-naranja);
+  border-radius:999px;
+
+  background:rgba(29,29,29,.82);
+  -webkit-backdrop-filter:blur(6px);
+          backdrop-filter:blur(6px);
+  color:var(--hw-hueso);
+  text-decoration:none;
+
+  font-family:var(--hw-maquina);
+  font-size:15px;
+  letter-spacing:.04em;
+
+  transition:background .2s ease, transform .2s ease;
+}
+
+.hw-pastilla:hover{
+  background:var(--hw-carbon);
+  transform:translateY(-2px);
+}
+
+.hw-pastilla:focus-visible{
+  outline:3px solid var(--hw-hueso);
+  outline-offset:3px;
+}
+
+.hw-pastilla::before{
+  content:"";
+  flex:none;
+  width:30px;
+  aspect-ratio:120 / 48;
+
+  background:url("assets/halloween/pez-hueso.svg") center / contain no-repeat;
+}
+
+.hw-pastilla strong{
+  color:var(--hw-naranja-claro);
+  font-weight:400;
+}
+
+
+/* ==========================================
+PÁGINA DE TOURS
+========================================== */
+
+.hw-tira{
+  position:relative;
+  overflow:clip;
+
+  margin:0 0 28px;
+  padding:22px 26px 22px 96px;
+
+  border-radius:14px;
+  border:2px solid var(--hw-naranja);
+
+  background:var(--hw-carbon);
+  color:var(--hw-hueso);
+}
+
+.hw-tira::before{
+  content:"";
+  position:absolute;
+  left:18px;
+  top:50%;
+
+  width:62px;
+  aspect-ratio:120 / 48;
+
+  background:url("assets/halloween/pez-hueso.svg") center / contain no-repeat;
+  transform:translateY(-50%);
+}
+
+.hw-tira::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:0;
+
+  width:120px;
+  aspect-ratio:1;
+
+  background:url("assets/halloween/web.svg") 0 0 / contain no-repeat;
+  opacity:.4;
+  transform:scaleX(-1);
+}
+
+.hw-tira strong{
+  display:block;
+
+  font-family:var(--hw-display);
+  font-weight:400;
+  font-size:26px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--hw-naranja-claro);
+}
+
+.hw-tira p{
+  max-width:44em;
+  margin:6px 0 0;
+
+  font-size:15.5px;
+  line-height:1.5;
+  color:rgba(220,213,195,.92);
+}
+
+/* Su ventana en la lista: el aro y la etiqueta, en naranja */
+html.halloween .ventana-tour[data-halloween] .ventana-etiqueta{
+  background:var(--hw-naranja);
+  color:#1a0f0a;
+  display:inline-block;
+  padding:3px 9px 4px;
+  margin-right:4px;
+  border-radius:3px;
+  font-family:var(--hw-maquina);
+  font-weight:400;
+  letter-spacing:.04em;
+  line-height:1.2;
+}
+
+html.halloween .ventana-tour[data-halloween] .ventana-resplandor{
+  background:radial-gradient(closest-side, rgba(232,96,58,.75), transparent 72%) !important;
+}
+
+html.halloween .ventana-tour[data-halloween] .ventana-pantalla .tour-card-slide{
+  filter:grayscale(.55) contrast(1.05);
+}
+
+
+/* ==========================================
+PIE DE PÁGINA
+========================================== */
+
+html.halloween footer{
+  position:relative;
+  isolation:isolate;
+  overflow:clip;
+}
+
+html.halloween footer::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:-1;
+  pointer-events:none;
+
+  width:clamp(110px,16vw,190px);
+  aspect-ratio:1;
+
+  background:url("assets/halloween/web.svg") 0 0 / contain no-repeat;
+  opacity:.28;
+}
+
+
+/* ==========================================
+MÓVIL
+========================================== */
+
+@media (max-width:900px){
+
+  .hw-feature{
+    padding:64px 0 72px;
+  }
+
+    .hw-tele{
+    order:-1;
+    max-width:430px;
+  }
+
+  .hw-pez-a{ top:3%; left:12%; }
+  .hw-pez-b{ top:9%; left:70%; }
+  .hw-pez-c{ top:2%; left:82%; }
+
+  .hw-feature::after{
+    width:280px;
+    height:280px;
+  }
+
+}
+
+@media (max-width:520px){
+
+  .hw-titulo{
+    font-size:clamp(54px,17vw,74px);
+  }
+
+  .hw-precio{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .hw-feature .bokunButton.card-button{
+    width:100%;
+  }
+
+  .hw-tira{
+    padding:70px 20px 20px;
+  }
+
+  .hw-tira::before{
+    top:20px;
+    transform:none;
+  }
+
+}
+
+@media (prefers-reduced-motion:reduce){
+
+  .hw-pez{
+    animation:none;
+  }
+
+  .hw-pastilla,
+  .hw-feature .bokunButton.card-button{
+    transition:none;
+  }
+
+}
+
+
+/* ==========================================
+TOQUES SPOOKY EN EL HERO
+Telarañas en las esquinas, dos murciélagos y una silueta de
+colinas con el castillo que baja a la sección oscura. Todo con
+un velo en la esquina para no restar contraste al texto blanco.
+========================================== */
+
+.hw-hero-decor{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+}
+
+html.halloween .hw-hero-decor.halloween-only{
+  display:block !important;
+}
+
+.hw-hero-peces{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+}
+
+html.halloween .hw-hero-peces.halloween-only{
+  display:block !important;
+}
+
+.hw-hero-pez{
+  opacity:.95;
+}
+
+.hw-hero-pez-a{ --w:200px; --t:16s; top:44%; left:10%; }
+.hw-hero-pez-b{ --w:170px; --t:19s; top:46%; left:56%; animation-delay:-7s; }
+.hw-hero-pez-c{ --w:130px; --t:14s; top:27%; right:15%; animation-delay:-3s; }
+.hw-hero-pez-d{ --w:100px; --t:17s; top:21%; left:8%; animation-delay:-10s; }
+
+.hw-hero-colinas{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+
+  height:clamp(70px,11vw,160px);
+
+  background:url("assets/halloween/colinas.svg") right bottom / cover no-repeat;
+}
+
+
+/* ==========================================
+LA ESCENA: titular de pincel, neón, televisor y polaroid
+Sale de las láminas de referencia: letras enormes con textura
+de pincel seco, un titular que brilla, semitono, salpicadura,
+polaroid con letra a mano y gótica en rojo.
+========================================== */
+
+:root{
+  --hw-rojo:#e23b2e;
+  --hw-amarillo:#ffd23f;
+  --hw-gotica:'Pirata One','Times New Roman',serif;
+  --hw-pixel:'VT323','Courier New',monospace;
+  --hw-mano:'Permanent Marker','Special Elite',cursive;
+}
+
+.hw-filtros{
+  position:absolute;
+  pointer-events:none;
+}
+
+/* Fugas de luz, como en la lámina del rostro */
+.hw-luz{
+  position:absolute;
+  z-index:0;
+  pointer-events:none;
+  background:var(--hw-rojo);
+  opacity:.5;
+  box-shadow:0 0 22px 5px rgba(226,59,46,.55);
+}
+
+.hw-luz-v{ top:0; bottom:0; left:7%; width:3px; }
+.hw-luz-h{ left:0; right:0; top:34%; height:2px; opacity:.28; }
+
+/* Salpicadura detrás del televisor */
+.hw-splat{
+  position:absolute;
+  z-index:0;
+  pointer-events:none;
+  top:-50px;
+  right:-130px;
+
+  width:clamp(240px,32vw,470px);
+  aspect-ratio:1;
+
+  background:url("assets/halloween/splat.svg") center / contain no-repeat;
+  opacity:.92;
+  transform:rotate(12deg);
+}
+
+.hw-escena{
+  position:relative;
+  z-index:1;
+
+  max-width:1280px;
+  height:clamp(520px,63vw,800px);
+  margin:0 auto;
+  padding:0 24px;
+  box-sizing:border-box;
+}
+
+.hw-titulo{
+  margin:0;
+}
+
+.hw-titulo .hw-ponce{
+  position:absolute;
+  top:-.04em;
+  left:8px;
+  z-index:0;
+
+  display:block;
+  font-family:var(--hw-gotica);
+  font-weight:400;
+  font-size:clamp(150px,29.5vw,420px);
+  line-height:.82;
+  letter-spacing:.01em;
+
+  color:var(--hw-hueso);
+  text-shadow:.03em .03em 0 var(--hw-rojo), .06em .06em 0 #000;
+  filter:url(#hw-tinta);
+}
+
+.hw-escena .hw-tele{
+  position:absolute;
+  z-index:2;
+  right:24px;
+  top:26%;
+
+  width:clamp(280px,47%,580px);
+  max-width:none;
+
+  transform:rotate(6deg);
+}
+
+/* Titular que brilla */
+.hw-neon-bloque{
+  position:absolute;
+  z-index:3;
+  left:24px;
+  bottom:3%;
+
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+
+.hw-neon-bloque .hw-kicker{
+  margin-bottom:6px;
+}
+
+.hw-neon{
+  display:block;
+  font-family:var(--hw-display);
+  text-transform:uppercase;
+  line-height:.95;
+  letter-spacing:.03em;
+  color:#fff;
+}
+
+.hw-neon-a{
+  font-size:clamp(42px,7.4vw,106px);
+  text-shadow:
+    0 0 5px #fff,
+    0 0 18px rgba(255,255,255,.9),
+    0 0 44px rgba(255,255,255,.55);
+}
+
+.hw-neon-b{
+  font-size:clamp(70px,12.4vw,176px);
+  margin-top:-.02em;
+  color:#fff1e8;
+  text-shadow:
+    0 0 6px #fff,
+    0 0 22px rgba(255,138,92,.95),
+    0 0 52px rgba(232,96,58,.9),
+    0 0 100px rgba(232,96,58,.65);
+}
+
+.hw-neon-bloque .hw-castillo{
+  margin:10px 0 0 4px;
+
+  font-family:var(--hw-gotica);
+  font-size:clamp(26px,3.4vw,46px);
+  line-height:1;
+  color:var(--hw-rojo);
+  text-shadow:2px 2px 0 #000, 0 0 18px rgba(226,59,46,.45);
+  transform:rotate(-2deg);
+}
+
+/* Polaroid con letra a mano */
+.hw-polaroid{
+  position:absolute;
+  z-index:4;
+  left:43%;
+  bottom:4%;
+
+  width:clamp(130px,18%,230px);
+  margin:0;
+  padding:clamp(8px,1.1vw,14px) clamp(8px,1.1vw,14px) clamp(8px,.9vw,12px);
+  box-sizing:border-box;
+
+  background:#f1eee6;
+  box-shadow:0 18px 34px rgba(0,0,0,.6);
+  transform:rotate(-8deg);
+}
+
+.hw-polaroid img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:1;
+  object-fit:cover;
+  filter:grayscale(1) contrast(1.25);
+}
+
+.hw-polaroid figcaption{
+  margin-top:8%;
+  font-family:var(--hw-mano);
+  font-size:clamp(18px,2.3vw,30px);
+  line-height:1;
+  text-align:center;
+  color:var(--hw-rojo);
+}
+
+/* Texto, lista y entrada */
+.hw-cuerpo{
+  position:relative;
+  z-index:1;
+
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);
+  align-items:center;
+  gap:56px;
+
+  max-width:1160px;
+  margin:0 auto;
+  padding:30px 24px 0;
+}
+
+.hw-cuerpo .hw-frase{
+  margin:0;
+}
+
+.hw-ticket{
+  --muesca:14px;
+
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+
+  padding:30px 28px 28px;
+
+  color:var(--hw-carbon);
+  background:var(--hw-naranja);
+  transform:rotate(2deg);
+  box-shadow:0 0 70px rgba(232,96,58,.35);
+
+  -webkit-mask:
+    radial-gradient(circle var(--muesca) at 0 50%, #0000 98%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--muesca) at 100% 50%, #0000 98%, #000) right / 51% 100% no-repeat;
+          mask:
+    radial-gradient(circle var(--muesca) at 0 50%, #0000 98%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--muesca) at 100% 50%, #0000 98%, #000) right / 51% 100% no-repeat;
+}
+
+.hw-ticket-nota{
+  font-family:var(--hw-maquina);
+  font-size:14px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.hw-ticket .hw-precio-dato{
+  padding:14px 0;
+  border-top:2px dashed rgba(29,29,29,.55);
+  border-bottom:2px dashed rgba(29,29,29,.55);
+  align-self:stretch;
+  text-align:center;
+  color:var(--hw-carbon);
+}
+
+.hw-ticket .hw-precio-dato strong{
+  display:block;
+  font-size:64px;
+  line-height:1;
+  color:var(--hw-carbon);
+}
+
+.hw-feature .hw-ticket .bokunButton.card-button{
+  width:100%;
+  color:var(--hw-hueso);
+  background:var(--hw-carbon);
+  box-shadow:none;
+}
+
+.hw-feature .hw-ticket .bokunButton.card-button:hover:not(:disabled){
+  background:#000;
+  box-shadow:0 0 22px rgba(255,255,255,.35);
+}
+
+
+/* ==========================================
+LA PARED DE TELEVISORES (referencia del video)
+========================================== */
+
+.hw-pared{
+  position:relative;
+  overflow:clip;
+
+  padding:70px 0 0;
+  background:#161616;
+}
+
+.hw-pared-fila{
+  display:flex;
+  gap:22px;
+  width:max-content;
+  margin-top:14px;
+
+  animation:hw-pared 70s linear infinite;
+}
+
+.hw-pared-fila:first-child{
+  margin-top:0;
+}
+
+.hw-pared-inversa{
+  animation-direction:reverse;
+  animation-duration:84s;
+  margin-left:-160px;
+}
+
+@keyframes hw-pared{
+  to{ transform:translateX(-50%); }
+}
+
+.hw-pared .hw-crt{
+  flex:none;
+  width:420px;
+  background-image:url("assets/halloween/crt-oscuro.svg");
+  filter:drop-shadow(0 18px 24px rgba(0,0,0,.6));
+}
+
+.hw-crt-pant img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:grayscale(1) contrast(1.2) brightness(.9);
+}
+
+.hw-crt-pant::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.22) 0 2px, transparent 2px 5px),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55));
+}
+
+.hw-crt-pant.is-texto{
+  display:grid;
+  place-items:center;
+  background:radial-gradient(circle at 50% 45%, #3a3a3a, #202020);
+}
+
+.hw-tv-texto{
+  font-family:var(--hw-pixel);
+  font-size:52px;
+  line-height:.92;
+  text-align:center;
+  color:var(--hw-amarillo);
+  text-shadow:0 0 8px rgba(255,210,63,.9), 0 0 26px rgba(255,210,63,.55);
+}
+
+.hw-tv-pie{
+  position:absolute;
+  left:5%;
+  bottom:4%;
+  z-index:1;
+
+  font-family:var(--hw-pixel);
+  font-size:20px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--hw-amarillo);
+  opacity:.9;
+}
+
+.hw-pared .hw-cinta{
+  margin-top:70px;
+}
+
+.hw-cinta{
+  display:flex;
+  align-items:center;
+  height:48px;
+  margin:0 -20px;
+  overflow:hidden;
+  white-space:nowrap;
+
+  background:var(--hw-naranja);
+  color:var(--hw-carbon);
+  transform:rotate(-1deg);
+
+  font-family:var(--hw-display);
+  font-size:22px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.hw-cinta span{
+  padding-left:40px;
+}
+
+
+/* ==========================================
+HERO: sin telarañas planas, con resplandor de horizonte
+========================================== */
+
+.hw-hero-brillo{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:clamp(160px,24vw,340px);
+
+  background:radial-gradient(ellipse 60% 100% at 78% 100%, rgba(255,138,92,.55), rgba(232,96,58,.18) 45%, transparent 72%);
+}
+
+@media (max-width:900px){
+
+  .hw-escena{
+    height:auto;
+    display:flex;
+    flex-direction:column;
+    padding-bottom:30px;
+  }
+
+  .hw-titulo .hw-ponce{
+    position:relative;
+    top:0;
+    left:0;
+    font-size:35vw;
+  }
+
+  .hw-escena .hw-tele{
+    position:relative;
+    top:auto;
+    right:auto;
+    order:0;
+    align-self:flex-end;
+
+    width:84%;
+    margin-top:-8vw;
+  }
+
+  .hw-neon-bloque{
+    position:relative;
+    left:auto;
+    bottom:auto;
+    margin-top:26px;
+  }
+
+  .hw-neon-a{ font-size:15vw; }
+  .hw-neon-b{ font-size:25vw; }
+
+  .hw-polaroid{
+    left:3%;
+    bottom:auto;
+    top:46vw;
+    width:34vw;
+  }
+
+  .hw-cuerpo{
+    grid-template-columns:minmax(0,1fr);
+    gap:36px;
+  }
+
+  .hw-ticket{
+    margin:0 8px;
+  }
+
+  .hw-pared .hw-crt{
+    width:300px;
+  }
+
+  .hw-tv-texto{ font-size:38px; }
+
+  .hw-luz-v{ left:4%; }
+
+  .hw-splat{
+    top:30vw;
+    right:-70px;
+    width:62vw;
+  }
+
+}
+
+@media (prefers-reduced-motion:reduce){
+
+  .hw-pared-fila{
+    animation:none;
+  }
+
+}
+
+
+/* Peces del hero en pantallas angostas: lejos del texto centrado */
+@media (max-width:900px){
+
+  .hw-hero-pez-a{ --w:96px; top:47%; left:1%; }
+  .hw-hero-pez-b{ --w:86px; top:37%; left:58%; }
+  .hw-hero-pez-c{ display:none; }
+  .hw-hero-pez-d{ display:none; }
+
+}

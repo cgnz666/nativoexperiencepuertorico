@@ -20,7 +20,15 @@ rel="stylesheet">
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=20260924a">
 <link rel="apple-touch-icon" href="assets/favicon-180.png?v=20260924a">
+<script>
+/* Tema de Halloween: se enciende solo hasta el 31 de octubre de 2026 (ver halloween.css) */
+if (new Date() < new Date(2026, 10, 1)) {
+  document.documentElement.classList.add("halloween");
+  document.head.insertAdjacentHTML("beforeend", '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Special+Elite&display=swap">');
+}
+</script>
 <link rel="stylesheet" href="styles.css?v=20261001">
+<link rel="stylesheet" href="halloween.css?v=20261012g">
 
 </head>
 
@@ -230,6 +238,11 @@ CATÁLOGO
     </div>
 
 
+    <div class="hw-tira halloween-only">
+      <strong>Halloween season</strong>
+      <p>Our Ponce Halloween Night is on for a limited time: historic Ponce at dusk, then the Haunted Manor at Castillo Serrallés.</p>
+    </div>
+
     <div class="tours-grid" data-tours-grid></div>
 
 
@@ -326,7 +339,7 @@ async>
 
 <script src="script.js?v=20261001"></script>
 
-<script src="tours.js?v=20261001"></script>
+<script src="tours.js?v=20261012b"></script>
 
 </body>
 

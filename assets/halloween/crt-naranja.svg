@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 570">
+<defs>
+<linearGradient id="aro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e7b565"/><stop offset=".5" stop-color="#a8702e"/><stop offset="1" stop-color="#6f4416"/></linearGradient>
+<linearGradient id="cara" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f98a52"/><stop offset="1" stop-color="#d4491f"/></linearGradient>
+<linearGradient id="panel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c8481f"/><stop offset="1" stop-color="#a93612"/></linearGradient>
+<linearGradient id="perilla" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5a5a5a"/><stop offset="1" stop-color="#0e0e0e"/></linearGradient>
+<linearGradient id="brillo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".34"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<linearGradient id="varilla" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8d8878"/><stop offset=".5" stop-color="#efe8d6"/><stop offset="1" stop-color="#8d8878"/></linearGradient>
+<radialGradient id="degradado" cx=".85" cy=".9" r=".9"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient>
+<pattern id="puntos" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.500" cy="4.500" r="2.200" fill="#000" fill-opacity=".34"/></pattern>
+<mask id="velo"><rect x="0" y="70" width="640" height="450" fill="url(#degradado)"/></mask>
+<g id="dial">
+<circle r="43" fill="#0b0b0b"/>
+<circle r="43" fill="none" stroke="#e7b565" stroke-width="3"/>
+<circle r="37" fill="none" stroke="#000" stroke-width="6" stroke-dasharray="2.500 3.500" opacity=".85"/>
+<circle r="29" fill="url(#perilla)" stroke="#000" stroke-width="2"/>
+<path d="M-19,-14A24,24 0 0 1 12,-21" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/>
+<path d="M0,-5L0,-27" stroke="#e7b565" stroke-width="5" stroke-linecap="round"/>
+</g>
+</defs>
+<ellipse cx="320" cy="548" rx="270" ry="14" fill="#000" opacity=".35"/>
+<path d="M104,520l-6,28h52l-6-28ZM490,520l-6,28h52l-6-28Z" fill="#0c0c0c"/>
+<path d="M250,76L168,10M250,76L336,4" stroke="url(#varilla)" stroke-width="6" stroke-linecap="round" fill="none"/>
+<circle cx="168" cy="10" r="7" fill="#efe8d6" stroke="#000" stroke-width="2"/><circle cx="336" cy="4" r="7" fill="#efe8d6" stroke="#000" stroke-width="2"/>
+<path d="M214,76a36,22 0 0 1 72,0Z" fill="#0c0c0c"/>
+<rect x="10" y="70" width="620" height="450" rx="54" fill="url(#aro)" stroke="#0a0a0a" stroke-width="5"/>
+<rect x="24" y="84" width="592" height="422" rx="44" fill="url(#cara)" stroke="#0a0a0a" stroke-width="3"/>
+<rect x="24" y="84" width="592" height="422" rx="44" fill="url(#puntos)" mask="url(#velo)"/>
+<rect x="24" y="84" width="592" height="422" rx="44" fill="url(#brillo)"/>
+<rect x="34" y="98" width="436" height="374" rx="52" fill="#0b0b0b"/>
+<rect x="38" y="102" width="428" height="366" rx="48" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="2"/>
+<rect x="484" y="98" width="124" height="374" rx="24" fill="url(#panel)" stroke="#0a0a0a" stroke-width="3"/>
+<rect x="490" y="104" width="112" height="362" rx="19" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="1.500"/>
+<g transform="translate(546,166) rotate(-28)"><use href="#dial"/></g>
+<g transform="translate(546,274) rotate(40)"><use href="#dial"/></g>
+<g fill="#0a0a0a"><rect x="504" y="344" width="84" height="8" rx="4"/><rect x="504" y="359" width="84" height="8" rx="4"/><rect x="504" y="374" width="84" height="8" rx="4"/><rect x="504" y="389" width="84" height="8" rx="4"/><rect x="504" y="404" width="84" height="8" rx="4"/><rect x="504" y="419" width="84" height="8" rx="4"/><rect x="504" y="434" width="84" height="8" rx="4"/></g>
+<g fill="#fff" fill-opacity=".14"><rect x="506" y="346" width="78" height="2" rx="1"/><rect x="506" y="361" width="78" height="2" rx="1"/><rect x="506" y="376" width="78" height="2" rx="1"/><rect x="506" y="391" width="78" height="2" rx="1"/><rect x="506" y="406" width="78" height="2" rx="1"/><rect x="506" y="421" width="78" height="2" rx="1"/><rect x="506" y="436" width="78" height="2" rx="1"/></g>
+<circle cx="586" cy="124" r="5" fill="#e8603a"/><circle cx="586" cy="124" r="9" fill="#e8603a" opacity=".25"/>
+</svg>

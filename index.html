@@ -20,7 +20,15 @@ rel="stylesheet">
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=20260924a">
 <link rel="apple-touch-icon" href="assets/favicon-180.png?v=20260924a">
+<script>
+/* Tema de Halloween: se enciende solo hasta el 31 de octubre de 2026 (ver halloween.css) */
+if (new Date() < new Date(2026, 10, 1)) {
+  document.documentElement.classList.add("halloween");
+  document.head.insertAdjacentHTML("beforeend", '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Special+Elite&family=Pirata+One&family=VT323&family=Permanent+Marker&display=swap">');
+}
+</script>
 <link rel="stylesheet" href="styles.css?v=20261001">
+<link rel="stylesheet" href="halloween.css?v=20261012g">
 
 </head>
 
@@ -87,6 +95,18 @@ rel="stylesheet">
 
     <div class="hero-overlay"></div>
 
+    <div class="hw-hero-decor halloween-only" aria-hidden="true">
+      <span class="hw-hero-brillo"></span>
+      <span class="hw-hero-colinas"></span>
+    </div>
+
+    <div class="hw-hero-peces halloween-only" aria-hidden="true">
+      <span class="hw-pez hw-pez-hueso hw-hero-pez hw-hero-pez-a"></span>
+      <span class="hw-pez hw-pez-hueso hw-pez-inverso hw-hero-pez hw-hero-pez-b"></span>
+      <span class="hw-pez hw-pez-hueso hw-pez-inverso hw-hero-pez hw-hero-pez-c"></span>
+      <span class="hw-pez hw-pez-hueso hw-hero-pez hw-hero-pez-d"></span>
+    </div>
+
     <div class="hero-inner">
 
         <h1 class="solo-lectores">
@@ -128,12 +148,132 @@ rel="stylesheet">
 
         </div>
 
+        <a class="hw-pastilla hw-inline halloween-only" href="#halloween">
+            <span><strong>Halloween season:</strong> Ponce at night</span>
+        </a>
+
     </div>
 
 </section>
 
 
 
+
+<!-- ==========================================
+TEMPORADA DE HALLOWEEN (hasta el 31 de octubre)
+Datos del producto 1326391 en Bókun. Estilos en halloween.css.
+========================================== -->
+
+<section class="hw-feature halloween-only" id="halloween" aria-labelledby="hw-titulo">
+
+  <svg class="hw-filtros" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="hw-tinta" x="-3%" y="-6%" width="106%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="3" seed="7" result="onda"/>
+      <feDisplacementMap in="SourceGraphic" in2="onda" scale="5"/>
+    </filter>
+  </svg>
+
+  <span class="hw-luz hw-luz-v" aria-hidden="true"></span>
+  <span class="hw-luz hw-luz-h" aria-hidden="true"></span>
+  <span class="hw-splat" aria-hidden="true"></span>
+  <span class="hw-web hw-web-a" aria-hidden="true"></span>
+  <span class="hw-pez hw-pez-hueso hw-pez-a" aria-hidden="true"></span>
+  <span class="hw-pez hw-pez-hueso hw-pez-b" aria-hidden="true"></span>
+  <span class="hw-pez hw-pez-hueso hw-pez-inverso hw-pez-c" aria-hidden="true"></span>
+
+  <div class="hw-escena">
+
+    <h2 class="hw-titulo" id="hw-titulo">
+      <span class="hw-ponce">Ponce</span>
+      <span class="solo-lectores"> Halloween Night</span>
+    </h2>
+
+    <div class="hw-tele">
+
+      <span class="hw-tele-nota" aria-hidden="true">Oct 31 season</span>
+
+      <div class="hw-crt">
+
+        <div class="hw-pantalla" data-featured-slideshow data-delay="0">
+
+          <img class="tour-card-slide is-active" src="assets/halloween/castillo-serralles-night.jpg" width="800" height="600" alt="Castillo Serrallés lit up at night on the hill above Ponce">
+          <img class="tour-card-slide" src="assets/halloween/cruz-del-vigia-night.jpg" width="800" height="600" alt="The Cruz del Vigía observation tower lit against the night sky in Ponce" loading="lazy">
+          <img class="tour-card-slide" src="assets/halloween/parque-de-bombas.jpg" width="800" height="600" alt="The red and black striped Parque de Bombas firehouse in Ponce" loading="lazy">
+          <img class="tour-card-slide" src="assets/halloween/catedral-ponce-night.jpg" width="800" height="600" alt="Ponce cathedral towers under a full moon" loading="lazy">
+
+          <div class="tour-card-dots" aria-hidden="true"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <figure class="hw-polaroid">
+      <img src="assets/halloween/catedral-ponce-night.jpg" width="800" height="600" alt="Ponce cathedral towers under a full moon" loading="lazy">
+      <figcaption>Oct 31</figcaption>
+    </figure>
+
+    <div class="hw-neon-bloque" aria-hidden="true">
+      <span class="hw-kicker">Halloween season · From San Juan</span>
+      <span class="hw-neon hw-neon-a">Halloween</span>
+      <span class="hw-neon hw-neon-b">Night</span>
+      <span class="hw-castillo">at the Haunted Castillo Serrallés</span>
+    </div>
+
+  </div>
+
+  <div class="hw-cuerpo">
+
+    <div class="hw-texto">
+
+      <p class="hw-frase">
+        Trade the city for the south. Walk historic Ponce at dusk, hear its
+        darkest true stories and local legends, then step into the Haunted
+        Manor at Castillo Serrallés.
+      </p>
+
+      <ul class="hw-lista">
+        <li>Leave San Juan in the afternoon and cross the mountains south, with an early dinner stop in Juana Díaz.</li>
+        <li>Walk Plaza Las Delicias and the striped Parque de Bombas while your guide tells the stories Ponce still talks about.</li>
+        <li>Climb El Vigía at sunset, then enter the Haunted Manor: dark hallways, more than a hundred characters and five stations built to make you jump.</li>
+      </ul>
+
+    </div>
+
+    <div class="hw-ticket">
+
+      <span class="hw-ticket-nota">Admit one · Oct 31 season</span>
+
+      <span class="hw-precio-dato">From <strong>$316.00</strong></span>
+
+      <button
+        class="bokunButton card-button"
+        type="button"
+        disabled
+        id="bokun-halloween"
+        data-src="https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1326391?partialView=1"
+        data-testid="widget-book-button"
+      >
+        Book Now
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="hw-pared halloween-only" aria-hidden="true">
+
+  <div class="hw-pared-fila "><div class="hw-crt"><div class="hw-crt-pant"><img src="assets/halloween/castillo-serralles-night.jpg" width="800" height="600" alt="" loading="lazy"></div></div><div class="hw-crt"><div class="hw-crt-pant is-texto"><span class="hw-tv-texto">Ponce<br>Halloween<br>Night</span></div></div><div class="hw-crt"><div class="hw-crt-pant"><img src="assets/halloween/cruz-del-vigia-night.jpg" width="800" height="600" alt="" loading="lazy"></div></div><div class="hw-crt"><div class="hw-crt-pant is-texto"><span class="hw-tv-texto">CH 31</span><span class="hw-tv-pie">Oct 31 season</span></div></div><div class="hw-crt"><div class="hw-crt-pant"><img src="assets/halloween/parque-de-bombas.jpg" width="800" height="600" alt="" loading="lazy"></div></div><div class="hw-crt"><div class="hw-crt-pant"><img src="assets/halloween/castillo-serralles-night.jpg" width="800" height="600" alt="" loading="lazy"></div></div><div class="hw-crt"><div class="hw-crt-pant is-texto"><span class="hw-tv-texto">Ponce<br>Halloween<br>Night</span></div></div><div class="hw-crt"><div class="hw-crt-pant"><img src="assets/halloween/cruz-del-vigia-night.jpg" width="800" height="600" alt="" loading="lazy"></div></div><div class="hw-crt"><div class="hw-crt-pant is-texto"><span class="hw-tv-texto">CH 31</span><span class="hw-tv-pie">Oct 31 season</span></div></div><div class="hw-crt"><div class="hw-crt-pant"><img src="assets/halloween/parque-de-bombas.jpg" width="800" height="600" alt="" loading="lazy"></div></div></div>
+  <div class="hw-pared-fila hw-pared-inversa"><div class="hw-crt"><div class="hw-crt-pant is-texto"><span class="hw-tv-texto">Haunted<br>Manor</span><span class="hw-tv-pie">100+ characters</span></div></div><div class="hw-crt"><div class="hw-crt-pant"><img src="assets/halloween/catedral-ponce-night.jpg" width="800" height="600" alt="" loading="lazy"></div></div><div class="hw-crt"><div class="hw-crt-pant is-texto"><span class="hw-tv-texto">5<br>Stations</span><span class="hw-tv-pie">Dark hallways</span></div></div><div class="hw-crt"><div class="hw-crt-pant"><img src="assets/halloween/castillo-serralles-night.jpg" width="800" height="600" alt="" loading="lazy"></div></div><div class="hw-crt"><div class="hw-crt-pant is-texto"><span class="hw-tv-texto">Ponce<br>at dusk</span></div></div><div class="hw-crt"><div class="hw-crt-pant is-texto"><span class="hw-tv-texto">Haunted<br>Manor</span><span class="hw-tv-pie">100+ characters</span></div></div><div class="hw-crt"><div class="hw-crt-pant"><img src="assets/halloween/catedral-ponce-night.jpg" width="800" height="600" alt="" loading="lazy"></div></div><div class="hw-crt"><div class="hw-crt-pant is-texto"><span class="hw-tv-texto">5<br>Stations</span><span class="hw-tv-pie">Dark hallways</span></div></div><div class="hw-crt"><div class="hw-crt-pant"><img src="assets/halloween/castillo-serralles-night.jpg" width="800" height="600" alt="" loading="lazy"></div></div><div class="hw-crt"><div class="hw-crt-pant is-texto"><span class="hw-tv-texto">Ponce<br>at dusk</span></div></div></div>
+
+  <div class="hw-cinta">
+    <span>Haunted Manor / 100+ characters / 5 stations / Ponce at dusk / Halloween season / Haunted Manor / 100+ characters / 5 stations</span>
+  </div>
+
+</section>
 
   <div class="tour-sections-background">
 <!-- ==========================================
