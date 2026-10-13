@@ -1114,9 +1114,47 @@ HERO: sin telarañas planas, con resplandor de horizonte
 /* Peces del hero en pantallas angostas: lejos del texto centrado */
 @media (max-width:900px){
 
-  .hw-hero-pez-a{ --w:96px; top:47%; left:1%; }
+  .hw-hero-pez-a{ --w:96px; top:39%; left:1%; }
   .hw-hero-pez-b{ --w:86px; top:37%; left:58%; }
   .hw-hero-pez-c{ display:none; }
   .hw-hero-pez-d{ display:none; }
+
+}
+
+
+/* La pastilla del hero en móvil: compacta, en dos líneas y con el pez a buen tamaño */
+@media (max-width:520px){
+
+  .hw-pastilla{
+    gap:14px;
+    margin-top:30px;
+    padding:11px 24px 11px 18px;
+
+    border-width:1.5px;
+    border-radius:34px;
+    text-align:left;
+
+    box-shadow:0 0 26px rgba(232,96,58,.38), 0 8px 20px rgba(0,0,0,.28);
+  }
+
+  .hw-pastilla::before{
+    width:50px;
+  }
+
+  .hw-pastilla span{
+    display:block;
+    font-size:15px;
+    line-height:1.25;
+    letter-spacing:.02em;
+  }
+
+  .hw-pastilla strong{
+    display:block;
+    margin-bottom:2px;
+
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+  }
 
 }
