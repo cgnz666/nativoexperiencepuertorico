@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-27T19:57:22.150Z",
+  "updated": "2026-10-13T03:45:07.937Z",
   "source": "Bókun · lista de producto 110434",
-  "count": 20,
+  "count": 21,
   "tours": [
     {
       "id": "1213460",
@@ -522,13 +522,13 @@
       "id": "1326391",
       "title": "Ponce Halloween Night at the Haunted Castillo Serrallés",
       "excerpt": "Trade the city for the south. Walk historic Ponce at dusk, hear its darkest true stories and local legends, then step into the Haunted Manor at Castillo Serrallés.",
-      "duration": null,
-      "price": 316.0,
+      "duration": "8 hours",
+      "price": 316,
       "currency": "USD",
       "vendor": "Nativo Experience Puerto Rico",
-      "rating": null,
-      "reviews": null,
-      "reviewUrl": null,
+      "rating": 5,
+      "reviews": 27,
+      "reviewUrl": "https://www.tripadvisor.com/Attraction_Review-g147319-d28063850-Reviews-Nativo_Experiences_Puerto_Rico-Puerto_Rico.html",
       "photos": [
         "https://imgcdn.bokun.tools/62aa69f2-3245-4f01-9aa8-f02aa64b1a22.jpeg?w=800&h=600&mode=crop",
         "https://imgcdn.bokun.tools/bb613429-7208-4ee8-b735-65fb43cbde61.jpeg?w=800&h=600&mode=crop",
@@ -541,9 +541,39 @@
       ],
       "places": [
         "Juana Díaz",
-        "Ponce"
+        "Ponce",
+        "San Juan",
+        "La Perla"
       ],
       "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1326391?partialView=1"
+    },
+    {
+      "id": "1326752",
+      "title": "From San Juan: Coamo Hot Springs Easy-Access Wellness Trip",
+      "excerpt": "Soak in Puerto Rico's historic thermal waters at an unhurried pace. Door-to-door pickup, a snack or dinner stop on the way south, and a warm pool with a ramp and handrails.",
+      "duration": "7 hours",
+      "price": 370,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": null,
+      "reviews": null,
+      "reviewUrl": null,
+      "photos": [
+        "https://imgcdn.bokun.tools/cf2a02cb-78cd-4889-9785-61d866b162a5.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/16a35578-21db-4551-8ad4-bb3d420121d8.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/5ddd79dd-85c8-4e50-99fa-35baf9c7748c.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/1042fae4-040f-42c8-ac45-95d51f08356d.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/8005234a-41c3-4807-b004-5d50092779c6.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/67b67558-da79-4c65-8d4b-91d925a23d71.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/e0874117-20b0-4d4e-a03b-69c05c754e18.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/197c3d37-58af-4283-9a2a-59df73c83d7e.jpeg?w=800&h=600&mode=crop"
+      ],
+      "places": [
+        "Coamo",
+        "San Juan",
+        "Coamo Hot Springs"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1326752?partialView=1"
     }
   ]
 }
