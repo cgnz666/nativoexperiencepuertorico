@@ -1,7 +1,7 @@
 {
-  "updated": "2026-10-14T09:53:02.471Z",
+  "updated": "2026-10-23T09:42:38.738Z",
   "source": "Bókun · lista de producto 110434",
-  "count": 21,
+  "count": 22,
   "tours": [
     {
       "id": "1213460",
@@ -575,6 +575,34 @@
         "Coamo Hot Springs"
       ],
       "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1326752?partialView=1"
+    },
+    {
+      "id": "1333553",
+      "title": "From San Juan: Naranjito Cacao Farm Tour and Chocolate Tasting",
+      "excerpt": "Spend a Saturday morning on a family cacao farm in the mountains of Naranjito. Walk the groves, follow the bean from pod to chocolate, taste the result and share a countryside lunch.",
+      "duration": "5 hours and 30 minutes",
+      "price": 295,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": null,
+      "reviews": null,
+      "reviewUrl": null,
+      "photos": [
+        "https://imgcdn.bokun.tools/db148c1d-4025-4214-8697-c7bade0b33f6.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/93559f74-615a-4e29-8d29-04129bfe096d.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/26b1ed6a-6c42-4d8b-94fc-82f5b9861c9f.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/a773cfc6-55b3-432c-a150-4d88485fd64a.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/b9912071-9cf9-425f-8406-088e97fa424f.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/becd095e-3656-4d77-a6aa-6eea7f752b1b.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/81aa5a4a-3026-4099-8e9d-55fd8cd1ca35.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/92bb12ea-a61a-4004-a400-9d9202a0e140.jpeg?w=800&h=600&mode=crop"
+      ],
+      "places": [
+        "Naranjito",
+        "San Juan",
+        "Isla Verde"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1333553?partialView=1"
     }
   ]
 }
