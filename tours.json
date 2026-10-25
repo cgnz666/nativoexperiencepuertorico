@@ -1,7 +1,7 @@
 {
-  "updated": "2026-10-23T09:42:38.738Z",
+  "updated": "2026-10-25T09:32:09.908Z",
   "source": "Bókun · lista de producto 110434",
-  "count": 22,
+  "count": 23,
   "tours": [
     {
       "id": "1213460",
@@ -603,6 +603,36 @@
         "Isla Verde"
       ],
       "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1333553?partialView=1"
+    },
+    {
+      "id": "1334848",
+      "title": "From San Juan: Taíno Heritage to Tibes, Jayuya and Caguana",
+      "excerpt": "Spend a day with Puerto Rico's first peoples. Visit two ancient ceremonial centers and a museum in the mountains, with a local guide who tells the story of the island before 1493.",
+      "duration": "10 hours",
+      "price": 384,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": null,
+      "reviews": null,
+      "reviewUrl": null,
+      "photos": [
+        "https://imgcdn.bokun.tools/e51bd713-561e-4d49-8dff-fc7df9e1a4dd.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/e10f7985-31bf-482a-8906-b21462bad0dd.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/4135e247-0e66-4f54-8c43-821ffb1ea138.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/8836dfb3-c46b-4188-9553-699d9a2eaa44.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/d5479eb5-c793-41ab-9fd9-1e3f32524c40.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/ec370774-defe-42df-a108-706f28963386.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/76547c21-c74b-4677-ac3b-3b09228c3ed7.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/a09a14bc-5317-4f99-b8ef-385b3d98eb40.jpeg?w=800&h=600&mode=crop"
+      ],
+      "places": [
+        "Jayuya",
+        "Ponce",
+        "San Juan",
+        "Utuado",
+        "Isla Verde"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1334848?partialView=1"
     }
   ]
 }
