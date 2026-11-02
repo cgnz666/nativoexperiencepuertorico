@@ -1,7 +1,7 @@
 {
-  "updated": "2026-11-01T01:46:46.141Z",
+  "updated": "2026-11-02T02:01:57.370Z",
   "source": "Bókun · lista de producto 110434",
-  "count": 22,
+  "count": 21,
   "tours": [
     {
       "id": "1213460",
@@ -461,37 +461,6 @@
         "Caguas"
       ],
       "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1263497?partialView=1"
-    },
-    {
-      "id": "1265967",
-      "title": "From San Juan: Piñones, Loíza & Puerto Rico’s Coastal Culture",
-      "excerpt": "Discover history, culture, and coastal beauty on this guided San Juan and Piñones tour. Explore Old San Juan’s colorful streets, drive Condado and Isla Verde, then enjoy Piñones’ vibrant vibe.",
-      "duration": "4 hours and 30 minutes",
-      "price": 150,
-      "currency": "USD",
-      "vendor": "Nativo Experience Puerto Rico",
-      "rating": 5,
-      "reviews": 4,
-      "reviewUrl": "https://www.tripadvisor.com/AttractionProductReview-g1383492-d34227906-Scenic_Puerto_Rico_FullDay_Tour_Waterfalls_Chocolate_and_Culture-Arecibo_Puerto_R.html",
-      "photos": [
-        "https://imgcdn.bokun.tools/769a4216-7cfc-443b-942d-e1bc97ca1d4e.jpeg?w=800&h=600&mode=crop",
-        "https://imgcdn.bokun.tools/c8dd94d0-8bdd-4ea1-8ed9-1942f771db3e.jpeg?w=800&h=600&mode=crop",
-        "https://imgcdn.bokun.tools/1ddf2720-64fb-4fe7-9248-838d74beff64.jpeg?w=800&h=600&mode=crop",
-        "https://imgcdn.bokun.tools/793d6614-ed4f-4148-b246-74b9b69942fe.jpeg?w=800&h=600&mode=crop",
-        "https://imgcdn.bokun.tools/327eba92-25f4-4e3b-8764-e845d930a94d.jpeg?w=800&h=600&mode=crop",
-        "https://imgcdn.bokun.tools/1e7d146f-c643-4b51-a0c0-b7ac20ea9335.jpeg?w=800&h=600&mode=crop",
-        "https://imgcdn.bokun.tools/bf0ab0b2-575c-420a-b9e2-f99564c9641d.jpeg?w=800&h=600&mode=crop",
-        "https://imgcdn.bokun.tools/2dcc0127-0747-4bd0-b5b8-dba4e204bc79.jpeg?w=800&h=600&mode=crop"
-      ],
-      "places": [
-        "Loíza",
-        "San Juan",
-        "Old San Juan",
-        "Piñones",
-        "Condado",
-        "Isla Verde"
-      ],
-      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1265967?partialView=1"
     },
     {
       "id": "1275712",
