@@ -126,8 +126,10 @@ document.addEventListener("DOMContentLoaded", function () {
     "1275712": { ruta: "sj", frase: "Around San Juan", etiqueta: "Nightlife" },
     "1261571": { etiqueta: "Beaches" },
     "1262284": { etiqueta: "Music" },
-    "1263497": { etiqueta: "Adventure" },
-    "1326391": { ruta: "south" }
+    "1263497": { ruta: "coffee", frase: "Caguas waterfall and cave", etiqueta: "Adventure" },
+    "1326391": { ruta: "south" },
+    "1326752": { ruta: "south", frase: "San Juan to the Coamo hot springs", etiqueta: "Wellness" },
+    "1333553": { ruta: "inland", frase: "Up to the Naranjito cacao farm", etiqueta: "Cacao & chocolate" }
   };
 
   /* Los diez primeros, en este orden, para que los de Ponce
