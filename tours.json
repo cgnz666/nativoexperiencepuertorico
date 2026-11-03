@@ -1,7 +1,7 @@
 {
   "updated": "2026-11-02T23:45:49.023Z",
   "source": "Bókun · lista de producto 110434",
-  "count": 22,
+  "count": 23,
   "tours": [
     {
       "id": "1213460",
@@ -604,6 +604,30 @@
         "Isla Verde"
       ],
       "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1334848?partialView=1"
+    },
+    {
+      "id": "1198170",
+      "title": "El Yunque Pristine Waterfalls & Natural Pools Experience",
+      "excerpt": "Embark on a thrilling rainforest quest to Quebrada Sonadora - a secret waterfall gem near El Yunque that locals treasure, deep into Puerto Rico's wild heart.",
+      "duration": "5 hours",
+      "price": 250,
+      "currency": "USD",
+      "vendor": "Nativo Experience Puerto Rico",
+      "rating": null,
+      "reviews": null,
+      "reviewUrl": null,
+      "photos": [
+        "https://imgcdn.bokun.tools/997855ae-84b6-4f88-aa7a-f9937f2171c7.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/f523be7e-3ed8-4a72-950b-8b2c5001450e.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/24453b69-196c-42d9-8910-18821919ab21.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/e5662bbf-35da-4c54-8bcf-6e1246831e83.jpeg?w=800&h=600&mode=crop",
+        "https://imgcdn.bokun.tools/ec80c514-c24a-4a0d-becc-861cbe29a3ad.jpeg?w=800&h=600&mode=crop"
+      ],
+      "places": [
+        "Río Grande",
+        "San Juan"
+      ],
+      "bookingUrl": "https://widgets.bokun.io/online-sales/7fab5ffc-1687-4220-aff5-7a5a1f460898/experience/1198170?partialView=1"
     }
   ]
 }

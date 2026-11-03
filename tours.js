@@ -129,7 +129,9 @@ document.addEventListener("DOMContentLoaded", function () {
     "1263497": { ruta: "coffee", frase: "Caguas waterfall and cave", etiqueta: "Adventure" },
     "1326391": { ruta: "south" },
     "1326752": { ruta: "south", frase: "San Juan to the Coamo hot springs", etiqueta: "Wellness" },
-    "1333553": { ruta: "inland", frase: "Up to the Naranjito cacao farm", etiqueta: "Cacao & chocolate" }
+    "1333553": { ruta: "inland", frase: "Up to the Naranjito cacao farm", etiqueta: "Cacao & chocolate" },
+    "1198170": { ruta: "east", frase: "San Juan to the El Yunque waterfalls", etiqueta: "Rainforest" },
+    "1334848": { ruta: "inland", frase: "Taíno sites in the mountains", etiqueta: "Taíno heritage" }
   };
 
   /* Los diez primeros, en este orden, para que los de Ponce
