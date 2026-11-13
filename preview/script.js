@@ -174,6 +174,8 @@ function iniciarCarruseles(raiz) {
 
     let actual = 0;
     let temporizador = null;
+    let enPantalla = true;
+    let enMarcha = false;
 
     /* Las láminas que no son la primera llegan sin src,
        con la dirección guardada en data-lazy. Así una
@@ -246,7 +248,15 @@ function iniciarCarruseles(raiz) {
     }
 
     function arrancar() {
-      if (window.carruselesPausados) {
+      if (menosMovimiento || window.carruselesPausados) {
+        return;
+      }
+
+      /* Quiere girar aunque ahora no se vea: al volver a la
+         pantalla, el observador la arranca */
+      enMarcha = true;
+
+      if (!enPantalla) {
         return;
       }
 
@@ -259,6 +269,24 @@ function iniciarCarruseles(raiz) {
 
     function pausar() {
       window.clearInterval(temporizador);
+    }
+
+    /* Fuera de pantalla la galería no gira. En tours hay más de
+       veinte: todas a la vez agotaban la memoria de la GPU del
+       teléfono y Chrome pintaba fotos vacías o fuera del marco. */
+    if ("IntersectionObserver" in window) {
+      galeria.observadorDelCarrusel = new IntersectionObserver(
+        function (entradas) {
+          enPantalla = entradas[0].isIntersecting;
+
+          if (!enPantalla) {
+            pausar();
+          } else if (enMarcha) {
+            arrancar();
+          }
+        },
+        { rootMargin: "200px 0px" }
+      ).observe(galeria);
     }
 
     /* En tours la galería vive dentro de una ventana, no de una
@@ -279,8 +307,13 @@ function iniciarCarruseles(raiz) {
     cargar(laminas[1]);
 
     galeria.arranqueDelCarrusel = window.setTimeout(function () {
-      avanzar();
-      arrancar();
+      enMarcha = true;
+
+      /* Fuera de pantalla no avanza ni pide más fotos */
+      if (enPantalla) {
+        avanzar();
+        arrancar();
+      }
     }, 4500 + retrasoInicial);
   });
 }
@@ -294,6 +327,10 @@ function detenerCarruseles(raiz) {
     .forEach(function (galeria) {
       window.clearInterval(galeria.temporizadorDelCarrusel);
       window.clearTimeout(galeria.arranqueDelCarrusel);
+
+      if (galeria.observadorDelCarrusel) {
+        galeria.observadorDelCarrusel.disconnect();
+      }
     });
 }
 

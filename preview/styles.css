@@ -121,6 +121,19 @@ HEADER / NAVIGATION BAR
     0 10px 30px rgba(7,61,73,.07);
 }
 
+/* En pantallas táctiles, sin desenfoque: el fondo ya es casi
+   opaco, y la capa borrosa que se recompone a cada paso del
+   scroll pesaba en la GPU de los teléfonos */
+
+@media (hover:none){
+
+  .site-header{
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+  }
+
+}
+
 .nav-wrap{
   height:72px;
 
@@ -4024,6 +4037,12 @@ no se reescalan.
   opacity:.15;
 }
 
+/* Los rótulos de las rutas apagadas se siguen leyendo */
+
+.tours-hero[data-ruta-activa] .tours-mapa .rt:where(:has(> text)){
+  opacity:.45;
+}
+
 .tours-hero[data-ruta-activa="south"] .rt[data-line="south"],
 .tours-hero[data-ruta-activa="west"] .rt[data-line="west"],
 .tours-hero[data-ruta-activa="inland"] .rt[data-line="inland"],
@@ -4076,6 +4095,25 @@ PÁGINA DE TOURS — BOTONES DE RUTA
 
 .tours-rutas::-webkit-scrollbar{
   display:none;
+}
+
+/* Un fundido al borde derecho avisa que la fila sigue de lado.
+   Es un degradado, no una máscara. Al final de la fila queda
+   después del último botón, sin taparlo */
+
+.tours-rutas::after{
+  content:"";
+
+  position:sticky;
+  right:0;
+
+  flex:0 0 40px;
+
+  margin-left:-8px;
+
+  pointer-events:none;
+
+  background:linear-gradient(90deg, rgba(3,40,51,0), var(--ocean) 85%);
 }
 
 .tours-ruta{
@@ -4387,14 +4425,27 @@ lleva el título y baja para mostrar la reserva.
 }
 
 /* Las fotos pasan como el paisaje por la ventana: es el mismo
-   carrusel del home (.tour-card-slide), sin sus puntos */
-
-.ventana-pantalla .tour-card-slide{
-  filter:saturate(1.08) contrast(1.05);
-}
+   carrusel del home (.tour-card-slide), sin sus puntos. Sin
+   filter: con veinte ventanas, Chrome en Android se quedaba sin
+   memoria de GPU y pintaba fotos vacías o fuera del marco. */
 
 .ventana-pantalla .tour-card-dots{
   display:none;
+}
+
+/* En pantallas táctiles las fotos solo se funden, sin el
+   acercamiento lento: cada foto que se escala es una capa más
+   para la GPU del teléfono */
+
+@media (hover:none){
+
+  .ventana-pantalla .tour-card-slide,
+  .ventana-pantalla .tour-card-slide.is-active{
+    transform:none;
+
+    transition:opacity 1.15s ease;
+  }
+
 }
 
 .ventana-crt{
@@ -4895,6 +4946,10 @@ PÁGINA DE TOURS — ESCRITORIO · 900px o más
     flex-wrap:wrap;
 
     overflow:visible;
+  }
+
+  .tours-rutas::after{
+    display:none;
   }
 
 }
