@@ -174,6 +174,8 @@ function iniciarCarruseles(raiz) {
 
     let actual = 0;
     let temporizador = null;
+    let enPantalla = true;
+    let enMarcha = false;
 
     /* Las láminas que no son la primera llegan sin src,
        con la dirección guardada en data-lazy. Así una
@@ -246,9 +248,11 @@ function iniciarCarruseles(raiz) {
     }
 
     function arrancar() {
-      if (window.carruselesPausados) {
+      if (window.carruselesPausados || !enPantalla) {
         return;
       }
+
+      enMarcha = true;
 
       window.clearInterval(temporizador);
       temporizador = window.setInterval(avanzar, 4500);
@@ -259,6 +263,24 @@ function iniciarCarruseles(raiz) {
 
     function pausar() {
       window.clearInterval(temporizador);
+    }
+
+    /* Fuera de pantalla la galería no gira. En tours hay más de
+       veinte: todas a la vez agotaban la memoria de la GPU del
+       teléfono y Chrome pintaba fotos vacías o fuera del marco. */
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        function (entradas) {
+          enPantalla = entradas[0].isIntersecting;
+
+          if (!enPantalla) {
+            pausar();
+          } else if (enMarcha) {
+            arrancar();
+          }
+        },
+        { rootMargin: "200px 0px" }
+      ).observe(galeria);
     }
 
     /* En tours la galería vive dentro de una ventana, no de una
@@ -279,6 +301,7 @@ function iniciarCarruseles(raiz) {
     cargar(laminas[1]);
 
     galeria.arranqueDelCarrusel = window.setTimeout(function () {
+      enMarcha = true;
       avanzar();
       arrancar();
     }, 4500 + retrasoInicial);
