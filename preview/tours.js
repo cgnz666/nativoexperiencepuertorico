@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const botonesDeRuta = Array.from(document.querySelectorAll(".tours-ruta[data-ruta]"));
   const buscador = document.querySelector("[data-tours-search]");
   const contador = document.querySelector("[data-tours-count]");
+  const titular = document.querySelector(".tours-herramientas .eyebrow");
   const vacio = document.querySelector("[data-tours-empty]");
   const zonaDeBoton = document.querySelector("[data-tours-more]");
   const boton = zonaDeBoton && zonaDeBoton.querySelector("button");
@@ -614,6 +615,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     habiaFiltro = filtrando;
+
+    /* El titular del catálogo dice qué se está viendo: con una
+       ruta o una búsqueda, cuántos tours quedan */
+    if (titular) {
+      const cuantos = `${encontrados.length} ${
+        encontrados.length === 1 ? "tour" : "tours"
+      }`;
+
+      titular.textContent = rutaElegida
+        ? `${RUTAS[rutaElegida].nombre} · ${cuantos}`
+        : filtrando
+          ? `${cuantos} found`
+          : "All tours";
+    }
 
     /* Con una ruta elegida, el aviso de "prueba con Ponce" podía
        contradecirse (Ponce no está en Coffee Hills): se dice qué
