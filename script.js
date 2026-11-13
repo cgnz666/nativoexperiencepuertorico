@@ -248,11 +248,17 @@ function iniciarCarruseles(raiz) {
     }
 
     function arrancar() {
-      if (window.carruselesPausados || !enPantalla) {
+      if (menosMovimiento || window.carruselesPausados) {
         return;
       }
 
+      /* Quiere girar aunque ahora no se vea: al volver a la
+         pantalla, el observador la arranca */
       enMarcha = true;
+
+      if (!enPantalla) {
+        return;
+      }
 
       window.clearInterval(temporizador);
       temporizador = window.setInterval(avanzar, 4500);
@@ -269,7 +275,7 @@ function iniciarCarruseles(raiz) {
        veinte: todas a la vez agotaban la memoria de la GPU del
        teléfono y Chrome pintaba fotos vacías o fuera del marco. */
     if ("IntersectionObserver" in window) {
-      new IntersectionObserver(
+      galeria.observadorDelCarrusel = new IntersectionObserver(
         function (entradas) {
           enPantalla = entradas[0].isIntersecting;
 
@@ -302,8 +308,12 @@ function iniciarCarruseles(raiz) {
 
     galeria.arranqueDelCarrusel = window.setTimeout(function () {
       enMarcha = true;
-      avanzar();
-      arrancar();
+
+      /* Fuera de pantalla no avanza ni pide más fotos */
+      if (enPantalla) {
+        avanzar();
+        arrancar();
+      }
     }, 4500 + retrasoInicial);
   });
 }
@@ -317,6 +327,10 @@ function detenerCarruseles(raiz) {
     .forEach(function (galeria) {
       window.clearInterval(galeria.temporizadorDelCarrusel);
       window.clearTimeout(galeria.arranqueDelCarrusel);
+
+      if (galeria.observadorDelCarrusel) {
+        galeria.observadorDelCarrusel.disconnect();
+      }
     });
 }
 

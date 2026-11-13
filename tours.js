@@ -764,7 +764,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     svg
       .querySelectorAll(
-        ".rt[data-line] path, .rt[data-line] rect, .rt[data-line] circle"
+        ".rt[data-line] path:not(.halo), .rt[data-line] rect, .rt[data-line] circle"
       )
       .forEach(function (trazo) {
         const distancia = distanciaA(trazo, punto.x, punto.y);
