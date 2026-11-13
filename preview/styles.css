@@ -4074,6 +4074,48 @@ no se reescalan.
   }
 }
 
+/* En pantallas táctiles el pulso cambia el radio y no se escala:
+   una animación de transform u opacity sube el mapa a la GPU y
+   arrastra consigo el mapa entero y la fila de botones, que en
+   Chrome de Android salían corruptos. El radio va de .6 a 1.8
+   veces el del círculo, como la escala. */
+
+@media (hover:none){
+
+  .tours-mapa .pulse{
+    animation-name:mapa-pulso-radio;
+  }
+
+  .tours-mapa .mapa-angulo .pulse{
+    animation-name:mapa-pulso-radio-m;
+  }
+
+}
+
+@keyframes mapa-pulso-radio{
+  0%{
+    r:18px;
+    stroke-opacity:1;
+  }
+
+  100%{
+    r:54px;
+    stroke-opacity:0;
+  }
+}
+
+@keyframes mapa-pulso-radio-m{
+  0%{
+    r:19px;
+    stroke-opacity:1;
+  }
+
+  100%{
+    r:58px;
+    stroke-opacity:0;
+  }
+}
+
 
 /* ==========================================
 PÁGINA DE TOURS — BOTONES DE RUTA
@@ -4098,22 +4140,32 @@ PÁGINA DE TOURS — BOTONES DE RUTA
 }
 
 /* Un fundido al borde derecho avisa que la fila sigue de lado.
-   Es un degradado, no una máscara. Al final de la fila queda
-   después del último botón, sin taparlo */
+   Va en el contenedor, quieto, y no dentro de la fila: un
+   elemento sticky dentro de lo que se desliza es una capa más
+   de GPU. El relleno derecho de la fila deja el último botón
+   entero cuando se llega al final. */
 
-.tours-rutas::after{
+.tours-hero .cierre-wrap{
+  position:relative;
+}
+
+.tours-hero .cierre-wrap::after{
   content:"";
 
-  position:sticky;
-  right:0;
+  position:absolute;
+  right:20px;
+  bottom:4px;
 
-  flex:0 0 40px;
-
-  margin-left:-8px;
+  width:40px;
+  height:44px;
 
   pointer-events:none;
 
   background:linear-gradient(90deg, rgba(3,40,51,0), var(--ocean) 85%);
+}
+
+.tours-rutas{
+  padding-right:40px;
 }
 
 .tours-ruta{
@@ -4443,7 +4495,11 @@ lleva el título y baja para mostrar la reserva.
   .ventana-pantalla .tour-card-slide.is-active{
     transform:none;
 
-    transition:opacity 1.15s ease;
+    /* Sin fundido: Chrome sube a la GPU cada foto que se funde,
+       y con ella todo lo que va encima (la cortina y las
+       ventanas siguientes) en una capa gigante. En Android eso
+       dejaba la cortina sin fondo y la foto encima del título. */
+    transition:none;
   }
 
 }
@@ -4948,7 +5004,11 @@ PÁGINA DE TOURS — ESCRITORIO · 900px o más
     overflow:visible;
   }
 
-  .tours-rutas::after{
+  .tours-rutas{
+    padding-right:0;
+  }
+
+  .tours-hero .cierre-wrap::after{
     display:none;
   }
 
